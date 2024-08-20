@@ -1,0 +1,9 @@
+target
+lib
+out
+dist
+public
+cache
+node_modules
+pnpm-lock.yaml
+assets
