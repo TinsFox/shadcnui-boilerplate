@@ -87,7 +87,7 @@
     "typescript": "^5.5.4",
     "vite": "^5.4.1",
     "vite-plugin-html": "^3.2.2",
-    "vitest": "^0.34.6"
+    "vitest": "^2.0.5"
   },
   "msw": {
     "workerDirectory": "public"
