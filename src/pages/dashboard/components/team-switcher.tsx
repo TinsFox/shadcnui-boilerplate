@@ -1,12 +1,12 @@
 import {
   CaretSortIcon,
   CheckIcon,
-  PlusCircledIcon
-} from '@radix-ui/react-icons'
-import * as React from 'react'
+  PlusCircledIcon,
+} from "@radix-ui/react-icons"
+import * as React from "react"
 
-import { Avatar, AvatarFallback, AvatarImage } from '@/components/ui/avatar'
-import { Button } from '@/components/ui/button'
+import { Avatar, AvatarFallback, AvatarImage } from "@/components/ui/avatar"
+import { Button } from "@/components/ui/button"
 import {
   Command,
   CommandEmpty,
@@ -14,8 +14,8 @@ import {
   CommandInput,
   CommandItem,
   CommandList,
-  CommandSeparator
-} from '@/components/ui/command'
+  CommandSeparator,
+} from "@/components/ui/command"
 import {
   Dialog,
   DialogContent,
@@ -23,50 +23,50 @@ import {
   DialogFooter,
   DialogHeader,
   DialogTitle,
-  DialogTrigger
-} from '@/components/ui/dialog'
-import { Input } from '@/components/ui/input'
-import { Label } from '@/components/ui/label'
+  DialogTrigger,
+} from "@/components/ui/dialog"
+import { Input } from "@/components/ui/input"
+import { Label } from "@/components/ui/label"
 import {
   Popover,
   PopoverContent,
-  PopoverTrigger
-} from '@/components/ui/popover'
+  PopoverTrigger,
+} from "@/components/ui/popover"
 import {
   Select,
   SelectContent,
   SelectItem,
   SelectTrigger,
-  SelectValue
-} from '@/components/ui/select'
-import { cn } from '@/lib/utils'
+  SelectValue,
+} from "@/components/ui/select"
+import { cn } from "@/lib/utils"
 
 const groups = [
   {
-    label: 'Personal Account',
+    label: "Personal Account",
     teams: [
       {
-        label: 'Alicia Koch',
-        value: 'personal'
-      }
-    ]
+        label: "Alicia Koch",
+        value: "personal",
+      },
+    ],
   },
   {
-    label: 'Teams',
+    label: "Teams",
     teams: [
       {
-        label: 'Acme Inc.',
-        value: 'acme-inc'
+        label: "Acme Inc.",
+        value: "acme-inc",
       },
       {
-        label: 'Monsters Inc.',
-        value: 'monsters'
-      }
-    ]
-  }
+        label: "Monsters Inc.",
+        value: "monsters",
+      },
+    ],
+  },
 ]
 
-type Team = (typeof groups)[number]['teams'][number]
+type Team = (typeof groups)[number]["teams"][number]
 
 type PopoverTriggerProps = React.ComponentPropsWithoutRef<typeof PopoverTrigger>
 
@@ -76,7 +76,7 @@ export default function TeamSwitcher({ className }: TeamSwitcherProps) {
   const [open, setOpen] = React.useState(false)
   const [showNewTeamDialog, setShowNewTeamDialog] = React.useState(false)
   const [selectedTeam, setSelectedTeam] = React.useState<Team>(
-    groups[0].teams[0]
+    groups[0].teams[0],
   )
 
   return (
@@ -88,9 +88,9 @@ export default function TeamSwitcher({ className }: TeamSwitcherProps) {
             role="combobox"
             aria-expanded={open}
             aria-label="Select a team"
-            className={cn('w-[200px] justify-between', className)}
+            className={cn("w-[200px] justify-between", className)}
           >
-            <Avatar className="w-5 h-5 mr-2">
+            <Avatar className="mr-2 size-5">
               <AvatarImage
                 src={`https://avatar.vercel.sh/${selectedTeam.value}.png`}
                 alt={selectedTeam.label}
@@ -98,7 +98,7 @@ export default function TeamSwitcher({ className }: TeamSwitcherProps) {
               <AvatarFallback>SC</AvatarFallback>
             </Avatar>
             {selectedTeam.label}
-            <CaretSortIcon className="w-4 h-4 ml-auto opacity-50 shrink-0" />
+            <CaretSortIcon className="ml-auto size-4 shrink-0 opacity-50" />
           </Button>
         </PopoverTrigger>
         <PopoverContent className="w-[200px] p-0">
@@ -106,9 +106,9 @@ export default function TeamSwitcher({ className }: TeamSwitcherProps) {
             <CommandList>
               <CommandInput placeholder="Search team..." />
               <CommandEmpty>No team found.</CommandEmpty>
-              {groups.map(group => (
+              {groups.map((group) => (
                 <CommandGroup key={group.label} heading={group.label}>
-                  {group.teams.map(team => (
+                  {group.teams.map((team) => (
                     <CommandItem
                       key={team.value}
                       onSelect={() => {
@@ -117,7 +117,7 @@ export default function TeamSwitcher({ className }: TeamSwitcherProps) {
                       }}
                       className="text-sm"
                     >
-                      <Avatar className="w-5 h-5 mr-2">
+                      <Avatar className="mr-2 size-5">
                         <AvatarImage
                           src={`https://avatar.vercel.sh/${team.value}.png`}
                           alt={team.label}
@@ -128,10 +128,10 @@ export default function TeamSwitcher({ className }: TeamSwitcherProps) {
                       {team.label}
                       <CheckIcon
                         className={cn(
-                          'ml-auto h-4 w-4',
-                          selectedTeam.value === team.value
-                            ? 'opacity-100'
-                            : 'opacity-0'
+                          "ml-auto size-4",
+                          selectedTeam.value === team.value ?
+                            "opacity-100" :
+                            "opacity-0",
                         )}
                       />
                     </CommandItem>
@@ -149,7 +149,7 @@ export default function TeamSwitcher({ className }: TeamSwitcherProps) {
                       setShowNewTeamDialog(true)
                     }}
                   >
-                    <PlusCircledIcon className="w-5 h-5 mr-2" />
+                    <PlusCircledIcon className="mr-2 size-5" />
                     Create Team
                   </CommandItem>
                 </DialogTrigger>
@@ -166,7 +166,7 @@ export default function TeamSwitcher({ className }: TeamSwitcherProps) {
           </DialogDescription>
         </DialogHeader>
         <div>
-          <div className="py-2 pb-4 space-y-4">
+          <div className="space-y-4 py-2 pb-4">
             <div className="space-y-2">
               <Label htmlFor="name">Team name</Label>
               <Input id="name" placeholder="Acme Inc." />
@@ -179,13 +179,19 @@ export default function TeamSwitcher({ className }: TeamSwitcherProps) {
                 </SelectTrigger>
                 <SelectContent>
                   <SelectItem value="free">
-                    <span className="font-medium">Free</span> -{' '}
+                    <span className="font-medium">Free</span>
+                    {" "}
+                    -
+                    {" "}
                     <span className="text-muted-foreground">
                       Trial for two weeks
                     </span>
                   </SelectItem>
                   <SelectItem value="pro">
-                    <span className="font-medium">Pro</span> -{' '}
+                    <span className="font-medium">Pro</span>
+                    {" "}
+                    -
+                    {" "}
                     <span className="text-muted-foreground">
                       $9/month per user
                     </span>

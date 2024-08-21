@@ -1,14 +1,14 @@
-import { cn } from '@/lib/utils'
+import { cn } from "@/lib/utils"
 
-import { DemoCookieSettings } from './components/cookie-settings'
-import { DemoCreateAccount } from './components/create-account'
-import { DemoDatePicker } from './components/date-picker'
-import { DemoGithub } from './components/github-card'
-import { DemoNotifications } from './components/notifications'
-import { DemoPaymentMethod } from './components/payment-method'
-import { DemoReportAnIssue } from './components/report-an-issue'
-import { DemoShareDocument } from './components/share-document'
-import { DemoTeamMembers } from './components/team-members'
+import { DemoCookieSettings } from "./components/cookie-settings"
+import { DemoCreateAccount } from "./components/create-account"
+import { DemoDatePicker } from "./components/date-picker"
+import { DemoGithub } from "./components/github-card"
+import { DemoNotifications } from "./components/notifications"
+import { DemoPaymentMethod } from "./components/payment-method"
+import { DemoReportAnIssue } from "./components/report-an-issue"
+import { DemoShareDocument } from "./components/share-document"
+import { DemoTeamMembers } from "./components/team-members"
 
 function DemoContainer({
   className,
@@ -17,8 +17,8 @@ function DemoContainer({
   return (
     <div
       className={cn(
-        'flex items-center justify-center [&>div]:w-full',
-        className
+        "flex items-center justify-center [&>div]:w-full",
+        className,
       )}
       {...props}
     />
@@ -28,8 +28,8 @@ function DemoContainer({
 export default function CardsPage() {
   return (
     <>
-      <div className="items-start justify-center hidden gap-6 p-8 rounded-lg md:grid lg:grid-cols-2 xl:grid-cols-3">
-        <div className="grid items-start col-span-2 gap-6 lg:col-span-1">
+      <div className="hidden items-start justify-center gap-6 rounded-lg p-8 md:grid lg:grid-cols-2 xl:grid-cols-3">
+        <div className="col-span-2 grid items-start gap-6 lg:col-span-1">
           <DemoContainer>
             <DemoCreateAccount />
           </DemoContainer>
@@ -37,7 +37,7 @@ export default function CardsPage() {
             <DemoPaymentMethod />
           </DemoContainer>
         </div>
-        <div className="grid items-start col-span-2 gap-6 lg:col-span-1">
+        <div className="col-span-2 grid items-start gap-6 lg:col-span-1">
           <DemoContainer>
             <DemoTeamMembers />
           </DemoContainer>
@@ -51,7 +51,7 @@ export default function CardsPage() {
             <DemoNotifications />
           </DemoContainer>
         </div>
-        <div className="grid items-start col-span-2 gap-6 lg:col-span-2 lg:grid-cols-2 xl:col-span-1 xl:grid-cols-1">
+        <div className="col-span-2 grid items-start gap-6 lg:col-span-2 lg:grid-cols-2 xl:col-span-1 xl:grid-cols-1">
           <DemoContainer>
             <DemoReportAnIssue />
           </DemoContainer>

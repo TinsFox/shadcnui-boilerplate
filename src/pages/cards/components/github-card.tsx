@@ -2,17 +2,17 @@ import {
   ChevronDownIcon,
   CircleIcon,
   PlusIcon,
-  StarIcon
-} from '@radix-ui/react-icons'
+  StarIcon,
+} from "@radix-ui/react-icons"
 
-import { Button } from '@/components/ui/button'
+import { Button } from "@/components/ui/button"
 import {
   Card,
   CardContent,
   CardDescription,
   CardHeader,
-  CardTitle
-} from '@/components/ui/card'
+  CardTitle,
+} from "@/components/ui/card"
 import {
   DropdownMenu,
   DropdownMenuCheckboxItem,
@@ -20,9 +20,9 @@ import {
   DropdownMenuItem,
   DropdownMenuLabel,
   DropdownMenuSeparator,
-  DropdownMenuTrigger
-} from '@/components/ui/dropdown-menu'
-import { Separator } from '@/components/ui/separator'
+  DropdownMenuTrigger,
+} from "@/components/ui/dropdown-menu"
+import { Separator } from "@/components/ui/separator"
 
 export function DemoGithub() {
   return (
@@ -37,14 +37,14 @@ export function DemoGithub() {
         </div>
         <div className="flex items-center space-x-1 rounded-md bg-secondary text-secondary-foreground">
           <Button variant="secondary" className="px-3 shadow-none">
-            <StarIcon className="w-4 h-4 mr-2" />
+            <StarIcon className="mr-2 size-4" />
             Star
           </Button>
           <Separator orientation="vertical" className="h-[20px]" />
           <DropdownMenu>
             <DropdownMenuTrigger asChild>
               <Button variant="secondary" className="px-2 shadow-none">
-                <ChevronDownIcon className="w-4 h-4 text-secondary-foreground" />
+                <ChevronDownIcon className="size-4 text-secondary-foreground" />
               </Button>
             </DropdownMenuTrigger>
             <DropdownMenuContent
@@ -62,7 +62,7 @@ export function DemoGithub() {
               <DropdownMenuCheckboxItem>Inspiration</DropdownMenuCheckboxItem>
               <DropdownMenuSeparator />
               <DropdownMenuItem>
-                <PlusIcon className="w-4 h-4 mr-2" /> Create List
+                <PlusIcon className="mr-2 size-4" /> Create List
               </DropdownMenuItem>
             </DropdownMenuContent>
           </DropdownMenu>
@@ -71,11 +71,11 @@ export function DemoGithub() {
       <CardContent>
         <div className="flex space-x-4 text-sm text-muted-foreground">
           <div className="flex items-center">
-            <CircleIcon className="w-3 h-3 mr-1 fill-sky-400 text-sky-400" />
+            <CircleIcon className="mr-1 size-3 fill-sky-400 text-sky-400" />
             TypeScript
           </div>
           <div className="flex items-center">
-            <StarIcon className="w-3 h-3 mr-1" />
+            <StarIcon className="mr-1 size-3" />
             20k
           </div>
           <div>Updated April 2023</div>
