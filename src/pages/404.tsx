@@ -1,4 +1,4 @@
-import { ReactElement } from 'react'
+import type { ReactElement } from "react"
 
 export function NotfoundPage() {
   return (
@@ -7,6 +7,4 @@ export function NotfoundPage() {
     </>
   )
 }
-export const Component = (): ReactElement => {
-  return <NotfoundPage />
-}
+export const Component = (): ReactElement => <NotfoundPage />

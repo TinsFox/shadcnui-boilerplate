@@ -1,5 +1,5 @@
-import { Avatar, AvatarFallback, AvatarImage } from '@/components/ui/avatar'
-import { Button } from '@/components/ui/button'
+import { Avatar, AvatarFallback, AvatarImage } from "@/components/ui/avatar"
+import { Button } from "@/components/ui/button"
 import {
   DropdownMenu,
   DropdownMenuContent,
@@ -8,15 +8,15 @@ import {
   DropdownMenuLabel,
   DropdownMenuSeparator,
   DropdownMenuShortcut,
-  DropdownMenuTrigger
-} from '@/components/ui/dropdown-menu'
+  DropdownMenuTrigger,
+} from "@/components/ui/dropdown-menu"
 
 export function UserNav() {
   return (
     <DropdownMenu>
       <DropdownMenuTrigger asChild>
-        <Button variant="ghost" className="relative w-8 h-8 rounded-full">
-          <Avatar className="w-8 h-8">
+        <Button variant="ghost" className="relative size-8 rounded-full">
+          <Avatar className="size-8">
             <AvatarImage src="/avatars/01.png" alt="@shadcn" />
             <AvatarFallback>SC</AvatarFallback>
           </Avatar>

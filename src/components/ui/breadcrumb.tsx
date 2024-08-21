@@ -1,6 +1,6 @@
-import * as React from "react"
 import { ChevronRightIcon, DotsHorizontalIcon } from "@radix-ui/react-icons"
 import { Slot } from "@radix-ui/react-slot"
+import * as React from "react"
 
 import { cn } from "@/lib/utils"
 
@@ -20,7 +20,7 @@ const BreadcrumbList = React.forwardRef<
     ref={ref}
     className={cn(
       "flex flex-wrap items-center gap-1.5 break-words text-sm text-muted-foreground sm:gap-2.5",
-      className
+      className,
     )}
     {...props}
   />
@@ -95,10 +95,10 @@ const BreadcrumbEllipsis = ({
   <span
     role="presentation"
     aria-hidden="true"
-    className={cn("flex h-9 w-9 items-center justify-center", className)}
+    className={cn("flex size-9 items-center justify-center", className)}
     {...props}
   >
-    <DotsHorizontalIcon className="h-4 w-4" />
+    <DotsHorizontalIcon className="size-4" />
     <span className="sr-only">More</span>
   </span>
 )
@@ -106,10 +106,10 @@ BreadcrumbEllipsis.displayName = "BreadcrumbElipssis"
 
 export {
   Breadcrumb,
-  BreadcrumbList,
+  BreadcrumbEllipsis,
   BreadcrumbItem,
   BreadcrumbLink,
+  BreadcrumbList,
   BreadcrumbPage,
   BreadcrumbSeparator,
-  BreadcrumbEllipsis,
 }

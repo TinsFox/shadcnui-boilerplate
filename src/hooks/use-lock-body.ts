@@ -4,7 +4,7 @@ import * as React from "react"
 export function useLockBody() {
   React.useLayoutEffect((): (() => void) => {
     const originalStyle: string = window.getComputedStyle(
-      document.body
+      document.body,
     ).overflow
     document.body.style.overflow = "hidden"
     return () => (document.body.style.overflow = originalStyle)

@@ -1,10 +1,10 @@
-import { Outlet } from 'react-router-dom'
+import { Outlet } from "react-router-dom"
 
-import { Toaster as DefaultToaster } from '@/components/ui/toaster'
+import { Toaster as DefaultToaster } from "@/components/ui/toaster"
 
-import { ThemeProvider } from './providers'
-import { TailwindIndicator } from './tailwind-indicator'
-import { ThemeSwitcher } from './theme-switcher'
+import { ThemeProvider } from "./providers"
+import { TailwindIndicator } from "./tailwind-indicator"
+import { ThemeSwitcher } from "./theme-switcher"
 
 export function BaseLayout() {
   return (
@@ -15,9 +15,9 @@ export function BaseLayout() {
         enableSystem
         disableTransitionOnChange
       >
-        <div className="relative flex flex-col min-h-screen">
+        <div className="relative flex min-h-screen flex-col">
           <div className="flex-1">
-            <Outlet></Outlet>
+            <Outlet />
           </div>
         </div>
         <TailwindIndicator />

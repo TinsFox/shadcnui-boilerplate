@@ -1,8 +1,9 @@
-import { QueryClient, QueryClientProvider } from '@tanstack/react-query'
-import { lazy,PropsWithChildren, ReactElement, Suspense } from 'react'
-import { RouterProvider } from 'react-router-dom'
+import { QueryClient, QueryClientProvider } from "@tanstack/react-query"
+import type { PropsWithChildren, ReactElement } from "react"
+import { lazy, Suspense } from "react"
+import { RouterProvider } from "react-router-dom"
 
-import { router } from './router'
+import { router } from "./router"
 
 const queryClient = new QueryClient()
 
@@ -11,22 +12,20 @@ if (import.meta.hot) {
 }
 
 const DevTools = lazy(() =>
-  import('@tanstack/react-query-devtools').then(m => ({
-    default: m.ReactQueryDevtools
-  }))
+  import("@tanstack/react-query-devtools").then((m) => ({
+    default: m.ReactQueryDevtools,
+  })),
 )
 
-const DebugProvider = ({ children }: PropsWithChildren): ReactElement => {
-  return (
-    <>
-      <Suspense>{import.meta.env.DEV && <DevTools />}</Suspense>
-      {children}
-    </>
-  )
-}
+const DebugProvider = ({ children }: PropsWithChildren): ReactElement => (
+  <>
+    <Suspense>{import.meta.env.DEV && <DevTools />}</Suspense>
+    {children}
+  </>
+)
 
 const future = {
-  v7_startTransition: true
+  v7_startTransition: true,
 } as const
 
 function App() {

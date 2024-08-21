@@ -1,27 +1,23 @@
-import { Link } from 'react-router-dom'
+import { Link } from "react-router-dom"
 
-import { buttonVariants } from '@/components/ui/button'
-import { useUserInfo, useUserMutation } from '@/hooks/query/use-user'
-import { cn } from '@/lib/utils'
+import { buttonVariants } from "@/components/ui/button"
+import { cn } from "@/lib/utils"
 
-import { UserAuthForm } from './components/user-auth-form'
+import { UserAuthForm } from "./components/user-auth-form"
 
 export default function AuthenticationPage() {
-  const { userInfo } = useUserInfo()
-  console.log('userInfo: ', userInfo)
-  const { mutate } = useUserMutation()
   return (
-    <div className="container relative flex-col items-center justify-center h-screen md:grid lg:max-w-none lg:grid-cols-2 lg:px-0">
+    <div className="container relative h-screen flex-col items-center justify-center md:grid lg:max-w-none lg:grid-cols-2 lg:px-0">
       <Link
         to="/examples/authentication"
         className={cn(
-          buttonVariants({ variant: 'ghost' }),
-          'absolute right-4 top-4 md:right-8 md:top-8'
+          buttonVariants({ variant: "ghost" }),
+          "absolute right-4 top-4 md:right-8 md:top-8",
         )}
       >
         Login
       </Link>
-      <div className="relative flex-col hidden h-full p-10 text-white bg-muted dark:border-r lg:flex">
+      <div className="relative hidden h-full flex-col bg-muted p-10 text-white dark:border-r lg:flex">
         <div className="absolute inset-0 bg-zinc-900" />
         <div className="relative z-20 flex items-center text-lg font-medium">
           <svg
@@ -32,7 +28,7 @@ export default function AuthenticationPage() {
             strokeWidth="2"
             strokeLinecap="round"
             strokeLinejoin="round"
-            className="w-6 h-6 mr-2"
+            className="mr-2 size-6"
           >
             <path d="M15 6v12a3 3 0 1 0 3-3H6a3 3 0 1 0 3 3V6a3 3 0 1 0-3 3h12a3 3 0 1 0-3-3" />
           </svg>
@@ -60,15 +56,18 @@ export default function AuthenticationPage() {
             </p>
           </div>
           <UserAuthForm />
-          <p className="px-8 text-sm text-center text-muted-foreground">
-            By clicking continue, you agree to our{' '}
+          <p className="px-8 text-center text-sm text-muted-foreground">
+            By clicking continue, you agree to our
+            {" "}
             <Link
               to="/terms"
               className="underline underline-offset-4 hover:text-primary"
             >
               Terms of Service
-            </Link>{' '}
-            and{' '}
+            </Link>
+            {" "}
+            and
+            {" "}
             <Link
               to="/privacy"
               className="underline underline-offset-4 hover:text-primary"
