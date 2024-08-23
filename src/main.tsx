@@ -1,10 +1,12 @@
 import "./styles/index.css"
 
+// @ts-expect-error
+import { ClickToComponent } from "click-to-react-component"
 import * as React from "react"
 import ReactDOM from "react-dom/client"
+import { RouterProvider } from "react-router-dom"
 
-import App from "./App"
-import { Fallback } from "./components/fallback"
+import { router } from "./router"
 
 async function deferRender() {
   if (process.env.NODE_ENV !== "development") {
@@ -15,12 +17,12 @@ async function deferRender() {
 
   // `worker.start()` returns a Promise that resolves
   // once the Service Worker is up and ready to intercept requests.
-  worker.start({
+  return worker.start({
     onUnhandledRequest(req, print) {
-      if (req.url.startsWith("/assets/")) {
+      if (req.url.includes("/assets/")) {
         return
       }
-      if (!req.url.startsWith("/api/")) {
+      if (!req.url.includes("/api/")) {
         return
       }
       print.warning()
@@ -31,9 +33,8 @@ async function deferRender() {
 deferRender().then(() => {
   ReactDOM.createRoot(document.querySelector("#root")!).render(
     <React.StrictMode>
-      <React.Suspense fallback={<Fallback />}>
-        <App />
-      </React.Suspense>
+      <RouterProvider router={router} />
+      <ClickToComponent />
     </React.StrictMode>,
   )
 })
