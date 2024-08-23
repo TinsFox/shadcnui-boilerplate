@@ -1,2 +1,1 @@
-# vite boilerplate
-
+# Vite Boilerplate

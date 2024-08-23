@@ -25,4 +25,4 @@ dist-ssr
 *.sw?
 .history
 
-.env.*
+.env

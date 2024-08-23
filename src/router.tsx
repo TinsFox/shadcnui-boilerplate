@@ -1,47 +1,22 @@
-import type { RouteObject } from "react-router-dom"
-import { createBrowserRouter, Navigate } from "react-router-dom"
+import { createBrowserRouter } from "react-router-dom"
 
-import { BaseLayout } from "@/components/base-layout"
+import App from "./App"
+import { ErrorElement } from "./components/common/ErrorElement"
+import { NotFound } from "./components/common/NotFound"
+import { buildGlobRoutes } from "./lib/route-builder"
 
-import AuthenticationPage from "./pages/authentication/page"
-import CardsPage from "./pages/cards/page"
-import DashboardPage from "./pages/dashboard/page"
+const globTree = import.meta.glob("./pages/**/*.tsx")
+const tree = buildGlobRoutes(globTree)
 
-export const routes = [
+export const router = createBrowserRouter([
   {
     path: "/",
-    element: <BaseLayout />,
-    children: [
-      {
-        path: "/",
-        Component: () => <Navigate to="/authentication" />,
-      },
-      {
-        path: "dashboard",
-        element: <DashboardPage />,
-      },
-      {
-        path: "cards",
-        element: <CardsPage />,
-      },
-    ],
-  },
-  {
-    path: "authentication",
-    element: <AuthenticationPage />,
-  },
-  {
-    path: "/404",
-    lazy: () => import("./pages/404"),
+    element: <App />,
+    children: tree,
+    errorElement: <ErrorElement />,
   },
   {
     path: "*",
-    lazy: () => import("./pages/404"),
+    element: <NotFound />,
   },
-] satisfies [RouteObject, ...RouteObject[]]
-
-export const router = createBrowserRouter(routes, {
-  future: {
-    v7_normalizeFormMethod: true,
-  },
-})
+])

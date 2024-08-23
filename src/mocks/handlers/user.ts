@@ -1,36 +1,44 @@
-import { http, HttpResponse } from "msw"
+import { faker } from "@faker-js/faker"
+import { delay, http, HttpResponse } from "msw"
+
+import type { IUserInfo } from "@/models/user"
 
 import { withAuth } from "../middleware"
 
-const loginResolver = () => new HttpResponse(null, {
-  headers: {
-    "Set-Cookie": "authToken=abc-123",
-  },
-})
-const logoutResolver = () => new HttpResponse(null, {
-  headers: {
-    "Set-Cookie": "authToken=abc-123",
-  },
-})
+const token = "c8c59ab10e227cc56c406b4447d8"
 
-const userInfoResolver = () => HttpResponse.json({ name: "Tom", age: 18 })
+const userInfo: IUserInfo = {
+  userId: faker.string.uuid(),
+  username: faker.internet.userName(),
+  email: faker.internet.email(),
+  avatar: faker.image.avatarGitHub(),
+  password: faker.internet.password(),
+  birthdate: faker.date.birthdate(),
+  registeredAt: faker.date.past(),
+}
 
-export const handlers = [
-  http.get("/api/userInfo", withAuth(userInfoResolver)),
-  http.get("/api/user", userInfoResolver),
-  http.post("/api/login", loginResolver),
-  http.post("/api/logout", logoutResolver),
-  http.post(
-    "/comment",
-    withAuth(async ({ request }) => {
-      const { author, text } = await request.json()
-      return HttpResponse.json({ author, text }, { status: 201 })
-    }),
-  ),
-  http.get("/api/user", ({ cookies }) => {
-    if (!cookies.authToken) {
-      return new HttpResponse(null, { status: 403 })
-    }
-    return HttpResponse.json({ name: "John" })
-  }),
+const logoutResolver = () => {
+  HttpResponse.json({
+    handlers: {
+      "Set-Cookie":
+        "token=; expires=Thu, 01 Jan 1970 00:00:00 GMT; path=/; domain=localhost",
+    },
+  })
+}
+
+const userResolver = () => HttpResponse.json(userInfo)
+
+async function userLoginResolver() {
+  await delay(1000 * 3)
+  return HttpResponse.json(userInfo, {
+    status: 200,
+    headers: {
+      "set-cookie": `token=${token};`,
+    },
+  })
+}
+export const userHandlers = [
+  http.get("/api/user", withAuth(userResolver)),
+  http.post("/api/logout", withAuth(logoutResolver)),
+  http.post("/api/login", userLoginResolver),
 ]

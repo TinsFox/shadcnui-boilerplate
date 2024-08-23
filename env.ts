@@ -11,9 +11,16 @@ export const env = createEnv({
   client: {
     VITE_APP_NAME: z.string(),
     VITE_API_URL: z.string().url(),
+    VITE_ENABLE_DEVTOOLS: z.boolean().default(false),
   },
   emptyStringAsUndefined: true,
-  runtimeEnv: "process" in globalThis ? process.env : import.meta.env,
-
+  runtimeEnv:
+    "process" in globalThis ?
+      process.env :
+        {
+          ...import.meta.env,
+          VITE_ENABLE_DEVTOOLS:
+            import.meta.env.VITE_ENABLE_DEVTOOLS === "true" ? true : false,
+        },
   skipValidation: !isDev,
 })

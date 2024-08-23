@@ -21,6 +21,11 @@ export default defineConfig(
         ],
       },
     },
-    rules: {},
+    rules: {
+      "react-refresh/only-export-components": [
+        "warn",
+        { allowExportNames: ["loader"] },
+      ],
+    },
   },
 )

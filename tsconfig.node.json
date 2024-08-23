@@ -31,7 +31,7 @@
     "paths": {
       "@/*": ["./src/*"],
       "@env": ["./env.ts"],
-      "@pkg": ["package.json"]
+      "@pkg": ["./package.json"]
     }
   },
   "include": ["./env.ts", "types/**/*.d.ts", "vite.config.ts", "scripts"]

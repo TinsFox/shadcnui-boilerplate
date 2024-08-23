@@ -1,3 +1,3 @@
-import { handlers as userHandlers } from "./user"
+import { userHandlers as userHandlers } from "./user"
 
 export const handlers = [...userHandlers]
