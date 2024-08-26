@@ -4,7 +4,8 @@
     "editor.formatOnSave": true,
     "editor.codeActionsOnSave": {
       "source.fixAll.eslint": "explicit"
-    }
+    },
+    "editor.defaultFormatter": "vscode.typescript-language-features"
   },
 
   // If you are using ESLint 9.9.0 and eslint.config.ts
@@ -33,4 +34,7 @@
     { "rule": "unused-imports/no-unused-imports", "severity": "off" },
     { "rule": "tailwindcss/classnames-order", "severity": "off" }
   ],
+  "[typescript]": {
+    "editor.defaultFormatter": "vscode.typescript-language-features"
+  }
 }

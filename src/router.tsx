@@ -6,6 +6,7 @@ import { NotFound } from "./components/common/NotFound"
 import { buildGlobRoutes } from "./lib/route-builder"
 
 const globTree = import.meta.glob("./pages/**/*.tsx")
+
 const tree = buildGlobRoutes(globTree)
 
 export const router = createBrowserRouter([

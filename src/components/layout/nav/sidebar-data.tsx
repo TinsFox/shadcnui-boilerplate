@@ -60,81 +60,102 @@ export const menus: IMenu[] = [
   {
     title: "dashboard",
     icon: Gauge,
-    children: [{
-      title: "OverView",
-      label: "128",
-      icon: Gauge,
-      to: "/dashboard/overview",
-    }, {
-      title: "analysis",
-      label: "9",
-      icon: ChartNoAxesCombined,
-      to: "/dashboard/analysis",
-    }, {
-      title: "workplace",
-      label: "",
-      icon: Orbit,
-      to: "/dashboard/workplace",
-    }],
+    children: [
+      {
+        title: "OverView",
+        label: "128",
+        icon: Gauge,
+        to: "/dashboard/overview",
+      },
+      {
+        title: "analysis",
+        label: "9",
+        icon: ChartNoAxesCombined,
+        to: "/dashboard/analysis",
+      },
+      {
+        title: "workplace",
+        label: "",
+        icon: Orbit,
+        to: "/dashboard/workplace",
+      },
+    ],
   },
   {
     title: "Forms",
     label: "12",
     icon: MessagesSquare,
-    children: [{
-      title: "basic form",
-      label: "23",
-      icon: ArchiveX,
-      to: "/form/basic-form",
-    }, {
-      title: "step form",
-      label: "",
-      icon: Trash2,
-      to: "/form/step-form",
-    }, {
-      title: "advanced form",
-      label: "",
-      icon: Archive,
-      to: "/form/advanced-form",
-    }],
+    children: [
+      {
+        title: "basic form",
+        label: "23",
+        icon: ArchiveX,
+        to: "/form/basic-form",
+      },
+      {
+        title: "step form",
+        label: "",
+        icon: Trash2,
+        to: "/form/step-form",
+      },
+      {
+        title: "advanced form",
+        label: "",
+        icon: Archive,
+        to: "/form/advanced-form",
+      },
+    ],
   },
   {
     title: "Table",
     icon: MessagesSquare,
-    children: [{
-      title: "basic list",
-      label: "128",
-      icon: MessagesSquare,
-      to: "/list/basic-list",
-    }, {
-      title: "table list",
-      label: "972",
-      icon: Users2,
-      to: "/list/table-list",
-    }, {
-      title: "card list",
-      label: "8",
-      icon: ShoppingCart,
-      to: "/list/card-list",
-    }],
+    children: [
+      {
+        title: "basic list",
+        label: "128",
+        icon: MessagesSquare,
+        to: "/list/basic-list",
+      },
+      {
+        title: "table list",
+        label: "972",
+        icon: Users2,
+        to: "/list/table-list",
+      },
+      {
+        title: "card list",
+        label: "8",
+        icon: ShoppingCart,
+        to: "/list/card-list",
+      },
+    ],
   },
   {
     title: "Charts",
     label: "",
     icon: MessagesSquare,
-    children: [{
-      title: "bar chart",
-      icon: ChartColumn,
-      to: "/chart/bar-chart",
-    }, {
-      title: "line chart",
-      icon: ChartLine,
-      to: "/chart/line-chart",
-    }, {
-      title: "pie chart",
-      icon: ChartPie,
-      to: "/chart/pie-chart",
-    }],
+    children: [
+      {
+        title: "area chart",
+        icon: ChartColumn,
+        to: "/chart/area-chart",
+      },
+      {
+        title: "bar chart",
+        icon: ChartColumn,
+        to: "/chart/bar-chart",
+      },
+      {
+        title: "line chart",
+        icon: ChartLine,
+        to: "/chart/line-chart",
+      },
+      {
+        title: "pie chart",
+        icon: ChartPie,
+        to: "/chart/pie-chart",
+      },
+    ],
   },
   {
     title: "settings",
@@ -151,11 +172,13 @@ export const menus: IMenu[] = [
     title: "System",
     label: "",
     icon: Info,
-    children: [{
-      title: "About",
-      label: "",
-      icon: Info,
-      to: "/system/about",
-    }],
+    children: [
+      {
+        title: "About",
+        label: "",
+        icon: Info,
+        to: "/system/about",
+      },
+    ],
   },
 ]

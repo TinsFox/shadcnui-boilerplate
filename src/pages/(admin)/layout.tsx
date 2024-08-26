@@ -7,7 +7,11 @@ import { Search } from "@/components/layout/search"
 import { Sidebar } from "@/components/layout/sidebar"
 import { UserNav } from "@/components/layout/user-nav"
 import { ThemeSwitcher } from "@/components/theme-switcher"
-import { ResizableHandle, ResizablePanel, ResizablePanelGroup } from "@/components/ui/resizable"
+import {
+  ResizableHandle,
+  ResizablePanel,
+  ResizablePanelGroup,
+} from "@/components/ui/resizable"
 import { DEFAULT_LAYOUT, NAV_COLLAPSED_SIZE } from "@/constants"
 import { cn } from "@/lib/utils"
 
@@ -39,10 +43,9 @@ export function Component() {
           className={cn(
             "hidden max-w-[20%] lg:block",
             isCollapsed &&
-            "min-w-[50px] transition-all duration-300 ease-in-out",
+              "min-w-[50px] transition-all duration-300 ease-in-out"
           )}
         >
-          {/* <NavList isCollapsed={isCollapsed} /> */}
           <Sidebar isCollapsed={isCollapsed} />
         </ResizablePanel>
         <ResizableHandle withHandle />

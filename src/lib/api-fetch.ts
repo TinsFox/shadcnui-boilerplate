@@ -3,7 +3,7 @@ import { FetchError, ofetch } from "ofetch"
 import { NetworkStatus, setApiStatus } from "@/atoms/network"
 
 export const apiFetch = ofetch.create({
-  baseURL: import.meta.env.VITE_API_URL,
+  // baseURL: import.meta.env.VITE_API_URL,
   credentials: "include",
   retry: false,
   onRequest: async ({ options }) => {

@@ -14,6 +14,10 @@ function nestPaths(paths: string[]): NestedStructure {
 
     let currentLevel = result
     for (const part of parts) {
+      // jump over components
+      if (parts.includes("components")) {
+        continue
+      }
       if (!currentLevel[part]) {
         currentLevel[part] = {}
       }
@@ -96,6 +100,9 @@ export function buildGlobRoutes(
         // }
 
         const childrenChildren: RouteObject[] = []
+        if (!paths[key]) {
+          continue
+        }
         dtsRoutes(`${segmentPathKey}/`, childrenChildren, paths[key], parentPath)
         children.push({
           path: "",
@@ -135,6 +142,9 @@ export function buildGlobRoutes(
         break
       } else {
         const content = paths[key]
+        if (!content) {
+          continue
+        }
         const hasChild = Object.keys(content).length > 0
 
         const normalizeKey = normalizePathKey(key)
@@ -161,6 +171,9 @@ export function buildGlobRoutes(
         } else {
           const childrenChildren: RouteObject[] = []
           const fullPath = `${parentPath}/${normalizeKey}`
+          if (!paths[key]) {
+            continue
+          }
           dtsRoutes(
             `${segmentPathKey}/`,
             childrenChildren,
