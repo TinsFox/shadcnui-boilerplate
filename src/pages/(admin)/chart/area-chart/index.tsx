@@ -12,7 +12,7 @@ const components = import.meta.glob("./components/**")
 
 export function Component() {
   const [chartModules, setChartModules] = React.useState<
-    Record<string, { component: JSX.Element; description: string }>
+    Record<string, { component: React.FC; description: string }>
   >({})
 
   React.useEffect(() => {
@@ -20,7 +20,7 @@ export function Component() {
       const modules = await Promise.all(
         Object.entries(components).map(async ([path, chart]) => {
           const mod = (await chart()) as {
-            Component: JSX.Element
+            Component: React.FC
             description: string
           }
           return { path, ...mod }
@@ -59,7 +59,7 @@ export function Component() {
                   <h3 className="text-lg font-semibold">{path}</h3>
                   <p>{description}</p>
                   <Suspense fallback={<div>Loading...</div>}>
-                    {React.createElement(ChartComponent)}
+                    <ChartComponent />
                   </Suspense>
                 </div>
               )
