@@ -41,7 +41,8 @@ deferRender().then(() => {
           fallbackElement={<div>Loading...</div>}
         />
       </RootProviders>
-      <ClickToComponent editor="cursor" />
+      {/* editor="cursor" */}
+      <ClickToComponent />
     </React.StrictMode>,
   )
 })

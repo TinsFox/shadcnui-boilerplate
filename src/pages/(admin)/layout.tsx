@@ -40,7 +40,7 @@ export function Component() {
             setIsCollapsed(false)
           }}
           className={cn(
-            "hidden max-w-[330px] lg:block",
+            "hidden !max-w-[330px] lg:block",
             isCollapsed &&
             "min-w-[50px] transition-all duration-300 ease-in-out",
           )}

@@ -75,7 +75,6 @@ export const menus: IMenu[] = [
       },
       {
         title: "workplace",
-        label: "",
         icon: Orbit,
         to: "/dashboard/workplace",
       },
@@ -94,13 +93,11 @@ export const menus: IMenu[] = [
       },
       {
         title: "step form",
-        label: "",
         icon: Trash2,
         to: "/form/step-form",
       },
       {
         title: "advanced form",
-        label: "",
         icon: Archive,
         to: "/form/advanced-form",
       },
@@ -132,7 +129,6 @@ export const menus: IMenu[] = [
   },
   {
     title: "Charts",
-    label: "",
     icon: MessagesSquare,
     children: [
       {
@@ -155,6 +151,21 @@ export const menus: IMenu[] = [
         icon: ChartPie,
         to: "/charts/pie-chart",
       },
+      {
+        title: "radar chart",
+        icon: ChartColumn,
+        to: "/charts/radar-chart",
+      },
+      {
+        title: "radial chart",
+        icon: ChartColumn,
+        to: "/charts/radial-chart",
+      },
+      {
+        title: "tooltip chart",
+        icon: ChartColumn,
+        to: "/charts/tooltip",
+      },
     ],
   },
   {
@@ -163,19 +174,17 @@ export const menus: IMenu[] = [
     to: "/settings",
     // children: [{
     //   title: "profile",
-    //   label: "",
     //   icon: Send,
     //   to: "/settings/profile",
     // }],
   },
   {
     title: "System",
-    label: "",
     icon: Info,
     children: [
       {
-        title: "About",
-        label: "",
+        title: "about",
+
         icon: Info,
         to: "/system/about",
       },
