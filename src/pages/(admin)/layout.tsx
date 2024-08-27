@@ -2,7 +2,6 @@ import { useAtom } from "jotai"
 import { Outlet } from "react-router-dom"
 
 import { isCollapsedAtom, layoutAtom } from "@/atoms/react-resizable-panels"
-import { PageContainer } from "@/components/layout/page-container"
 import { Search } from "@/components/layout/search"
 import { Sidebar } from "@/components/layout/sidebar"
 import { UserNav } from "@/components/layout/user-nav"
@@ -41,9 +40,9 @@ export function Component() {
             setIsCollapsed(false)
           }}
           className={cn(
-            "hidden max-w-[20%] lg:block",
+            "hidden max-w-[330px] lg:block",
             isCollapsed &&
-              "min-w-[50px] transition-all duration-300 ease-in-out"
+            "min-w-[50px] transition-all duration-300 ease-in-out",
           )}
         >
           <Sidebar isCollapsed={isCollapsed} />
@@ -60,10 +59,9 @@ export function Component() {
                 </div>
               </div>
             </div>
-            {/* TODO Out of Layout */}
-            <PageContainer>
+            <div className="flex-1 space-y-4 overflow-y-auto p-8 pt-6">
               <Outlet />
-            </PageContainer>
+            </div>
           </div>
         </ResizablePanel>
       </ResizablePanelGroup>

@@ -1,8 +1,6 @@
 import { useLayoutEffect } from "react"
 import { Outlet } from "react-router-dom"
 
-import { RootProviders } from "@/providers/root-providers"
-
 function App() {
   useLayoutEffect(() => {
     const handleOpenSettings = (e: KeyboardEvent) => {
@@ -17,11 +15,7 @@ function App() {
     }
   }, [])
 
-  return (
-    <RootProviders>
-      <Outlet />
-    </RootProviders>
-  )
+  return <Outlet />
 }
 
 export default App

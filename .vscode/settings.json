@@ -36,5 +36,10 @@
   ],
   "[typescript]": {
     "editor.defaultFormatter": "vscode.typescript-language-features"
+  },
+  "search.exclude": {
+    "**/dist/**": true,
+    "public/**/*.js": true,
+    "**/*.svg": true
   }
 }

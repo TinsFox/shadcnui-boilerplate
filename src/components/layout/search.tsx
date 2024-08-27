@@ -1,9 +1,5 @@
 import type { DialogProps } from "@radix-ui/react-dialog"
-import {
-  LaptopIcon,
-  MoonIcon,
-  SunIcon,
-} from "@radix-ui/react-icons"
+import { LaptopIcon, MoonIcon, SunIcon } from "@radix-ui/react-icons"
 import * as React from "react"
 import { useNavigate } from "react-router-dom"
 
@@ -12,7 +8,15 @@ import { cn } from "@/lib/utils"
 import type { MenuItem } from "@/models/menu"
 
 import { useTheme } from "../theme-provider"
-import { CommandDialog, CommandEmpty, CommandGroup, CommandInput, CommandItem, CommandList, CommandSeparator } from "../ui/command"
+import {
+  CommandDialog,
+  CommandEmpty,
+  CommandGroup,
+  CommandInput,
+  CommandItem,
+  CommandList,
+  CommandSeparator,
+} from "../ui/command"
 import { Separator } from "../ui/separator"
 import { menus } from "./nav/sidebar-data"
 
@@ -68,36 +72,36 @@ export function Search({ ...props }: DialogProps) {
         <CommandList>
           <CommandEmpty>No results found.</CommandEmpty>
           <CommandGroup heading="Links">
-            {menus
-              .map((navItem, index) => {
-                if ("type" in navItem && navItem.type === "separator") {
-                  // eslint-disable-next-line @eslint-react/no-array-index-key
-                  return <Separator key={`separator-${index}`} />
-                }
-                const menuItem = navItem as MenuItem
-                return (
-                  <CommandItem
-                    key={menuItem.to}
-                    value={menuItem.title}
-                    onSelect={() => {
-                      runCommand(() => navigate(menuItem.to))
-                    }}
-                  >
-                    <menuItem.icon className="mr-2 size-4" />
-                    {menuItem.title}
-                    {menuItem.label && (
-                      <span
-                        className={cn(
-                          "ml-auto",
-                          "data-[active=true]:text-white data-[active=true]:dark:text-white",
-                        )}
-                      >
-                        {menuItem.label}
-                      </span>
-                    )}
-                  </CommandItem>
-                )
-              })}
+            {menus.map((navItem, index) => {
+              if ("type" in navItem && navItem.type === "separator") {
+                // eslint-disable-next-line @eslint-react/no-array-index-key
+                return <Separator key={`separator-${index}`} />
+              }
+              const menuItem = navItem as MenuItem
+              return (
+                <CommandItem
+                  key={`${menuItem.title}-${menuItem.to}`}
+                  value={menuItem.title}
+                  onSelect={() => {
+                    runCommand(() => navigate(menuItem.to))
+                  }}
+                >
+                  <menuItem.icon className="mr-2 size-4" />
+                  {menuItem.title}
+                  {menuItem.to}
+                  {menuItem.label && (
+                    <span
+                      className={cn(
+                        "ml-auto",
+                        "data-[active=true]:text-white data-[active=true]:dark:text-white",
+                      )}
+                    >
+                      {menuItem.label}
+                    </span>
+                  )}
+                </CommandItem>
+              )
+            })}
           </CommandGroup>
           <CommandSeparator />
           <CommandGroup heading="Theme">

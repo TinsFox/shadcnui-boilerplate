@@ -14,10 +14,6 @@ function nestPaths(paths: string[]): NestedStructure {
 
     let currentLevel = result
     for (const part of parts) {
-      // jump over components
-      if (parts.includes("components")) {
-        continue
-      }
       if (!currentLevel[part]) {
         currentLevel[part] = {}
       }
@@ -89,15 +85,9 @@ export function buildGlobRoutes(
         const accessPath = `${segmentPathKey}/layout.tsx`
         const globGetter = get(glob, accessPath) || (() => Fragment)
         if (pathGetterSet.has(accessPath)) {
-          // throw new Error(`duplicate path: ` + accessPath)
-
           console.error(`duplicate path: ${accessPath}`)
         }
         pathGetterSet.add(accessPath)
-
-        // if (!globGetter) {
-        //   throw new Error("grouped route must have a layout file")
-        // }
 
         const childrenChildren: RouteObject[] = []
         if (!paths[key]) {
@@ -154,9 +144,7 @@ export function buildGlobRoutes(
           const globGetter = get(glob, accessPath)
 
           if (pathGetterSet.has(`${segmentPathKey}.tsx`)) {
-            // throw new Error(`duplicate path: ` + accessPath)
             console.error(`duplicate path: ${accessPath}`)
-            // continue
           }
           pathGetterSet.add(accessPath)
 

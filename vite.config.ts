@@ -20,7 +20,7 @@ const define = {
   APP_NAME: JSON.stringify(pkg.name),
   APP_DEV_CWD: JSON.stringify(process.cwd()),
   GIT_COMMIT_SHA: JSON.stringify(
-    process.env.VERCEL_GIT_COMMIT_SHA || getGitHash()
+    process.env.VERCEL_GIT_COMMIT_SHA || getGitHash(),
   ),
   DEBUG: process.env.DEBUG === "true",
   dependencies: JSON.stringify(pkg.dependencies),

@@ -27,7 +27,9 @@
     "paths": {
       "@/*": ["./src/*"],
       "@env": ["./env.ts"],
-      "@pkg": ["./package.json"]
+      "@pkg": ["./package.json"],
+
+      "@/ui/*": ["./src/components/ui/*"]
     }
   },
   "include": ["src", "./env.ts", "types/**/*.d.ts"]

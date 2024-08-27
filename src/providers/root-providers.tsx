@@ -5,6 +5,7 @@ import { HotkeysProvider } from "react-hotkeys-hook"
 
 import { Devtools } from "@/components/devtools"
 import { ThemeProvider } from "@/components/theme-provider"
+import { ThemesStyle } from "@/components/themes-styles"
 import { Toaster } from "@/components/ui/sonner"
 import { TooltipProvider } from "@/components/ui/tooltip"
 import { queryClient } from "@/lib/query-client"
@@ -29,6 +30,7 @@ export const RootProviders: FC<PropsWithChildren> = ({ children }) => (
               {children}
             </HotkeysProvider>
           </TooltipProvider>
+          <ThemesStyle />
         </ThemeProvider>
       </QueryClientProvider>
     </MotionConfig>

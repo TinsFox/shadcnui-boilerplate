@@ -5,7 +5,11 @@ import { ErrorElement } from "./components/common/ErrorElement"
 import { NotFound } from "./components/common/NotFound"
 import { buildGlobRoutes } from "./lib/route-builder"
 
-const globTree = import.meta.glob("./pages/**/*.tsx")
+const globTree = import.meta.glob([
+  "./pages/**/*.tsx",
+  "!./pages/**/components/**/*.tsx",
+  "!./pages/**/_components/**/*.tsx",
+])
 
 const tree = buildGlobRoutes(globTree)
 

@@ -13,8 +13,8 @@ import {
 import { BlockCopyButton } from "@/components/block-copy-button"
 import { ChartCodeViewer } from "@/components/chart-code-viewer"
 import { cn } from "@/lib/utils"
-import { Separator } from "@/registry/new-york/ui/separator"
 import type { Block } from "@/registry/schema"
+import { Separator } from "@/ui/separator"
 
 export function ChartToolbar({
   chart,
@@ -33,7 +33,7 @@ export function ChartToolbar({
           code={chart.code}
           className="[&_svg]-h-3 size-6 rounded-[6px] bg-transparent text-foreground shadow-none hover:bg-muted dark:text-foreground [&_svg]:w-3"
         />
-        <Separator orientation="vertical" className="hidden h-4 mx-0 md:flex" />
+        <Separator orientation="vertical" className="mx-0 hidden h-4 md:flex" />
         <ChartCodeViewer chart={chart}>{children}</ChartCodeViewer>
       </div>
     </div>

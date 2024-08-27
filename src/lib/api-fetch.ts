@@ -37,6 +37,13 @@ export const apiFetch = ofetch.create({
     }
 
     if (context.response.status === 401) {
+      const requestUrl = new URL(window.location.href)
+      const redirectTo = requestUrl.pathname + requestUrl.search
+      const loginParams = redirectTo ? new URLSearchParams({ redirectTo }) : null
+      const loginRedirect = ["/login", loginParams?.toString()]
+        .filter(Boolean)
+        .join("?")
+      window.location.href = loginRedirect
       // Or we can present LoginModal here.
       // window.location.href = "/signin"
       // If any response status is 401, we can set auth fail. Maybe some bug, but if navigate to login page, had same issues

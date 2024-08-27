@@ -6,6 +6,8 @@ import * as React from "react"
 import ReactDOM from "react-dom/client"
 import { RouterProvider } from "react-router-dom"
 
+import { RootProviders } from "@/providers/root-providers"
+
 import { router } from "./router"
 
 async function deferRender() {
@@ -33,8 +35,13 @@ async function deferRender() {
 deferRender().then(() => {
   ReactDOM.createRoot(document.querySelector("#root")!).render(
     <React.StrictMode>
-      <RouterProvider router={router} />
-      <ClickToComponent />
+      <RootProviders>
+        <RouterProvider
+          router={router}
+          fallbackElement={<div>Loading...</div>}
+        />
+      </RootProviders>
+      <ClickToComponent editor="cursor" />
     </React.StrictMode>,
   )
 })

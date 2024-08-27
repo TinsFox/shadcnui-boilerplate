@@ -138,22 +138,22 @@ export const menus: IMenu[] = [
       {
         title: "area chart",
         icon: ChartColumn,
-        to: "/chart/area-chart",
+        to: "/charts/area-chart",
       },
       {
         title: "bar chart",
         icon: ChartColumn,
-        to: "/chart/bar-chart",
+        to: "/charts/bar-chart",
       },
       {
         title: "line chart",
         icon: ChartLine,
-        to: "/chart/line-chart",
+        to: "/charts/line-chart",
       },
       {
         title: "pie chart",
         icon: ChartPie,
-        to: "/chart/pie-chart",
+        to: "/charts/pie-chart",
       },
     ],
   },
