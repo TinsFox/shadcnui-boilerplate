@@ -24,7 +24,7 @@ export function Sidebar({ className, isCollapsed }: SidebarProps) {
       >
         <AccountSwitcher isCollapsed={isCollapsed} accounts={accounts} />
       </div>
-      <ScrollArea className="h-full overflow-auto">
+      <ScrollArea className="h-full overflow-auto pb-12">
         {!isCollapsed ? (menus.map((menuItem) => (
           <div className="px-3 py-2" key={menuItem.title}>
             {menuItem.children && (
