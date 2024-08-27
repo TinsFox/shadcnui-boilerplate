@@ -47,7 +47,7 @@ export function Component() {
         >
           <Sidebar isCollapsed={isCollapsed} />
         </ResizablePanel>
-        <ResizableHandle withHandle />
+        <ResizableHandle />
         <ResizablePanel defaultSize={defaultLayout[2]} minSize={30}>
           <div className="flex h-full flex-col overflow-auto">
             <div className="border-b">
