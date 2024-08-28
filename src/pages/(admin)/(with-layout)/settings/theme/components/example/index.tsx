@@ -13,7 +13,7 @@ import { CardsTeamMembers } from "./team-members"
 
 export default function CardsDemo() {
   return (
-    <div className="grid md:gap-4 lg:grid-cols-10 xl:grid-cols-11 xl:gap-4">
+    <div className="grid md:gap-4 lg:grid-cols-4 xl:grid-cols-6 xl:gap-4 ">
       <div className="space-y-4 lg:col-span-4 xl:col-span-6 xl:space-y-4">
         <CardsStats />
         <div className="grid gap-1 sm:grid-cols-[260px_1fr] md:hidden">

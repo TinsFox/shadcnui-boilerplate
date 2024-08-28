@@ -137,9 +137,12 @@ export function Component() {
     })
   }
   return (
-    <div className="container flex justify-center">
+    <div className="">
       <Form {...form}>
-        <form onSubmit={form.handleSubmit(onSubmit)} className="w-2/3 space-y-8">
+        <form
+          onSubmit={form.handleSubmit(onSubmit)}
+          className="w-2/3 space-y-8"
+        >
           <FormField
             control={form.control}
             name="username"
@@ -180,13 +183,14 @@ export function Component() {
                         <FormControl>
                           <Checkbox
                             checked={field.value?.includes(item.id)}
-                            onCheckedChange={(checked) => checked ?
-                              field.onChange([...field.value, item.id]) :
-                              field.onChange(
-                                field.value?.filter(
-                                  (value) => value !== item.id,
-                                ),
-                              )}
+                            onCheckedChange={(checked) =>
+                              checked ?
+                                field.onChange([...field.value, item.id]) :
+                                field.onChange(
+                                  field.value?.filter(
+                                    (value) => value !== item.id,
+                                  ),
+                                )}
                           />
                         </FormControl>
                         <FormLabel className="text-sm font-normal">
@@ -289,7 +293,10 @@ export function Component() {
             render={({ field }) => (
               <FormItem>
                 <FormLabel>Email</FormLabel>
-                <Select onValueChange={field.onChange} defaultValue={field.value}>
+                <Select
+                  onValueChange={field.onChange}
+                  defaultValue={field.value}
+                >
                   <FormControl>
                     <SelectTrigger>
                       <SelectValue placeholder="Select a verified email to display" />
