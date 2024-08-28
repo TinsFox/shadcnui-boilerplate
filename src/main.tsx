@@ -1,4 +1,5 @@
 import "./styles/index.css"
+import "./i18n"
 
 import { env } from "@env"
 // @ts-expect-error

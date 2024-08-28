@@ -2,6 +2,7 @@ import { useAtom } from "jotai"
 import { Outlet } from "react-router-dom"
 
 import { isCollapsedAtom, layoutAtom } from "@/atoms/react-resizable-panels"
+import LanguageSwitch from "@/components/language-switch"
 import { Search } from "@/components/layout/search"
 import { Sidebar } from "@/components/layout/sidebar"
 import { UserNav } from "@/components/layout/user-nav"
@@ -54,6 +55,7 @@ export function Component() {
               <div className="flex h-16 items-center px-4">
                 <div className="ml-auto flex items-center space-x-4">
                   <Search />
+                  <LanguageSwitch />
                   <ThemeSwitcher />
                   <UserNav />
                 </div>
