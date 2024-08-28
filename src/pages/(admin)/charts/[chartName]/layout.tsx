@@ -7,7 +7,7 @@ import {
   PageHeaderDescription,
   PageHeaderHeading,
 } from "@/components/layout/page-header"
-import { ThemesSwitcher } from "@/components/themes-selector"
+import { ThemesSwitcher } from "@/components/theme/themes-selector"
 import { Button } from "@/components/ui/button"
 import { THEMES } from "@/lib/themes"
 

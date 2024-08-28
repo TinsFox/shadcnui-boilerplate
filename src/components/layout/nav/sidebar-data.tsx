@@ -189,7 +189,6 @@ export const menus: IMenu[] = [
     children: [
       {
         title: "about",
-
         icon: Info,
         to: "/system/about",
       },

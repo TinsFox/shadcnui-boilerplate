@@ -5,7 +5,7 @@ import { isCollapsedAtom, layoutAtom } from "@/atoms/react-resizable-panels"
 import { Search } from "@/components/layout/search"
 import { Sidebar } from "@/components/layout/sidebar"
 import { UserNav } from "@/components/layout/user-nav"
-import { ThemeSwitcher } from "@/components/theme-switcher"
+import { ThemeSwitcher } from "@/components/theme/theme-switcher"
 import {
   ResizableHandle,
   ResizablePanel,
@@ -59,7 +59,7 @@ export function Component() {
                 </div>
               </div>
             </div>
-            <div className="h-full flex-1 space-y-4 overflow-y-auto p-8 pt-6">
+            <div className="h-full flex-1 overflow-y-auto p-8 pt-6">
               <Outlet />
             </div>
           </div>

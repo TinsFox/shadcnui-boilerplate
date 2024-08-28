@@ -7,7 +7,7 @@ import { Button } from "@/components/ui/button"
 import { cn } from "@/lib/utils"
 import type { MenuItem } from "@/models/menu"
 
-import { useTheme } from "../theme-provider"
+import { useTheme } from "../theme/theme-provider"
 import {
   CommandDialog,
   CommandEmpty,

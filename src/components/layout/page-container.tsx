@@ -18,12 +18,14 @@ export function PageContainer(props: PropsWithChildren<PageContainerProps>) {
 
   return (
     <>
-      <div className="flex items-center justify-between space-y-2">
-        <h2 className="text-3xl font-bold capitalize tracking-tight">
-          {pageTitle}
-        </h2>
-        {props.toolBar}
-      </div>
+      {pageTitle && (
+        <div className="flex items-center justify-between space-y-2">
+          <h2 className="text-3xl font-bold capitalize tracking-tight">
+            {pageTitle}
+          </h2>
+          {props.toolBar && <>{props.toolBar}</>}
+        </div>
+      )}
       {props.children}
     </>
   )

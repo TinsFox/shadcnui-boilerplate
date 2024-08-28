@@ -14,6 +14,14 @@ export function Component() {
       </div>
       <Separator />
       <AccountForm />
+      <AccountForm />
+      <AccountForm />
+      <AccountForm />
+      <AccountForm />
+      <AccountForm />
+      <AccountForm />
+      <AccountForm />
+      <AccountForm />
     </div>
   )
 }

@@ -34,7 +34,7 @@ export function ThemesSwitcher({
       <div
         className={cn(
           "flex items-center justify-center gap-0.5 py-4 lg:flex-col lg:justify-start lg:gap-1",
-          className
+          className,
         )}
       >
         {themes.map((theme) => (
@@ -63,7 +63,7 @@ export function ThemesSwitcher({
       }}
       className={cn(
         "flex items-center justify-center gap-0.5 py-4 lg:flex-col lg:justify-start lg:gap-1",
-        className
+        className,
       )}
     >
       {themes.map((theme) => {
@@ -79,7 +79,7 @@ export function ThemesSwitcher({
                 value={theme.name}
                 className={cn(
                   "group flex size-10 shrink-0 items-center justify-center rounded-lg border-2 border-transparent p-0 hover:bg-transparent focus-visible:bg-transparent aria-checked:border-[--color-1]",
-                  mounted && isDarkTheme && mode !== "dark" ? "invert-[1]" : ""
+                  mounted && isDarkTheme && mode !== "dark" ? "invert-[1]" : "",
                 )}
                 style={
                   {
@@ -95,7 +95,7 @@ export function ThemesSwitcher({
                   <div
                     className={cn(
                       "grid size-12 -translate-x-1/4 -translate-y-1/4 grid-cols-2 overflow-hidden rounded-md transition-all ease-in-out group-hover:rotate-45",
-                      isActive ? "rotate-45 group-hover:rotate-0" : "rotate-0"
+                      isActive ? "rotate-45 group-hover:rotate-0" : "rotate-0",
                     )}
                   >
                     <span className="flex size-6 bg-[--color-1]" />
