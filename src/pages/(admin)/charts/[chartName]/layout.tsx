@@ -47,7 +47,7 @@ export function Component() {
         </PageActions>
       </PageHeader>
       <section id="charts" className="scroll-mt-20">
-        <div className="sticky top-0 z-50 bg-background">
+        <div className="sticky -top-6 z-50 bg-background py-5">
           <ChartsNav />
         </div>
         <div className="grid gap-4">
