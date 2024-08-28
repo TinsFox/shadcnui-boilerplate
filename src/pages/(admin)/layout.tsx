@@ -59,7 +59,7 @@ export function Component() {
                 </div>
               </div>
             </div>
-            <div className="flex-1 space-y-4 overflow-y-auto p-8 pt-6">
+            <div className="h-full flex-1 space-y-4 overflow-y-auto p-8 pt-6">
               <Outlet />
             </div>
           </div>
