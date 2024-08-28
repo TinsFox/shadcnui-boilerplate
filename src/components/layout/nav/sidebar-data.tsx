@@ -1,18 +1,23 @@
 import {
   Archive,
   ArchiveX,
-  ChartColumn,
+  ChartArea,
+  ChartBar,
   ChartLine,
   ChartNoAxesCombined,
   ChartPie,
-  File,
+  CircleDot,
   Gauge,
   Info,
+  List,
+  ListTree,
   MessagesSquare,
   Orbit,
-  ShoppingCart,
+  Radar,
+  Radical,
+  Settings,
+  TableProperties,
   Trash2,
-  Users2,
 } from "lucide-react"
 
 import type { IMenu } from "@/models/menu"
@@ -110,19 +115,19 @@ export const menus: IMenu[] = [
       {
         title: "basic list",
         label: "128",
-        icon: MessagesSquare,
+        icon: List,
         to: "/list/basic-list",
       },
       {
         title: "table list",
         label: "972",
-        icon: Users2,
+        icon: TableProperties,
         to: "/list/table-list",
       },
       {
         title: "card list",
         label: "8",
-        icon: ShoppingCart,
+        icon: ListTree,
         to: "/list/card-list",
       },
     ],
@@ -133,12 +138,12 @@ export const menus: IMenu[] = [
     children: [
       {
         title: "area chart",
-        icon: ChartColumn,
+        icon: ChartArea,
         to: "/charts/area-chart",
       },
       {
         title: "bar chart",
-        icon: ChartColumn,
+        icon: ChartBar,
         to: "/charts/bar-chart",
       },
       {
@@ -153,24 +158,24 @@ export const menus: IMenu[] = [
       },
       {
         title: "radar chart",
-        icon: ChartColumn,
+        icon: Radar,
         to: "/charts/radar-chart",
       },
       {
         title: "radial chart",
-        icon: ChartColumn,
+        icon: Radical,
         to: "/charts/radial-chart",
       },
       {
         title: "tooltip chart",
-        icon: ChartColumn,
+        icon: CircleDot,
         to: "/charts/tooltip",
       },
     ],
   },
   {
     title: "settings",
-    icon: File,
+    icon: Settings,
     to: "/settings",
     // children: [{
     //   title: "profile",
