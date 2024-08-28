@@ -1,5 +1,6 @@
 import "./styles/index.css"
 
+import { env } from "@env"
 // @ts-expect-error
 import { ClickToComponent } from "click-to-react-component"
 import * as React from "react"
@@ -41,8 +42,7 @@ deferRender().then(() => {
           fallbackElement={<div>Loading...</div>}
         />
       </RootProviders>
-      {/* editor="cursor" */}
-      <ClickToComponent />
+      <ClickToComponent editor={env.VITE_EDITOR} />
     </React.StrictMode>,
   )
 })

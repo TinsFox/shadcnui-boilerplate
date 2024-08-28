@@ -12,6 +12,7 @@ export const env = createEnv({
     VITE_APP_NAME: z.string(),
     VITE_API_URL: z.string().url(),
     VITE_ENABLE_DEVTOOLS: z.boolean().default(false),
+    VITE_EDITOR: z.string().default("vscode"),
   },
   emptyStringAsUndefined: true,
   runtimeEnv:
@@ -20,7 +21,7 @@ export const env = createEnv({
         {
           ...import.meta.env,
           VITE_ENABLE_DEVTOOLS:
-            import.meta.env.VITE_ENABLE_DEVTOOLS === "true" ? true : false,
+          import.meta.env.VITE_ENABLE_DEVTOOLS === "true" ? true : false,
         },
   skipValidation: !isDev,
 })
