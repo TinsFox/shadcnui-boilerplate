@@ -3,7 +3,6 @@ import { FetchError, ofetch } from "ofetch"
 import { NetworkStatus, setApiStatus } from "@/atoms/network"
 
 export const apiFetch = ofetch.create({
-  // baseURL: import.meta.env.VITE_API_URL,
   credentials: "include",
   retry: false,
   onRequest: async ({ options }) => {
@@ -37,27 +36,28 @@ export const apiFetch = ofetch.create({
     }
 
     if (context.response.status === 401) {
-      const requestUrl = new URL(window.location.href)
-      const redirectTo = requestUrl.pathname + requestUrl.search
-      const loginParams = redirectTo ? new URLSearchParams({ redirectTo }) : null
-      const loginRedirect = ["/login", loginParams?.toString()]
-        .filter(Boolean)
-        .join("?")
-      window.location.href = loginRedirect
-      // Or we can present LoginModal here.
-      // window.location.href = "/signin"
-      // If any response status is 401, we can set auth fail. Maybe some bug, but if navigate to login page, had same issues
+      redirectToSignin()
     }
     try {
       const json = JSON.parse(context.response._data)
       if (context.response.status === 400 && json.code === 1003) {
-        // window.location.href = "/signin"
+        redirectToSignin()
       }
     } catch {
       // ignore
     }
   },
 })
+
+function redirectToSignin() {
+  const requestUrl = new URL(window.location.href)
+  const redirectTo = requestUrl.pathname + requestUrl.search
+  const loginParams = redirectTo ? new URLSearchParams({ redirectTo }) : null
+  const loginRedirect = ["/signin", loginParams?.toString()]
+    .filter(Boolean)
+    .join("?")
+  window.location.href = loginRedirect
+}
 
 export const getFetchErrorMessage = (error: Error) => {
   if (error instanceof FetchError) {
