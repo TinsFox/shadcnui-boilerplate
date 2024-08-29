@@ -6,6 +6,7 @@ interface ImportMetaEnv {
   VITE_API_URL: string
   VITE_ENABLE_DEVTOOLS: string
   VITE_EDITOR: string
+  VITE_ENABLE_MOCK: boolean
 }
 
 interface ImportMeta {

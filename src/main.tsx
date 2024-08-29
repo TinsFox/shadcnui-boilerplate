@@ -14,7 +14,7 @@ import { RootProviders } from "@/providers/root-providers"
 import { router } from "./router"
 
 async function deferRender() {
-  if (process.env.NODE_ENV !== "development") {
+  if (!env.VITE_ENABLE_MOCK) {
     return
   }
 

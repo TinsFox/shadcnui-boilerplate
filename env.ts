@@ -13,6 +13,7 @@ export const env = createEnv({
     VITE_API_URL: z.string().url(),
     VITE_ENABLE_DEVTOOLS: z.boolean().default(false),
     VITE_EDITOR: z.string().default("vscode"),
+    VITE_ENABLE_MOCK: z.boolean().default(isDev),
   },
   emptyStringAsUndefined: true,
   runtimeEnv:
