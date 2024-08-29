@@ -2,13 +2,13 @@ import "./styles/index.css"
 import "./i18n"
 
 import { env } from "@env"
-import { Fallback } from "@radix-ui/react-avatar"
 // @ts-expect-error
 import { ClickToComponent } from "click-to-react-component"
 import * as React from "react"
 import ReactDOM from "react-dom/client"
 import { RouterProvider } from "react-router-dom"
 
+import { Fallback } from "@/components/fallback"
 import { RootProviders } from "@/providers/root-providers"
 
 import { router } from "./router"
