@@ -64,15 +64,10 @@ export function ErrorElement() {
       </p>
 
       <div className="center gap-4">
-        <Button
-          variant="outline"
-          onClick={() => {
-            window.location.href = "/"
-          }}
+        <Button onClick={() => {
+          window.location.reload()
+        }}
         >
-          Reset Local Database
-        </Button>
-        <Button onClick={() => (window.location.href = "/")}>
           Reload
         </Button>
       </div>
@@ -80,7 +75,7 @@ export function ErrorElement() {
       <p className="mt-8">
         Still having this issue? Please give feedback in Github, thanks!
         <a
-          className="ml-2 cursor-pointer  duration-200"
+          className="ml-2 cursor-pointer duration-200"
           href={getNewIssueUrl({
             title: `Error: ${message}`,
             body: `### Error\n\n${message}\n\n### Stack\n\n\`\`\`\n${stack}\n\`\`\``,

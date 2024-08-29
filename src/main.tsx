@@ -2,6 +2,7 @@ import "./styles/index.css"
 import "./i18n"
 
 import { env } from "@env"
+import { Fallback } from "@radix-ui/react-avatar"
 // @ts-expect-error
 import { ClickToComponent } from "click-to-react-component"
 import * as React from "react"
@@ -40,7 +41,7 @@ deferRender().then(() => {
       <RootProviders>
         <RouterProvider
           router={router}
-          fallbackElement={<div>Loading...</div>}
+          fallbackElement={<Fallback />}
         />
       </RootProviders>
       <ClickToComponent editor={env.VITE_EDITOR} />

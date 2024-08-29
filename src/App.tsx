@@ -6,6 +6,7 @@ function App() {
     const handleOpenSettings = (e: KeyboardEvent) => {
       if (e.key === "," && (e.metaKey || e.ctrlKey)) {
         e.preventDefault()
+        // TODO: Open settings
       }
     }
     document.addEventListener("keydown", handleOpenSettings)

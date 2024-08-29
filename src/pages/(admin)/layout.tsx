@@ -1,7 +1,7 @@
 import { useAtom } from "jotai"
 import { Outlet } from "react-router-dom"
 
-import { isCollapsedAtom, layoutAtom } from "@/atoms/react-resizable-panels"
+import { isCollapsedAtom, layoutAtom } from "@/atoms/resizable-panels"
 import LanguageSwitch from "@/components/language-switch"
 import { Search } from "@/components/layout/search"
 import { Sidebar } from "@/components/layout/sidebar"

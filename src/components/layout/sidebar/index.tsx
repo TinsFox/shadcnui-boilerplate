@@ -6,8 +6,8 @@ import { cn } from "@/lib/utils"
 import { ScrollArea } from "@/ui/scroll-area"
 import { Tooltip, TooltipContent, TooltipTrigger } from "@/ui/tooltip"
 
-import { AccountSwitcher } from "./nav/account-switcher"
-import { accounts, menus } from "./nav/sidebar-data"
+import { AccountSwitcher } from "./account-switcher"
+import { accounts, menus } from "./data"
 
 interface SidebarProps extends React.HTMLAttributes<HTMLDivElement> {
   isCollapsed: boolean

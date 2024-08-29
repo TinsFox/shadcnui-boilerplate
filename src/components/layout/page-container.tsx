@@ -3,7 +3,7 @@ import { useLocation } from "react-router-dom"
 
 import { findMenuTitleByPathname } from "@/lib/menu"
 
-import { menus } from "./nav/sidebar-data"
+import { menus } from "./sidebar/data"
 
 interface PageContainerProps {
   toolBar?: React.ReactNode

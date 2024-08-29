@@ -18,7 +18,7 @@ import {
   CommandSeparator,
 } from "../ui/command"
 import { Separator } from "../ui/separator"
-import { menus } from "./nav/sidebar-data"
+import { menus } from "./sidebar/data"
 
 export function Search({ ...props }: DialogProps) {
   const navigate = useNavigate()

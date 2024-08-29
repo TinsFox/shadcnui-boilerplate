@@ -1,5 +1,3 @@
-import { Overview } from "@/components/overview"
-import { RecentSales } from "@/components/recent-sales"
 import {
   Card,
   CardContent,
@@ -7,6 +5,9 @@ import {
   CardHeader,
   CardTitle,
 } from "@/components/ui/card"
+
+import { Overview } from "./components/overview"
+import { RecentSales } from "./components/recent-sales"
 
 export function Component() {
   return (
