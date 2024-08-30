@@ -1,4 +1,7 @@
 import { useAtom } from "jotai"
+import { Menu } from "lucide-react"
+import { useRef } from "react"
+import type { ImperativePanelHandle } from "react-resizable-panels"
 import { Outlet } from "react-router-dom"
 
 import { isCollapsedAtom, layoutAtom } from "@/atoms/resizable-panels"
@@ -7,6 +10,7 @@ import { Search } from "@/components/layout/search"
 import { Sidebar } from "@/components/layout/sidebar"
 import { UserNav } from "@/components/layout/user-nav"
 import { ThemeSwitcher } from "@/components/theme/theme-switcher"
+import { Button } from "@/components/ui/button"
 import {
   ResizableHandle,
   ResizablePanel,
@@ -19,6 +23,14 @@ export function Component() {
   const [layout, setLayout] = useAtom(layoutAtom)
   const [isCollapsed, setIsCollapsed] = useAtom(isCollapsedAtom)
   const defaultLayout = layout ? JSON.parse(layout) : DEFAULT_LAYOUT
+  const ref = useRef<ImperativePanelHandle>(null)
+  const handleNavCollapse = () => {
+    setIsCollapsed((pre) => !pre)
+    const panel = ref.current
+    if (panel) {
+      panel?.isCollapsed() ? panel?.expand() : panel?.collapse()
+    }
+  }
   return (
     <div className="h-screen">
       <ResizablePanelGroup
@@ -26,9 +38,10 @@ export function Component() {
         onLayout={(sizes: number[]) => {
           setLayout(JSON.stringify(sizes))
         }}
-        className="h-full items-stretch"
+        className="h-full items-stretch transition-all duration-300"
       >
         <ResizablePanel
+          ref={ref}
           defaultSize={defaultLayout[0]}
           collapsedSize={NAV_COLLAPSED_SIZE}
           collapsible={true}
@@ -43,16 +56,23 @@ export function Component() {
           className={cn(
             "hidden !max-w-[330px] lg:block",
             isCollapsed &&
-            "min-w-[50px] transition-all duration-300 ease-in-out",
+            "min-w-[50px] transition-all duration-300",
           )}
         >
           <Sidebar isCollapsed={isCollapsed} />
         </ResizablePanel>
         <ResizableHandle />
-        <ResizablePanel defaultSize={defaultLayout[2]} minSize={30}>
+        <ResizablePanel defaultSize={defaultLayout[2]} minSize={30} className="transition-all duration-300">
           <div className="flex h-full flex-col overflow-auto">
             <div className="border-b">
               <div className="flex h-16 items-center px-4">
+                <Button
+                  size="icon"
+                  variant="ghost"
+                  onClick={handleNavCollapse}
+                >
+                  <Menu />
+                </Button>
                 <div className="ml-auto flex items-center space-x-4">
                   <Search />
                   <LanguageSwitch />
