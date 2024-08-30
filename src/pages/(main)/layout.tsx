@@ -21,29 +21,29 @@ export function Component() {
       <header className="container py-6">
         <nav className="flex flex-wrap items-center justify-between gap-4 sm:flex-nowrap md:gap-8">
           <Logo className="size-12" />
-          <div className="ml-auto hidden max-w-sm flex-1 sm:block">
-            <Search />
-          </div>
-          <div className="flex items-center gap-10">
-            {user.data ? (
-              <>
-                <Button asChild variant="ghost" size="lg">
-                  <Link to="/dashboard">Dashboard</Link>
-                </Button>
-                <UserDropdown />
-              </>
-            ) : (
-              <Button asChild variant="default" size="lg">
-                <Link to="/signin">Log In</Link>
-              </Button>
-            )}
-          </div>
-          <div className="block w-full sm:hidden">
-            <input
-              type="search"
-              placeholder="Search"
-              className="w-full rounded-md border border-gray-300 bg-gray-100 p-2 focus:outline-none focus:ring focus:ring-blue-500"
-            />
+          <div className="flex items-center gap-4">
+            <div className="mr-auto hidden w-full flex-1 sm:block">
+              <Search />
+            </div>
+            <div className="flex items-center gap-5">
+              {user.data ? (
+                <>
+                  <Button asChild variant="ghost" size="lg">
+                    <Link to="/dashboard">Dashboard</Link>
+                  </Button>
+                  <UserDropdown />
+                </>
+              ) : (
+                <>
+                  <Button asChild variant="default" size="lg">
+                    <Link to="/signin">Log In</Link>
+                  </Button>
+                  <Button asChild variant="ghost" size="lg">
+                    <Link to="/signup">Sign Up</Link>
+                  </Button>
+                </>
+              )}
+            </div>
           </div>
         </nav>
       </header>
@@ -52,15 +52,16 @@ export function Component() {
         <Outlet />
       </div>
 
-      <div className="container flex justify-between pb-5">
+      {/* <div className="container flex justify-between pb-5">
         <Logo className="size-12" />
-      </div>
+      </div> */}
     </div>
   )
 }
 
 function UserDropdown() {
   const user = useUser()
+
   const submit = useSubmit()
   const formRef = useRef<HTMLFormElement>(null)
   return (
@@ -86,9 +87,6 @@ function UserDropdown() {
         <DropdownMenuContent sideOffset={8} align="start">
           <DropdownMenuItem asChild>
             <Link to={`/users/${user.data?.username}`}>Profile</Link>
-          </DropdownMenuItem>
-          <DropdownMenuItem asChild>
-            <Link to={`/users/${user.data?.username}/notes`}>Notes</Link>
           </DropdownMenuItem>
           <DropdownMenuItem
             asChild

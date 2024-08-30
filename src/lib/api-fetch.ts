@@ -1,7 +1,5 @@
 import { FetchError, ofetch } from "ofetch"
 
-import { NetworkStatus, setApiStatus } from "@/atoms/network"
-
 export const apiFetch = ofetch.create({
   credentials: "include",
   retry: false,
@@ -22,19 +20,9 @@ export const apiFetch = ofetch.create({
     }
   },
   onResponse() {
-    setApiStatus(NetworkStatus.ONLINE)
+    // TODO: response interceptor
   },
   onResponseError(context) {
-    // If api is down
-    if (
-      (!context.response || context.response.status === 0) &&
-      navigator.onLine
-    ) {
-      setApiStatus(NetworkStatus.OFFLINE)
-    } else {
-      setApiStatus(NetworkStatus.ONLINE)
-    }
-
     if (context.response.status === 401) {
       redirectToSignin()
     }

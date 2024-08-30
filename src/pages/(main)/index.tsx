@@ -1,3 +1,5 @@
+import { Link } from "react-router-dom"
+
 import { Logo } from "@/components/icons/logo"
 import { logos } from "@/components/icons/logos"
 import {
@@ -31,13 +33,13 @@ export function Component() {
         <div className="flex max-w-md flex-col items-center text-center xl:order-2 xl:items-start xl:text-left">
           <a
             href="https://github.com/TinsFox/vite-boilerplate"
-            className="animate-slide-top xl:animate-slide-left [animation-fill-mode:backwards] xl:[animation-delay:0.5s] xl:[animation-fill-mode:backwards]"
+            className="animate-slide-top [animation-fill-mode:backwards] xl:animate-slide-left xl:[animation-delay:0.5s] xl:[animation-fill-mode:backwards]"
           >
             <Logo />
           </a>
           <h1
             data-heading
-            className="animate-slide-top xl:animate-slide-left mt-8 text-4xl font-medium text-foreground [animation-delay:0.3s] [animation-fill-mode:backwards] md:text-5xl xl:mt-4 xl:text-6xl xl:[animation-delay:0.8s] xl:[animation-fill-mode:backwards]"
+            className="mt-8 animate-slide-top text-4xl font-medium text-foreground [animation-delay:0.3s] [animation-fill-mode:backwards] md:text-5xl xl:mt-4 xl:animate-slide-left xl:text-6xl xl:[animation-delay:0.8s] xl:[animation-fill-mode:backwards]"
           >
             <a href="https://github.com/TinsFox/vite-boilerplate">
               Vite Boilerplate
@@ -45,7 +47,7 @@ export function Component() {
           </h1>
           <p
             data-paragraph
-            className="animate-slide-top xl:animate-slide-left mt-6 text-xl/7 text-muted-foreground [animation-delay:0.8s] [animation-fill-mode:backwards] xl:mt-8 xl:text-xl/6 xl:leading-10 xl:[animation-delay:1s] xl:[animation-fill-mode:backwards]"
+            className="mt-6 animate-slide-top text-xl/7 text-muted-foreground [animation-delay:0.8s] [animation-fill-mode:backwards] xl:mt-8 xl:animate-slide-left xl:text-xl/6 xl:leading-10 xl:[animation-delay:1s] xl:[animation-fill-mode:backwards]"
           >
             Check the
             {" "}
@@ -73,14 +75,14 @@ export function Component() {
               >
                 <Tooltip>
                   <TooltipTrigger asChild>
-                    <a
-                      href={logo.href}
+                    <Link
+                      to={logo.href}
                       className="grid size-20 place-items-center rounded-2xl bg-violet-600/10 p-4 transition hover:-rotate-6 hover:bg-violet-600/15 dark:bg-violet-200 dark:hover:bg-violet-100 sm:size-24"
                     >
-                      <img src={logo.src} alt="" />
-                    </a>
+                      <img src={logo.src} alt={logo.name} />
+                    </Link>
                   </TooltipTrigger>
-                  <TooltipContent>{logo.alt}</TooltipContent>
+                  <TooltipContent>{logo.name}</TooltipContent>
                 </Tooltip>
               </li>
             ))}

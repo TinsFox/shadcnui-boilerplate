@@ -5,7 +5,7 @@ import type { IUserInfo } from "@/models/user"
 
 import { withAuth } from "../middleware"
 
-const token = "c8c59ab10e227cc56c406b4447d8"
+export const TOKEN = "c8c59ab10e227cc56c406b4447d8"
 
 const userInfo: IUserInfo = {
   userId: faker.string.uuid(),
@@ -33,7 +33,7 @@ async function userLoginResolver() {
   return HttpResponse.json(userInfo, {
     status: 200,
     headers: {
-      "set-cookie": `token=${token};`,
+      "set-cookie": `token=${TOKEN};`,
     },
   })
 }

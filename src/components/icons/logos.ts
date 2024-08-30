@@ -13,94 +13,102 @@ import typescript from "@/assets/logo/typescript.svg"
 import vitest from "@/assets/logo/vitest.svg"
 import zod from "@/assets/logo/zod.svg"
 
-export const logos = [
+interface ILogo {
+  src: string
+  name: string
+  href: string
+  column: 1 | 2 | 3 | 4 | 5
+  row: 1 | 2 | 3 | 4 | 5 | 6
+}
+
+export const logos: ILogo[] = [
   {
     src: react,
-    alt: "React",
+    name: "React",
     href: "https://react.dev",
     column: 1,
     row: 1,
   },
   {
     src: zod,
-    alt: "Zod",
+    name: "Zod",
     href: "https://zod.dev/",
     column: 1,
     row: 2,
   },
   {
     src: github,
-    alt: "GitHub",
+    name: "GitHub",
     href: "https://github.com",
     column: 1,
     row: 3,
   },
   {
     src: tailwind,
-    alt: "Tailwind CSS",
+    name: "Tailwind CSS",
     href: "https://tailwindcss.com",
     column: 2,
     row: 2,
   },
   {
     src: radixUI,
-    alt: "Radix UI",
+    name: "Radix UI",
     href: "https://www.radix-ui.com/",
     column: 2,
     row: 3,
   },
   {
     src: shadcnUI,
-    alt: "shadcn/ui",
+    name: "shadcn/ui",
     href: "https://ui.shadcn.com/",
     column: 2,
     row: 4,
   },
   {
     src: playwright,
-    alt: "Playwright",
+    name: "Playwright",
     href: "https://playwright.dev/",
     column: 3,
     row: 3,
   },
   {
     src: msw,
-    alt: "MSW",
+    name: "MSW",
     href: "https://mswjs.io",
     column: 3,
     row: 4,
   },
   {
     src: fakerJS,
-    alt: "Faker.js",
+    name: "Faker.js",
     href: "https://fakerjs.dev/",
     column: 3,
     row: 5,
   },
   {
     src: vitest,
-    alt: "Vitest",
+    name: "Vitest",
     href: "https://vitest.dev",
     column: 4,
     row: 1,
   },
   {
     src: testingLibrary,
-    alt: "Testing Library",
+    name: "Testing Library",
     href: "https://testing-library.com",
     column: 4,
     row: 2,
   },
   {
     src: docker,
-    alt: "Docker",
+    name: "Docker",
     href: "https://www.docker.com",
     column: 4,
     row: 3,
   },
   {
     src: typescript,
-    alt: "TypeScript",
+    name: "TypeScript",
     href: "https://typescriptlang.org",
     column: 5,
     row: 4,
@@ -114,7 +122,7 @@ export const logos = [
   // },
   {
     src: eslint,
-    alt: "ESLint",
+    name: "ESLint",
     href: "https://eslint.org",
     column: 5,
     row: 3,

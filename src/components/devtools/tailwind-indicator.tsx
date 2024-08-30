@@ -1,6 +1,14 @@
-export function TailwindIndicator() {
+import { cn } from "@/lib/utils"
+
+interface TailwindIndicatorProps {
+  className?: string
+  style?: React.CSSProperties
+}
+
+export function TailwindIndicator(props: TailwindIndicatorProps) {
+  const { className, style } = props
   return (
-    <div className="fixed bottom-1 left-1 z-50 flex size-6 items-center justify-center rounded-full bg-gray-800 p-3 font-mono text-xs text-white">
+    <div className={cn("z-50 flex size-6 items-center justify-center p-3 font-mono text-xs", className)} style={style}>
       <div className="block sm:hidden">xs</div>
       <div className="hidden sm:block md:hidden">sm</div>
       <div className="hidden md:block lg:hidden">md</div>

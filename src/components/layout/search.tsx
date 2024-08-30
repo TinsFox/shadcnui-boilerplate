@@ -3,6 +3,7 @@ import { LaptopIcon, MoonIcon, SunIcon } from "@radix-ui/react-icons"
 import * as React from "react"
 import { useNavigate } from "react-router-dom"
 
+import type { ButtonProps } from "@/components/ui/button"
 import { Button } from "@/components/ui/button"
 import { cn } from "@/lib/utils"
 import type { MenuItem } from "@/models/menu"
@@ -20,7 +21,7 @@ import {
 import { Separator } from "../ui/separator"
 import { menus } from "./sidebar/data"
 
-export function Search({ ...props }: DialogProps) {
+export function Search({ ...props }: ButtonProps & DialogProps) {
   const navigate = useNavigate()
   const [open, setOpen] = React.useState(false)
   const { setTheme } = useTheme()
