@@ -1,4 +1,5 @@
 import * as React from "react"
+import { useTranslation } from "react-i18next"
 import { NavLink } from "react-router-dom"
 
 import { buttonVariants } from "@/components/ui/button"
@@ -14,6 +15,7 @@ interface SidebarProps extends React.HTMLAttributes<HTMLDivElement> {
 }
 
 export function Sidebar({ className, isCollapsed }: SidebarProps) {
+  const { t } = useTranslation()
   return (
     <div className={cn("relative h-full pb-12", className)}>
       <div
@@ -30,7 +32,7 @@ export function Sidebar({ className, isCollapsed }: SidebarProps) {
             {menuItem.children && (
               <>
                 <h2 className="mb-2 px-4 text-lg font-semibold capitalize tracking-tight">
-                  {menuItem.title}
+                  {t(`menus.${menuItem.title}` as never)}
                 </h2>
                 <div className="space-y-1">
                   {menuItem.children.map((child) => (
@@ -48,7 +50,9 @@ export function Sidebar({ className, isCollapsed }: SidebarProps) {
                         )}
                     >
                       <child.icon className="mr-2 size-4" />
-                      {child.title}
+
+                      {t(`menus.${child.title}` as never)}
+
                       {child.label && (
                         <span
                           className={cn(
@@ -79,7 +83,7 @@ export function Sidebar({ className, isCollapsed }: SidebarProps) {
                   )}
               >
                 <menuItem.icon className="mr-2 size-4" />
-                {menuItem.title}
+                {t(`menus.${menuItem.title}` as never)}
                 {menuItem.label && (
                   <span
                     className={cn(
@@ -117,12 +121,12 @@ export function Sidebar({ className, isCollapsed }: SidebarProps) {
                             >
                               <child.icon className="size-4" />
                               <span className="sr-only">
-                                {child.title}
+                                {t(`menus.${child.title}` as never)}
                               </span>
                             </NavLink>
                           </TooltipTrigger>
                           <TooltipContent side="right" className="flex items-center gap-4 capitalize">
-                            {child.title}
+                            {t(`menus.${child.title}` as never)}
                             {child.label && (
                               <span className="ml-auto text-muted-foreground">
                                 {child.label}

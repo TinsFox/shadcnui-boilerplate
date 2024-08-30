@@ -1,4 +1,3 @@
-import * as React from "react"
 import { useTranslation } from "react-i18next"
 
 import {
@@ -18,7 +17,7 @@ const LanguageSwitch = () => {
   }
 
   return (
-    <Select defaultValue={i18n.language} onValueChange={changeLanguage}>
+    <Select value={i18n.language} onValueChange={changeLanguage}>
       <SelectTrigger className="w-[180px]">
         <SelectValue placeholder="Select a fruit" />
       </SelectTrigger>

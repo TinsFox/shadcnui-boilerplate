@@ -47,15 +47,6 @@ export function Component() {
             return (
               <div key={path} className="p-4 ">
                 <ChartComponent />
-                <h3 className="text-lg font-semibold capitalize">
-                  {path
-                    ?.split("/")
-                    .pop()
-                    ?.split("/")
-                    .pop()
-                    ?.replace(".tsx", "")
-                    ?.replaceAll("-", " ")}
-                </h3>
                 <p>{description}</p>
               </div>
             )

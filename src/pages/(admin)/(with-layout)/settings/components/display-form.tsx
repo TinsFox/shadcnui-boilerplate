@@ -1,5 +1,7 @@
 import { zodResolver } from "@hookform/resolvers/zod"
+import i18n from "i18next"
 import { useForm } from "react-hook-form"
+import { useTranslation } from "react-i18next"
 import { z } from "zod"
 
 import { Button } from "@/components/ui/button"
@@ -18,27 +20,27 @@ import { toast } from "@/components/ui/use-toast"
 const items = [
   {
     id: "recents",
-    label: "Recents",
+    label: i18n.t("settings.display.items.recents"),
   },
   {
     id: "home",
-    label: "Home",
+    label: i18n.t("settings.display.items.home"),
   },
   {
     id: "applications",
-    label: "Applications",
+    label: i18n.t("settings.display.items.applications"),
   },
   {
     id: "desktop",
-    label: "Desktop",
+    label: i18n.t("settings.display.items.desktop"),
   },
   {
     id: "downloads",
-    label: "Downloads",
+    label: i18n.t("settings.display.items.downloads"),
   },
   {
     id: "documents",
-    label: "Documents",
+    label: i18n.t("settings.display.items.documents"),
   },
 ] as const
 
@@ -54,8 +56,8 @@ type DisplayFormValues = z.infer<typeof displayFormSchema>
 const defaultValues: Partial<DisplayFormValues> = {
   items: ["recents", "home"],
 }
-
 export function DisplayForm() {
+  const { t } = useTranslation()
   const form = useForm<DisplayFormValues>({
     resolver: zodResolver(displayFormSchema),
     defaultValues,
@@ -63,7 +65,7 @@ export function DisplayForm() {
 
   function onSubmit(data: DisplayFormValues) {
     toast({
-      title: "You submitted the following values:",
+      title: t("settings.display"),
       description: (
         <pre className="mt-2 w-[340px] rounded-md bg-slate-950 p-4">
           <code className="text-white">{JSON.stringify(data, null, 2)}</code>
@@ -83,7 +85,7 @@ export function DisplayForm() {
               <div className="mb-4">
                 <FormLabel className="text-base">Sidebar</FormLabel>
                 <FormDescription>
-                  Select the items you want to display in the sidebar.
+                  {t("settings.display.sidebar_description")}
                 </FormDescription>
               </div>
               {items.map((item) => (
@@ -119,7 +121,7 @@ export function DisplayForm() {
             </FormItem>
           )}
         />
-        <Button type="submit">Update display</Button>
+        <Button type="submit">{t("settings.display.update")}</Button>
       </form>
     </Form>
   )

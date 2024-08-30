@@ -67,7 +67,7 @@ export const menus: IMenu[] = [
     icon: Gauge,
     children: [
       {
-        title: "OverView",
+        title: "overview",
         label: "128",
         icon: Gauge,
         to: "/dashboard/overview",
@@ -86,46 +86,46 @@ export const menus: IMenu[] = [
     ],
   },
   {
-    title: "Forms",
+    title: "forms",
     label: "12",
     icon: MessagesSquare,
     children: [
       {
-        title: "basic form",
+        title: "basic_form",
         label: "23",
         icon: ArchiveX,
         to: "/form/basic-form",
       },
       {
-        title: "step form",
+        title: "step_form",
         icon: Trash2,
         to: "/form/step-form",
       },
       {
-        title: "advanced form",
+        title: "advanced_form",
         icon: Archive,
         to: "/form/advanced-form",
       },
     ],
   },
   {
-    title: "Table",
+    title: "table",
     icon: MessagesSquare,
     children: [
       {
-        title: "basic list",
+        title: "basic_list",
         label: "128",
         icon: List,
         to: "/list/basic-list",
       },
       {
-        title: "table list",
+        title: "table_list",
         label: "972",
         icon: TableProperties,
         to: "/list/table-list",
       },
       {
-        title: "card list",
+        title: "card_list",
         label: "8",
         icon: ListTree,
         to: "/list/card-list",
@@ -133,41 +133,41 @@ export const menus: IMenu[] = [
     ],
   },
   {
-    title: "Charts",
+    title: "charts",
     icon: MessagesSquare,
     children: [
       {
-        title: "area chart",
+        title: "area_chart",
         icon: ChartArea,
         to: "/charts/area-chart",
       },
       {
-        title: "bar chart",
+        title: "bar_chart",
         icon: ChartBar,
         to: "/charts/bar-chart",
       },
       {
-        title: "line chart",
+        title: "line_chart",
         icon: ChartLine,
         to: "/charts/line-chart",
       },
       {
-        title: "pie chart",
+        title: "pie_chart",
         icon: ChartPie,
         to: "/charts/pie-chart",
       },
       {
-        title: "radar chart",
+        title: "radar_chart",
         icon: Radar,
         to: "/charts/radar-chart",
       },
       {
-        title: "radial chart",
+        title: "radial_chart",
         icon: Radical,
         to: "/charts/radial-chart",
       },
       {
-        title: "tooltip chart",
+        title: "tooltip_chart",
         icon: CircleDot,
         to: "/charts/tooltip",
       },
@@ -177,14 +177,9 @@ export const menus: IMenu[] = [
     title: "settings",
     icon: Settings,
     to: "/settings",
-    // children: [{
-    //   title: "profile",
-    //   icon: Send,
-    //   to: "/settings/profile",
-    // }],
   },
   {
-    title: "System",
+    title: "system",
     icon: Info,
     children: [
       {
@@ -194,4 +189,4 @@ export const menus: IMenu[] = [
       },
     ],
   },
-]
+] as const

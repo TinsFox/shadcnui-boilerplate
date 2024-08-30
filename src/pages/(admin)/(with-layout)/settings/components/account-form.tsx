@@ -2,6 +2,7 @@ import { zodResolver } from "@hookform/resolvers/zod"
 import { CalendarIcon, CaretSortIcon, CheckIcon } from "@radix-ui/react-icons"
 import { format } from "date-fns"
 import { useForm } from "react-hook-form"
+import { useTranslation } from "react-i18next"
 import { z } from "zod"
 
 import { Button } from "@/components/ui/button"
@@ -33,31 +34,31 @@ import { toast } from "@/components/ui/use-toast"
 import { cn } from "@/lib/utils"
 
 const languages = [
-  { label: "English", value: "en" },
-  { label: "French", value: "fr" },
-  { label: "German", value: "de" },
-  { label: "Spanish", value: "es" },
-  { label: "Portuguese", value: "pt" },
-  { label: "Russian", value: "ru" },
-  { label: "Japanese", value: "ja" },
-  { label: "Korean", value: "ko" },
-  { label: "Chinese", value: "zh" },
+  { label: "language.english", value: "en" },
+  { label: "language.french", value: "fr" },
+  { label: "language.german", value: "de" },
+  { label: "language.spanish", value: "es" },
+  { label: "language.portuguese", value: "pt" },
+  { label: "language.russian", value: "ru" },
+  { label: "language.japanese", value: "ja" },
+  { label: "language.korean", value: "ko" },
+  { label: "language.chinese", value: "zh" },
 ] as const
 
 const accountFormSchema = z.object({
   name: z
     .string()
     .min(2, {
-      message: "Name must be at least 2 characters.",
+      message: "error.name_min_length",
     })
     .max(30, {
-      message: "Name must not be longer than 30 characters.",
+      message: "error.name_max_length",
     }),
   dob: z.date({
-    required_error: "A date of birth is required.",
+    required_error: "error.dob_required",
   }),
   language: z.string({
-    required_error: "Please select a language.",
+    required_error: "error.language_required",
   }),
 })
 
@@ -70,6 +71,7 @@ const defaultValues: Partial<AccountFormValues> = {
 }
 
 export function AccountForm() {
+  const { t } = useTranslation()
   const form = useForm<AccountFormValues>({
     resolver: zodResolver(accountFormSchema),
     defaultValues,
@@ -77,7 +79,7 @@ export function AccountForm() {
 
   function onSubmit(data: AccountFormValues) {
     toast({
-      title: "You submitted the following values:",
+      title: t("form.you_submitted"),
       description: (
         <pre className="mt-2 w-[340px] rounded-md bg-slate-950 p-4">
           <code className="text-white">{JSON.stringify(data, null, 2)}</code>
@@ -94,13 +96,12 @@ export function AccountForm() {
           name="name"
           render={({ field }) => (
             <FormItem>
-              <FormLabel>Name</FormLabel>
+              <FormLabel>{t("form.name")}</FormLabel>
               <FormControl>
-                <Input placeholder="Your name" {...field} />
+                <Input placeholder={t("form.your_name")} {...field} />
               </FormControl>
               <FormDescription>
-                This is the name that will be displayed on your profile and in
-                emails.
+                {t("form.name_description")}
               </FormDescription>
               <FormMessage />
             </FormItem>
@@ -111,7 +112,7 @@ export function AccountForm() {
           name="dob"
           render={({ field }) => (
             <FormItem className="flex flex-col">
-              <FormLabel>Date of birth</FormLabel>
+              <FormLabel>{t("form.date_of_birth")}</FormLabel>
               <Popover>
                 <PopoverTrigger asChild>
                   <FormControl>
@@ -125,7 +126,7 @@ export function AccountForm() {
                       {field.value ? (
                         format(field.value, "PPP")
                       ) : (
-                        <span>Pick a date</span>
+                        <span>{t("form.pick_date")}</span>
                       )}
                       <CalendarIcon className="ml-auto size-4 opacity-50" />
                     </Button>
@@ -143,7 +144,7 @@ export function AccountForm() {
                 </PopoverContent>
               </Popover>
               <FormDescription>
-                Your date of birth is used to calculate your age.
+                {t("form.dob_description")}
               </FormDescription>
               <FormMessage />
             </FormItem>
@@ -154,7 +155,7 @@ export function AccountForm() {
           name="language"
           render={({ field }) => (
             <FormItem className="flex flex-col">
-              <FormLabel>Language</FormLabel>
+              <FormLabel>{t("form.language")}</FormLabel>
               <Popover>
                 <PopoverTrigger asChild>
                   <FormControl>
@@ -170,16 +171,16 @@ export function AccountForm() {
                         languages.find(
                           (language) => language.value === field.value,
                         )?.label :
-                        "Select language"}
+                        t("form.select_language")}
                       <CaretSortIcon className="ml-2 size-4 shrink-0 opacity-50" />
                     </Button>
                   </FormControl>
                 </PopoverTrigger>
                 <PopoverContent className="w-[200px] p-0">
                   <Command>
-                    <CommandInput placeholder="Search language..." />
+                    <CommandInput placeholder={t("form.search_language")} />
                     <CommandList>
-                      <CommandEmpty>No language found.</CommandEmpty>
+                      <CommandEmpty>{t("form.no_language_found")}</CommandEmpty>
                       <CommandGroup>
                         {languages.map((language) => (
                           <CommandItem
@@ -206,13 +207,13 @@ export function AccountForm() {
                 </PopoverContent>
               </Popover>
               <FormDescription>
-                This is the language that will be used in the dashboard.
+                {t("form.language_description")}
               </FormDescription>
               <FormMessage />
             </FormItem>
           )}
         />
-        <Button type="submit">Update account</Button>
+        <Button type="submit">{t("form.update_account")}</Button>
       </form>
     </Form>
   )

@@ -28,7 +28,7 @@ export function SidebarNav({ className, items, ...props }: SidebarNavProps) {
             isActive ?
               "bg-muted hover:bg-muted" :
               "hover:bg-transparent hover:underline",
-            "justify-start",
+            "justify-start capitalize",
           )}
         >
           {item.title}

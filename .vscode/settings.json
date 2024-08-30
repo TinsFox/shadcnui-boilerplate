@@ -49,8 +49,7 @@
     ["cva\\(([^)]*)\\)", "[\"'`]([^\"'`]*).*?[\"'`]"],
     ["cn\\(([^)]*)\\)", "[\"'`]([^\"'`]*).*?[\"'`]"]
   ],
-  "i18n-ally.localesPaths": [
-    "src/i18n",
-    "src/i18n/locales"
-  ]
+  "i18n-ally.localesPaths": ["src/i18n", "src/i18n/locales"],
+  "i18n-ally.sourceLanguage": "en",
+  "i18n-ally.enabledFrameworks": ["i18next", "react"]
 }

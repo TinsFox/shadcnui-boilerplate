@@ -10,10 +10,10 @@ import en from "./locales/en.json"
 import zhCN from "./locales/zh-CN.json"
 
 const resources = {
-  "en": {
+  en: {
     translation: en,
   },
-  "zh-CN": {
+  zh: {
     translation: zhCN,
   },
 }
@@ -24,7 +24,7 @@ export const languages = [
     icon: "🇬🇧",
   },
   {
-    value: "zh-CN",
+    value: "zh",
     label: "中文",
     icon: "🇨🇳",
   },
