@@ -23,6 +23,8 @@ export const env = createEnv({
           ...import.meta.env,
           VITE_ENABLE_DEVTOOLS:
           import.meta.env.VITE_ENABLE_DEVTOOLS === "true" ? true : false,
+          VITE_ENABLE_MOCK:
+          import.meta.env.VITE_ENABLE_MOCK === "true" ? true : false,
         },
   skipValidation: !isDev,
 })
