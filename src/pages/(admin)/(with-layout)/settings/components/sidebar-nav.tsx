@@ -24,10 +24,7 @@ export function SidebarNav({ className, items, ...props }: SidebarNavProps) {
           key={item.href}
           to={item.href}
           className={({ isActive }) => cn(
-            buttonVariants({ variant: "ghost" }),
-            isActive ?
-              "bg-muted hover:bg-muted" :
-              "hover:bg-transparent hover:underline",
+            buttonVariants({ variant: isActive ? "default" : "ghost" }),
             "justify-start capitalize",
           )}
         >

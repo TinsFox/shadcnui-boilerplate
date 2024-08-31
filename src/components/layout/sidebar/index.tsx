@@ -45,8 +45,7 @@ export function Sidebar({ className, isCollapsed }: SidebarProps) {
                             variant: isActive ? "default" : "ghost",
                           }),
                           "w-full justify-start capitalize",
-                          isActive &&
-                          "dark:bg-muted dark:text-white dark:hover:bg-muted dark:hover:text-white",
+
                         )}
                     >
                       <child.icon className="mr-2 size-4" />
@@ -78,8 +77,7 @@ export function Sidebar({ className, isCollapsed }: SidebarProps) {
                       variant: isActive ? "default" : "ghost",
                     }),
                     "w-full justify-start capitalize",
-                    isActive &&
-                    "dark:bg-muted dark:text-white dark:hover:bg-muted dark:hover:text-white",
+
                   )}
               >
                 <menuItem.icon className="mr-2 size-4" />
@@ -115,8 +113,7 @@ export function Sidebar({ className, isCollapsed }: SidebarProps) {
                                   size: "icon",
                                 }),
                                 "size-9",
-                                isActive &&
-                                "dark:bg-muted dark:text-muted-foreground dark:hover:bg-muted dark:hover:text-white",
+
                               )}
                             >
                               <child.icon className="size-4" />
