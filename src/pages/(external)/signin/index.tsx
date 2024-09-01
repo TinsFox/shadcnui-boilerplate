@@ -188,11 +188,6 @@ function UserAuthForm({ className, ...props }: UserAuthFormProps) {
         type="button"
         disabled={loginMutation.isPending}
       >
-        {loginMutation.isPending ? (
-          <Icons.spinner className="mr-2 size-4 animate-spin" />
-        ) : (
-          <Icons.gitHub className="mr-2 size-4" />
-        )}
         {t("signin.github")}
       </Button>
     </div>

@@ -6,7 +6,7 @@ import type { IUserInfo } from "@/models/user"
 import { withAuth } from "../middleware"
 
 export const TOKEN = "c8c59ab10e227cc56c406b4447d8"
-
+faker.seed(123)
 const userInfo: IUserInfo = {
   userId: faker.string.uuid(),
   username: faker.internet.userName(),
@@ -15,6 +15,12 @@ const userInfo: IUserInfo = {
   password: faker.internet.password(),
   birthdate: faker.date.birthdate(),
   registeredAt: faker.date.past(),
+  bio: faker.lorem.sentence(),
+  urls: [{
+    value: faker.internet.url(),
+  }, {
+    value: faker.internet.url(),
+  }],
 }
 
 const logoutResolver = () => {
