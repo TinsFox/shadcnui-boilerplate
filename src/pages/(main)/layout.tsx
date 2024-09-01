@@ -36,7 +36,7 @@ export function Component() {
               ) : (
                 <>
                   <Button asChild variant="default" size="lg">
-                    <Link to="/signin">Log In</Link>
+                    <Link to="/login">Log In</Link>
                   </Button>
                   <Button asChild variant="ghost" size="lg">
                     <Link to="/signup">Sign Up</Link>

@@ -89,7 +89,7 @@
     "select_font_description": "This is the font that will be displayed on your profile.",
     "update_preferences": "Update preferences"
   },
-  "signin": {
+  "login": {
     "create_account": "Create an account",
     "enter_email": "Enter your email below to create your account",
     "terms_of_service": "Terms of Service",

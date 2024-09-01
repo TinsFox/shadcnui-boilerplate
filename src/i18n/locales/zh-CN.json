@@ -89,7 +89,7 @@
     "select_font_description": "这是将在您的个人资料中显示的字体。",
     "update_preferences": "更新偏好"
   },
-  "signin": {
+  "login": {
     "create_account": "创建账户",
     "enter_email": "在下面输入您的电子邮件以创建账户",
     "terms_of_service": "服务条款",

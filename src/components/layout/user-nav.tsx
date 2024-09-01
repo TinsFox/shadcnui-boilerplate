@@ -54,7 +54,7 @@ export function UserNav() {
         </DropdownMenuGroup>
         <DropdownMenuSeparator />
         <DropdownMenuItem asChild>
-          <Link to="/signin">
+          <Link to="/login">
             {t("user_nav.logout")}
             <DropdownMenuShortcut>⇧⌘Q</DropdownMenuShortcut>
           </Link>

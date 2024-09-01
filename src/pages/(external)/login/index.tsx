@@ -32,15 +32,15 @@ export function Component() {
         <div className="absolute inset-0 bg-zinc-900" />
         <div className="relative z-20 flex items-center text-lg font-medium">
           <Logo className="mr-2 size-6" />
-          {t("signin.acme_inc")}
+          {t("login.acme_inc")}
         </div>
         <div className="relative z-20 mt-auto">
           <blockquote className="space-y-2">
             <p className="text-lg">
-              {t("signin.intro.quote")}
+              {t("login.intro.quote")}
             </p>
             <footer className="text-sm">
-              {t("signin.intro.name")}
+              {t("login.intro.name")}
             </footer>
           </blockquote>
         </div>
@@ -52,21 +52,21 @@ export function Component() {
         <div className="mx-auto flex w-full flex-col justify-center space-y-6 sm:w-[350px]">
           <div className="flex flex-col space-y-2 text-center">
             <h1 className="text-2xl font-semibold tracking-tight">
-              {t("signin.create_account")}
+              {t("login.create_account")}
             </h1>
             <p className="text-sm text-muted-foreground">
-              {t("signin.enter_email")}
+              {t("login.enter_email")}
             </p>
           </div>
           <UserAuthForm />
           <p className="px-8 text-center text-sm text-muted-foreground">
-            {t("signin.terms_of_service")}
+            {t("login.terms_of_service")}
             {" "}
             <Link
               to="/terms"
               className="underline underline-offset-4 hover:text-primary"
             >
-              {t("signin.terms_of_service")}
+              {t("login.terms_of_service")}
             </Link>
             {" "}
             and
@@ -75,7 +75,7 @@ export function Component() {
               to="/privacy"
               className="underline underline-offset-4 hover:text-primary"
             >
-              {t("signin.privacy_policy")}
+              {t("login.privacy_policy")}
             </Link>
             .
           </p>
@@ -103,14 +103,14 @@ function UserAuthForm({ className, ...props }: UserAuthFormProps) {
   async function onSubmit(values: z.infer<typeof loginFormSchema>) {
     toast.promise(loginMutation.mutateAsync(values), {
       position: "top-center",
-      loading: t("signin.loading"),
+      loading: t("login.loading"),
       success: () => {
         navigate("/dashboard", {
           replace: true,
         })
-        return t("signin.login_successful")
+        return t("login.login_successful")
       },
-      error: t("signin.error"),
+      error: t("login.error"),
     })
   }
 
@@ -127,11 +127,11 @@ function UserAuthForm({ className, ...props }: UserAuthFormProps) {
               name="email"
               render={({ field }) => (
                 <FormItem className="grid gap-1">
-                  <FormLabel className="sr-only">{t("signin.email")}</FormLabel>
+                  <FormLabel className="sr-only">{t("login.email")}</FormLabel>
                   <FormControl>
                     <Input
                       {...field}
-                      placeholder={t("signin.email_placeholder")}
+                      placeholder={t("login.email_placeholder")}
                       type="email"
                       autoCapitalize="none"
                       autoComplete="email"
@@ -148,11 +148,11 @@ function UserAuthForm({ className, ...props }: UserAuthFormProps) {
               name="password"
               render={({ field }) => (
                 <FormItem className="grid gap-1">
-                  <FormLabel className="sr-only">{t("signin.password")}</FormLabel>
+                  <FormLabel className="sr-only">{t("login.password")}</FormLabel>
                   <FormControl>
                     <Input
                       {...field}
-                      placeholder={t("signin.password_placeholder")}
+                      placeholder={t("login.password_placeholder")}
                       type="password"
                       autoCapitalize="none"
                       autoComplete="current-password"
@@ -168,7 +168,7 @@ function UserAuthForm({ className, ...props }: UserAuthFormProps) {
               {loginMutation.isPending && (
                 <Icons.spinner className="mr-2 size-4 animate-spin" />
               )}
-              {t("signin.sign_in_with_email")}
+              {t("login.sign_in_with_email")}
             </Button>
           </div>
         </form>
@@ -179,7 +179,7 @@ function UserAuthForm({ className, ...props }: UserAuthFormProps) {
         </div>
         <div className="relative flex justify-center text-xs uppercase">
           <span className="bg-background px-2 text-muted-foreground">
-            {t("signin.or_continue_with")}
+            {t("login.or_continue_with")}
           </span>
         </div>
       </div>
@@ -188,7 +188,7 @@ function UserAuthForm({ className, ...props }: UserAuthFormProps) {
         type="button"
         disabled={loginMutation.isPending}
       >
-        {t("signin.github")}
+        {t("login.github")}
       </Button>
     </div>
   )

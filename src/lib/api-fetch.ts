@@ -41,7 +41,7 @@ function redirectToSignin() {
   const requestUrl = new URL(window.location.href)
   const redirectTo = requestUrl.pathname + requestUrl.search
   const loginParams = redirectTo ? new URLSearchParams({ redirectTo }) : null
-  const loginRedirect = ["/signin", loginParams?.toString()]
+  const loginRedirect = ["/login", loginParams?.toString()]
     .filter(Boolean)
     .join("?")
   window.location.href = loginRedirect
