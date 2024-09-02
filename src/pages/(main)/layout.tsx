@@ -52,9 +52,6 @@ export function Component() {
         <Outlet />
       </div>
 
-      {/* <div className="container flex justify-between pb-5">
-        <Logo className="size-12" />
-      </div> */}
     </div>
   )
 }

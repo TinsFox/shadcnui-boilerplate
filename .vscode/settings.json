@@ -18,8 +18,8 @@
   "eslint.codeActionsOnSave.rules": [
     "!prefer-const",
     "!unused-imports/no-unused-imports",
-    "!@stylistic/jsx-self-closing-comp",
-    "!tailwindcss/classnames-order",
+    // "!@stylistic/jsx-self-closing-comp",
+    // "!tailwindcss/classnames-order",
     "*"
   ],
 
