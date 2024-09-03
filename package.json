@@ -13,6 +13,9 @@
     "build-storybook": "storybook build",
     "coverage": "vitest run --coverage",
     "dev": "vite",
+    "docs:build": "vitepress build docs",
+    "docs:dev": "vitepress dev docs",
+    "docs:preview": "vitepress preview docs",
     "lint": "eslint",
     "lint:fix": "eslint --fix",
     "prepare": "pnpm exec simple-git-hooks && test -f .env || cp .env.example .env",
@@ -122,6 +125,7 @@
     "vite": "^5.4.2",
     "vite-plugin-html": "^3.2.2",
     "vite-tsconfig-paths": "^5.0.1",
+    "vitepress": "^1.3.4",
     "vitest": "^2.0.5"
   },
   "simple-git-hooks": {

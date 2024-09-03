@@ -28,3 +28,7 @@ dist-ssr
 .env
 
 *storybook.log
+
+#vitepress
+docs/.vitepress/dist
+docs/.vitepress/cache
