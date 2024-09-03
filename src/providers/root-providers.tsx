@@ -33,7 +33,7 @@ export const RootProviders: FC<PropsWithChildren> = ({ children }) => (
             <ThemeProvider defaultTheme="system" storageKey="vite-ui-theme">
               <TooltipProvider>
                 <HotkeysProvider initiallyActiveScopes={["home"]}>
-                  {import.meta.env.DEV && <DevMonitorPanel />}
+                  <DevMonitorPanel />
                   {children}
                   <ThemeCustomizer className="fixed bottom-4 right-4 z-[9999]" />
                 </HotkeysProvider>
