@@ -8,7 +8,9 @@ import * as React from "react"
 import ReactDOM from "react-dom/client"
 import { RouterProvider } from "react-router-dom"
 
+import { DevMonitorPanel } from "@/components/devtools/dev-monitor-panel"
 import { Fallback } from "@/components/fallback"
+import { ThemeCustomizer } from "@/components/theme/theme-customizer"
 import { RootProviders } from "@/providers/root-providers"
 
 import { router } from "./router"
@@ -43,6 +45,8 @@ deferRender().then(() => {
           router={router}
           fallbackElement={<Fallback />}
         />
+        <DevMonitorPanel />
+        <ThemeCustomizer className="fixed bottom-4 right-4 z-[9999]" />
       </RootProviders>
       <ClickToComponent editor={env.VITE_EDITOR} />
     </React.StrictMode>,
