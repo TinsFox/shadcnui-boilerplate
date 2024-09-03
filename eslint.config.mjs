@@ -11,14 +11,16 @@ export default defineConfig(
     },
     lessOpinionated: true,
     preferESM: false,
-    ignores: ["public/mockServiceWorker.js", "src/components/ui"],
+    ignores: [
+      "public/mockServiceWorker.js",
+      "src/components/ui",
+      "pnpm-lock.yaml",
+    ],
   },
   {
     settings: {
       tailwindcss: {
-        whitelist: [
-          "center",
-        ],
+        whitelist: ["center"],
       },
     },
     rules: {

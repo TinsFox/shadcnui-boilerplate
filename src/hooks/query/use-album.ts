@@ -1,11 +1,13 @@
-import { useMutation, useQuery } from "@tanstack/react-query"
+import { useQuery } from "@tanstack/react-query"
 
 import { apiFetch } from "@/lib/api-fetch"
-import type { IUserInfo } from "@/models/user"
+import type { IAlbum } from "@/models/album"
 
 export function useAlbums() {
   return useQuery({
     queryKey: ["albums"],
-    queryFn: async () => apiFetch<IUserInfo>("/api/albums"),
+    queryFn: async () => apiFetch<{
+      list: IAlbum[]
+    }>("/api/albums"),
   })
 }
