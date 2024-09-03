@@ -90,7 +90,7 @@ export function DevMonitorPanel() {
     <Sheet open={isSheetOpen} onOpenChange={setIsSheetOpen}>
       <div
         ref={panelRef}
-        className="fixed flex cursor-default items-center"
+        className="fixed z-50 flex cursor-default items-center"
         style={{
           left: `${position.x}px`,
           top: `${position.y}px`,
