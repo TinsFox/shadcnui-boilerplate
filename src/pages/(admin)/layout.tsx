@@ -8,6 +8,7 @@ import { isCollapsedAtom, layoutAtom } from "@/atoms/resizable-panels"
 import LanguageSwitch from "@/components/language-switch"
 import { Search } from "@/components/layout/search"
 import { Sidebar } from "@/components/layout/sidebar"
+import { MobileNav } from "@/components/layout/sidebar/mobile-nav"
 import { UserNav } from "@/components/layout/user-nav"
 import { ThemeSwitcher } from "@/components/theme/theme-switcher"
 import { Button } from "@/components/ui/button"
@@ -70,9 +71,11 @@ export function Component() {
                   size="icon"
                   variant="ghost"
                   onClick={handleNavCollapse}
+                  className="hidden lg:flex"
                 >
                   <Menu />
                 </Button>
+                <MobileNav />
                 <div className="ml-auto flex items-center space-x-4">
                   <Search />
                   <LanguageSwitch />
