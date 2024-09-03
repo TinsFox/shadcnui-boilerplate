@@ -26,3 +26,5 @@ dist-ssr
 .history
 
 .env
+
+*storybook.log

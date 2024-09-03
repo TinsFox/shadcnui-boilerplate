@@ -4,8 +4,6 @@ import type { FC, PropsWithChildren } from "react"
 import { HotkeysProvider } from "react-hotkeys-hook"
 import { I18nextProvider } from "react-i18next"
 
-import { DevMonitorPanel } from "@/components/devtools/dev-monitor-panel"
-import { ThemeCustomizer } from "@/components/theme/theme-customizer"
 import { ThemeProvider } from "@/components/theme/theme-provider"
 import { ThemeWrapper } from "@/components/theme/theme-wrapper"
 import { ThemesStyle } from "@/components/theme/themes-styles"
@@ -33,9 +31,7 @@ export const RootProviders: FC<PropsWithChildren> = ({ children }) => (
             <ThemeProvider defaultTheme="system" storageKey="vite-ui-theme">
               <TooltipProvider>
                 <HotkeysProvider initiallyActiveScopes={["home"]}>
-                  <DevMonitorPanel />
                   {children}
-                  <ThemeCustomizer className="fixed bottom-4 right-4 z-[9999]" />
                 </HotkeysProvider>
               </TooltipProvider>
               <ThemesStyle />
