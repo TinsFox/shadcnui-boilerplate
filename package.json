@@ -1,11 +1,11 @@
 {
-  "name": "vite-boilerplate",
+  "name": "shadcnui-boilerplate",
   "type": "module",
   "version": "0.0.0",
   "private": true,
-  "homepage": "https://github.com/TinsFox/vite-boilerplate",
+  "homepage": "https://github.com/TinsFox/shadcnui-boilerplate",
   "repository": {
-    "url": "https://github.com/TinsFox/vite-boilerplate",
+    "url": "https://github.com/TinsFox/shadcnui-boilerplate",
     "type": "git"
   },
   "scripts": {
