@@ -1,15 +1,13 @@
 import type { DefaultTheme } from "vitepress"
 import { defineConfig } from "vitepress"
 
-const pkg = require("../../package.json")
+import * as pkg from "../../../package.json"
+import { githubLink } from "./shared"
 
-const githubLink = "https://github.com/TinsFox/shadcnui-boilerplate"
-// https://vitepress.dev/reference/site-config
-export default defineConfig({
-  title: "shadcn/ui boilerplate",
-  description: "A boilerplate build with shadcn/ui",
+export const en = defineConfig({
+  title: "shadcn/ui Boilerplate",
+  description: "A boilerplate built with shadcn/ui for rapid development of modern web applications.",
   themeConfig: {
-    // https://vitepress.dev/reference/default-theme-config
     nav: [
       {
         text: "Guide",
