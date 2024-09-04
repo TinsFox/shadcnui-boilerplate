@@ -8,10 +8,10 @@ hero:
   actions:
     - theme: brand
       text: "什么是 shadcn/ui Boilerplate？"
-      link: /guide/what-is-shadcn-ui-boilerplate
+      link: /zh/guide/what-is-shadcn-ui-boilerplate
     - theme: alt
       text: "入门"
-      link: /guide/getting-started
+      link: /zh/guide/getting-started
     - theme: alt
       text: "GitHub"
       link: https://github.com/TinsFox/shadcnui-boilerplate
