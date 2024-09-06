@@ -20,6 +20,7 @@
     "lint:fix": "eslint --fix",
     "prepare": "pnpm exec simple-git-hooks && test -f .env || cp .env.example .env",
     "preview": "vite preview",
+    "release": "release-it",
     "start": "tsc && vite build && vite preview",
     "storybook": "storybook dev -p 6006",
     "test": "vitest"
@@ -117,6 +118,8 @@
     "lint-staged": "^15.2.9",
     "msw": "^2.4.1",
     "postcss": "^8.4.41",
+    "release-it": "^17.6.0",
+    "release-it-pnpm": "^4.6.3",
     "simple-git-hooks": "^2.11.1",
     "storybook": "^8.2.9",
     "tailwindcss": "^3.4.10",

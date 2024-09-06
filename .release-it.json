@@ -1,0 +1,13 @@
+{
+  "plugins": {
+    "release-it-pnpm": {
+      "disableRelease": true,
+      "inFile": "CHANGELOG.md",
+      "publishCommand": "vsce publish --no-dependencies"
+    }
+  },
+  "git": {
+    "commitMessage": "chore: release v${version}",
+    "tagName": "v${version}"
+  }
+}
