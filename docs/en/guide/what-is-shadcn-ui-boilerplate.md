@@ -1,6 +1,14 @@
 # What is shadcn/ui boilerplate?
 
-shadcn/ui boilerplate is a boilerplate built with [**shadcn/ui**](https://github.com/shadcn-ui/ui) for rapid development of modern web applications.
+<br/>
+
+<div align="center">
+  <img src="/index.png" alt="Cover image" width="700px">
+</div>
+
+<br/>
+
+shadcn/ui boilerplate is a modern, scalable boilerplate for building beautiful, responsive web applications using React, Tailwind CSS, and Radix UI.
 
 ## Use Cases
 

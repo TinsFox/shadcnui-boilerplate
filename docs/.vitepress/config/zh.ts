@@ -7,7 +7,7 @@ import { githubLink } from "./shared"
 export const zh = defineConfig({
   lang: "zh-CN",
   title: "shadcn/ui boilerplate",
-  description: "一个基于 shadcn/ui 的模板",
+  description: "一个现代化的、可扩展的样板项目，用于使用 React、Tailwind CSS 和 Radix UI 构建美丽的、响应式的网络应用程序。",
   themeConfig: {
     nav: [
       {
@@ -15,11 +15,11 @@ export const zh = defineConfig({
         link: "/zh/guide/what-is-shadcn-ui-boilerplate",
         activeMatch: "/zh/guide/",
       },
-      {
-        text: "参考",
-        link: "/zh/reference/project-config",
-        activeMatch: "/zh/reference/",
-      },
+      // {
+      //   text: "参考",
+      //   link: "/zh/reference/project-config",
+      //   activeMatch: "/zh/reference/",
+      // },
       {
         text: pkg.version,
         link: ``,
@@ -64,6 +64,7 @@ function sidebarGuide(): DefaultTheme.SidebarItem[] {
       items: [
         { text: "什么是 shadcn/ui boilerplate?", link: "what-is-shadcn-ui-boilerplate" },
         { text: "快速开始", link: "getting-started" },
+        { text: "常见问题", link: "faq" },
       ],
     },
     {
@@ -78,10 +79,14 @@ function sidebarGuide(): DefaultTheme.SidebarItem[] {
       ],
     },
     {
-      text: "数据请求",
+      text: "数据流",
       collapsed: false,
       items: [
         { text: "数据请求", link: "data-fetching" },
+        {
+          text: "状态管理",
+          link: "state-management",
+        },
       ],
     },
     {
@@ -94,13 +99,8 @@ function sidebarGuide(): DefaultTheme.SidebarItem[] {
     },
     {
       text: "部署",
-      collapsed: false,
-      items: [
-        { text: "Vercel 部署", link: "vercel" },
-        { text: "Docker 部署", link: "docker" },
-      ],
+      link: "/deploy",
     },
-    { text: "配置参考", base: "/reference/", link: "project-config" },
   ]
 }
 

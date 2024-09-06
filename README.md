@@ -1,12 +1,18 @@
-<div align="center">
+<p align="center">
+
+<a href="https://github.com/TinsFox/shadcnui-boilerplate">
   <img src="docs/public/index.png" alt="Cover image" width="700px">
-</div>
+<h3 align="center">shadcn/ui boilerplate</h3>
+</a>
 
-<div align="center">
+
+<p align="center">
   <a href="README.md">English</a> | <a href="README-zh_CN.md">中文</a>
-</div>
+</p>
 
-# shadcn/ui Boilerplate
+</p>
+
+## About this project
 
 A boilerplate built with [**shadcn/ui**](https://github.com/shadcn-ui/ui) for rapid development of modern web applications.
 
@@ -49,3 +55,12 @@ Please read the [contributing guide](/CONTRIBUTING.md) for guidelines on contrib
 ## License
 
 Licensed under the [MIT license](./LICENSE).
+
+## Acknowledgements
+
+- [**shadcn/ui**](https://github.com/shadcn-ui/ui): A set of customizable UI components for building polished user interfaces with consistent design patterns.
+- [**Tailwind CSS**](https://tailwindcss.com): Utility-first CSS framework for rapid styling and responsive design.
+- [**Radix UI**](https://www.radix-ui.com/): Accessible and unstyled components for creating custom UI elements.
+- [**Innei**](https://github.com/innei): The author of this [template](https://github.com/innei-template/vite-react-tailwind-template).
+
+And many other open-source projects.

@@ -1,10 +1,12 @@
 # 路由
 
-shadcnui-boilerplate 使用 **基于文件系统的路由** 来定义路由。
+shadcnui-boilerplate 使用 **文件系统的路由** 来定义路由。
 
-这个功能由 [Innei](https://github.com/innei) 实现，源码在这里 [传送门](https://github.com/innei-template/vite-react-tailwind-template/blob/master/src/utils/route-builder.ts)。感谢 **Innei** ！
 
-`route-builder` 使用 `react-router@v6` 与 `Vite` 的 [Glob Import](https://cn.vitejs.dev/guide/features#glob-import) 实现。
+> [!IMPORTANT]
+> 这个功能由 [Innei](https://github.com/innei) 实现，源码在这里 [传送门](https://github.com/innei-template/vite-react-tailwind-template/blob/master/src/utils/route-builder.ts)。感谢 **Innei** ！
+
+`route-builder` 是参考了 [Next.js](https://nextjs.org/docs/app/building-your-application/routing) 的文件路由 结合 `React Router` 的 `v6` ，使用 `Vite` 的 [Glob Import](https://cn.vitejs.dev/guide/features#glob-import) 读取文件实现的
 
 ::: details 为什么使用 `React Router` 而不是 `TanStack Router`？
 
@@ -16,7 +18,7 @@ shadcnui-boilerplate 使用 **基于文件系统的路由** 来定义路由。
 
 
 > [!TIP]
-> 默认使用 `pages` 目录来存放页面
+> 默认使用 `pages` 目录来存放页面，并且排除了 `components` 与 `_components` 目录
 
 ## 创建路由
 
@@ -24,8 +26,6 @@ shadcnui-boilerplate 使用 **基于文件系统的路由** 来定义路由。
   - `pages/home/index.tsx` 对应的路由是 `/home`
   - `pages/home/about.tsx` 对应的路由是 `/home/about`
 - [嵌套路由](./route-group.md)
-
-
 
 ## 创建 UI
 

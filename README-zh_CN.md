@@ -1,14 +1,20 @@
-<div align="center">
-  <img src="public/index.png" alt="封面图" width="700px">
-</div>
+<p align="center">
 
-<div align="center">
+<a href="https://github.com/TinsFox/shadcnui-boilerplate">
+  <img src="docs/public/index.png" alt="Cover image" width="700px">
+  <h3 align="center">shadcn/ui boilerplate</h3>
+</a>
+
+
+<p align="center">
   <a href="README.md">English</a> | <a href="README-zh_CN.md">中文</a>
-</div>
+</p>
+</p>
 
-# shadcn/ui 模板
 
-一个基于 [**shadcn/ui**](https://github.com/shadcn-ui/ui) 的模板，用于快速开发现代 web 应用程序。
+## 关于这个项目
+
+一个现代化的、可扩展的样板项目，用于使用 React、Tailwind CSS 和 Radix UI 构建美丽的、响应式的网络应用程序。
 
 ## 特性
 
@@ -49,3 +55,12 @@
 ## 许可证
 
 根据 [MIT 许可证](./LICENSE) 授权。
+
+## 致谢
+
+- [**shadcn/ui**](https://github.com/shadcn-ui/ui): 一套可定制的 UI 组件，用于构建具有一致设计模式的精美用户界面。
+- [**Tailwind CSS**](https://tailwindcss.com): 实用优先的 CSS 框架，用于快速样式设计和响应式布局。
+- [**Radix UI**](https://www.radix-ui.com/): 提供可访问的未样式组件，作为项目中自定义 UI 组件的构建块。
+- [**Innei**](https://github.com/innei): [vite-react-tailwind-template](https://github.com/innei-template/vite-react-tailwind-template) 的作者。
+
+以及许多其他开源项目。

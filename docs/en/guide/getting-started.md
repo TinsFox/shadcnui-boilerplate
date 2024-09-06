@@ -107,3 +107,6 @@ Root Directory: Contains essential configuration files and documentation.
 - To learn more about shadcn/ui, please refer to the [official documentation](https://ui.shadcn.com/docs).
 - To create a new page, please refer to the [routing guide](./routing.md).
 - Once your app is ready for production, please refer to the [deploy guide](./deploy.md).
+
+> [!IMPORTANT]
+> [FAQ](./faq.md)

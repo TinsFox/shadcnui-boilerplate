@@ -14,23 +14,14 @@ export const en = defineConfig({
         link: "/guide/what-is-shadcn-ui-boilerplate",
         activeMatch: "/guide/",
       },
-      {
-        text: "Reference",
-        link: "/reference/project-config",
-        activeMatch: "/reference/",
-      },
+      // {
+      //   text: "Reference",
+      //   link: "/reference/project-config",
+      //   activeMatch: "/reference/",
+      // },
       {
         text: pkg.version,
-        items: [
-          {
-            text: "Changelog",
-            link: `${githubLink}/blob/main/CHANGELOG.md`,
-          },
-          {
-            text: "Contributing",
-            link: `${githubLink}/blob/main/.github/contributing.md`,
-          },
-        ],
+        link: ``,
       },
     ],
 
@@ -52,11 +43,41 @@ function sidebarGuide(): DefaultTheme.SidebarItem[] {
       items: [
         { text: "What is shadcn/ui boilerplate?", link: "what-is-shadcn-ui-boilerplate" },
         { text: "Getting Started", link: "getting-started" },
-        { text: "Routing", link: "routing" },
-        { text: "Deploy", link: "deploy" },
+        { text: "FAQ", link: "faq" },
       ],
     },
-    { text: "Config Reference", base: "/reference/", link: "project-config" },
+    {
+      text: "Routing",
+      collapsed: false,
+      items: [
+        { text: "Routing", link: "routing" },
+        { text: "Page", link: "page" },
+        { text: "Layout", link: "layout" },
+        { text: "Redirect", link: "redirect" },
+        { text: "Route Group", link: "route-group" },
+      ],
+    },
+    {
+      text: "State Management",
+      collapsed: false,
+      items: [
+        { text: "Data Fetching", link: "data-fetching" },
+        { text: "State Management", link: "state-management" },
+      ],
+    },
+    {
+      text: "Config",
+      collapsed: false,
+      items: [
+        { text: "Environment Variables", link: "environment-variables" },
+        { text: "Theme", link: "theme" },
+      ],
+    },
+    {
+      text: "Deploy",
+      collapsed: false,
+      link: "/deploy",
+    },
   ]
 }
 

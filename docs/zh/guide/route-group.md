@@ -1,7 +1,6 @@
 # 路由组
 
-参考文档 [Next.js Route Groups](https://nextjs.org/docs/app/building-your-application/routing/route-groups)
-
+参考 [Next.js Route Groups](https://nextjs.org/docs/app/building-your-application/routing/route-groups)
 
 在 `pages` 目录下，我们可以使用 `(folderName)` 来实现路由组。
 
@@ -30,5 +29,3 @@ export function Component() {
   )
 }
 ```
-
-

@@ -110,7 +110,10 @@ pnpm dev
 
 ## 下一步
 
-- 要了解更多关于 shadcn/ui，请参考 [官方文档](https://ui.shadcn.com/docs)。
+- 要了解更多关于 `shadcn/ui`，请参考 [官方文档](https://ui.shadcn.com/docs)。
 - 要创建新页面，请参考 [路由指南](./routing.md)。
 - 要了解更多关于环境变量的信息，请参考 [环境变量指南](./environment-variables.md)。
 - 一旦您的应用程序准备投入生产，请参考 [部署指南](./deploy.md)。
+
+> [!IMPORTANT]
+> [常见问题](./faq.md)

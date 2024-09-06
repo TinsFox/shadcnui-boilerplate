@@ -1,22 +1,22 @@
 # 部署
 
-## Vercel
+## 使用 Vercel 部署
 
-- 配置 `vercel.json`
+[![Deploy with Vercel](https://vercel.com/button)](https://vercel.com/new/clone?repository-url=https%3A%2F%2Fgithub.com%2FTinsFox%2Fshadcnui-boilerplate&env=VITE_APP_NAME,VITE_API_URL,VITE_ENABLE_DEVTOOLS,VITE_EDITOR,VITE_ENABLE_MOCK)
 
 
-## Docker
+## 使用 Docker 部署
 
 项目中包含了 [dockerfile](https://github.com/TinsFox/shadcnui-boilerplate/blob/main/Dockerfile) 与 [Nginx Conf](https://github.com/TinsFox/shadcnui-boilerplate/blob/main/docker/nginx.conf)
 
 
-- 构建镜像
+1. 构建镜像
 
 ```bash
 docker build -t shadcnui-boilerplate .
 ```
 
-- 运行容器
+2. 运行容器
 
 ```bash
 docker run -d -p 80:80 --name shadcnui-boilerplate shadcnui-boilerplate
@@ -61,5 +61,4 @@ server {
         root   /usr/share/nginx/html;
     }
 }
-
 ```

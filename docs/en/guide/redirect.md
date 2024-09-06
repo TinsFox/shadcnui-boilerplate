@@ -1,6 +1,6 @@
-# 重定向
+# Redirect
 
-假设，我们登录了之后，我们希望跳转到 `/dashboard` 中，但是，希望可以去到 `/dashboard/overview` 页面，我们可以
+Suppose we want to redirect to `/dashboard` after login, but we want to go to `/dashboard/overview` page, we can
 
 ## `redirect`
 
@@ -17,15 +17,13 @@ export function Component() {
 }
 ```
 
-### `<Navigate/>`
+## `<Navigate/>`
 
 ```tsx
 // src/dashboard/index.tsx
 import { Navigate } from "react-router-dom"
 
-
 export function Component() {
   return <Navigate to="/dashboard/overview" replace={true} />
 }
 ```
-
