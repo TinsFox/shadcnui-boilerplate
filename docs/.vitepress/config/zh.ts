@@ -81,7 +81,7 @@ function sidebarGuide(): DefaultTheme.SidebarItem[] {
       text: "数据请求",
       collapsed: false,
       items: [
-        { text: "数据请求", link: "data-request" },
+        { text: "数据请求", link: "data-fetching" },
       ],
     },
     {

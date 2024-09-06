@@ -10,7 +10,7 @@ hero:
       text: "什么是 shadcn/ui Boilerplate？"
       link: /zh/guide/what-is-shadcn-ui-boilerplate
     - theme: alt
-      text: "入门"
+      text: "快速开始"
       link: /zh/guide/getting-started
     - theme: alt
       text: "GitHub"
