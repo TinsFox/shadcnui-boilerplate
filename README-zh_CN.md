@@ -62,5 +62,6 @@
 - [**Tailwind CSS**](https://tailwindcss.com): 实用优先的 CSS 框架，用于快速样式设计和响应式布局。
 - [**Radix UI**](https://www.radix-ui.com/): 提供可访问的未样式组件，作为项目中自定义 UI 组件的构建块。
 - [**Innei**](https://github.com/innei): [vite-react-tailwind-template](https://github.com/innei-template/vite-react-tailwind-template) 的作者。
+- [**Epic Stack**](https://github.com/epicweb-dev/epic-stack), 基于 `Remix` 的全栈项目模板。
 
 以及许多其他开源项目。

@@ -62,5 +62,6 @@ Licensed under the [MIT license](./LICENSE).
 - [**Tailwind CSS**](https://tailwindcss.com): Utility-first CSS framework for rapid styling and responsive design.
 - [**Radix UI**](https://www.radix-ui.com/): Accessible and unstyled components for creating custom UI elements.
 - [**Innei**](https://github.com/innei): The author of the [vite-react-tailwind-template](https://github.com/innei-template/vite-react-tailwind-template).
+- [**Epic Stack**](https://github.com/epicweb-dev/epic-stack), A full-stack project template based on `Remix`.
 
 And many other open-source projects.
