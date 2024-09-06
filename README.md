@@ -2,6 +2,10 @@
   <img src="docs/public/index.png" alt="Cover image" width="700px">
 </div>
 
+<div align="center">
+  <a href="README.md">English</a> | <a href="README-zh_CN.md">中文</a>
+</div>
+
 # shadcn/ui Boilerplate
 
 A boilerplate built with [**shadcn/ui**](https://github.com/shadcn-ui/ui) for rapid development of modern web applications.
@@ -36,7 +40,7 @@ A boilerplate built with [**shadcn/ui**](https://github.com/shadcn-ui/ui) for ra
 
 ## Documentation
 
-Visit [Documentation](https://shadcnui-boilerplate.vercel.app/docs) for detailed usage instructions.
+Visit [Documentation](https://shadcnui-boilerplate-docs.vercel.app) for detailed usage instructions.
 
 ## Contributing
 

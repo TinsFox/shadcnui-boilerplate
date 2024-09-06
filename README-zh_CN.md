@@ -2,6 +2,10 @@
   <img src="public/index.png" alt="封面图" width="700px">
 </div>
 
+<div align="center">
+  <a href="README.md">English</a> | <a href="README-zh_CN.md">中文</a>
+</div>
+
 # shadcn/ui 模板
 
 一个基于 [**shadcn/ui**](https://github.com/shadcn-ui/ui) 的模板，用于快速开发现代 web 应用程序。
@@ -36,7 +40,7 @@
 
 ## 文档
 
-访问 [文档](https://shadcnui-boilerplate.vercel.app/docs) 获取详细使用说明。
+访问 [文档](https://shadcnui-boilerplate-docs.vercel.app/) 获取详细使用说明。
 
 ## 贡献
 
