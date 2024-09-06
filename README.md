@@ -61,6 +61,6 @@ Licensed under the [MIT license](./LICENSE).
 - [**shadcn/ui**](https://github.com/shadcn-ui/ui): A set of customizable UI components for building polished user interfaces with consistent design patterns.
 - [**Tailwind CSS**](https://tailwindcss.com): Utility-first CSS framework for rapid styling and responsive design.
 - [**Radix UI**](https://www.radix-ui.com/): Accessible and unstyled components for creating custom UI elements.
-- [**Innei**](https://github.com/innei): The author of this [template](https://github.com/innei-template/vite-react-tailwind-template).
+- [**Innei**](https://github.com/innei): The author of the [vite-react-tailwind-template](https://github.com/innei-template/vite-react-tailwind-template).
 
 And many other open-source projects.
