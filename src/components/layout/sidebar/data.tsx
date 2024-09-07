@@ -84,6 +84,7 @@ export const menus: IMenu[] = [
         to: "/dashboard/workplace",
       },
     ],
+    to: "/dashboard",
   },
   {
     title: "forms",
@@ -107,6 +108,7 @@ export const menus: IMenu[] = [
         to: "/form/advanced-form",
       },
     ],
+    to: "/form",
   },
   {
     title: "table",
@@ -131,6 +133,7 @@ export const menus: IMenu[] = [
         to: "/list/card-list",
       },
     ],
+    to: "/list",
   },
   {
     title: "charts",
@@ -172,6 +175,7 @@ export const menus: IMenu[] = [
         to: "/charts/tooltip",
       },
     ],
+    to: "/charts",
   },
   {
     title: "settings",
@@ -188,5 +192,6 @@ export const menus: IMenu[] = [
         to: "/system/about",
       },
     ],
+    to: "/system",
   },
 ] as const
