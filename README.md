@@ -56,6 +56,24 @@ Please read the [contributing guide](/CONTRIBUTING.md) for guidelines on contrib
 
 Licensed under the [MIT license](./LICENSE).
 
+## Donate
+
+If you find this project helpful, please consider giving us a star ⭐️
+
+or 👇
+
+[![TinsFox's Profile](https://afdian-connect-nine.vercel.app/profile.svg)](https://afdian.com/a/tinsfox)
+
+[!["Buy Me A Coffee"](https://www.buymeacoffee.com/assets/img/custom_images/orange_img.png)](https://www.buymeacoffee.com/TinsFox)
+
+## Join our WeChat group
+
+<p>
+  <img src="docs/public/wechat-group.png" alt="微信群二维码" width="200px">
+</p>
+
+Scan the above QR code to join our WeChat group, and discuss with other developers!
+
 ## Acknowledgements
 
 - [**shadcn/ui**](https://github.com/shadcn-ui/ui): A set of customizable UI components for building polished user interfaces with consistent design patterns.
