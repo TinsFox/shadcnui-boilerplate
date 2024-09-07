@@ -66,6 +66,8 @@
 
 [!["Buy Me A Coffee"](https://www.buymeacoffee.com/assets/img/custom_images/orange_img.png)](https://www.buymeacoffee.com/TinsFox)
 
+<img src="docs/public//wechat-appreciation-code.jpeg" alt="微信赞赏码" width="200px">
+
 ## 加入我们的微信群
 
 <p>

@@ -37,6 +37,7 @@ shadcn/ui boilerplate 是一个基于 [**shadcn/ui**](https://github.com/shadcn-
 
 [![TinsFox's Profile](https://afdian-connect-nine.vercel.app/profile.svg)](https://afdian.com/a/tinsfox)
 
+<img src="/wechat-appreciation-code.jpeg" alt="微信赞赏码" width="200px">
 
 ## 加入我们的微信群
 

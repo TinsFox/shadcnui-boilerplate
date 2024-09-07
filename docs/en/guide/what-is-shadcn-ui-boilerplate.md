@@ -33,6 +33,8 @@ or 👇
 
 [!["Buy Me A Coffee"](https://www.buymeacoffee.com/assets/img/custom_images/orange_img.png)](https://www.buymeacoffee.com/TinsFox)
 
+<img src="/wechat-appreciation-code.jpeg" alt="微信赞赏码" width="200px">
+
 ## Join our WeChat group
 
 <p>
