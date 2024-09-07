@@ -84,12 +84,11 @@ export function Search({ ...props }: ButtonProps & DialogProps) {
                   key={`${menuItem.title}-${menuItem.to}`}
                   value={menuItem.title}
                   onSelect={() => {
-                    runCommand(() => navigate(menuItem.to))
+                    runCommand(() => navigate(menuItem.to!))
                   }}
                 >
                   <menuItem.icon className="mr-2 size-4" />
                   {menuItem.title}
-                  {menuItem.to}
                   {menuItem.label && (
                     <span
                       className={cn(
