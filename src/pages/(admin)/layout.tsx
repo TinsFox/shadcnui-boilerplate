@@ -33,7 +33,7 @@ export function Component() {
     }
   }
   return (
-    <div className="h-screen">
+    <div className="h-screen overflow-hidden">
       <ResizablePanelGroup
         direction="horizontal"
         onLayout={(sizes: number[]) => {
