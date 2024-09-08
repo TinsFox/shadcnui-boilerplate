@@ -53,7 +53,7 @@ export function Component() {
             {" "}
             <a
               className="underline hover:no-underline"
-              href="https://github.com/TinsFox/vite-boilerplate/blob/main/docs/getting-started.md"
+              href="https://shadcnui-boilerplate-docs.vercel.app/guide/what-is-shadcn-ui-boilerplate"
             >
               Getting Started guide
             </a>
