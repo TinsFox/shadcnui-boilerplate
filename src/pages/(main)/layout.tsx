@@ -19,8 +19,10 @@ export function Component() {
   return (
     <div className="flex h-screen flex-col justify-between">
       <header className="container py-6">
-        <nav className="flex flex-wrap items-center justify-between gap-4 sm:flex-nowrap md:gap-8">
-          <Logo className="size-12" />
+        <nav className="xs:flex-nowrap flex flex-nowrap items-center justify-between gap-4 md:gap-8">
+          <div>
+            <Logo className="size-12" />
+          </div>
           <div className="flex items-center gap-4">
             <div className="mr-auto hidden w-full flex-1 sm:block">
               <Search />
