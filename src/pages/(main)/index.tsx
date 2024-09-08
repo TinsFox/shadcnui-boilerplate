@@ -42,7 +42,7 @@ export function Component() {
             className="mt-8 animate-slide-top text-4xl font-medium text-foreground [animation-delay:0.3s] [animation-fill-mode:backwards] md:text-5xl xl:mt-4 xl:animate-slide-left xl:text-6xl xl:[animation-delay:0.8s] xl:[animation-fill-mode:backwards]"
           >
             <a href="https://github.com/TinsFox/vite-boilerplate">
-              Vite Boilerplate
+              Shadcn UI Boilerplate
             </a>
           </h1>
           <p
@@ -53,7 +53,7 @@ export function Component() {
             {" "}
             <a
               className="underline hover:no-underline"
-              href="https://shadcnui-boilerplate-docs.vercel.app/guide/what-is-shadcn-ui-boilerplate"
+              href="https://shadcnui-boilerplate.pages.dev/guide/what-is-shadcn-ui-boilerplate"
             >
               Getting Started guide
             </a>

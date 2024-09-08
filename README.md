@@ -46,7 +46,7 @@ A boilerplate built with [**shadcn/ui**](https://github.com/shadcn-ui/ui) for ra
 
 ## Documentation
 
-Visit [Documentation](https://shadcnui-boilerplate-docs.vercel.app) for detailed usage instructions.
+Visit [Documentation](https://shadcnui-boilerplate.pages.dev) for detailed usage instructions.
 
 ## Contributing
 

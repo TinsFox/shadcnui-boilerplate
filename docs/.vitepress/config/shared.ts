@@ -2,7 +2,7 @@ import { defineConfig } from "vitepress"
 
 export const githubLink = "https://github.com/TinsFox/shadcnui-boilerplate"
 
-export const docsLink = "https://shadcnui-boilerplate-docs.vercel.app"
+export const docsLink = "https://shadcnui-boilerplate.pages.dev"
 
 export const shared = defineConfig({
   title: "shadcn/ui Boilerplate",

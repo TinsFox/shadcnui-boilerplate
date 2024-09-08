@@ -46,7 +46,7 @@
 
 ## 文档
 
-访问 [文档](https://shadcnui-boilerplate-docs.vercel.app/) 获取详细使用说明。
+访问 [文档](https://shadcnui-boilerplate.pages.dev) 获取详细使用说明。
 
 ## 贡献
 
