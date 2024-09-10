@@ -1,7 +1,7 @@
 <p align="center">
 
 <a href="https://github.com/TinsFox/shadcnui-boilerplate">
-  <img src="docs/public/index.png" alt="Cover image" width="700px">
+  <img src="https://shadcnui-boilerplate.pages.dev/index.png" alt="Cover image" width="700px">
   <h3 align="center">shadcn/ui boilerplate</h3>
 </a>
 
@@ -66,12 +66,12 @@
 
 [!["Buy Me A Coffee"](https://www.buymeacoffee.com/assets/img/custom_images/orange_img.png)](https://www.buymeacoffee.com/TinsFox)
 
-<img src="docs/public//wechat-appreciation-code.jpeg" alt="微信赞赏码" width="200px">
+<img src="https://shadcnui-boilerplate.pages.dev/wechat-appreciation-code.jpeg" alt="微信赞赏码" width="200px">
 
 ## 加入我们的微信群
 
 <p>
-  <img src="docs/public//wechat-group.png" alt="微信群二维码" width="200px">
+  <img src="https://shadcnui-boilerplate.pages.dev/wechat-group.png" alt="微信群二维码" width="200px">
 </p>
 
 扫描上方二维码加入我们的微信群，与其他开发者交流讨论！

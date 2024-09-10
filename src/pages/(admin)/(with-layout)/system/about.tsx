@@ -9,6 +9,7 @@ import {
 } from "@tanstack/react-table"
 import * as React from "react"
 import Markdown from "react-markdown"
+import rehypeRaw from "rehype-raw"
 import remarkGfm from "remark-gfm"
 
 import { Button } from "@/components/ui/button"
@@ -52,17 +53,19 @@ const getDependenciesData = (dependencies: Record<string, string>) => Object.ent
 
 export function Component() {
   return (
-    <div className="prose max-w-none dark:prose-invert">
-      <Markdown remarkPlugins={[remarkGfm]}>{README}</Markdown>
-      <div className="mb-8 rounded-lg">
-        <p className="mb-2 text-lg"><strong>Version:</strong> {pkg.version}</p>
+    <>
+      <div className="prose max-w-none dark:prose-invert">
+        <Markdown remarkPlugins={[remarkGfm]} rehypePlugins={[rehypeRaw]}>{README}</Markdown>
+        <div className="mb-8 rounded-lg">
+          <p className="mb-2 text-lg"><strong>Version:</strong> {pkg.version}</p>
+        </div>
+        <h2>Build with</h2>
+        <div className="not-prose flex w-full justify-between gap-x-3">
+          <DependencyTable data={getDependenciesData(dependencies)} />
+          <DependencyTable data={getDependenciesData(devDependencies)} />
+        </div>
       </div>
-      <h2>Build with</h2>
-      <div className="not-prose flex w-full justify-between gap-x-3">
-        <DependencyTable data={getDependenciesData(dependencies)} />
-        <DependencyTable data={getDependenciesData(devDependencies)} />
-      </div>
-    </div>
+    </>
 
   )
 }
