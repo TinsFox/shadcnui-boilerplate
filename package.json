@@ -12,6 +12,8 @@
   "scripts": {
     "build": "tsc && vite build",
     "build-storybook": "storybook build",
+    "commit": "commit",
+    "commitlint": "commitlint --edit",
     "coverage": "vitest run --coverage",
     "dev": "vite",
     "docs:build": "vitepress build docs",
@@ -92,6 +94,8 @@
   },
   "devDependencies": {
     "@chromatic-com/storybook": "^1.8.0",
+    "@commitlint/cli": "^19.4.1",
+    "@commitlint/config-conventional": "^19.4.1",
     "@faker-js/faker": "^8.4.1",
     "@storybook/addon-essentials": "^8.2.9",
     "@storybook/addon-interactions": "^8.2.9",
@@ -133,7 +137,8 @@
     "vitest": "^2.0.5"
   },
   "simple-git-hooks": {
-    "pre-commit": "npx lint-staged"
+    "pre-commit": "npx lint-staged",
+    "commit-msg": "npx --no -- commitlint --edit"
   },
   "lint-staged": {
     "*": "eslint --fix"
