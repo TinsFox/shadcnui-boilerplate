@@ -13,20 +13,6 @@ const readme = readFileSync("README.md", "utf8")
 export default defineConfig(({ mode }) => {
   const viteEnv = loadEnv(mode, process.cwd(), "")
 
-  const define = {
-    APP_VERSION: JSON.stringify(pkg.version),
-    APP_NAME: JSON.stringify(pkg.name),
-    APP_DEV_CWD: JSON.stringify(process.cwd()),
-    GIT_COMMIT_SHA: JSON.stringify(
-      process.env.VERCEL_GIT_COMMIT_SHA || getGitHash(),
-    ),
-    DEBUG: process.env.DEBUG === "true",
-    dependencies: JSON.stringify(pkg.dependencies),
-    devDependencies: JSON.stringify(pkg.devDependencies),
-    README: JSON.stringify(readme),
-    pkg: JSON.stringify(pkg),
-  }
-
   return {
     plugins: [
       tsconfigPaths(),
@@ -40,11 +26,19 @@ export default defineConfig(({ mode }) => {
         },
       }),
     ],
-    define,
+    define: {
+      APP_VERSION: JSON.stringify(pkg.version),
+      APP_NAME: JSON.stringify(pkg.name),
+      APP_DEV_CWD: JSON.stringify(process.cwd()),
+      GIT_COMMIT_SHA: JSON.stringify(getGitHash()),
+      dependencies: JSON.stringify(pkg.dependencies),
+      devDependencies: JSON.stringify(pkg.devDependencies),
+      README: JSON.stringify(readme),
+      pkg: JSON.stringify(pkg),
+    },
     server: {
-      port: 3000,
       proxy: {
-        "/^api/": {
+        "/api/": {
           target: viteEnv.VITE_API_URL,
           changeOrigin: true,
         },
