@@ -19,7 +19,8 @@ import {
   FormMessage,
 } from "@/components/ui/form"
 import { Input } from "@/components/ui/input"
-import { useUserMutation } from "@/hooks/query/use-user"
+import { useUserLoginMutation } from "@/hooks/query/use-user"
+import { getFetchErrorMessage } from "@/lib/api-fetch"
 import { cn } from "@/lib/utils"
 import type { ILoginForm } from "@/models/user"
 import { loginFormSchema } from "@/models/user"
@@ -36,12 +37,8 @@ export function Component() {
         </div>
         <div className="relative z-20 mt-auto">
           <blockquote className="space-y-2">
-            <p className="text-lg">
-              {t("login.intro.quote")}
-            </p>
-            <footer className="text-sm">
-              {t("login.intro.name")}
-            </footer>
+            <p className="text-lg">{t("login.intro.quote")}</p>
+            <footer className="text-sm">{t("login.intro.name")}</footer>
           </blockquote>
         </div>
       </div>
@@ -90,13 +87,13 @@ interface UserAuthFormProps extends React.HTMLAttributes<HTMLDivElement> { }
 function UserAuthForm({ className, ...props }: UserAuthFormProps) {
   const { t } = useTranslation()
 
-  const loginMutation = useUserMutation()
+  const loginMutation = useUserLoginMutation()
   const navigate = useNavigate()
   const form = useForm<ILoginForm>({
     resolver: zodResolver(loginFormSchema),
     defaultValues: {
-      email: "",
-      password: "",
+      email: "admin@shadcn.com",
+      password: "admin",
     },
   })
 
@@ -105,12 +102,18 @@ function UserAuthForm({ className, ...props }: UserAuthFormProps) {
       position: "top-center",
       loading: t("login.loading"),
       success: () => {
-        navigate("/dashboard", {
+        const redirectUrl =
+          new URLSearchParams(window.location.search).get("redirectTo") ||
+            "/dashboard"
+        navigate(redirectUrl, {
           replace: true,
         })
         return t("login.login_successful")
       },
-      error: t("login.error"),
+      error: (error) => {
+        const errorMessage = getFetchErrorMessage(error)
+        return t(`error.${errorMessage}` as never)
+      },
     })
   }
 
@@ -148,7 +151,9 @@ function UserAuthForm({ className, ...props }: UserAuthFormProps) {
               name="password"
               render={({ field }) => (
                 <FormItem className="grid gap-1">
-                  <FormLabel className="sr-only">{t("login.password")}</FormLabel>
+                  <FormLabel className="sr-only">
+                    {t("login.password")}
+                  </FormLabel>
                   <FormControl>
                     <Input
                       {...field}

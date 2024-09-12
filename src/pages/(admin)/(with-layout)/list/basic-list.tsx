@@ -6,6 +6,7 @@ import {
 import type {
   ColumnDef,
   ColumnFiltersState,
+  PaginationState,
   SortingState,
   VisibilityState,
 } from "@tanstack/react-table"
@@ -19,6 +20,7 @@ import {
 } from "@tanstack/react-table"
 import * as React from "react"
 
+import { Avatar, AvatarFallback, AvatarImage } from "@/components/ui/avatar"
 import { Button } from "@/components/ui/button"
 import { Checkbox } from "@/components/ui/checkbox"
 import {
@@ -32,6 +34,24 @@ import {
 } from "@/components/ui/dropdown-menu"
 import { Input } from "@/components/ui/input"
 import {
+  Pagination,
+  PaginationContent,
+  PaginationEllipsis,
+  PaginationItem,
+  PaginationLink,
+  PaginationNext,
+  PaginationPrevious,
+} from "@/components/ui/pagination"
+import {
+  Select,
+  SelectContent,
+  SelectGroup,
+  SelectItem,
+  SelectLabel,
+  SelectTrigger,
+  SelectValue,
+} from "@/components/ui/select"
+import {
   Table,
   TableBody,
   TableCell,
@@ -39,48 +59,10 @@ import {
   TableHeader,
   TableRow,
 } from "@/components/ui/table"
+import type { IUsers } from "@/hooks/query/use-user"
+import { useUsers } from "@/hooks/query/use-user"
 
-const data: Payment[] = [
-  {
-    id: "m5gr84i9",
-    amount: 316,
-    status: "success",
-    email: "ken99@yahoo.com",
-  },
-  {
-    id: "3u1reuv4",
-    amount: 242,
-    status: "success",
-    email: "Abe45@gmail.com",
-  },
-  {
-    id: "derv1ws0",
-    amount: 837,
-    status: "processing",
-    email: "Monserrat44@gmail.com",
-  },
-  {
-    id: "5kma53ae",
-    amount: 874,
-    status: "success",
-    email: "Silas22@gmail.com",
-  },
-  {
-    id: "bhqecj4p",
-    amount: 721,
-    status: "failed",
-    email: "carmella@hotmail.com",
-  },
-]
-
-type Payment = {
-  id: string
-  amount: number
-  status: "pending" | "processing" | "success" | "failed"
-  email: string
-}
-
-const columns: ColumnDef<Payment>[] = [
+const columns: ColumnDef<IUsers>[] = [
   {
     id: "select",
     header: ({ table }) => (
@@ -100,6 +82,44 @@ const columns: ColumnDef<Payment>[] = [
     ),
     enableSorting: false,
     enableHiding: false,
+  },
+  {
+    accessorKey: "id",
+    header: "ID",
+    cell: ({ row }) => <div className="lowercase">{row.getValue("id")}</div>,
+  },
+  {
+    accessorKey: "name",
+    header: "Name",
+    cell: ({ row }) => <div className="lowercase">{row.getValue("name")}</div>,
+  },
+  {
+    accessorKey: "role",
+    header: "Role",
+    cell: ({ row }) => <div className="lowercase">{row.getValue("role")}</div>,
+  },
+  {
+    accessorKey: "avatar",
+    header: "Avatar",
+    cell: ({ row }) => (
+      <div className="lowercase">
+        <Avatar>
+          <AvatarImage src={row.getValue("avatar")} />
+          <AvatarFallback>
+            {row.original.name.charAt(0)}
+          </AvatarFallback>
+        </Avatar>
+      </div>
+    ),
+  },
+  {
+    accessorKey: "createdAt",
+    header: "Created At",
+    cell: ({ row }) => (
+      <div className="lowercase">
+        {new Date(row.getValue("createdAt")).toLocaleDateString()}
+      </div>
+    ),
   },
   {
     accessorKey: "status",
@@ -141,7 +161,6 @@ const columns: ColumnDef<Payment>[] = [
     enableHiding: false,
     cell: ({ row }) => {
       const payment = row.original
-
       return (
         <DropdownMenu>
           <DropdownMenuTrigger asChild>
@@ -172,12 +191,19 @@ export function Component() {
   const [columnFilters, setColumnFilters] = React.useState<ColumnFiltersState>(
     [],
   )
+  const [pagination, setPagination] = React.useState<PaginationState>({
+    pageIndex: 0,
+    pageSize: 50,
+  })
   const [columnVisibility, setColumnVisibility] =
     React.useState<VisibilityState>({})
   const [rowSelection, setRowSelection] = React.useState({})
+  const { data: users } = useUsers(pagination)
+
+  const PAGINATION_STEP = 3 // You can easily change this value to adjust the pagination step
 
   const table = useReactTable({
-    data,
+    data: users.list,
     columns,
     onSortingChange: setSorting,
     onColumnFiltersChange: setColumnFilters,
@@ -187,16 +213,23 @@ export function Component() {
     getFilteredRowModel: getFilteredRowModel(),
     onColumnVisibilityChange: setColumnVisibility,
     onRowSelectionChange: setRowSelection,
+    onPaginationChange: setPagination,
+    manualPagination: true,
+    rowCount: users.total,
     state: {
       sorting,
       columnFilters,
       columnVisibility,
       rowSelection,
+      pagination: {
+        pageIndex: users.page, // Set the starting page to 1 instead of 0
+        pageSize: users.pageSize,
+      },
     },
   })
 
   return (
-    <div className="w-full">
+    <div className="w-full overflow-auto">
       <div className="flex items-center py-4">
         <Input
           placeholder="Filter emails..."
@@ -278,32 +311,116 @@ export function Component() {
         </Table>
       </div>
       <div className="flex items-center justify-end space-x-2 py-4">
+
         <div className="flex-1 text-sm text-muted-foreground">
-          {table.getFilteredSelectedRowModel().rows.length}
+          Page
+          {" "}
+          {table.getState().pagination.pageIndex + 1}
           {" "}
           of
           {" "}
-          {table.getFilteredRowModel().rows.length}
-          {" "}
-          row(s) selected.
+          {table.getPageCount() ? table.getPageCount().toLocaleString() : "-"}
         </div>
         <div className="space-x-2">
-          <Button
-            variant="outline"
-            size="sm"
-            onClick={() => table.previousPage()}
-            disabled={!table.getCanPreviousPage()}
-          >
-            Previous
-          </Button>
-          <Button
-            variant="outline"
-            size="sm"
-            onClick={() => table.nextPage()}
-            disabled={!table.getCanNextPage()}
-          >
-            Next
-          </Button>
+          <Pagination>
+            <PaginationContent>
+              <PaginationItem>
+                <PaginationPrevious onClick={() => table.previousPage()} disabled={!table.getCanPreviousPage()} />
+              </PaginationItem>
+
+              {(() => {
+                const currentPage = table.getState().pagination.pageIndex
+                const totalPages = table.getPageCount()
+                const visiblePages = []
+                const addPage = (index: number) => {
+                  visiblePages.push(
+                    <PaginationItem key={index}>
+                      <PaginationLink
+                        onClick={() => {
+                          setPagination({
+                            ...pagination,
+                            pageIndex: index,
+                          })
+                        }}
+                        isActive={currentPage === index}
+                      >
+
+                        {String(index + 1)}
+                      </PaginationLink>
+                    </PaginationItem>,
+                  )
+                }
+
+                // Always show first page
+                addPage(0)
+
+                if (totalPages <= 7) {
+                  // If total pages are 7 or less, show all pages
+                  for (let i = 1; i < totalPages; i++) {
+                    addPage(i)
+                  }
+                } else {
+                  let startPage = Math.max(1, currentPage - 1)
+                  let endPage = Math.min(totalPages - 2, currentPage + 1)
+
+                  // Adjust start and end page to always show 3 pages when possible
+                  if (startPage === 1) {
+                    endPage = Math.min(3, totalPages - 2)
+                  } else if (endPage === totalPages - 2) {
+                    startPage = Math.max(1, totalPages - 4)
+                  }
+
+                  // Show ellipsis at the start if needed
+                  if (startPage > 1) {
+                    visiblePages.push(
+                      <PaginationEllipsis
+                        key="ellipsis1"
+                        onClick={() => setPagination({ ...pagination, pageIndex: Math.max(0, currentPage - PAGINATION_STEP) })}
+                      />,
+                    )
+                  }
+
+                  // Add visible pages
+                  for (let i = startPage; i <= endPage; i++) {
+                    addPage(i)
+                  }
+
+                  // Show ellipsis at the end if needed
+                  if (endPage < totalPages - 2) {
+                    visiblePages.push(
+                      <PaginationEllipsis
+                        key="ellipsis2"
+                        onClick={() => setPagination({ ...pagination, pageIndex: Math.min(totalPages - 1, currentPage + PAGINATION_STEP) })}
+                      />,
+                    )
+                  }
+
+                  // Always show last page
+                  addPage(totalPages - 1)
+                }
+
+                return visiblePages
+              })()}
+
+              <PaginationItem>
+                <PaginationNext onClick={() => table.nextPage()} disabled={!table.getCanNextPage()} />
+              </PaginationItem>
+              <PaginationItem>
+                <Select value={pagination.pageSize.toString()} onValueChange={(value) => setPagination({ ...pagination, pageSize: Number(value) })}>
+                  <SelectTrigger>
+                    <SelectValue placeholder="Select a page size" />
+                  </SelectTrigger>
+                  <SelectContent>
+                    {[10, 20, 30, 40, 50].map((pageSize) => (
+                      <SelectItem key={pageSize} value={pageSize.toString()}>
+                        {pageSize} / page
+                      </SelectItem>
+                    ))}
+                  </SelectContent>
+                </Select>
+              </PaginationItem>
+            </PaginationContent>
+          </Pagination>
         </div>
       </div>
     </div>

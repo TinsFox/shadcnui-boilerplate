@@ -2,7 +2,6 @@ import { env } from "@env"
 import { ReactQueryDevtools } from "@tanstack/react-query-devtools"
 import { useAtom } from "jotai"
 import { atomWithStorage } from "jotai/utils"
-import { Grip } from "lucide-react"
 import { useCallback, useEffect, useRef, useState } from "react"
 
 import { Button } from "@/components/ui/button"
@@ -14,6 +13,7 @@ import {
   SheetTitle,
 } from "@/components/ui/sheet"
 import { queryClient } from "@/lib/query-client"
+import { cn } from "@/lib/utils"
 import { Badge } from "@/ui/badge"
 
 import { TailwindIndicator } from "./tailwind-indicator"
@@ -28,7 +28,11 @@ const devMonitorPanelAtom = atomWithStorage<DevMonitorPanelPosition>("dev-monito
   y: 0,
 })
 
-export function DevMonitorPanel() {
+interface DevMonitorPanelProps {
+  className?: string
+}
+
+export function DevMonitorPanel({ className }: DevMonitorPanelProps) {
   const [isSheetOpen, setIsSheetOpen] = useState(false)
   const [position, setPosition] = useAtom(devMonitorPanelAtom)
   const [isDragging, setIsDragging] = useState(false)
@@ -90,16 +94,8 @@ export function DevMonitorPanel() {
     <Sheet open={isSheetOpen} onOpenChange={setIsSheetOpen}>
       <div
         ref={panelRef}
-        className="fixed z-50 flex cursor-default items-center"
-        style={{
-          left: `${position.x}px`,
-          top: `${position.y}px`,
-        }}
+        className={cn("z-50 flex cursor-default items-center", className)}
       >
-        <Grip
-          className="cursor-move"
-          onMouseDown={handleMouseDown}
-        />
         <Badge onClick={() => setIsSheetOpen(true)}>
           DevPanel
           <TailwindIndicator />

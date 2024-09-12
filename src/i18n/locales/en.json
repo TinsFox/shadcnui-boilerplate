@@ -22,7 +22,8 @@
     "username_max_length": "Username must not be longer than 30 characters.",
     "email_required": "Please select an email to display.",
     "notification_type_required": "You need to select a notification type.",
-    "item_selection_required": "You have to select at least one item."
+    "item_selection_required": "You have to select at least one item.",
+    "invalid_email_or_password": "Invalid email or password."
   },
   "form": {
     "update_account": "Update account",
