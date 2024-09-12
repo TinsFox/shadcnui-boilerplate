@@ -11,7 +11,7 @@ import {
   ResizablePanel,
   ResizablePanelGroup,
 } from "@/components/ui/resizable"
-import { ScrollArea } from "@/components/ui/scroll-area"
+import { ScrollArea, ScrollBar } from "@/components/ui/scroll-area"
 import { DEFAULT_LAYOUT, NAV_COLLAPSED_SIZE } from "@/constants"
 import { queryUser } from "@/hooks/query/use-user"
 import { queryClient } from "@/lib/query-client"
@@ -69,12 +69,13 @@ export function Component() {
         </ResizablePanel>
         <ResizableHandle />
         <ResizablePanel defaultSize={defaultLayout[2]} minSize={30} className="my-2 mr-2 overflow-hidden transition-all duration-300">
-          <div className="flex h-screen flex-col overflow-hidden">
+          <div className="flex h-screen flex-col">
             <Header handleNavCollapse={handleNavCollapse} />
-            <ScrollArea className="flex-auto p-8 pt-6">
+            <ScrollArea className="flex-auto overflow-x-auto p-8 pt-6">
               <main>
                 <Outlet />
               </main>
+              <ScrollBar orientation="horizontal" />
             </ScrollArea>
           </div>
         </ResizablePanel>

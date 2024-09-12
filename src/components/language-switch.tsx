@@ -9,7 +9,7 @@ import {
 } from "@/components/ui/select"
 import { languages } from "@/i18n"
 
-const LanguageSwitch = () => {
+export const LanguageSwitch = () => {
   const { i18n } = useTranslation()
 
   const changeLanguage = (lng: string) => {
@@ -18,8 +18,8 @@ const LanguageSwitch = () => {
 
   return (
     <Select value={i18n.language} onValueChange={changeLanguage}>
-      <SelectTrigger className="w-[180px]">
-        <SelectValue placeholder="Select a fruit" />
+      <SelectTrigger className="w-[100px]">
+        <SelectValue placeholder="Select a language" />
       </SelectTrigger>
       <SelectContent>
         {languages.map((language) => (
@@ -31,5 +31,3 @@ const LanguageSwitch = () => {
     </Select>
   )
 }
-
-export default LanguageSwitch

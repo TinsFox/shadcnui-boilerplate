@@ -53,7 +53,7 @@ export function ThemeCustomizer({ className }: ThemeCustomizerProps) {
     <div className={cn("flex items-center gap-2", className)}>
       <Drawer>
         <DrawerTrigger asChild>
-          <Button size="sm" className="md:hidden" variant="outline">
+          <Button size="sm" className="md:hidden" variant="ghost">
             <Palette />
           </Button>
         </DrawerTrigger>
@@ -64,7 +64,7 @@ export function ThemeCustomizer({ className }: ThemeCustomizerProps) {
       <div className="hidden items-center md:flex">
         <Popover>
           <PopoverTrigger asChild>
-            <Button size="icon" variant="outline">
+            <Button size="icon" variant="ghost">
               <Palette />
             </Button>
           </PopoverTrigger>

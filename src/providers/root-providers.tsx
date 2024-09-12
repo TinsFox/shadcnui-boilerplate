@@ -10,7 +10,7 @@ import { ThemesStyle } from "@/components/theme/themes-styles"
 import { Toaster } from "@/components/ui/sonner"
 import { Toaster as PrimitiveToaster } from "@/components/ui/toaster"
 import { TooltipProvider } from "@/components/ui/tooltip"
-import { i18n } from "@/i18n" // initialized i18next instance
+import { i18n } from "@/i18n"
 import { queryClient } from "@/lib/query-client"
 
 const loadFeatures = () =>
@@ -35,12 +35,12 @@ export const RootProviders: FC<PropsWithChildren> = ({ children }) => (
                 </HotkeysProvider>
               </TooltipProvider>
               <ThemesStyle />
+              <Toaster richColors />
             </ThemeProvider>
           </ThemeWrapper>
         </QueryClientProvider>
       </MotionConfig>
       <PrimitiveToaster />
-      <Toaster richColors />
     </LazyMotion>
   </I18nextProvider>
 )

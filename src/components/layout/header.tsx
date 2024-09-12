@@ -1,9 +1,10 @@
 import { Menu } from "lucide-react"
 
-import LanguageSwitch from "@/components/language-switch"
+import { LanguageSwitch } from "@/components/language-switch"
 import { Search } from "@/components/layout/search"
 import { MobileNav } from "@/components/layout/sidebar/mobile-nav"
 import { UserNav } from "@/components/layout/user-nav"
+import { ThemeCustomizer } from "@/components/theme/theme-customizer"
 import { ThemeSwitcher } from "@/components/theme/theme-switcher"
 import { Button } from "@/components/ui/button"
 
@@ -31,6 +32,7 @@ export function Header({ handleNavCollapse }: HeaderProps) {
           <Search />
           <LanguageSwitch />
           <ThemeSwitcher />
+          <ThemeCustomizer className="" />
           <TailwindIndicator />
           <UserNav />
         </div>

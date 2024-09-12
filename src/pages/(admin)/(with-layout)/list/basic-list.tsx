@@ -45,9 +45,7 @@ import {
 import {
   Select,
   SelectContent,
-  SelectGroup,
   SelectItem,
-  SelectLabel,
   SelectTrigger,
   SelectValue,
 } from "@/components/ui/select"
@@ -229,7 +227,7 @@ export function Component() {
   })
 
   return (
-    <div className="w-full overflow-auto">
+    <div className="">
       <div className="flex items-center py-4">
         <Input
           placeholder="Filter emails..."
