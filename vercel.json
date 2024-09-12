@@ -1,8 +1,8 @@
 {
   "rewrites": [
     {
-      "source": "docs/(.*)",
-      "destination": "/docs/$1"
+      "source": "/api/:path(.*)",
+      "destination": "https://mock-service.tinsfox4012370.workers.dev/:path"
     },
     {
       "source": "/(.*)",
