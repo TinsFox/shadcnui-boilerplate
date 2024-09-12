@@ -8,7 +8,7 @@ import type { z } from "zod"
 
 import { Icons } from "@/components/icons"
 import { Logo } from "@/components/icons/logo"
-import LanguageSwitch from "@/components/language-switch"
+import { LanguageSwitch } from "@/components/language-switch"
 import { Button } from "@/components/ui/button"
 import {
   Form,
