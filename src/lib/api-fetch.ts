@@ -6,9 +6,7 @@ export const apiFetch = ofetch.create({
   onRequest: async ({ options }) => {
     const header = new Headers(options.headers)
 
-    options.headers = {
-      ...header,
-    }
+    options.headers = header
 
     if (options.method && options.method.toLowerCase() !== "get") {
       if (typeof options.body === "string") {
