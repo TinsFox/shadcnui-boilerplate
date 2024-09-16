@@ -1,6 +1,6 @@
 import { z } from "zod"
 
-export const userSchema = z.object({
+export const userProfileSchema = z.object({
   userId: z.string(),
   avatar: z.string(),
   password: z.string(),
@@ -31,7 +31,24 @@ export const userSchema = z.object({
     .optional()
     .default([]),
 })
-export type IUserInfo = z.infer<typeof userSchema>
+export type IUserProfile = z.infer<typeof userProfileSchema>
+export const userStatuses = ["pending", "processing", "success", "failed"] as const
+
+export const userRoles = ["admin", "user", "guest"] as const
+
+export const userSchema = z.object({
+  id: z.string(),
+  amount: z.number(),
+  status: z.enum(userStatuses),
+  email: z.string().email(),
+  name: z.string(),
+  avatar: z.string(),
+  createdAt: z.string(),
+  role: z.enum(userRoles),
+  bio: z.string(),
+})
+
+export type IUsers = z.infer<typeof userSchema>
 
 export const loginFormSchema = z.object({
   email: z

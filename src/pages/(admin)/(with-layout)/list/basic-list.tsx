@@ -29,7 +29,6 @@ import {
   DropdownMenuContent,
   DropdownMenuItem,
   DropdownMenuLabel,
-  DropdownMenuSeparator,
   DropdownMenuTrigger,
 } from "@/components/ui/dropdown-menu"
 import { Input } from "@/components/ui/input"
@@ -57,8 +56,10 @@ import {
   TableHeader,
   TableRow,
 } from "@/components/ui/table"
-import type { IUsers } from "@/hooks/query/use-user"
 import { useUsers } from "@/hooks/query/use-user"
+import type { IUsers } from "@/models/user"
+
+import { ViewUser } from "./components/view-user"
 
 const columns: ColumnDef<IUsers>[] = [
   {
@@ -158,7 +159,7 @@ const columns: ColumnDef<IUsers>[] = [
     id: "actions",
     enableHiding: false,
     cell: ({ row }) => {
-      const payment = row.original
+      const user = row.original
       return (
         <DropdownMenu>
           <DropdownMenuTrigger asChild>
@@ -170,13 +171,11 @@ const columns: ColumnDef<IUsers>[] = [
           <DropdownMenuContent align="end">
             <DropdownMenuLabel>Actions</DropdownMenuLabel>
             <DropdownMenuItem
-              onClick={() => navigator.clipboard.writeText(payment.id)}
+              onClick={() => navigator.clipboard.writeText(user.id)}
             >
               Copy payment ID
             </DropdownMenuItem>
-            <DropdownMenuSeparator />
-            <DropdownMenuItem>View customer</DropdownMenuItem>
-            <DropdownMenuItem>View payment details</DropdownMenuItem>
+            <ViewUser user={row.original} />
           </DropdownMenuContent>
         </DropdownMenu>
       )
@@ -227,8 +226,8 @@ export function Component() {
   })
 
   return (
-    <div className="">
-      <div className="flex items-center py-4">
+    <div className="px-2">
+      <div className="flex items-center  py-4">
         <Input
           placeholder="Filter emails..."
           value={(table.getColumn("email")?.getFilterValue() as string) ?? ""}

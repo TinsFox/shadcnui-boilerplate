@@ -8,11 +8,11 @@ import {
 import type { PaginationState } from "@tanstack/react-table"
 
 import { apiFetch } from "@/lib/api-fetch"
-import type { ILoginForm, IUserInfo } from "@/models/user"
+import type { ILoginForm, IUserProfile, IUsers } from "@/models/user"
 
 export const queryUser = () => queryOptions({
   queryKey: ["userInfo"],
-  queryFn: async () => apiFetch<IUserInfo>("/api/user"),
+  queryFn: async () => apiFetch<IUserProfile>("/api/user"),
 })
 
 export function useUser() {
@@ -36,17 +36,6 @@ export function useUserLogoutMutation() {
   })
 }
 
-export interface IUsers {
-  id: string
-  amount: number
-  status: "pending" | "processing" | "success" | "failed"
-  email: string
-  name: string
-  avatar: string
-  createdAt: string
-  role: string
-  bio: string
-}
 export function useUsers(pagination: PaginationState) {
   const { data } = useQuery({
     queryKey: ["users", pagination.pageIndex, pagination.pageSize],
