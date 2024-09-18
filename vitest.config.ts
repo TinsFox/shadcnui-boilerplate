@@ -5,8 +5,8 @@ import { configDefaults, defineConfig } from "vitest/config"
 
 import viteConfig from "./vite.config"
 
-export default mergeConfig(
-  viteConfig,
+export default defineConfig((configEnv) => mergeConfig(
+  viteConfig(configEnv),
   defineConfig({
     test: {
       environment: "jsdom",
@@ -15,4 +15,4 @@ export default mergeConfig(
       setupFiles: ["./__test__/setup.ts"],
     },
   }),
-)
+))
