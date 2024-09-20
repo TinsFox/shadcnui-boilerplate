@@ -15,17 +15,24 @@ export const queryUser = () => queryOptions({
   queryFn: async () => apiFetch<IUserProfile>("/api/user"),
 })
 
+export const queryUserInfo = () =>
+  queryOptions({
+    queryKey: ["user-info"],
+    queryFn: async () => apiFetch<IUserProfile>(`/api/user/info`),
+  })
+
 export function useUser() {
-  return useSuspenseQuery(queryUser())
+  return useSuspenseQuery(queryUserInfo())
 }
 
 export function useUserLoginMutation() {
   return useMutation({
     mutationFn: async (loginForm: ILoginForm) =>
-      await apiFetch("/api/login", {
+      await apiFetch("/api/auth/login", {
         method: "POST",
         body: loginForm,
       }),
+    mutationKey: ["user-login"],
   })
 }
 
@@ -44,7 +51,7 @@ export function useUsers(pagination: PaginationState) {
       total: number
       page: number
       pageSize: number
-    }>("/api/users", {
+    }>("/api/team-users", {
       params: {
         page: pagination.pageIndex,
         pageSize: pagination.pageSize,
