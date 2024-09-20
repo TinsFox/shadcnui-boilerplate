@@ -13,12 +13,14 @@ export const userSchema = z.object({
     })
     .max(30, {
       message: "Username must not be longer than 30 characters.",
-    }).default(""),
+    })
+    .default(""),
   email: z
     .string({
       required_error: "Please select an email to display.",
     })
-    .email().default(""),
+    .email()
+    .default(""),
   bio: z.string().max(160).min(4).default(""),
   urls: z
     .array(
@@ -26,7 +28,8 @@ export const userSchema = z.object({
         value: z.string().url({ message: "Please enter a valid URL." }),
       }),
     )
-    .optional().default([]),
+    .optional()
+    .default([]),
 })
 export type IUserInfo = z.infer<typeof userSchema>
 

@@ -1,7 +1,8 @@
 import * as React from "react"
 import { useTranslation } from "react-i18next"
-import { NavLink } from "react-router-dom"
+import { Link, NavLink } from "react-router-dom"
 
+import { Logo } from "@/components/icons/logo"
 import { buttonVariants } from "@/components/ui/button"
 import { cn } from "@/lib/utils"
 import { ScrollArea } from "@/ui/scroll-area"
@@ -24,6 +25,11 @@ export function Sidebar({ className, isCollapsed }: SidebarProps) {
           isCollapsed ? "h-16" : "px-2",
         )}
       >
+        <Link to="/dashboard/overview">
+          <h1 className="flex flex-row items-start justify-start gap-2">
+            <Logo className="size-10" />
+          </h1>
+        </Link>
         <AccountSwitcher isCollapsed={isCollapsed} accounts={accounts} />
       </div>
       <ScrollArea className="h-full overflow-auto pb-12">

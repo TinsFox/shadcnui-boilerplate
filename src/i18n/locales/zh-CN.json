@@ -22,7 +22,8 @@
     "username_max_length": "用户名不得超过30个字符。",
     "email_required": "请选择要显示的电子邮件。",
     "notification_type_required": "您需要选择通知类型。",
-    "item_selection_required": "您必须选择至少一个项目。"
+    "item_selection_required": "您必须选择至少一个项目。",
+    "invalid_email_or_password": "无效的电子邮件或密码。"
   },
   "form": {
     "update_account": "更新账户",

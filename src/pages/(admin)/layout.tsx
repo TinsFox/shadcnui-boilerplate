@@ -1,24 +1,28 @@
 import { useAtom } from "jotai"
-import { Menu } from "lucide-react"
 import { useRef } from "react"
 import type { ImperativePanelHandle } from "react-resizable-panels"
-import { Outlet } from "react-router-dom"
+import { Outlet, redirect } from "react-router-dom"
 
 import { isCollapsedAtom, layoutAtom } from "@/atoms/resizable-panels"
-import LanguageSwitch from "@/components/language-switch"
-import { Search } from "@/components/layout/search"
+import { Header } from "@/components/layout/header"
 import { Sidebar } from "@/components/layout/sidebar"
-import { MobileNav } from "@/components/layout/sidebar/mobile-nav"
-import { UserNav } from "@/components/layout/user-nav"
-import { ThemeSwitcher } from "@/components/theme/theme-switcher"
-import { Button } from "@/components/ui/button"
 import {
   ResizableHandle,
   ResizablePanel,
   ResizablePanelGroup,
 } from "@/components/ui/resizable"
 import { DEFAULT_LAYOUT, NAV_COLLAPSED_SIZE } from "@/constants"
+import { queryUser } from "@/hooks/query/use-user"
+import { queryClient } from "@/lib/query-client"
 import { cn } from "@/lib/utils"
+
+export const loader = async () => {
+  const userData = await queryClient.ensureQueryData(queryUser())
+  if (!userData) {
+    return redirect("/login")
+  }
+  return userData
+}
 
 export function Component() {
   const [layout, setLayout] = useAtom(layoutAtom)
@@ -33,7 +37,7 @@ export function Component() {
     }
   }
   return (
-    <div className="h-screen overflow-hidden">
+    <div className="h-dvh w-screen overflow-hidden">
       <ResizablePanelGroup
         direction="horizontal"
         onLayout={(sizes: number[]) => {
@@ -55,7 +59,7 @@ export function Component() {
             setIsCollapsed(false)
           }}
           className={cn(
-            "hidden !max-w-[330px] lg:block",
+            "hidden h-dvh !max-w-[330px] lg:block",
             isCollapsed &&
             "min-w-[50px] transition-all duration-300",
           )}
@@ -63,28 +67,10 @@ export function Component() {
           <Sidebar isCollapsed={isCollapsed} />
         </ResizablePanel>
         <ResizableHandle />
-        <ResizablePanel defaultSize={defaultLayout[2]} minSize={30} className="transition-all duration-300">
-          <div className="flex h-full flex-col overflow-auto">
-            <div className="border-b">
-              <div className="flex h-16 items-center px-4">
-                <Button
-                  size="icon"
-                  variant="ghost"
-                  onClick={handleNavCollapse}
-                  className="hidden lg:flex"
-                >
-                  <Menu />
-                </Button>
-                <MobileNav />
-                <div className="ml-auto flex items-center space-x-4">
-                  <Search />
-                  <LanguageSwitch />
-                  <ThemeSwitcher />
-                  <UserNav />
-                </div>
-              </div>
-            </div>
-            <div className="h-full flex-1 overflow-y-auto p-8 pt-6">
+        <ResizablePanel defaultSize={defaultLayout[2]} minSize={30} className="my-2 mr-2 overflow-hidden rounded-lg bg-[#EDEDED] transition-all duration-300">
+          <div className="flex h-screen flex-col overflow-hidden">
+            <Header handleNavCollapse={handleNavCollapse} />
+            <div className="flex flex-auto flex-col overflow-auto p-8 pt-6">
               <Outlet />
             </div>
           </div>

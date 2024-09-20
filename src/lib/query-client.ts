@@ -4,6 +4,7 @@ import { FetchError } from "ofetch"
 const queryClient = new QueryClient({
   defaultOptions: {
     queries: {
+      staleTime: 1000 * 10,
       refetchOnWindowFocus: false,
       retryDelay: 1000,
       retry(failureCount, error) {
