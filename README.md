@@ -47,6 +47,7 @@ A boilerplate built with [**shadcn/ui**](https://github.com/shadcn-ui/ui) for ra
 ## Documentation
 
 Visit [Documentation](https://shadcnui-boilerplate.pages.dev) for detailed usage instructions.
+Mock data server is here https://github.com/TinsFox/mock-service
 
 ## Contributing
 
