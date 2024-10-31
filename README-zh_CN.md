@@ -60,22 +60,6 @@
 
 如果您觉得这个项目对您有帮助，欢迎给我们一个 star ⭐️
 
-或者 👇
-
-[![TinsFox's Profile](https://afdian-connect-nine.vercel.app/profile.svg)](https://afdian.com/a/tinsfox)
-
-[!["Buy Me A Coffee"](https://www.buymeacoffee.com/assets/img/custom_images/orange_img.png)](https://www.buymeacoffee.com/TinsFox)
-
-<img src="https://shadcnui-boilerplate.pages.dev/wechat-appreciation-code.jpeg" alt="微信赞赏码" width="200px">
-
-## 加入我们的微信群
-
-<p>
-  <img src="https://shadcnui-boilerplate.pages.dev/wechat-group.png" alt="微信群二维码" width="200px">
-</p>
-
-扫描上方二维码加入我们的微信群，与其他开发者交流讨论！
-
 ## 致谢
 
 - [**shadcn/ui**](https://github.com/shadcn-ui/ui): 一套可定制的 UI 组件，用于构建具有一致设计模式的精美用户界面。
