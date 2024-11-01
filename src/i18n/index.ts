@@ -1,22 +1,42 @@
 import i18n from "i18next"
 import LanguageDetector from "i18next-browser-languagedetector"
-// import Backend from "i18next-http-backend"
 import { initReactI18next } from "react-i18next"
 
-// don't want to use this?
-// have a look at the Quick start guide
-// for passing in lng and translations on init
-import en from "./locales/en.json"
-import zhCN from "./locales/zh-CN.json"
+import auth from "../../locales/en/auth.json"
+import common from "../../locales/en/common.json"
+import errors from "../../locales/en/errors.json"
+import forms from "../../locales/en/forms.json"
+import navigation from "../../locales/en/navigation.json"
+import settings from "../../locales/en/settings.json"
+import authZh from "../../locales/zh-CN/auth.json"
+import commonZh from "../../locales/zh-CN/common.json"
+import errorsZh from "../../locales/zh-CN/errors.json"
+import formsZh from "../../locales/zh-CN/forms.json"
+import navigationZh from "../../locales/zh-CN/navigation.json"
+import settingsZh from "../../locales/zh-CN/settings.json"
+
+const enResources = {
+  common,
+  auth,
+  forms,
+  settings,
+  navigation,
+  errors,
+}
+const zhResources = {
+  common: commonZh,
+  auth: authZh,
+  forms: formsZh,
+  settings: settingsZh,
+  navigation: navigationZh,
+  errors: errorsZh,
+}
 
 const resources = {
-  en: {
-    translation: en,
-  },
-  zh: {
-    translation: zhCN,
-  },
+  en: enResources,
+  zh: zhResources,
 }
+
 export const languages = [
   {
     value: "en",
@@ -28,25 +48,21 @@ export const languages = [
     label: "中文",
     icon: "🇨🇳",
   },
-]
+] as const
+
+export const ns = ["common", "auth", "forms", "settings", "navigation", "errors"] as const
+
 i18n
-  // load translation using http -> see /public/locales (i.e. https://github.com/i18next/react-i18next/tree/master/example/react/public/locales)
-  // learn more: https://github.com/i18next/i18next-http-backend
-  // want your translations to be loaded from a professional CDN? => https://github.com/locize/react-tutorial#step-2---use-the-locize-cdn
-  // .use(Backend)
-  // detect user language
-  // learn more: https://github.com/i18next/i18next-browser-languageDetector
   .use(LanguageDetector)
-  // pass the i18n instance to react-i18next.
   .use(initReactI18next)
-  // init i18next
-  // for all options read: https://www.i18next.com/overview/configuration-options
   .init({
     resources,
     fallbackLng: "en",
+    defaultNS: "common",
+    ns,
     debug: true,
     interpolation: {
-      escapeValue: false, // not needed for react as it escapes by default
+      escapeValue: false,
     },
   })
 

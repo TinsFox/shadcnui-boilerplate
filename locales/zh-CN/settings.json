@@ -1,0 +1,124 @@
+{
+  "nav": {
+    "profile": "个人资料",
+    "account": "账户",
+    "appearance": "外观",
+    "notifications": "通知",
+    "display": "显示",
+    "theme": "主题"
+  },
+  "sections": {
+    "profile": {
+      "title": "个人资料",
+      "description": "这是您在网站上看到的个人资料。",
+      "email_options": "电子邮件选项",
+      "urls": "链接",
+      "add_url": "添加链接",
+      "update_profile": "更新个人资料",
+      "username": "用户名",
+      "username_description": "这是将在您的个人资料中显示的用户名。",
+      "email": "电子邮件",
+      "email_description": "这是将在您的个人资料中显示的电子邮件。",
+      "password": "密码",
+      "password_description": "这是将用于登录您的账户的密码。",
+      "confirm_password": "确认密码",
+      "confirm_password_description": "这是将用于确认您的密码的密码。",
+      "email_options_description": "这是将在您的个人资料中显示的电子邮件选项。",
+      "urls_description": "这是将在您的个人资料中显示的链接。",
+      "bio": "个人简介",
+      "bio_description": "这是将在您的个人资料中显示的个人简介。"
+    },
+    "appearance": {
+      "title": "外观",
+      "description": "自定义应用程序的外观。自动在白天和黑夜之间切换主题。",
+      "font": "字体",
+      "select_font_description": "选择应用程序的字体。",
+      "theme": "主题",
+      "theme_description": "这是将在您的个人资料中显示的主题。",
+      "system": "系统",
+      "light": "亮色",
+      "dark": "暗色",
+      "inter": "Inter",
+      "manrope": "Manrope"
+    },
+    "notifications": {
+      "title": "通知",
+      "description": "这是您在网站上看到的通知。",
+      "email_settings": {
+        "title": "电子邮件通知",
+        "communication": "通信电子邮件",
+        "marketing": "营销电子邮件",
+        "social": "社交电子邮件",
+        "security": "安全电子邮件"
+      },
+      "mobile_settings": {
+        "use_different": "为我的移动设备使用不同的设置",
+        "description": "您可以在移动设置页面中管理您的移动通知。",
+        "page": "移动设置"
+      },
+      "preferences": {
+        "notify_about": "通知我关于",
+        "options": {
+          "all_messages": "所有新消息",
+          "mentions": "所有新提及",
+          "reactions": "所有新反应",
+          "followers": "所有新关注者",
+          "direct_messages": "直接消息和提及",
+          "comments": "所有新评论",
+          "replies": "所有新回复",
+          "posts": "所有新帖子",
+          "nothing": "无"
+        }
+      },
+      "update_notifications": "更新通知",
+      "update_notifications_description": "这是将在您的个人资料中显示的更新通知。",
+      "update_notifications_description_2": "您可以在移动设置页面中管理您的移动通知。",
+      "update_notifications_description_3": "您可以在移动设置页面中管理您的移动通知。"
+    },
+    "display": {
+      "title": "显示",
+      "description": "打开或关闭项目以控制应用程序中显示的内容。",
+      "sidebar": {
+        "title": "侧边栏",
+        "description": "打开或关闭项目以控制应用程序中显示的内容。",
+        "items": {
+          "recents": "最近",
+          "home": "主页",
+          "applications": "应用程序",
+          "desktop": "桌面",
+          "downloads": "下载",
+          "documents": "文档"
+        }
+      }
+    },
+    "account": {
+      "title": "账户",
+      "name": "姓名",
+      "name_description": "这是您的公开显示名称。",
+      "your_name": "您的姓名",
+      "date_of_birth": "出生日期",
+      "dob_description": "您的出生日期用于计算您的年龄。",
+      "pick_date": "选择日期",
+      "language": "语言",
+      "language_description": "这是将在应用程序中使用的语言。",
+      "select_language": "选择语言",
+      "search_language": "搜索语言...",
+      "no_language_found": "未找到语言",
+      "update_account": "更新账户",
+      "languages": {
+        "english": "英语",
+        "french": "法语",
+        "german": "德语",
+        "spanish": "西班牙语",
+        "portuguese": "葡萄牙语",
+        "russian": "俄语",
+        "japanese": "日语",
+        "korean": "韩语",
+        "chinese": "中文"
+      }
+    }
+  },
+  "form": {
+    "you_submitted": "您提交了以下值："
+  }
+}

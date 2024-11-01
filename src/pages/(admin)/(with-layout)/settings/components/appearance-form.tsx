@@ -36,8 +36,7 @@ const defaultValues: Partial<AppearanceFormValues> = {
 }
 
 export function AppearanceForm() {
-  const { t } = useTranslation()
-
+  const { t } = useTranslation(["settings", "common"])
   const form = useForm<AppearanceFormValues>({
     resolver: zodResolver(appearanceFormSchema),
     defaultValues,
@@ -62,7 +61,7 @@ export function AppearanceForm() {
           name="font"
           render={({ field }) => (
             <FormItem>
-              <FormLabel>{t("settings.appearance.font")}</FormLabel>
+              <FormLabel>{t("sections.appearance.font")}</FormLabel>
               <div className="relative w-max">
                 <FormControl>
                   <select
@@ -72,15 +71,15 @@ export function AppearanceForm() {
                     )}
                     {...field}
                   >
-                    <option value="inter">{t("form.inter")}</option>
-                    <option value="manrope">{t("form.manrope")}</option>
-                    <option value="system">{t("form.system")}</option>
+                    <option value="inter">{t("sections.appearance.inter")}</option>
+                    <option value="manrope">{t("sections.appearance.manrope")}</option>
+                    <option value="system">{t("sections.appearance.system")}</option>
                   </select>
                 </FormControl>
                 <ChevronDownIcon className="absolute right-3 top-2.5 size-4 opacity-50" />
               </div>
               <FormDescription>
-                {t("form.select_font_description")}
+                {t("sections.appearance.select_font_description")}
               </FormDescription>
               <FormMessage />
             </FormItem>
@@ -91,9 +90,9 @@ export function AppearanceForm() {
           name="theme"
           render={({ field }) => (
             <FormItem className="space-y-1">
-              <FormLabel>{t("settings.appearance.theme")}</FormLabel>
+              <FormLabel>{t("sections.appearance.theme")}</FormLabel>
               <FormDescription>
-                {t("form.select_theme_description")}
+                {t("sections.appearance.theme_description")}
               </FormDescription>
               <FormMessage />
               <RadioGroup
@@ -123,7 +122,7 @@ export function AppearanceForm() {
                       </div>
                     </div>
                     <span className="block w-full p-2 text-center font-normal">
-                      {t("settings.appearance.light")}
+                      {t("sections.appearance.light")}
                     </span>
                   </FormLabel>
                 </FormItem>
@@ -149,7 +148,7 @@ export function AppearanceForm() {
                       </div>
                     </div>
                     <span className="block w-full p-2 text-center font-normal">
-                      {t("settings.appearance.dark")}
+                      {t("sections.appearance.dark")}
                     </span>
                   </FormLabel>
                 </FormItem>
@@ -158,7 +157,7 @@ export function AppearanceForm() {
           )}
         />
 
-        <Button type="submit">{t("form.update_preferences")}</Button>
+        <Button type="submit">{t("common:update")}</Button>
       </form>
     </Form>
   )

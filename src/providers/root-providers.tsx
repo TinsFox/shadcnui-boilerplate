@@ -29,6 +29,7 @@ export const RootProviders: FC<PropsWithChildren> = ({ children }) => (
         <QueryClientProvider client={queryClient}>
           <ThemeWrapper>
             <ThemeProvider defaultTheme="system" storageKey="vite-ui-theme">
+
               <TooltipProvider>
                 <HotkeysProvider initiallyActiveScopes={["home"]}>
                   {children}

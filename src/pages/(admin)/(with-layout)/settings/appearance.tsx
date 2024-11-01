@@ -5,14 +5,14 @@ import { Separator } from "@/components/ui/separator"
 import { AppearanceForm } from "./components/appearance-form"
 
 export function Component() {
-  const { t } = useTranslation()
+  const { t } = useTranslation("settings")
 
   return (
     <div className="space-y-6">
       <div>
-        <h3 className="text-lg font-medium">{t("settings.nav.appearance")}</h3>
+        <h3 className="text-lg font-medium">{t("nav.appearance")}</h3>
         <p className="text-sm text-muted-foreground">
-          {t("settings.appearance_description")}
+          {t("sections.appearance.description")}
         </p>
       </div>
       <Separator />

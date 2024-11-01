@@ -1,0 +1,119 @@
+{
+  "nav": {
+    "profile": "Profile",
+    "account": "Account",
+    "appearance": "Appearance",
+    "notifications": "Notifications",
+    "display": "Display",
+    "theme": "Theme"
+  },
+  "sections": {
+    "profile": {
+      "title": "Profile",
+      "description": "This is the profile that will be displayed on your profile.",
+      "email_options": "Email options",
+      "urls": "Urls",
+      "add_url": "Add url",
+      "update_profile": "Update profile",
+      "username": "Username",
+      "username_description": "This is the username that will be displayed on your profile.",
+      "email": "Email",
+      "email_description": "This is the email that will be displayed on your profile.",
+      "password": "Password",
+      "password_description": "This is the password that will be used to log in to your account.",
+      "confirm_password": "Confirm password",
+      "confirm_password_description": "This is the password that will be used to confirm your password.",
+      "email_options_description": "This is the email options that will be displayed on your profile.",
+      "urls_description": "This is the urls that will be displayed on your profile.",
+      "bio": "Bio",
+      "bio_description": "This is the bio that will be displayed on your profile."
+    },
+    "appearance": {
+      "title": "Appearance",
+      "description": "Customize the appearance of the app. Automatically switch between day and night themes.",
+      "font": "Font",
+      "select_font_description": "Select the font for the app.",
+      "theme": "Theme",
+      "theme_description": "This is the theme that will be displayed on your profile.",
+      "system": "System",
+      "light": "Light",
+      "dark": "Dark",
+      "inter": "Inter",
+      "manrope": "Manrope"
+    },
+    "notifications": {
+      "title": "Notifications",
+      "description": "This is the notifications that will be displayed on your profile.",
+      "email_settings": {
+        "title": "Email notifications",
+        "communication": "Communication emails",
+        "marketing": "Marketing emails",
+        "social": "Social emails",
+        "security": "Security emails"
+      },
+      "mobile_settings": {
+        "use_different": "Use different settings for my mobile devices",
+        "description": "You can manage your mobile notifications on the mobile settings.",
+        "page": "Mobile settings page"
+      },
+      "preferences": {
+        "notify_about": "Notify me about...",
+        "options": {
+          "all_messages": "All new messages",
+          "direct_messages": "Direct messages and mentions",
+          "nothing": "Nothing"
+        }
+      },
+      "update_notifications": "Update notifications",
+      "update_notifications_description": "This is the update notifications that will be displayed on your profile.",
+      "update_notifications_description_2": "You can manage your mobile notifications on the mobile settings page.",
+      "update_notifications_description_3": "You can manage your mobile notifications on the mobile settings page."
+    },
+    "display": {
+      "title": "Display",
+      "description": "Turn items on or off to control what's displayed in the app.",
+      "sidebar": {
+        "title": "Sidebar",
+        "description": "Turn items on or off to control what's displayed in the app.",
+        "items": {
+          "recents": "Recents",
+          "home": "Home",
+          "applications": "Applications",
+          "desktop": "Desktop",
+          "downloads": "Downloads",
+          "documents": "Documents"
+        }
+      }
+    },
+    "account": {
+      "title": "Account",
+      "description": "Update your account settings.",
+      "name": "Name",
+      "name_description": "This is your public display name.",
+      "your_name": "Your name",
+      "date_of_birth": "Date of birth",
+      "dob_description": "Your date of birth is used to calculate your age.",
+      "pick_date": "Pick a date",
+      "language": "Language",
+      "language_description": "This is the language that will be used in the application.",
+      "select_language": "Select a language",
+      "search_language": "Search language...",
+      "no_language_found": "No language found",
+      "update_account": "Update account",
+      "languages": {
+        "english": "English",
+        "french": "French",
+        "german": "German",
+        "spanish": "Spanish",
+        "portuguese": "Portuguese",
+        "russian": "Russian",
+        "japanese": "Japanese",
+        "korean": "Korean",
+        "chinese": "Chinese"
+      }
+    }
+  },
+  "form": {
+    "you_submitted": "You submitted the following values:"
+  }
+}

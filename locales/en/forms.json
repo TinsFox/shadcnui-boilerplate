@@ -1,0 +1,55 @@
+{
+  "actions": {
+    "update_account": "Update account",
+    "select_account": "Select account",
+    "update_preferences": "Update preferences"
+  },
+  "labels": {
+    "name": "Name",
+    "email": "Email",
+    "password": "Password",
+    "confirm_password": "Confirm password",
+    "date_of_birth": "Date of birth",
+    "language": "Language",
+    "bio": "Bio",
+    "username": "Username",
+    "notifications": "Notifications",
+    "marketing": "Marketing",
+    "social": "Social",
+    "security": "Security",
+    "font": "Font",
+    "theme": "Theme"
+  },
+  "placeholders": {
+    "your_name": "Your name",
+    "your_email": "Your email",
+    "your_password": "Your password",
+    "your_date_of_birth": "Your date of birth",
+    "your_language": "Your language",
+    "your_bio": "Your bio",
+    "your_username": "Your username",
+    "search_language": "Search language"
+  },
+  "descriptions": {
+    "name": "This is the name that will be displayed on your profile.",
+    "email": "This is the email that will be displayed on your profile.",
+    "password": "This is the password that will be used to log in to your account.",
+    "confirm_password": "This is the password that will be used to confirm your password.",
+    "date_of_birth": "This is the date of birth that will be displayed on your profile.",
+    "language": "This is the language that will be displayed on your profile.",
+    "bio": "This is the bio that will be displayed on your profile.",
+    "username": "This is the username that will be displayed on your profile.",
+    "notifications": "This is the notifications that will be used to notify you of new messages, events, etc.",
+    "marketing": "This is the marketing that will be used to send you marketing emails.",
+    "social": "This is the social that will be used to send you social emails.",
+    "security": "This is the security that will be used to send you security emails.",
+    "font": "This is the font that will be displayed on your profile.",
+    "theme": "This is the theme that will be displayed on your profile.",
+    "select_language": "This is the language that will be displayed on your profile.",
+    "select_font": "This is the font that will be displayed on your profile.",
+    "select_theme": "This is the theme that will be displayed on your profile."
+  },
+  "errors": {
+    "no_language_found": "No language found"
+  }
+}

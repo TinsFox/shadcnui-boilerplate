@@ -34,15 +34,15 @@ import { toast } from "@/components/ui/use-toast"
 import { cn } from "@/lib/utils"
 
 const languages = [
-  { label: "language.english", value: "en" },
-  { label: "language.french", value: "fr" },
-  { label: "language.german", value: "de" },
-  { label: "language.spanish", value: "es" },
-  { label: "language.portuguese", value: "pt" },
-  { label: "language.russian", value: "ru" },
-  { label: "language.japanese", value: "ja" },
-  { label: "language.korean", value: "ko" },
-  { label: "language.chinese", value: "zh" },
+  { label: "sections.account.languages.english", value: "en" },
+  { label: "sections.account.languages.french", value: "fr" },
+  { label: "sections.account.languages.german", value: "de" },
+  { label: "sections.account.languages.spanish", value: "es" },
+  { label: "sections.account.languages.portuguese", value: "pt" },
+  { label: "sections.account.languages.russian", value: "ru" },
+  { label: "sections.account.languages.japanese", value: "ja" },
+  { label: "sections.account.languages.korean", value: "ko" },
+  { label: "sections.account.languages.chinese", value: "zh" },
 ] as const
 
 const accountFormSchema = z.object({
@@ -71,7 +71,7 @@ const defaultValues: Partial<AccountFormValues> = {
 }
 
 export function AccountForm() {
-  const { t } = useTranslation()
+  const { t } = useTranslation(["settings"])
   const form = useForm<AccountFormValues>({
     resolver: zodResolver(accountFormSchema),
     defaultValues,
@@ -96,12 +96,12 @@ export function AccountForm() {
           name="name"
           render={({ field }) => (
             <FormItem>
-              <FormLabel>{t("form.name")}</FormLabel>
+              <FormLabel>{t("sections.account.name")}</FormLabel>
               <FormControl>
-                <Input placeholder={t("form.your_name")} {...field} />
+                <Input placeholder={t("sections.account.your_name")} {...field} />
               </FormControl>
               <FormDescription>
-                {t("form.name_description")}
+                {t("sections.account.name_description")}
               </FormDescription>
               <FormMessage />
             </FormItem>
@@ -112,7 +112,7 @@ export function AccountForm() {
           name="dob"
           render={({ field }) => (
             <FormItem className="flex flex-col">
-              <FormLabel>{t("form.date_of_birth")}</FormLabel>
+              <FormLabel>{t("sections.account.date_of_birth")}</FormLabel>
               <Popover>
                 <PopoverTrigger asChild>
                   <FormControl>
@@ -126,7 +126,7 @@ export function AccountForm() {
                       {field.value ? (
                         format(field.value, "PPP")
                       ) : (
-                        <span>{t("form.pick_date")}</span>
+                        <span>{t("sections.account.pick_date")}</span>
                       )}
                       <CalendarIcon className="ml-auto size-4 opacity-50" />
                     </Button>
@@ -144,7 +144,7 @@ export function AccountForm() {
                 </PopoverContent>
               </Popover>
               <FormDescription>
-                {t("form.dob_description")}
+                {t("sections.account.dob_description")}
               </FormDescription>
               <FormMessage />
             </FormItem>
@@ -155,7 +155,7 @@ export function AccountForm() {
           name="language"
           render={({ field }) => (
             <FormItem className="flex flex-col">
-              <FormLabel>{t("form.language")}</FormLabel>
+              <FormLabel>{t("sections.account.language")}</FormLabel>
               <Popover>
                 <PopoverTrigger asChild>
                   <FormControl>
@@ -168,19 +168,19 @@ export function AccountForm() {
                       )}
                     >
                       {field.value ?
-                        languages.find(
+                        t(languages.find(
                           (language) => language.value === field.value,
-                        )?.label :
-                        t("form.select_language")}
+                        )?.label || "") :
+                        t("sections.account.select_language")}
                       <CaretSortIcon className="ml-2 size-4 shrink-0 opacity-50" />
                     </Button>
                   </FormControl>
                 </PopoverTrigger>
                 <PopoverContent className="w-[200px] p-0">
                   <Command>
-                    <CommandInput placeholder={t("form.search_language")} />
+                    <CommandInput placeholder={t("sections.account.search_language")} />
                     <CommandList>
-                      <CommandEmpty>{t("form.no_language_found")}</CommandEmpty>
+                      <CommandEmpty>{t("sections.account.no_language_found")}</CommandEmpty>
                       <CommandGroup>
                         {languages.map((language) => (
                           <CommandItem
@@ -198,7 +198,7 @@ export function AccountForm() {
                                   "opacity-0",
                               )}
                             />
-                            {language.label}
+                            {t(language.label)}
                           </CommandItem>
                         ))}
                       </CommandGroup>
@@ -207,13 +207,13 @@ export function AccountForm() {
                 </PopoverContent>
               </Popover>
               <FormDescription>
-                {t("form.language_description")}
+                {t("sections.account.language_description")}
               </FormDescription>
               <FormMessage />
             </FormItem>
           )}
         />
-        <Button type="submit">{t("form.update_account")}</Button>
+        <Button type="submit">{t("sections.account.update_account")}</Button>
       </form>
     </Form>
   )

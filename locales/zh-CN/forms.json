@@ -1,0 +1,55 @@
+{
+  "actions": {
+    "update_account": "更新账户",
+    "select_account": "选择账户",
+    "update_preferences": "更新偏好"
+  },
+  "labels": {
+    "name": "姓名",
+    "email": "电子邮件",
+    "password": "密码",
+    "confirm_password": "确认密码",
+    "date_of_birth": "出生日期",
+    "language": "语言",
+    "bio": "个人简介",
+    "username": "用户名",
+    "notifications": "通知",
+    "marketing": "营销",
+    "social": "社交",
+    "security": "安全",
+    "font": "字体",
+    "theme": "主题"
+  },
+  "placeholders": {
+    "your_name": "您的姓名",
+    "your_email": "您的电子邮件",
+    "your_password": "您的密码",
+    "your_date_of_birth": "您的出生日期",
+    "your_language": "您的语言",
+    "your_bio": "您的个人简介",
+    "your_username": "您的用户名",
+    "search_language": "搜索语言"
+  },
+  "descriptions": {
+    "name": "这是将在您的个人资料中显示的姓名。",
+    "email": "这是将在您的个人资料中显示的电子邮件。",
+    "password": "这是将用于登录您的账户的密码。",
+    "confirm_password": "这是将用于确认您的密码的密码。",
+    "date_of_birth": "这是将在您的个人资料中显示的出生日期。",
+    "language": "这是将在您的个人资料中显示的语言。",
+    "bio": "这是将在您的个人资料中显示的个人简介。",
+    "username": "这是将在您的个人资料中显示的用户名。",
+    "notifications": "这是将用于通知您的新消息、事件等的通知。",
+    "marketing": "这是将用于发送营销电子邮件的营销。",
+    "social": "这是将用于发送社交电子邮件的社交。",
+    "security": "这是将用于发送安全电子邮件的安全。",
+    "font": "这是将在您的个人资料中显示的字体。",
+    "theme": "这是将在您的个人资料中显示的主题。",
+    "select_language": "这是将在您的个人资料中显示的语言。",
+    "select_font": "这是将在您的个人资料中显示的字体。",
+    "select_theme": "这是将在您的个人资料中显示的主题。"
+  },
+  "errors": {
+    "no_language_found": "没有找到语言"
+  }
+}

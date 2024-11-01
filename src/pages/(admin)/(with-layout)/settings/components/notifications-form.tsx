@@ -32,7 +32,7 @@ const defaultValues: Partial<NotificationsFormValues> = {
   security_emails: true,
 }
 export function NotificationsForm() {
-  const { t } = useTranslation()
+  const { t } = useTranslation(["settings"])
   const form = useForm<NotificationsFormValues>({
     resolver: zodResolver(notificationsFormSchema),
     defaultValues,
@@ -57,7 +57,7 @@ export function NotificationsForm() {
           name="type"
           render={({ field }) => (
             <FormItem className="space-y-3">
-              <FormLabel>{t("settings.notifications.notify_me_about")}</FormLabel>
+              <FormLabel>{t("sections.notifications.preferences.notify_about")}</FormLabel>
               <FormControl>
                 <RadioGroup
                   onValueChange={field.onChange}
@@ -69,7 +69,7 @@ export function NotificationsForm() {
                       <RadioGroupItem value="all" />
                     </FormControl>
                     <FormLabel className="font-normal">
-                      {t("settings.notifications.all_new_messages")}
+                      {t("sections.notifications.preferences.options.all_messages")}
                     </FormLabel>
                   </FormItem>
                   <FormItem className="flex items-center space-x-3 space-y-0">
@@ -77,7 +77,7 @@ export function NotificationsForm() {
                       <RadioGroupItem value="mentions" />
                     </FormControl>
                     <FormLabel className="font-normal">
-                      {t("settings.notifications.direct_messages_and_mentions")}
+                      {t("sections.notifications.preferences.options.direct_messages")}
                     </FormLabel>
                   </FormItem>
                   <FormItem className="flex items-center space-x-3 space-y-0">
@@ -85,7 +85,7 @@ export function NotificationsForm() {
                       <RadioGroupItem value="none" />
                     </FormControl>
                     <FormLabel className="font-normal">
-                      {t("settings.notifications.nothing")}
+                      {t("sections.notifications.preferences.options.nothing")}
                     </FormLabel>
                   </FormItem>
                 </RadioGroup>
@@ -96,7 +96,7 @@ export function NotificationsForm() {
         />
         <div>
           <h3 className="mb-4 text-lg font-medium">
-            {t("settings.notifications.email_notifications")}
+            {t("sections.notifications.email_settings.title")}
           </h3>
           <div className="space-y-4">
             <FormField
@@ -106,10 +106,10 @@ export function NotificationsForm() {
                 <FormItem className="flex flex-row items-center justify-between rounded-lg border p-4">
                   <div className="space-y-0.5">
                     <FormLabel className="text-base">
-                      {t("settings.notifications.communication_emails")}
+                      {t("sections.notifications.email_settings.communication")}
                     </FormLabel>
                     <FormDescription>
-                      {t("settings.notifications.communication_emails_description")}
+                      {t("sections.notifications.update_notifications_description")}
                     </FormDescription>
                   </div>
                   <FormControl>
@@ -128,10 +128,10 @@ export function NotificationsForm() {
                 <FormItem className="flex flex-row items-center justify-between rounded-lg border p-4">
                   <div className="space-y-0.5">
                     <FormLabel className="text-base">
-                      {t("settings.notifications.marketing_emails")}
+                      {t("sections.notifications.email_settings.marketing")}
                     </FormLabel>
                     <FormDescription>
-                      {t("settings.notifications.marketing_emails_description")}
+                      {t("sections.notifications.update_notifications_description_2")}
                     </FormDescription>
                   </div>
                   <FormControl>
@@ -150,10 +150,10 @@ export function NotificationsForm() {
                 <FormItem className="flex flex-row items-center justify-between rounded-lg border p-4">
                   <div className="space-y-0.5">
                     <FormLabel className="text-base">
-                      {t("settings.notifications.social_emails")}
+                      {t("sections.notifications.email_settings.social")}
                     </FormLabel>
                     <FormDescription>
-                      {t("settings.notifications.social_emails_description")}
+                      {t("sections.notifications.update_notifications_description_3")}
                     </FormDescription>
                   </div>
                   <FormControl>
@@ -172,10 +172,10 @@ export function NotificationsForm() {
                 <FormItem className="flex flex-row items-center justify-between rounded-lg border p-4">
                   <div className="space-y-0.5">
                     <FormLabel className="text-base">
-                      {t("settings.notifications.security_emails")}
+                      {t("sections.notifications.email_settings.security")}
                     </FormLabel>
                     <FormDescription>
-                      {t("settings.notifications.security_emails_description")}
+                      {t("sections.notifications.update_notifications_description")}
                     </FormDescription>
                   </div>
                   <FormControl>
@@ -204,22 +204,19 @@ export function NotificationsForm() {
               </FormControl>
               <div className="space-y-1 leading-none">
                 <FormLabel>
-                  {t("settings.notifications.use_different_settings_for_my_mobile_devices")}
+                  {t("sections.notifications.mobile_settings.use_different")}
                 </FormLabel>
                 <FormDescription>
-                  {t("settings.notifications.use_different_settings_for_my_mobile_devices_description")}
+                  {t("sections.notifications.mobile_settings.description")}
                   {" "}
-                  <Link to="/examples/forms">{t("settings.notifications.mobile_settings_page")}</Link>
-                  {" "}
-                  {t("settings.notifications.page")}
-                  .
+                  <Link to="/examples/forms">{t("sections.notifications.mobile_settings.page")}</Link>
                 </FormDescription>
               </div>
             </FormItem>
           )}
         />
         <Button type="submit">
-          {t("settings.notifications.update_notifications")}
+          {t("sections.notifications.update_notifications")}
         </Button>
       </form>
     </Form>

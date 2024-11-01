@@ -1,16 +1,16 @@
 import type { LucideIcon } from "lucide-react"
 
 export type MenuItem = {
-  title: string
-  label?: string
+  title: I18nKeys
+  label?: I18nKeys
   icon: LucideIcon
-  to?: string
+  to: string
   children?: IChildrenMenuItem[]
 }
 
 interface IChildrenMenuItem {
-  title: string
-  label?: string
+  title: I18nKeys
+  label?: I18nKeys
   icon: LucideIcon
   to: string
 }

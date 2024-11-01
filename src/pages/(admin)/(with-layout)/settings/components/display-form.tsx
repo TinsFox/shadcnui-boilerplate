@@ -1,5 +1,4 @@
 import { zodResolver } from "@hookform/resolvers/zod"
-import i18n from "i18next"
 import { useForm } from "react-hook-form"
 import { useTranslation } from "react-i18next"
 import { z } from "zod"
@@ -20,27 +19,27 @@ import { toast } from "@/components/ui/use-toast"
 const items = [
   {
     id: "recents",
-    label: i18n.t("settings.display.items.recents"),
+    label: "sections.display.sidebar.items.recents",
   },
   {
     id: "home",
-    label: i18n.t("settings.display.items.home"),
+    label: "sections.display.sidebar.items.home",
   },
   {
     id: "applications",
-    label: i18n.t("settings.display.items.applications"),
+    label: "sections.display.sidebar.items.applications",
   },
   {
     id: "desktop",
-    label: i18n.t("settings.display.items.desktop"),
+    label: "sections.display.sidebar.items.desktop",
   },
   {
     id: "downloads",
-    label: i18n.t("settings.display.items.downloads"),
+    label: "sections.display.sidebar.items.downloads",
   },
   {
     id: "documents",
-    label: i18n.t("settings.display.items.documents"),
+    label: "sections.display.sidebar.items.documents",
   },
 ] as const
 
@@ -57,7 +56,7 @@ const defaultValues: Partial<DisplayFormValues> = {
   items: ["recents", "home"],
 }
 export function DisplayForm() {
-  const { t } = useTranslation()
+  const { t } = useTranslation(["settings", "common"])
   const form = useForm<DisplayFormValues>({
     resolver: zodResolver(displayFormSchema),
     defaultValues,
@@ -65,7 +64,7 @@ export function DisplayForm() {
 
   function onSubmit(data: DisplayFormValues) {
     toast({
-      title: t("settings.display"),
+      title: t("sections.display.title"),
       description: (
         <pre className="mt-2 w-[340px] rounded-md bg-slate-950 p-4">
           <code className="text-white">{JSON.stringify(data, null, 2)}</code>
@@ -85,7 +84,7 @@ export function DisplayForm() {
               <div className="mb-4">
                 <FormLabel className="text-base">Sidebar</FormLabel>
                 <FormDescription>
-                  {t("settings.display.sidebar_description")}
+                  {t("sections.display.sidebar.description")}
                 </FormDescription>
               </div>
               {items.map((item) => (
@@ -111,7 +110,7 @@ export function DisplayForm() {
                         />
                       </FormControl>
                       <FormLabel className="font-normal">
-                        {item.label}
+                        {t(item.label)}
                       </FormLabel>
                     </FormItem>
                   )}
@@ -121,7 +120,7 @@ export function DisplayForm() {
             </FormItem>
           )}
         />
-        <Button type="submit">{t("settings.display.update")}</Button>
+        <Button type="submit">{t("update")}</Button>
       </form>
     </Form>
   )
