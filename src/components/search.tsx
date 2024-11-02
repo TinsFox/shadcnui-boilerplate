@@ -10,8 +10,8 @@ import { Button } from "@/components/ui/button"
 import { languages } from "@/i18n"
 import { cn } from "@/lib/utils"
 
-import { Icons } from "../icons"
-import { useTheme } from "../theme/theme-provider"
+import { Icons } from "./icons"
+import { useTheme } from "./theme/theme-provider"
 import {
   CommandDialog,
   CommandEmpty,
@@ -20,7 +20,7 @@ import {
   CommandItem,
   CommandList,
   CommandSeparator,
-} from "../ui/command"
+} from "./ui/command"
 
 export function Search({ ...props }: ButtonProps & DialogProps) {
   const navigate = useNavigate()

@@ -1,17 +1,17 @@
 import { Link, Outlet, useLoaderData } from "react-router-dom"
 
 import { Announcement } from "@/components/announcement"
-import {
-  PageActions,
-  PageHeader,
-  PageHeaderDescription,
-  PageHeaderHeading,
-} from "@/components/layout/page-header"
 import { ThemesSwitcher } from "@/components/theme/themes-selector"
 import { Button } from "@/components/ui/button"
 import { THEMES } from "@/lib/themes"
 
 import { ChartsNav } from "../charts-nav"
+import {
+  PageActions,
+  PageHeader,
+  PageHeaderDescription,
+  PageHeaderHeading,
+} from "../components/page-header"
 
 export const loader = async ({
   params,
