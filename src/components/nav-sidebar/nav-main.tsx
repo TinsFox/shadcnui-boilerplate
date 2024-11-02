@@ -1,4 +1,6 @@
-import { ChevronRight } from "lucide-react"
+import { useAtom } from "jotai"
+import { ChevronRight, Maximize2, Minimize2 } from "lucide-react"
+import { useEffect, useMemo } from "react"
 import { useTranslation } from "react-i18next"
 import { Link, useLocation } from "react-router-dom"
 
@@ -19,6 +21,7 @@ import {
   SidebarMenuSubItem,
 } from "@/components/ui/sidebar"
 import type { IMenu } from "@/models/menu"
+import { navOpenItemsAtom } from "@/store/nav"
 
 export function NavMain({
   items,
@@ -27,24 +30,79 @@ export function NavMain({
 }) {
   const { t } = useTranslation("navigation")
   const location = useLocation()
+  const [openItems, setOpenItems] = useAtom(navOpenItemsAtom)
 
-  const isPathActive = (path: string) => {
-    return location.pathname === path || location.pathname.startsWith(`${path}/`)
+  const { isPathActive, isParentActive } = useMemo(() => {
+    const isPathActive = (path: string) => {
+      return location.pathname === path || location.pathname.startsWith(`${path}/`)
+    }
+
+    const isParentActive = (item: IMenu) => {
+      return item.children?.some((child) => isPathActive(child.to))
+    }
+
+    return { isPathActive, isParentActive }
+  }, [location.pathname])
+
+  useEffect(() => {
+    const newOpenItems: Record<string, boolean> = { ...openItems }
+    let hasChanges = false
+
+    items.forEach((item) => {
+      const shouldBeOpen = isPathActive(item.to) || isParentActive(item)
+      if (shouldBeOpen && !newOpenItems[item.title]) {
+        newOpenItems[item.title] = true
+        hasChanges = true
+      }
+    })
+
+    if (hasChanges) {
+      setOpenItems(newOpenItems)
+    }
+  }, [location.pathname, items, isPathActive, isParentActive, setOpenItems, openItems])
+
+  const handleToggle = (title: string) => {
+    setOpenItems((prev) => ({
+      ...prev,
+      [title]: !prev[title],
+    }))
   }
 
-  const isParentActive = (item: IMenu) => {
-    return item.children?.some((child) => isPathActive(child.to))
+  const handleToggleAll = () => {
+    const allExpanded = items.every((item) => openItems[item.title])
+    const newOpenItems: Record<string, boolean> = {}
+
+    items.forEach((item) => {
+      newOpenItems[item.title] = !allExpanded
+    })
+
+    setOpenItems(newOpenItems)
   }
 
   return (
     <SidebarGroup>
-      <SidebarGroupLabel>Platform</SidebarGroupLabel>
+      <div className="flex items-center justify-between px-2">
+        <SidebarGroupLabel>Platform</SidebarGroupLabel>
+        <button
+          type="button"
+          onClick={handleToggleAll}
+          className="rounded-md p-1 hover:bg-muted"
+          title={items.every((item) => openItems[item.title]) ? "Collapse all" : "Expand all"}
+        >
+          {items.every((item) => openItems[item.title]) ? (
+            <Minimize2 className="size-4" />
+          ) : (
+            <Maximize2 className="size-4" />
+          )}
+        </button>
+      </div>
       <SidebarMenu>
         {items.map((item) => (
           <Collapsible
             key={item.title}
             asChild
-            open={isPathActive(item.to) || isParentActive(item)}
+            open={openItems[item.title]}
+            onOpenChange={() => handleToggle(item.title)}
           >
             <SidebarMenuItem>
               <SidebarMenuButton
