@@ -1,3 +1,4 @@
+import { CircleHelp } from "lucide-react"
 import { Link, Outlet } from "react-router-dom"
 
 import { Icons } from "@/components/icons"
@@ -34,12 +35,12 @@ export function Component() {
               <Search />
               <Link to="https://github.com/TinsFox/shadcnui-boilerplate" target="_blank">
                 <Button variant="ghost" size="icon">
-                  <Icons.gitHub className="size-6" />
+                  <Icons.gitHub className="size-5" />
                 </Button>
               </Link>
               <Link to="https://shadcnui-boilerplate.pages.dev" target="_blank">
                 <Button variant="ghost" size="icon">
-                  <Icons.document className="size-6" />
+                  <CircleHelp className="size-5" />
                 </Button>
               </Link>
               <ThemeSwitcher />

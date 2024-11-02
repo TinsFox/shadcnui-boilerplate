@@ -54,18 +54,18 @@ export function ThemeCustomizer({ className }: ThemeCustomizerProps) {
       <Drawer>
         <DrawerTrigger asChild>
           <Button size="sm" className="md:hidden" variant="ghost">
-            <Palette />
+            <Palette className="size-5" />
           </Button>
         </DrawerTrigger>
         <DrawerContent className="p-6 pt-0">
-          <Customizer />
+          <Customizer className="size-5" />
         </DrawerContent>
       </Drawer>
       <div className="hidden items-center md:flex">
         <Popover>
           <PopoverTrigger asChild>
             <Button size="icon" variant="ghost">
-              <Palette />
+              <Palette className="size-5" />
             </Button>
           </PopoverTrigger>
           <PopoverContent
