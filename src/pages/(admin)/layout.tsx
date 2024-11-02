@@ -25,8 +25,8 @@ export function Component() {
     <SidebarProvider>
       <AppSidebar />
       <SidebarInset className="w-full overflow-hidden">
-        <div className="sticky top-0 z-10 bg-background">
-          <header className="flex h-16 w-full shrink-0 items-center gap-2">
+        <div className="sticky top-0 z-10">
+          <header className="flex h-16 w-full shrink-0 items-center gap-2 border-b bg-background/80 backdrop-blur-sm">
             <div className="flex items-center gap-2 px-4">
               <SidebarTrigger className="-ml-1" />
               <Separator orientation="vertical" className="mr-2 h-4" />
@@ -36,7 +36,9 @@ export function Component() {
         </div>
 
         <ScrollArea className="flex h-[calc(100vh-5rem)] flex-col gap-4 p-4 pt-0">
-          <Outlet />
+          <div className="py-4">
+            <Outlet />
+          </div>
           <ScrollBar orientation="horizontal" />
         </ScrollArea>
       </SidebarInset>

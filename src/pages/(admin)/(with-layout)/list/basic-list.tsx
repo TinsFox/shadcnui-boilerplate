@@ -226,7 +226,7 @@ export function Component() {
   })
 
   return (
-    <div className="px-2">
+    <div>
       <div className="flex items-center  py-4">
         <Input
           placeholder="Filter emails..."
