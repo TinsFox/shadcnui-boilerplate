@@ -1,5 +1,5 @@
 import { zodResolver } from "@hookform/resolvers/zod"
-import { CalendarIcon, CaretSortIcon, CheckIcon } from "@radix-ui/react-icons"
+import { CalendarIcon } from "@radix-ui/react-icons"
 import { format } from "date-fns"
 import { useForm } from "react-hook-form"
 import { useTranslation } from "react-i18next"
@@ -7,14 +7,6 @@ import { z } from "zod"
 
 import { Button } from "@/components/ui/button"
 import { Calendar } from "@/components/ui/calendar"
-import {
-  Command,
-  CommandEmpty,
-  CommandGroup,
-  CommandInput,
-  CommandItem,
-  CommandList,
-} from "@/components/ui/command"
 import {
   Form,
   FormControl,
@@ -30,20 +22,16 @@ import {
   PopoverContent,
   PopoverTrigger,
 } from "@/components/ui/popover"
+import {
+  Select,
+  SelectContent,
+  SelectItem,
+  SelectTrigger,
+  SelectValue,
+} from "@/components/ui/select"
 import { toast } from "@/components/ui/use-toast"
+import { languages } from "@/i18n"
 import { cn } from "@/lib/utils"
-
-const languages = [
-  { label: "sections.account.languages.english", value: "en" },
-  { label: "sections.account.languages.french", value: "fr" },
-  { label: "sections.account.languages.german", value: "de" },
-  { label: "sections.account.languages.spanish", value: "es" },
-  { label: "sections.account.languages.portuguese", value: "pt" },
-  { label: "sections.account.languages.russian", value: "ru" },
-  { label: "sections.account.languages.japanese", value: "ja" },
-  { label: "sections.account.languages.korean", value: "ko" },
-  { label: "sections.account.languages.chinese", value: "zh" },
-] as const
 
 const accountFormSchema = z.object({
   name: z
@@ -64,17 +52,13 @@ const accountFormSchema = z.object({
 
 type AccountFormValues = z.infer<typeof accountFormSchema>
 
-// This can come from your database or API.
-const defaultValues: Partial<AccountFormValues> = {
-  // name: "Your name",
-  // dob: new Date("2023-01-23"),
-}
-
 export function AccountForm() {
-  const { t } = useTranslation(["settings"])
+  const { t, i18n } = useTranslation(["settings"])
   const form = useForm<AccountFormValues>({
     resolver: zodResolver(accountFormSchema),
-    defaultValues,
+    defaultValues: {
+      language: i18n.language,
+    },
   })
 
   function onSubmit(data: AccountFormValues) {
@@ -156,56 +140,26 @@ export function AccountForm() {
           render={({ field }) => (
             <FormItem className="flex flex-col">
               <FormLabel>{t("sections.account.language")}</FormLabel>
-              <Popover>
-                <PopoverTrigger asChild>
-                  <FormControl>
-                    <Button
-                      variant="outline"
-                      role="combobox"
-                      className={cn(
-                        "w-[200px] justify-between",
-                        !field.value && "text-muted-foreground",
-                      )}
-                    >
-                      {field.value ?
-                        t(languages.find(
-                          (language) => language.value === field.value,
-                        )?.label || "") :
-                        t("sections.account.select_language")}
-                      <CaretSortIcon className="ml-2 size-4 shrink-0 opacity-50" />
-                    </Button>
-                  </FormControl>
-                </PopoverTrigger>
-                <PopoverContent className="w-[200px] p-0">
-                  <Command>
-                    <CommandInput placeholder={t("sections.account.search_language")} />
-                    <CommandList>
-                      <CommandEmpty>{t("sections.account.no_language_found")}</CommandEmpty>
-                      <CommandGroup>
-                        {languages.map((language) => (
-                          <CommandItem
-                            value={language.label}
-                            key={language.value}
-                            onSelect={() => {
-                              form.setValue("language", language.value)
-                            }}
-                          >
-                            <CheckIcon
-                              className={cn(
-                                "mr-2 size-4",
-                                language.value === field.value ?
-                                  "opacity-100" :
-                                  "opacity-0",
-                              )}
-                            />
-                            {t(language.label)}
-                          </CommandItem>
-                        ))}
-                      </CommandGroup>
-                    </CommandList>
-                  </Command>
-                </PopoverContent>
-              </Popover>
+              <Select
+                value={field.value}
+                onValueChange={(value) => {
+                  field.onChange(value)
+                  i18n.changeLanguage(value)
+                }}
+              >
+                <FormControl>
+                  <SelectTrigger className="w-[240px]">
+                    <SelectValue placeholder={t("sections.account.select_language")} />
+                  </SelectTrigger>
+                </FormControl>
+                <SelectContent>
+                  {languages.map((language) => (
+                    <SelectItem key={language.value} value={language.value}>
+                      {language.icon} {language.label}
+                    </SelectItem>
+                  ))}
+                </SelectContent>
+              </Select>
               <FormDescription>
                 {t("sections.account.language_description")}
               </FormDescription>
