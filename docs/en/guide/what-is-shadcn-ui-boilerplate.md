@@ -26,19 +26,3 @@ If you have any questions or suggestions, please submit an issue or pr.
 ## Donate
 
 If you find this project helpful, please consider giving us a star ⭐️
-
-or 👇
-
-[![TinsFox's Profile](https://afdian-connect-nine.vercel.app/profile.svg)](https://afdian.com/a/tinsfox)
-
-[!["Buy Me A Coffee"](https://www.buymeacoffee.com/assets/img/custom_images/orange_img.png)](https://www.buymeacoffee.com/TinsFox)
-
-<img src="/wechat-appreciation-code.jpeg" alt="微信赞赏码" width="200px">
-
-## Join our WeChat group
-
-<p>
-  <img src="/wechat-group.png" alt="微信群二维码" width="200px">
-</p>
-
-Scan the above QR code to join our WeChat group, and discuss with other developers!
