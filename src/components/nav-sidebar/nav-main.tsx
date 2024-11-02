@@ -23,6 +23,8 @@ import {
 } from "@/components/ui/sidebar"
 import type { IMenu } from "@/models/menu"
 
+import { Button } from "../ui/button"
+
 export function NavMain({
   items,
 }: {
@@ -59,7 +61,7 @@ export function NavMain({
     if (hasChanges) {
       setOpenItems(newOpenItems)
     }
-  }, [location.pathname, items, isPathActive, isParentActive, setOpenItems, openItems])
+  }, [location.pathname, items, isPathActive, isParentActive])
 
   const handleToggle = (title: string) => {
     setOpenItems((prev) => ({
@@ -83,8 +85,10 @@ export function NavMain({
     <SidebarGroup>
       <div className="flex items-center justify-between px-2">
         <SidebarGroupLabel>Platform</SidebarGroupLabel>
-        <button
+        <Button
           type="button"
+          size="icon"
+          variant="ghost"
           onClick={handleToggleAll}
           className="rounded-md p-1 hover:bg-muted"
           title={items.every((item) => openItems[item.title]) ? "Collapse all" : "Expand all"}
@@ -94,7 +98,7 @@ export function NavMain({
           ) : (
             <Maximize2 className="size-4" />
           )}
-        </button>
+        </Button>
       </div>
       <SidebarMenu>
         {items.map((item) => (
