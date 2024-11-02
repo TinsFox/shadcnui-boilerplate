@@ -7,9 +7,9 @@ import {
 import * as React from "react"
 import { Link } from "react-router-dom"
 
-import { NavMain } from "@/components/nav-main"
-import { NavSecondary } from "@/components/nav-secondary"
-import { NavUser } from "@/components/nav-user"
+import { NavMain } from "@/components/nav-sidebar/nav-main"
+import { NavSecondary } from "@/components/nav-sidebar/nav-secondary"
+import { NavUser } from "@/components/nav-sidebar/nav-user"
 import {
   Sidebar,
   SidebarContent,

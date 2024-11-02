@@ -1,8 +1,8 @@
 import { Link, Outlet } from "react-router-dom"
 
-import { AppSidebar } from "@/components/app-sidebar"
 import { Icons } from "@/components/icons"
-import { NavBreadcrumb } from "@/components/nav-breadcrumb"
+import { AppSidebar } from "@/components/nav-sidebar/app-sidebar"
+import { NavBreadcrumb } from "@/components/nav-sidebar/nav-breadcrumb"
 import { Search } from "@/components/search"
 import { ThemeCustomizer } from "@/components/theme/theme-customizer"
 import { ThemeSwitcher } from "@/components/theme/theme-switcher"
