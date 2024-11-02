@@ -19,8 +19,7 @@ import {
   SidebarMenuButton,
   SidebarMenuItem,
 } from "@/components/ui/sidebar"
-
-import { menus } from "./layout/sidebar/data"
+import { useNavMenu } from "@/hooks/query/user-memu"
 
 const navSecondary = [
   {
@@ -36,6 +35,8 @@ const navSecondary = [
 ]
 
 export function AppSidebar({ ...props }: React.ComponentProps<typeof Sidebar>) {
+  const { data: menus } = useNavMenu()
+
   return (
     <Sidebar variant="inset" {...props}>
       <SidebarHeader>

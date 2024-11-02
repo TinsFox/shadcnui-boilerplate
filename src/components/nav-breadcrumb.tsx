@@ -2,7 +2,6 @@ import * as React from "react"
 import { useTranslation } from "react-i18next"
 import { Link, useLocation } from "react-router-dom"
 
-import { menus } from "@/components/layout/sidebar/data"
 import {
   Breadcrumb,
   BreadcrumbItem,
@@ -11,6 +10,7 @@ import {
   BreadcrumbPage,
   BreadcrumbSeparator,
 } from "@/components/ui/breadcrumb"
+import { useNavMenu } from "@/hooks/query/user-memu"
 import { cn } from "@/lib/utils"
 import type { IMenu } from "@/models/menu"
 
@@ -23,7 +23,7 @@ interface Breadcrumb {
 export function NavBreadcrumb({ className }: { className?: string }) {
   const location = useLocation()
   const { t } = useTranslation("navigation")
-
+  const { data: menus } = useNavMenu()
   const findMenuPath = (
     pathname: string,
     items: IMenu[],

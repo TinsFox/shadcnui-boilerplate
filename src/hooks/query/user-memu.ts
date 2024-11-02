@@ -1,3 +1,4 @@
+import { queryOptions, useSuspenseQuery } from "@tanstack/react-query"
 import {
   Archive,
   ArchiveX,
@@ -22,6 +23,23 @@ import {
 } from "lucide-react"
 
 import type { IMenu } from "@/models/menu"
+
+export const queryNavMenu = () => queryOptions({
+  queryKey: ["nav-menu"],
+  queryFn: async () => mockMenu(),
+})
+
+export function useNavMenu() {
+  return useSuspenseQuery(queryNavMenu())
+}
+
+async function mockMenu(): Promise<IMenu[]> {
+  return new Promise((resolve) => {
+    setTimeout(() => {
+      resolve(menus)
+    }, 1000)
+  })
+}
 
 export const menus: IMenu[] = [
   {
