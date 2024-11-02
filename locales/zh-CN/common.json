@@ -13,12 +13,14 @@
   },
   "themes": {
     "system": "系统",
-    "light": "亮",
-    "dark": "暗"
+    "light": "明亮",
+    "dark": "暗夜"
   },
   "fonts": {
     "inter": "Inter",
     "manrope": "Manrope"
   },
-  "update": "更新"
+  "update": "更新",
+  "documentation": "文档",
+  "search": "搜索"
 }

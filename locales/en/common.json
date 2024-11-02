@@ -20,5 +20,7 @@
     "inter": "Inter",
     "manrope": "Manrope"
   },
-  "update": "Update"
+  "update": "Update",
+  "search": "search",
+  "documentation": "documentation"
 }
