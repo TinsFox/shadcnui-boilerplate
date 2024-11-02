@@ -20,6 +20,8 @@ import {
 } from "@tanstack/react-table"
 import * as React from "react"
 
+import { Empty } from "@/components/empty"
+import { Loading } from "@/components/loading"
 import { Avatar, AvatarFallback, AvatarImage } from "@/components/ui/avatar"
 import { Button } from "@/components/ui/button"
 import { Checkbox } from "@/components/ui/checkbox"
@@ -195,7 +197,7 @@ export function Component() {
   const [columnVisibility, setColumnVisibility] =
     React.useState<VisibilityState>({})
   const [rowSelection, setRowSelection] = React.useState({})
-  const { data: users } = useUsers(pagination)
+  const { data: users, isPending } = useUsers(pagination)
 
   const PAGINATION_STEP = 3 // You can easily change this value to adjust the pagination step
 
@@ -300,7 +302,9 @@ export function Component() {
                   colSpan={columns.length}
                   className="h-24 text-center"
                 >
-                  No results.
+                  {
+                    isPending ? <Loading /> : <Empty />
+                  }
                 </TableCell>
               </TableRow>
             )}
