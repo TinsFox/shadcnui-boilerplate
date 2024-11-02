@@ -29,7 +29,7 @@ const navSecondary = [
   },
   {
     title: "Feedback",
-    url: "#",
+    url: "https://github.com/TinsFox/shadcnui-boilerplate/issues",
     icon: Send,
   },
 ]
