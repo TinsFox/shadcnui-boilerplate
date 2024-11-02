@@ -11,15 +11,16 @@ import {
   BreadcrumbPage,
   BreadcrumbSeparator,
 } from "@/components/ui/breadcrumb"
+import { cn } from "@/lib/utils"
 import type { IMenu } from "@/models/menu"
 
 interface Breadcrumb {
-  title: string
+  title: I18nKeys
   to: string
   isLast: boolean
 }
 
-export function NavBreadcrumb() {
+export function NavBreadcrumb({ className }: { className?: string }) {
   const location = useLocation()
   const { t } = useTranslation("navigation")
 
@@ -73,8 +74,8 @@ export function NavBreadcrumb() {
   }
 
   return (
-    <Breadcrumb>
-      <BreadcrumbList>
+    <Breadcrumb className={cn(className)}>
+      <BreadcrumbList className="flex-nowrap">
         {breadcrumbs.map((item) => (
           <React.Fragment key={item.to}>
             <BreadcrumbItem>
