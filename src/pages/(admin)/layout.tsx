@@ -1,4 +1,4 @@
-import { Link, Outlet, redirect } from "react-router-dom"
+import { Link, Outlet } from "react-router-dom"
 
 import { AppSidebar } from "@/components/app-sidebar"
 import { Icons } from "@/components/icons"
@@ -14,16 +14,6 @@ import {
   SidebarProvider,
   SidebarTrigger,
 } from "@/components/ui/sidebar"
-import { queryUser } from "@/hooks/query/use-user"
-import { queryClient } from "@/lib/query-client"
-
-export const loader = async () => {
-  const userData = await queryClient.ensureQueryData(queryUser())
-  if (!userData) {
-    return redirect("/login")
-  }
-  return userData
-}
 
 export function Component() {
   return (

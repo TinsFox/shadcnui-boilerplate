@@ -1,5 +1,7 @@
 import { FetchError, ofetch } from "ofetch"
 
+import { getRedirectToLoginUrl } from "./utils"
+
 export const apiFetch = ofetch.create({
   credentials: "include",
   retry: false,
@@ -27,18 +29,12 @@ export const apiFetch = ofetch.create({
   },
 })
 
-function redirectToLogin() {
+export function redirectToLogin() {
   if (window.location.pathname === "/login") {
     return
   }
-  const requestUrl = new URL(window.location.href)
-  const redirectTo = requestUrl.pathname + requestUrl.search
-  const loginParams = new URLSearchParams(requestUrl.search)
-  if (!loginParams.has("redirectTo")) {
-    loginParams.append("redirectTo", redirectTo)
-  }
-  const loginRedirect = `/login?${loginParams.toString()}`
-  window.location.href = loginRedirect
+  const redirectUrl = getRedirectToLoginUrl()
+  window.location.replace(redirectUrl)
 }
 
 export const getFetchErrorMessage = (error: Error) => {

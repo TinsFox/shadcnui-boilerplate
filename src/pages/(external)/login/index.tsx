@@ -86,6 +86,9 @@ interface UserAuthFormProps extends React.HTMLAttributes<HTMLDivElement> { }
 
 function UserAuthForm({ className, ...props }: UserAuthFormProps) {
   const { t } = useTranslation(["auth", "common", "errors"])
+  const redirectUrl =
+    new URLSearchParams(window.location.search).get("redirectTo") ||
+      "/dashboard"
 
   const loginMutation = useUserLoginMutation()
   const navigate = useNavigate()
@@ -102,9 +105,6 @@ function UserAuthForm({ className, ...props }: UserAuthFormProps) {
       position: "top-center",
       loading: t("login.loading"),
       success: () => {
-        const redirectUrl =
-          new URLSearchParams(window.location.search).get("redirectTo") ||
-            "/dashboard"
         navigate(redirectUrl, {
           replace: true,
         })
