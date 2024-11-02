@@ -10,7 +10,7 @@ import {
 import { languages } from "@/i18n"
 
 export const LanguageSwitch = () => {
-  const { i18n } = useTranslation()
+  const { i18n, t } = useTranslation("common")
 
   const changeLanguage = (lng: string) => {
     i18n.changeLanguage(lng)
@@ -18,8 +18,8 @@ export const LanguageSwitch = () => {
 
   return (
     <Select value={i18n.language} onValueChange={changeLanguage}>
-      <SelectTrigger className="w-[100px]">
-        <SelectValue placeholder="Select a language" />
+      <SelectTrigger className="w-[120px]">
+        <SelectValue placeholder={t("select_language")} />
       </SelectTrigger>
       <SelectContent>
         {languages.map((language) => (
