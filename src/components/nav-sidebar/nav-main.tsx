@@ -4,6 +4,7 @@ import { useEffect, useMemo } from "react"
 import { useTranslation } from "react-i18next"
 import { Link, useLocation } from "react-router-dom"
 
+import { navOpenItemsAtom } from "@/atoms/nav"
 import {
   Collapsible,
   CollapsibleContent,
@@ -21,7 +22,6 @@ import {
   SidebarMenuSubItem,
 } from "@/components/ui/sidebar"
 import type { IMenu } from "@/models/menu"
-import { navOpenItemsAtom } from "@/store/nav"
 
 export function NavMain({
   items,

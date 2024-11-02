@@ -14,10 +14,13 @@ import {
   SidebarProvider,
   SidebarTrigger,
 } from "@/components/ui/sidebar"
+import { SIDEBAR_COOKIE_NAME } from "@/constants"
 
 export function Component() {
+  const sidebarState = localStorage.getItem(SIDEBAR_COOKIE_NAME) === "true"
+
   return (
-    <SidebarProvider>
+    <SidebarProvider defaultOpen={sidebarState}>
       <AppSidebar />
       <SidebarInset className="w-full overflow-hidden">
         <div className="sticky top-0 z-10">
