@@ -7,6 +7,7 @@ import {
   Sparkles,
 } from "lucide-react"
 import { useTranslation } from "react-i18next"
+import { Link } from "react-router-dom"
 
 import {
   Avatar,
@@ -28,12 +29,13 @@ import {
   SidebarMenuItem,
   useSidebar,
 } from "@/components/ui/sidebar"
-import { useUser } from "@/hooks/query/use-user"
+import { useUser, useUserLogoutMutation } from "@/hooks/query/use-user"
 
 export function NavUser() {
   const { isMobile } = useSidebar()
   const { t } = useTranslation("navigation")
   const { data: user } = useUser()
+  const logout = useUserLogoutMutation()
   return (
     <SidebarMenu>
       <SidebarMenuItem>
@@ -55,13 +57,13 @@ export function NavUser() {
             </SidebarMenuButton>
           </DropdownMenuTrigger>
           <DropdownMenuContent
-            className="w-[--radix-dropdown-menu-trigger-width] min-w-56 rounded-lg"
+            className="w-[--radix-dropdown-menu-trigger-width] min-w-56 rounded-lg bg-popover p-1 text-popover-foreground shadow-md"
             side={isMobile ? "bottom" : "right"}
             align="end"
             sideOffset={4}
           >
             <DropdownMenuLabel className="p-0 font-normal">
-              <div className="flex items-center gap-2 px-1 py-1.5 text-left text-sm">
+              <div className="flex items-center gap-2 px-2 py-1.5 text-left text-sm">
                 <Avatar className="size-8 rounded-lg">
                   <AvatarImage src={user.avatar} alt={user.username} />
                   <AvatarFallback className="rounded-lg">
@@ -70,36 +72,45 @@ export function NavUser() {
                 </Avatar>
                 <div className="grid flex-1 text-left text-sm leading-tight">
                   <span className="truncate font-semibold">{user.username}</span>
-                  <span className="truncate text-xs">{user.email}</span>
+                  <span className="truncate text-xs text-muted-foreground">{user.email}</span>
                 </div>
               </div>
             </DropdownMenuLabel>
-            <DropdownMenuSeparator />
+            <DropdownMenuSeparator className="my-1" />
             <DropdownMenuGroup>
-              <DropdownMenuItem>
-                <Sparkles />
-                {t("user.upgrade_pro")}
+              <DropdownMenuItem className="flex items-center gap-2 px-2 py-1.5">
+                <Sparkles className="size-4" />
+                <span>{t("user.upgrade_pro")}</span>
               </DropdownMenuItem>
             </DropdownMenuGroup>
-            <DropdownMenuSeparator />
+            <DropdownMenuSeparator className="my-1" />
             <DropdownMenuGroup>
-              <DropdownMenuItem>
-                <BadgeCheck />
-                {t("user.account")}
+              <DropdownMenuItem className="flex items-center gap-2 px-2 py-1.5" asChild>
+                <Link to="/settings/profile">
+                  <BadgeCheck className="size-4" />
+                  <span>{t("user.account")}</span>
+                </Link>
               </DropdownMenuItem>
-              <DropdownMenuItem>
-                <CreditCard />
-                {t("user.billing")}
+              <DropdownMenuItem className="flex items-center gap-2 px-2 py-1.5" asChild>
+                <Link to="/system/account/billing">
+                  <CreditCard className="size-4" />
+                  <span>{t("user.billing")}</span>
+                </Link>
               </DropdownMenuItem>
-              <DropdownMenuItem>
-                <Bell />
-                {t("user.notifications")}
+              <DropdownMenuItem className="flex items-center gap-2 px-2 py-1.5" asChild>
+                <Link to="/system/notifications">
+                  <Bell className="size-4" />
+                  <span>{t("user.notifications")}</span>
+                </Link>
               </DropdownMenuItem>
             </DropdownMenuGroup>
-            <DropdownMenuSeparator />
-            <DropdownMenuItem>
-              <LogOut />
-              {t("user.logout")}
+            <DropdownMenuSeparator className="my-1" />
+            <DropdownMenuItem
+              className="flex items-center gap-2 px-2 py-1.5"
+              onSelect={() => logout.mutate()}
+            >
+              <LogOut className="size-4" />
+              <span>{t("user.logout")}</span>
             </DropdownMenuItem>
           </DropdownMenuContent>
         </DropdownMenu>

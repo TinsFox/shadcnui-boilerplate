@@ -6,6 +6,7 @@ import {
   useSuspenseQuery,
 } from "@tanstack/react-query"
 import type { PaginationState } from "@tanstack/react-table"
+import { useNavigate } from "react-router-dom"
 
 import { apiFetch } from "@/lib/api-fetch"
 import type { ILoginForm, IUserProfile, IUsers } from "@/models/user"
@@ -37,9 +38,14 @@ export function useUserLoginMutation() {
 }
 
 export function useUserLogoutMutation() {
+  const navigate = useNavigate()
   return useMutation({
     mutationFn: async () => await apiFetch("/api/logout"),
-    mutationKey: ["userLogout"],
+    mutationKey: ["user-logout"],
+    onSuccess: () => {
+      localStorage.clear()
+      navigate("/login")
+    },
   })
 }
 
