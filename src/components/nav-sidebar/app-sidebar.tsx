@@ -1,7 +1,6 @@
 import { env } from "@env"
 import {
   Command,
-  LifeBuoy,
   Send,
 } from "lucide-react"
 import * as React from "react"
@@ -23,14 +22,10 @@ import { useNavMenu } from "@/hooks/query/user-memu"
 
 const navSecondary = [
   {
-    title: "Support",
-    url: "#",
-    icon: LifeBuoy,
-  },
-  {
     title: "Feedback",
     url: "https://github.com/TinsFox/shadcnui-boilerplate/issues",
     icon: Send,
+    external: true,
   },
 ]
 
