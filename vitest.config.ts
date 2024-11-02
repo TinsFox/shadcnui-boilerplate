@@ -1,18 +1,31 @@
-import { fileURLToPath } from "node:url"
-
+import react from "@vitejs/plugin-react-swc"
 import { mergeConfig } from "vite"
 import { configDefaults, defineConfig } from "vitest/config"
 
 import viteConfig from "./vite.config"
 
-export default defineConfig((configEnv) => mergeConfig(
-  viteConfig(configEnv),
-  defineConfig({
-    test: {
-      environment: "jsdom",
-      exclude: [...configDefaults.exclude, "e2e/*"],
-      root: fileURLToPath(new URL("./", import.meta.url)),
-      setupFiles: ["./__test__/setup.ts"],
-    },
-  }),
-))
+export default defineConfig((configEnv) =>
+  mergeConfig(
+    viteConfig(configEnv),
+    defineConfig({
+      plugins: [react()],
+      test: {
+        environment: "jsdom",
+        globals: true,
+        setupFiles: "./src/test/setup.ts",
+        coverage: {
+          provider: "v8",
+          reporter: ["text", "json", "html"],
+          exclude: [
+            ...(configDefaults.exclude ?? []),
+            "node_modules/",
+            "src/test/",
+            "**/*.d.ts",
+            "**/*.config.*",
+            "**/.*",
+          ],
+        },
+      },
+    }),
+  ),
+)
