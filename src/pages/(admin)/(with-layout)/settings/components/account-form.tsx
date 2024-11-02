@@ -1,5 +1,5 @@
 import { zodResolver } from "@hookform/resolvers/zod"
-import { CalendarIcon, CaretSortIcon, CheckIcon } from "@radix-ui/react-icons"
+import { CalendarIcon } from "@radix-ui/react-icons"
 import { format } from "date-fns"
 import { useForm } from "react-hook-form"
 import { useTranslation } from "react-i18next"
@@ -7,14 +7,6 @@ import { z } from "zod"
 
 import { Button } from "@/components/ui/button"
 import { Calendar } from "@/components/ui/calendar"
-import {
-  Command,
-  CommandEmpty,
-  CommandGroup,
-  CommandInput,
-  CommandItem,
-  CommandList,
-} from "@/components/ui/command"
 import {
   Form,
   FormControl,
@@ -30,20 +22,16 @@ import {
   PopoverContent,
   PopoverTrigger,
 } from "@/components/ui/popover"
+import {
+  Select,
+  SelectContent,
+  SelectItem,
+  SelectTrigger,
+  SelectValue,
+} from "@/components/ui/select"
 import { toast } from "@/components/ui/use-toast"
+import { languages } from "@/i18n"
 import { cn } from "@/lib/utils"
-
-const languages = [
-  { label: "language.english", value: "en" },
-  { label: "language.french", value: "fr" },
-  { label: "language.german", value: "de" },
-  { label: "language.spanish", value: "es" },
-  { label: "language.portuguese", value: "pt" },
-  { label: "language.russian", value: "ru" },
-  { label: "language.japanese", value: "ja" },
-  { label: "language.korean", value: "ko" },
-  { label: "language.chinese", value: "zh" },
-] as const
 
 const accountFormSchema = z.object({
   name: z
@@ -64,17 +52,13 @@ const accountFormSchema = z.object({
 
 type AccountFormValues = z.infer<typeof accountFormSchema>
 
-// This can come from your database or API.
-const defaultValues: Partial<AccountFormValues> = {
-  // name: "Your name",
-  // dob: new Date("2023-01-23"),
-}
-
 export function AccountForm() {
-  const { t } = useTranslation()
+  const { t, i18n } = useTranslation(["settings"])
   const form = useForm<AccountFormValues>({
     resolver: zodResolver(accountFormSchema),
-    defaultValues,
+    defaultValues: {
+      language: i18n.language,
+    },
   })
 
   function onSubmit(data: AccountFormValues) {
@@ -96,12 +80,12 @@ export function AccountForm() {
           name="name"
           render={({ field }) => (
             <FormItem>
-              <FormLabel>{t("form.name")}</FormLabel>
+              <FormLabel>{t("sections.account.name")}</FormLabel>
               <FormControl>
-                <Input placeholder={t("form.your_name")} {...field} />
+                <Input placeholder={t("sections.account.your_name")} {...field} />
               </FormControl>
               <FormDescription>
-                {t("form.name_description")}
+                {t("sections.account.name_description")}
               </FormDescription>
               <FormMessage />
             </FormItem>
@@ -112,7 +96,7 @@ export function AccountForm() {
           name="dob"
           render={({ field }) => (
             <FormItem className="flex flex-col">
-              <FormLabel>{t("form.date_of_birth")}</FormLabel>
+              <FormLabel>{t("sections.account.date_of_birth")}</FormLabel>
               <Popover>
                 <PopoverTrigger asChild>
                   <FormControl>
@@ -126,7 +110,7 @@ export function AccountForm() {
                       {field.value ? (
                         format(field.value, "PPP")
                       ) : (
-                        <span>{t("form.pick_date")}</span>
+                        <span>{t("sections.account.pick_date")}</span>
                       )}
                       <CalendarIcon className="ml-auto size-4 opacity-50" />
                     </Button>
@@ -144,7 +128,7 @@ export function AccountForm() {
                 </PopoverContent>
               </Popover>
               <FormDescription>
-                {t("form.dob_description")}
+                {t("sections.account.dob_description")}
               </FormDescription>
               <FormMessage />
             </FormItem>
@@ -155,65 +139,35 @@ export function AccountForm() {
           name="language"
           render={({ field }) => (
             <FormItem className="flex flex-col">
-              <FormLabel>{t("form.language")}</FormLabel>
-              <Popover>
-                <PopoverTrigger asChild>
-                  <FormControl>
-                    <Button
-                      variant="outline"
-                      role="combobox"
-                      className={cn(
-                        "w-[200px] justify-between",
-                        !field.value && "text-muted-foreground",
-                      )}
-                    >
-                      {field.value ?
-                        languages.find(
-                          (language) => language.value === field.value,
-                        )?.label :
-                        t("form.select_language")}
-                      <CaretSortIcon className="ml-2 size-4 shrink-0 opacity-50" />
-                    </Button>
-                  </FormControl>
-                </PopoverTrigger>
-                <PopoverContent className="w-[200px] p-0">
-                  <Command>
-                    <CommandInput placeholder={t("form.search_language")} />
-                    <CommandList>
-                      <CommandEmpty>{t("form.no_language_found")}</CommandEmpty>
-                      <CommandGroup>
-                        {languages.map((language) => (
-                          <CommandItem
-                            value={language.label}
-                            key={language.value}
-                            onSelect={() => {
-                              form.setValue("language", language.value)
-                            }}
-                          >
-                            <CheckIcon
-                              className={cn(
-                                "mr-2 size-4",
-                                language.value === field.value ?
-                                  "opacity-100" :
-                                  "opacity-0",
-                              )}
-                            />
-                            {language.label}
-                          </CommandItem>
-                        ))}
-                      </CommandGroup>
-                    </CommandList>
-                  </Command>
-                </PopoverContent>
-              </Popover>
+              <FormLabel>{t("sections.account.language")}</FormLabel>
+              <Select
+                value={field.value}
+                onValueChange={(value) => {
+                  field.onChange(value)
+                  i18n.changeLanguage(value)
+                }}
+              >
+                <FormControl>
+                  <SelectTrigger className="w-[240px]">
+                    <SelectValue placeholder={t("sections.account.select_language")} />
+                  </SelectTrigger>
+                </FormControl>
+                <SelectContent>
+                  {languages.map((language) => (
+                    <SelectItem key={language.value} value={language.value}>
+                      {language.icon} {language.label}
+                    </SelectItem>
+                  ))}
+                </SelectContent>
+              </Select>
               <FormDescription>
-                {t("form.language_description")}
+                {t("sections.account.language_description")}
               </FormDescription>
               <FormMessage />
             </FormItem>
           )}
         />
-        <Button type="submit">{t("form.update_account")}</Button>
+        <Button type="submit">{t("sections.account.update_account")}</Button>
       </form>
     </Form>
   )

@@ -26,19 +26,19 @@ import type { ILoginForm } from "@/models/user"
 import { loginFormSchema } from "@/models/user"
 
 export function Component() {
-  const { t } = useTranslation()
+  const { t } = useTranslation("auth")
   return (
     <div className="container relative grid h-screen flex-col items-center justify-center lg:max-w-none lg:grid-cols-2 lg:px-0">
       <div className="relative hidden h-full flex-col bg-muted p-10 text-white dark:border-r lg:flex">
         <div className="absolute inset-0 bg-zinc-900" />
         <div className="relative z-20 flex items-center text-lg font-medium">
           <Logo className="mr-2 size-6" />
-          {t("login.acme_inc")}
+          {t("company.name")}
         </div>
         <div className="relative z-20 mt-auto">
           <blockquote className="space-y-2">
-            <p className="text-lg">{t("login.intro.quote")}</p>
-            <footer className="text-sm">{t("login.intro.name")}</footer>
+            <p className="text-lg">{t("company.testimonial.quote")}</p>
+            <footer className="text-sm">{t("company.testimonial.name")}</footer>
           </blockquote>
         </div>
       </div>
@@ -85,7 +85,7 @@ export function Component() {
 interface UserAuthFormProps extends React.HTMLAttributes<HTMLDivElement> { }
 
 function UserAuthForm({ className, ...props }: UserAuthFormProps) {
-  const { t } = useTranslation()
+  const { t } = useTranslation(["auth", "common", "errors"])
 
   const loginMutation = useUserLoginMutation()
   const navigate = useNavigate()
@@ -112,7 +112,7 @@ function UserAuthForm({ className, ...props }: UserAuthFormProps) {
       },
       error: (error) => {
         const errorMessage = getFetchErrorMessage(error)
-        return t(`error.${errorMessage}` as never)
+        return t(errorMessage)
       },
     })
   }
@@ -193,7 +193,7 @@ function UserAuthForm({ className, ...props }: UserAuthFormProps) {
         type="button"
         disabled={loginMutation.isPending}
       >
-        {t("login.github")}
+        {t("social_login.github")}
       </Button>
     </div>
   )

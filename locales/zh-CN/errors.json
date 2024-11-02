@@ -1,0 +1,14 @@
+{
+  "name_min_length": "姓名必须至少为2个字符。",
+  "name_max_length": "姓名不得超过30个字符。",
+  "dob_required": "出生日期是必需的。",
+  "language_required": "请选择语言。",
+  "bio_min_length": "个人简介必须至少为10个字符。",
+  "bio_max_length": "个人简介不得超过160个字符。",
+  "username_min_length": "用户名必须至少为2个字符。",
+  "username_max_length": "用户名不得超过30个字符。",
+  "email_required": "请选择要显示的电子邮件。",
+  "notification_type_required": "您需要选择通知类型。",
+  "item_selection_required": "您必须选择至少一个项目。",
+  "invalid_email_or_password": "无效的电子邮件或密码。"
+}

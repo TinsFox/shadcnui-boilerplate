@@ -1,0 +1,24 @@
+{
+  "select_language": "Select a language",
+  "languages": {
+    "english": "English",
+    "french": "French",
+    "german": "German",
+    "spanish": "Spanish",
+    "portuguese": "Portuguese",
+    "russian": "Russian",
+    "japanese": "Japanese",
+    "korean": "Korean",
+    "chinese": "Chinese"
+  },
+  "themes": {
+    "system": "System",
+    "light": "Light",
+    "dark": "Dark"
+  },
+  "fonts": {
+    "inter": "Inter",
+    "manrope": "Manrope"
+  },
+  "update": "Update"
+}

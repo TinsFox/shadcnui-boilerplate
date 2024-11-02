@@ -16,6 +16,7 @@ import {
   Radar,
   Radical,
   Settings,
+  Table,
   TableProperties,
   Trash2,
 } from "lucide-react"
@@ -65,6 +66,7 @@ export const menus: IMenu[] = [
   {
     title: "dashboard",
     icon: Gauge,
+    to: "/dashboard",
     children: [
       {
         title: "overview",
@@ -84,12 +86,13 @@ export const menus: IMenu[] = [
         to: "/dashboard/workplace",
       },
     ],
-    to: "/dashboard",
+
   },
   {
     title: "forms",
     label: "12",
     icon: MessagesSquare,
+    to: "/form",
     children: [
       {
         title: "basic_form",
@@ -108,11 +111,11 @@ export const menus: IMenu[] = [
         to: "/form/advanced-form",
       },
     ],
-    to: "/form",
   },
   {
     title: "table",
-    icon: MessagesSquare,
+    to: "/list",
+    icon: Table,
     children: [
       {
         title: "basic_list",
@@ -133,11 +136,11 @@ export const menus: IMenu[] = [
         to: "/list/card-list",
       },
     ],
-    to: "/list",
   },
   {
     title: "charts",
-    icon: MessagesSquare,
+    icon: ChartLine,
+    to: "/charts",
     children: [
       {
         title: "area_chart",
@@ -175,7 +178,6 @@ export const menus: IMenu[] = [
         to: "/charts/tooltip",
       },
     ],
-    to: "/charts",
   },
   {
     title: "settings",
@@ -185,6 +187,7 @@ export const menus: IMenu[] = [
   {
     title: "system",
     icon: Info,
+    to: "/system",
     children: [
       {
         title: "about",
@@ -192,6 +195,5 @@ export const menus: IMenu[] = [
         to: "/system/about",
       },
     ],
-    to: "/system",
   },
 ] as const

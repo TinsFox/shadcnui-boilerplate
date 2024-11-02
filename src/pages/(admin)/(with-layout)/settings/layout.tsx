@@ -4,31 +4,31 @@ import { Outlet } from "react-router-dom"
 import { SidebarNav } from "./components/sidebar-nav"
 
 export function Component() {
-  const { t } = useTranslation()
+  const { t } = useTranslation("settings")
 
   const sidebarNavItems = [
     {
-      title: t("settings.nav.profile"),
+      title: t("nav.profile"),
       href: "/settings/profile",
     },
     {
-      title: t("settings.nav.account"),
+      title: t("nav.account"),
       href: "/settings/account",
     },
     {
-      title: t("settings.nav.appearance"),
+      title: t("nav.appearance"),
       href: "/settings/appearance",
     },
     {
-      title: t("settings.nav.notifications"),
+      title: t("nav.notifications"),
       href: "/settings/notifications",
     },
     {
-      title: t("settings.nav.display"),
+      title: t("nav.display"),
       href: "/settings/display",
     },
     {
-      title: t("settings.nav.theme"),
+      title: t("nav.theme"),
       href: "/settings/theme",
     },
   ]

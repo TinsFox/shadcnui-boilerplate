@@ -1,0 +1,24 @@
+{
+  "select_language": "选择语言",
+  "languages": {
+    "english": "英语",
+    "french": "法语",
+    "german": "德语",
+    "spanish": "西班牙语",
+    "portuguese": "葡萄牙语",
+    "russian": "俄语",
+    "japanese": "日语",
+    "korean": "韩语",
+    "chinese": "中文"
+  },
+  "themes": {
+    "system": "系统",
+    "light": "亮",
+    "dark": "暗"
+  },
+  "fonts": {
+    "inter": "Inter",
+    "manrope": "Manrope"
+  },
+  "update": "更新"
+}

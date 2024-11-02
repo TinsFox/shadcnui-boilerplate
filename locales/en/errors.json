@@ -1,0 +1,14 @@
+{
+  "name_min_length": "Name must be at least 2 characters.",
+  "name_max_length": "Name must not be longer than 30 characters.",
+  "dob_required": "A date of birth is required.",
+  "language_required": "Please select a language.",
+  "bio_min_length": "Bio must be at least 10 characters.",
+  "bio_max_length": "Bio must not be longer than 160 characters.",
+  "username_min_length": "Username must be at least 2 characters.",
+  "username_max_length": "Username must not be longer than 30 characters.",
+  "email_required": "Please select an email to display.",
+  "notification_type_required": "You need to select a notification type.",
+  "item_selection_required": "You have to select at least one item.",
+  "invalid_email_or_password": "Invalid email or password."
+}
