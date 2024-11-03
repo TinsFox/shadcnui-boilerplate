@@ -66,9 +66,6 @@ const columns = [
 const meta = {
   title: "Components/ProTable",
   component: ProTable,
-  parameters: {
-    layout: "centered",
-  },
   tags: ["autodocs"],
 } satisfies Meta<typeof ProTable>
 

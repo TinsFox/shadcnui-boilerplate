@@ -26,10 +26,11 @@ const preview: Preview = {
         },
       ],
     },
+    layout: "padded",
   },
   decorators: [
     (Story) => (
-      <div className="container h-screen w-screen bg-background text-foreground">
+      <div className="min-h-screen w-[1200px] max-w-full bg-background text-foreground">
         <RootProviders>
           <div className="w-full p-4">
             <Story />
