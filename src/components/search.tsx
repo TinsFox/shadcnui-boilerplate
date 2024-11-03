@@ -1,6 +1,6 @@
 import type { DialogProps } from "@radix-ui/react-dialog"
 import { LaptopIcon, MoonIcon, SunIcon } from "@radix-ui/react-icons"
-import { SearchIcon } from "lucide-react"
+import { CircleHelp, SearchIcon } from "lucide-react"
 import * as React from "react"
 import { useTranslation } from "react-i18next"
 import { useNavigate } from "react-router-dom"
@@ -103,7 +103,7 @@ export function Search({ ...props }: ButtonProps & DialogProps) {
                 )
               }}
             >
-              <Icons.document />
+              <CircleHelp className="mr-2 size-4" />
               Document
             </CommandItem>
           </CommandGroup>
