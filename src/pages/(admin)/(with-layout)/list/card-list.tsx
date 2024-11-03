@@ -1,6 +1,6 @@
 import { useAlbums } from "@/hooks/query/use-album"
 
-import { AlbumCard } from "./components/album-card"
+import { AlbumCard } from "./table-list/components/album-card"
 
 export function Component() {
   const { data } = useAlbums()

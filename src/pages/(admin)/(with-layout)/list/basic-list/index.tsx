@@ -184,7 +184,44 @@ const columns: ColumnDef<IUsers>[] = [
     },
   },
 ]
-
+function Toolbar({ table }: { table: ReturnType<typeof useReactTable<IUsers>> }) {
+  return (
+    <div className="flex items-center py-4">
+      <Input
+        placeholder="Filter emails..."
+        value={(table.getColumn("email")?.getFilterValue() as string) ?? ""}
+        onChange={(event) =>
+          table.getColumn("email")?.setFilterValue(event.target.value)}
+        className="max-w-sm"
+      />
+      <DropdownMenu>
+        <DropdownMenuTrigger asChild>
+          <Button variant="outline" className="ml-auto">
+            Columns <ChevronDownIcon className="ml-2 size-4" />
+          </Button>
+        </DropdownMenuTrigger>
+        <DropdownMenuContent align="end">
+          {table
+            .getAllColumns()
+            .filter((column) => column.getCanHide())
+            .map((column) => (
+              <DropdownMenuCheckboxItem
+                key={column.id}
+                className="capitalize"
+                checked={column.getIsVisible()}
+                onCheckedChange={(value) =>
+                  column.toggleVisibility(!!value)}
+              >
+                {column.id}
+              </DropdownMenuCheckboxItem>
+            ))}
+        </DropdownMenuContent>
+      </DropdownMenu>
+    </div>
+  )
+}
+const PAGINATION_STEP = 3
+const PAGE_SIZE = 10
 export function Component() {
   const [sorting, setSorting] = React.useState<SortingState>([])
   const [columnFilters, setColumnFilters] = React.useState<ColumnFiltersState>(
@@ -192,14 +229,12 @@ export function Component() {
   )
   const [pagination, setPagination] = React.useState<PaginationState>({
     pageIndex: 0,
-    pageSize: 50,
+    pageSize: PAGE_SIZE,
   })
   const [columnVisibility, setColumnVisibility] =
     React.useState<VisibilityState>({})
   const [rowSelection, setRowSelection] = React.useState({})
   const { data: users, isPending } = useUsers(pagination)
-
-  const PAGINATION_STEP = 3 // You can easily change this value to adjust the pagination step
 
   const table = useReactTable({
     data: users.list,
@@ -229,38 +264,7 @@ export function Component() {
 
   return (
     <div>
-      <div className="flex items-center  py-4">
-        <Input
-          placeholder="Filter emails..."
-          value={(table.getColumn("email")?.getFilterValue() as string) ?? ""}
-          onChange={(event) =>
-            table.getColumn("email")?.setFilterValue(event.target.value)}
-          className="max-w-sm"
-        />
-        <DropdownMenu>
-          <DropdownMenuTrigger asChild>
-            <Button variant="outline" className="ml-auto">
-              Columns <ChevronDownIcon className="ml-2 size-4" />
-            </Button>
-          </DropdownMenuTrigger>
-          <DropdownMenuContent align="end">
-            {table
-              .getAllColumns()
-              .filter((column) => column.getCanHide())
-              .map((column) => (
-                <DropdownMenuCheckboxItem
-                  key={column.id}
-                  className="capitalize"
-                  checked={column.getIsVisible()}
-                  onCheckedChange={(value) =>
-                    column.toggleVisibility(!!value)}
-                >
-                  {column.id}
-                </DropdownMenuCheckboxItem>
-              ))}
-          </DropdownMenuContent>
-        </DropdownMenu>
-      </div>
+      <Toolbar table={table} />
       <div className="rounded-md border">
         <Table>
           <TableHeader>
@@ -311,7 +315,20 @@ export function Component() {
           </TableBody>
         </Table>
       </div>
+      <DataTablePagination table={table} pagination={pagination} setPagination={setPagination} />
+    </div>
+  )
+}
 
+interface DataTablePaginationProps {
+  table: ReturnType<typeof useReactTable<IUsers>>
+  pagination: PaginationState
+  setPagination: (pagination: PaginationState) => void
+}
+
+function DataTablePagination({ table, pagination, setPagination }: DataTablePaginationProps) {
+  return (
+    <div>
       {table.getPageCount() > 1 && (
         <div className="flex items-center justify-end space-x-2 py-4">
           <div className="flex-1 text-sm text-muted-foreground">

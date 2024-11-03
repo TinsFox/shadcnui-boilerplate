@@ -50,7 +50,7 @@ export function useUserLogoutMutation() {
 }
 
 export function useUsers(pagination: PaginationState) {
-  const { data, isPending } = useQuery({
+  const { data, isPending, isFetching, refetch } = useQuery({
     queryKey: ["users", pagination.pageIndex, pagination.pageSize],
     queryFn: async () => apiFetch<{
       list: IUsers[]
@@ -68,6 +68,8 @@ export function useUsers(pagination: PaginationState) {
 
   return {
     isPending,
+    isLoading: isFetching,
+    refetch,
     data: {
       list: data?.list || [],
       total: data?.total || 0,

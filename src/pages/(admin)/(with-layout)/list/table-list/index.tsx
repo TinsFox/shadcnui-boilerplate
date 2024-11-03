@@ -1,14 +1,15 @@
 import type { ColumnDef } from "@tanstack/react-table"
+import { labels, priorities, statuses } from "mock/list"
 
+import { DataTable } from "@/components/data-table/data-table"
+import { DataTableColumnHeader } from "@/components/data-table/data-table-column-header"
+import { DataTableRowActions } from "@/components/data-table/data-table-row-actions"
 import { Badge } from "@/components/ui/badge"
 import { Checkbox } from "@/components/ui/checkbox"
+import { useBasicList } from "@/hooks/query/use-list"
+import type { IAlbum } from "@/schema/album"
 
-import { labels, priorities, statuses } from "../data/data"
-import type { Task } from "../data/schema"
-import { DataTableColumnHeader } from "./data-table-column-header"
-import { DataTableRowActions } from "./data-table-row-actions"
-
-export const columns: ColumnDef<Task>[] = [
+const columns: ColumnDef<IAlbum>[] = [
   {
     id: "select",
     header: ({ table }) => (
@@ -113,3 +114,23 @@ export const columns: ColumnDef<Task>[] = [
     cell: ({ row }) => <DataTableRowActions row={row} />,
   },
 ]
+
+export function Component() {
+  const { data } = useBasicList()
+
+  return (
+    <div>
+      <DataTable
+        data={data?.map((item) => ({
+          ...item,
+          cover: "",
+          url: "",
+          slogan: "",
+          updatedAt: new Date(),
+          digitalDownloads: 0,
+        })) ?? []}
+        columns={columns}
+      />
+    </div>
+  )
+}

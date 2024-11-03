@@ -1,13 +1,11 @@
 import { useQuery } from "@tanstack/react-query"
-
-import { apiFetch } from "@/lib/api-fetch"
-import type { IAlbum } from "@/schema/album"
+import { albums } from "mock/albums"
 
 export function useAlbums() {
-  return useQuery({
+  const { data } = useQuery({
     queryKey: ["albums"],
-    queryFn: async () => apiFetch<{
-      list: IAlbum[]
-    }>("/api/albums"),
+    queryFn: async () => albums,
   })
+
+  return { data: { list: data } }
 }
