@@ -183,8 +183,8 @@ export function ProTablePagination<TData>({ table, pagination }: ProTablePaginat
 }
 
 export interface PaginationProps {
-  pageIndex: number
-  pageSize: number
-  onPaginationChange: (pagination: PaginationState) => void
-  total: number
+  pageIndex?: number
+  pageSize?: number
+  onPaginationChange?: (pagination: PaginationState) => void
+  total?: number
 }

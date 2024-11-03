@@ -13,12 +13,27 @@ const preview: Preview = {
         date: /Date$/i,
       },
     },
+    backgrounds: {
+      default: "light",
+      values: [
+        {
+          name: "light",
+          value: "#ffffff",
+        },
+        {
+          name: "dark",
+          value: "#1a1a1a",
+        },
+      ],
+    },
   },
   decorators: [
     (Story) => (
-      <div style={{ margin: "0" }}>
+      <div className="container h-screen w-screen bg-background text-foreground">
         <RootProviders>
-          <Story />
+          <div className="w-full p-4">
+            <Story />
+          </div>
         </RootProviders>
       </div>
     ),

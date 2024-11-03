@@ -1,6 +1,6 @@
 import type { PaginationProps } from "@/components/pro-table/pagination"
 
-interface ProTableLoadingProps {
+interface ProTableSkeletonProps {
   pagination?: PaginationProps
 }
 
@@ -9,7 +9,7 @@ interface ProTableLoadingProps {
  * @param pagination - 分页信息
  * @returns
  */
-export function ProTableLoading({ pagination }: ProTableLoadingProps) {
+export function ProTableSkeleton({ pagination }: ProTableSkeletonProps) {
   return (
     <div className="w-full animate-pulse">
       {Array.from({ length: pagination?.pageSize ?? 10 }).map((_, index) => (

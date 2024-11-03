@@ -12,9 +12,9 @@ import {
 import * as React from "react"
 
 import { Empty } from "@/components/empty"
-import { ProTableLoading } from "@/components/pro-table/loading"
 import type { PaginationProps } from "@/components/pro-table/pagination"
 import { ProTablePagination } from "@/components/pro-table/pagination"
+import { ProTableSkeleton } from "@/components/pro-table/skeleton"
 import { ProTableToolbar } from "@/components/pro-table/toolbar"
 import { Table, TableBody, TableCell, TableHead, TableHeader, TableRow } from "@/components/ui/table"
 
@@ -108,7 +108,7 @@ export function ProTable<TData, TValue>({
             {isLoading ? (
               <TableRow>
                 <TableCell colSpan={columns.length} className="h-24 text-center">
-                  <ProTableLoading />
+                  <ProTableSkeleton />
                 </TableCell>
               </TableRow>
             ) : (
