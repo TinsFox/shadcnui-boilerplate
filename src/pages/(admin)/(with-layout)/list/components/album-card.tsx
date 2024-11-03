@@ -9,7 +9,7 @@ import { Card, CardContent, CardDescription, CardFooter, CardHeader, CardTitle }
 import { Separator } from "@/components/ui/separator"
 import { Tooltip, TooltipContent, TooltipTrigger } from "@/components/ui/tooltip"
 import { cn } from "@/lib/utils"
-import type { IAlbum } from "@/models/album"
+import type { IAlbum } from "@/schema/album"
 
 export interface AlbumCardProps extends React.HTMLAttributes<HTMLDivElement> {
   album: IAlbum

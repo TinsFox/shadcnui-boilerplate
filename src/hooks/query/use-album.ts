@@ -1,7 +1,7 @@
 import { useQuery } from "@tanstack/react-query"
 
 import { apiFetch } from "@/lib/api-fetch"
-import type { IAlbum } from "@/models/album"
+import type { IAlbum } from "@/schema/album"
 
 export function useAlbums() {
   return useQuery({

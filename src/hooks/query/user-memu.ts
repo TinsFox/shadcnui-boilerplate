@@ -22,7 +22,7 @@ import {
   Trash2,
 } from "lucide-react"
 
-import type { IMenu } from "@/models/menu"
+import type { IMenu } from "@/schema/menu"
 
 export const queryNavMenu = () => queryOptions({
   queryKey: ["nav-menu"],

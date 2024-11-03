@@ -9,7 +9,7 @@ import type { PaginationState } from "@tanstack/react-table"
 import { useNavigate } from "react-router-dom"
 
 import { apiFetch } from "@/lib/api-fetch"
-import type { ILoginForm, IUserProfile, IUsers } from "@/models/user"
+import type { ILoginForm, IUserProfile, IUsers } from "@/schema/user"
 
 export const queryUser = () => queryOptions({
   queryKey: ["userInfo"],

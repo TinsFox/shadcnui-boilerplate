@@ -12,7 +12,7 @@ import {
 } from "@/components/ui/breadcrumb"
 import { useNavMenu } from "@/hooks/query/user-memu"
 import { cn } from "@/lib/utils"
-import type { IMenu } from "@/models/menu"
+import type { IMenu } from "@/schema/menu"
 
 interface Breadcrumb {
   title: I18nKeys

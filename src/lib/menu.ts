@@ -1,4 +1,4 @@
-import type { IMenu } from "@/models/menu"
+import type { IMenu } from "@/schema/menu"
 
 export function findMenuTitleByPathname(
   menus: IMenu[],

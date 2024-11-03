@@ -22,8 +22,8 @@ import { Input } from "@/components/ui/input"
 import { useUserLoginMutation } from "@/hooks/query/use-user"
 import { getFetchErrorMessage } from "@/lib/api-fetch"
 import { cn } from "@/lib/utils"
-import type { ILoginForm } from "@/models/user"
-import { loginFormSchema } from "@/models/user"
+import type { ILoginForm } from "@/schema/user"
+import { loginFormSchema } from "@/schema/user"
 
 export function Component() {
   const { t } = useTranslation("auth")

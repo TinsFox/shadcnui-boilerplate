@@ -21,7 +21,7 @@ import {
   SidebarMenuSubButton,
   SidebarMenuSubItem,
 } from "@/components/ui/sidebar"
-import type { IMenu } from "@/models/menu"
+import type { IMenu } from "@/schema/menu"
 
 import { Button } from "../ui/button"
 

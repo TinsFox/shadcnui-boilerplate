@@ -30,8 +30,8 @@ import {
   SheetTrigger,
 } from "@/components/ui/sheet"
 import { toast } from "@/components/ui/use-toast"
-import type { IUsers } from "@/models/user"
-import { userRoles, userSchema } from "@/models/user"
+import type { IUsers } from "@/schema/user"
+import { userRoles, userSchema } from "@/schema/user"
 
 export function ViewUser({ user }: { user: IUsers }) {
   const form = useForm<IUsers>({

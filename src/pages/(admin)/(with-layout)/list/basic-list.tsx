@@ -59,7 +59,7 @@ import {
   TableRow,
 } from "@/components/ui/table"
 import { useUsers } from "@/hooks/query/use-user"
-import type { IUsers } from "@/models/user"
+import type { IUsers } from "@/schema/user"
 
 import { ViewUser } from "./components/view-user"
 
