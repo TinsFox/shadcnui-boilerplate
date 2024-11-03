@@ -12,7 +12,6 @@ export default defineConfig(
     lessOpinionated: true,
     preferESM: false,
     ignores: [
-      "public/mockServiceWorker.js",
       "src/components/ui",
       "pnpm-lock.yaml",
     ],
@@ -24,9 +23,15 @@ export default defineConfig(
       },
     },
     rules: {
+      "react-refresh/only-export-components": "off",
+    },
+  },
+  {
+    files: ["**/pages/**/*.tsx"],
+    rules: {
       "react-refresh/only-export-components": [
         "warn",
-        { allowExportNames: ["loader"] },
+        { allowExportNames: ["loader", "Component", "action"] },
       ],
     },
   },
