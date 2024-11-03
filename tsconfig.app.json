@@ -31,5 +31,5 @@
       "@/ui/*": ["./src/components/ui/*"]
     }
   },
-  "include": ["src", "./env.ts", "types/**/*.d.ts", "mock"]
+  "include": ["src", "./env.ts", "types/**/*.d.ts", "mock", ".storybook"]
 }
