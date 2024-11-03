@@ -147,7 +147,7 @@ const columns: ColumnDef<IUsers>[] = [
 export function Component() {
   const [pagination, setPagination] = React.useState<PaginationState>({
     pageIndex: 0,
-    pageSize: PAGE_SIZE,
+    pageSize: 10,
   })
 
   const { data: users, isLoading, refetch } = useUsers(pagination)
