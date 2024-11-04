@@ -9,6 +9,7 @@ lerna-debug.log*
 
 node_modules
 dist
+build
 dist-ssr
 *.local
 
@@ -33,6 +34,7 @@ dist-ssr
 docs/.vitepress/dist
 docs/.vitepress/cache
 
-
 # vitest
 coverage/
+
+.react-router/

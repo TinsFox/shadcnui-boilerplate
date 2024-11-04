@@ -6,7 +6,7 @@
 
 ```tsx
 // src/dashboard/index.tsx
-import { redirect } from "react-router-dom"
+import { redirect } from "react-router"
 
 export function loader() {
   return redirect("/dashboard/overview")
@@ -21,7 +21,7 @@ export function Component() {
 
 ```tsx
 // src/dashboard/index.tsx
-import { Navigate } from "react-router-dom"
+import { Navigate } from "react-router"
 
 
 export function Component() {

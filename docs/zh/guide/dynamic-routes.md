@@ -18,7 +18,7 @@ pages
 - 在 `pages/users/[id].tsx` 中，我们可以使用 `useParams` 来获取 `id` 参数
 
 ```tsx
-import { useParams } from "react-router-dom"
+import { useParams } from "react-router"
 
 export function Component() {
   const { id } = useParams()

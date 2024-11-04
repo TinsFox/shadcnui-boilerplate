@@ -17,7 +17,7 @@ Route group layout can be placed in `(folderName)/layout.tsx`
 
 ```tsx
 // src/pages/(admin)/layout.tsx
-import { Outlet } from "react-router-dom"
+import { Outlet } from "react-router"
 
 export function Component() {
   return (

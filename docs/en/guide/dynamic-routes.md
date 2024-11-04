@@ -25,7 +25,7 @@ pages
 - In `pages/users/[id].tsx`, we can use `useParams` to get the `id` parameter
 
 ```tsx
-import { useParams } from "react-router-dom"
+import { useParams } from "react-router"
 
 export function Component() {
   const { id } = useParams()

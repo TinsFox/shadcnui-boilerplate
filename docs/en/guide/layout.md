@@ -6,7 +6,7 @@ In some pages, we need to share some UI, here we agree to use `layout.tsx` to im
 
 ```tsx
 // src/dashboard/layout.tsx
-import { Outlet } from "react-router-dom";
+import { Outlet } from "react-router";
 
 export function Component() {
   return (

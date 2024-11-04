@@ -1,8 +1,7 @@
 import { readFileSync } from "node:fs"
 
-import react from "@vitejs/plugin-react-swc"
+import { reactRouter } from "@react-router/dev/vite"
 import { defineConfig, loadEnv } from "vite"
-import { createHtmlPlugin } from "vite-plugin-html"
 import tsconfigPaths from "vite-tsconfig-paths"
 
 import { getGitHash } from "./scripts/lib.ts"
@@ -15,16 +14,10 @@ export default defineConfig(({ mode }) => {
 
   return {
     plugins: [
-      tsconfigPaths(),
-      react(),
-      createHtmlPlugin({
-        template: "index.html",
-        inject: {
-          data: {
-            title: viteEnv.VITE_APP_NAME,
-          },
-        },
+      reactRouter({
+        ssr: false,
       }),
+      tsconfigPaths(),
     ],
     define: {
       APP_VERSION: JSON.stringify(pkg.version),

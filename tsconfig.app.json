@@ -22,14 +22,24 @@
     /* If your code runs in the DOM: */
     "lib": ["es2022", "dom", "dom.iterable"],
     "jsx": "react-jsx",
-
+    "types": ["@react-router/node", "vite/client"],
     "baseUrl": ".",
     "paths": {
-      "@/*": ["./src/*"],
+      "@/*": ["./app/*"],
       "@env": ["./env.ts"],
       "@pkg": ["./package.json"],
-      "@/ui/*": ["./src/components/ui/*"]
-    }
+      "@/ui/*": ["app/components/ui/*"]
+    },
+    "rootDirs": [".", "./.react-router/types"],
+    "plugins": [{ "name": "@react-router/dev" }]
   },
-  "include": ["src", "./env.ts", "types/**/*.d.ts"]
+  "include": [
+    "**/*.ts",
+    "**/*.tsx",
+    "**/.server/**/*.ts",
+    "**/.server/**/*.tsx",
+    "**/.client/**/*.ts",
+    "**/.client/**/*.tsx",
+    ".react-router/types/**/*"
+  ]
 }

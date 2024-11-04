@@ -17,7 +17,7 @@
 
 ```tsx
 // src/pages/(admin)/layout.tsx
-import { Outlet } from "react-router-dom"
+import { Outlet } from "react-router"
 
 export function Component() {
   return (

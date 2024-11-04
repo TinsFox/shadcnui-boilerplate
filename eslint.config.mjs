@@ -11,10 +11,7 @@ export default defineConfig(
     },
     lessOpinionated: true,
     preferESM: false,
-    ignores: [
-      "src/components/ui",
-      "pnpm-lock.yaml",
-    ],
+    ignores: ["app/components/ui", "pnpm-lock.yaml", "**/**.png", "**/**.md"],
   },
   {
     settings: {
