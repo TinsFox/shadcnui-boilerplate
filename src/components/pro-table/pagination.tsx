@@ -41,9 +41,9 @@ export function ProTablePagination<TData>({ table, pagination }: ProTablePaginat
     pagination?.onPaginationChange?.(newPaginationState)
   }
   return (
-    <div className="flex items-center justify-between px-2">
+    <div className="flex w-full items-center justify-between px-4">
       {table.getPageCount() > 1 && (
-        <div className="flex items-center justify-end space-x-2 py-4">
+        <div className="flex w-full items-center justify-end space-x-2 py-4">
           <div className="flex-1 text-sm text-muted-foreground">
             Page
             {" "}
@@ -111,6 +111,7 @@ export function ProTablePagination<TData>({ table, pagination }: ProTablePaginat
                       visiblePages.push(
                         <PaginationEllipsis
                           key="ellipsis1"
+                          className="cursor-pointer"
                           onClick={() => handlePageIndexChange(Math.max(0, currentPage - DEFAULT_PAGINATION_STEP))}
                         />,
                       )
@@ -126,6 +127,7 @@ export function ProTablePagination<TData>({ table, pagination }: ProTablePaginat
                       visiblePages.push(
                         <PaginationEllipsis
                           key="ellipsis2"
+                          className="cursor-pointer"
                           onClick={() => {
                             handlePageIndexChange(Math.min(totalPages - 1, currentPage + DEFAULT_PAGINATION_STEP))
                           }}
