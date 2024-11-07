@@ -1,14 +1,13 @@
 import {
-  CaretSortIcon,
   DotsHorizontalIcon,
 } from "@radix-ui/react-icons"
 import type {
-  ColumnDef,
   PaginationState,
 } from "@tanstack/react-table"
 import * as React from "react"
 
 import { ProTable } from "@/components/pro-table"
+import type { ColumnDef, SearchParams } from "@/components/pro-table/types"
 import { Avatar, AvatarFallback, AvatarImage } from "@/components/ui/avatar"
 import { Button } from "@/components/ui/button"
 import { Checkbox } from "@/components/ui/checkbox"
@@ -44,19 +43,23 @@ const columns: ColumnDef<IUsers>[] = [
     enableHiding: false,
   },
   {
+
     accessorKey: "id",
     header: "ID",
     cell: ({ row }) => <div className="lowercase">{row.getValue("id")}</div>,
+    search: true,
   },
   {
     accessorKey: "name",
     header: "Name",
     cell: ({ row }) => <div className="lowercase">{row.getValue("name")}</div>,
+    search: true,
   },
   {
     accessorKey: "role",
     header: "Role",
     cell: ({ row }) => <div className="lowercase">{row.getValue("role")}</div>,
+    search: true,
   },
   {
     accessorKey: "avatar",
@@ -80,6 +83,7 @@ const columns: ColumnDef<IUsers>[] = [
         {new Date(row.getValue("createdAt")).toLocaleDateString()}
       </div>
     ),
+    search: true,
   },
   {
     accessorKey: "status",
@@ -87,19 +91,13 @@ const columns: ColumnDef<IUsers>[] = [
     cell: ({ row }) => (
       <div className="capitalize">{row.getValue("status")}</div>
     ),
+    search: true,
   },
   {
     accessorKey: "email",
-    header: ({ column }) => (
-      <Button
-        variant="ghost"
-        onClick={() => column.toggleSorting(column.getIsSorted() === "asc")}
-      >
-        Email
-        <CaretSortIcon className="ml-2 size-4" />
-      </Button>
-    ),
+    header: "Email",
     cell: ({ row }) => <div className="lowercase">{row.getValue("email")}</div>,
+    search: true,
   },
   {
     accessorKey: "amount",
@@ -107,7 +105,6 @@ const columns: ColumnDef<IUsers>[] = [
     cell: ({ row }) => {
       const amount = Number.parseFloat(row.getValue("amount"))
 
-      // Format the amount as a dollar amount
       const formatted = new Intl.NumberFormat("en-US", {
         style: "currency",
         currency: "USD",
@@ -136,7 +133,6 @@ const columns: ColumnDef<IUsers>[] = [
             >
               Copy payment ID
             </DropdownMenuItem>
-
           </DropdownMenuContent>
         </DropdownMenu>
       )
@@ -149,14 +145,20 @@ export function Component() {
     pageIndex: 0,
     pageSize: 10,
   })
+  const [searchParams, setSearchParams] = React.useState<Partial<IUsers>>({})
 
-  const { data: users, isLoading, refetch } = useUsers(pagination)
+  const { data: users, isLoading, refetch } = useUsers(pagination, searchParams)
   const handlePaginationChange = (_pagination: PaginationState) => {
     setPagination(_pagination)
   }
+
+  const handleSearch = (params: SearchParams) => {
+    setSearchParams(params)
+  }
+
   return (
     <div>
-      DataTableList
+      <div className="mb-4 text-2xl font-bold">Pro Data Table</div>
       <ProTable
         columns={columns}
         data={users?.list ?? []}
@@ -168,6 +170,7 @@ export function Component() {
           total: users?.total ?? 0,
           onPaginationChange: handlePaginationChange,
         }}
+        onSearch={handleSearch}
       />
     </div>
   )

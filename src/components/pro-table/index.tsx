@@ -1,4 +1,4 @@
-import type { ColumnDef, ColumnFiltersState, SortingState, VisibilityState } from "@tanstack/react-table"
+import type { ColumnFiltersState, SortingState, VisibilityState } from "@tanstack/react-table"
 import {
   flexRender,
   getCoreRowModel,
@@ -18,6 +18,9 @@ import { ProTableSkeleton } from "@/components/pro-table/skeleton"
 import { ProTableToolbar } from "@/components/pro-table/toolbar"
 import { Table, TableBody, TableCell, TableHead, TableHeader, TableRow } from "@/components/ui/table"
 
+import { SearchToolbar } from "./search-toolbar"
+import type { ColumnDef, SearchParams } from "./types"
+
 export const DEFAULT_PAGINATION_STEP = 3
 export const DEFAULT_PAGE_INDEX = 0
 export const DEFAULT_PAGE_SIZE = 10
@@ -29,6 +32,7 @@ interface ProTableProps<TData, TValue> {
   toolbar?: React.ReactNode
   pagination?: PaginationProps
   onRefresh?: () => void
+  onSearch?: (params: SearchParams) => void
   onDensityChange?: (density: "default" | "compact" | "comfortable") => void
   onColumnSettingChange?: (columnVisibility: VisibilityState) => void
 }
@@ -40,6 +44,7 @@ export function ProTable<TData, TValue>({
   toolbar,
   pagination,
   onRefresh,
+  onSearch,
 }: ProTableProps<TData, TValue>) {
   const [rowSelection, setRowSelection] = React.useState({})
   const [columnVisibility, setColumnVisibility] =
@@ -48,6 +53,7 @@ export function ProTable<TData, TValue>({
     [],
   )
   const [sorting, setSorting] = React.useState<SortingState>([])
+  const [searchValues, setSearchValues] = React.useState<Record<string, string>>({})
 
   const table = useReactTable({
     data,
@@ -77,15 +83,37 @@ export function ProTable<TData, TValue>({
     getFacetedUniqueValues: getFacetedUniqueValues(),
   })
 
+  const handleSearchChange = (field: string, value: string) => {
+    setSearchValues((prev) => ({
+      ...prev,
+      [field]: value,
+    }))
+  }
+
+  const handleSearch = (value: SearchParams) => {
+    const filteredValue = Object.fromEntries(
+      Object.entries(value).filter(([, value]) => value !== ""),
+    )
+    onSearch?.(filteredValue)
+  }
+
   return (
     <div className="space-y-4">
-      {/* 工具栏 */}
+
+      <SearchToolbar
+        table={table}
+        searchValues={searchValues}
+        onSearchChange={handleSearchChange}
+        onSubmit={handleSearch}
+      />
+
       <ProTableToolbar
         table={table}
         onRefresh={onRefresh}
         isLoading={isLoading}
         toolbar={toolbar}
       />
+
       <div className="rounded-md border">
         <Table>
           <TableHeader>
