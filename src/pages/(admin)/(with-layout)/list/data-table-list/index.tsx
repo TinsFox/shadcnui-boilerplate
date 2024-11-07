@@ -18,6 +18,8 @@ import {
   DropdownMenuLabel,
   DropdownMenuTrigger,
 } from "@/components/ui/dropdown-menu"
+import { Select, SelectContent, SelectItem, SelectTrigger, SelectValue } from "@/components/ui/select"
+import { Textarea } from "@/components/ui/textarea"
 import { useUsers } from "@/hooks/query/use-user"
 import type { IUsers } from "@/schema/user"
 
@@ -43,23 +45,41 @@ const columns: ColumnDef<IUsers>[] = [
     enableHiding: false,
   },
   {
-
     accessorKey: "id",
     header: "ID",
     cell: ({ row }) => <div className="lowercase">{row.getValue("id")}</div>,
-    search: true,
+    search: {
+      placeholder: "Search by ID",
+    },
   },
   {
     accessorKey: "name",
     header: "Name",
     cell: ({ row }) => <div className="lowercase">{row.getValue("name")}</div>,
-    search: true,
+    search: {
+      placeholder: "Search by name",
+    },
   },
   {
     accessorKey: "role",
     header: "Role",
     cell: ({ row }) => <div className="lowercase">{row.getValue("role")}</div>,
-    search: true,
+    search: {
+      render: ({ value, onChange }) => (
+        <Select
+          value={value}
+          onValueChange={onChange}
+        >
+          <SelectTrigger>
+            <SelectValue placeholder="Select a role" />
+          </SelectTrigger>
+          <SelectContent>
+            <SelectItem value="admin">Admin</SelectItem>
+            <SelectItem value="user">User</SelectItem>
+          </SelectContent>
+        </Select>
+      ),
+    },
   },
   {
     accessorKey: "avatar",
@@ -83,7 +103,17 @@ const columns: ColumnDef<IUsers>[] = [
         {new Date(row.getValue("createdAt")).toLocaleDateString()}
       </div>
     ),
-    search: true,
+    search: {
+      placeholder: "Search by date",
+      render: ({ value, onChange }) => (
+        <input
+          type="date"
+          value={value}
+          onChange={(e) => onChange(e.target.value)}
+          className="flex h-10 w-full rounded-md border border-input bg-background px-3 py-2 text-sm ring-offset-background file:border-0 file:bg-transparent file:text-sm file:font-medium placeholder:text-muted-foreground focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-ring focus-visible:ring-offset-2 disabled:cursor-not-allowed disabled:opacity-50"
+        />
+      ),
+    },
   },
   {
     accessorKey: "status",
@@ -91,13 +121,38 @@ const columns: ColumnDef<IUsers>[] = [
     cell: ({ row }) => (
       <div className="capitalize">{row.getValue("status")}</div>
     ),
-    search: true,
+    search: {
+      placeholder: "Search by status",
+      render: ({ value, onChange }) => (
+        <Select
+          value={value}
+          onValueChange={onChange}
+        >
+          <SelectTrigger>
+            <SelectValue placeholder="Select status" />
+          </SelectTrigger>
+          <SelectContent>
+            <SelectItem value="active">Active</SelectItem>
+            <SelectItem value="inactive">Inactive</SelectItem>
+            <SelectItem value="pending">Pending</SelectItem>
+          </SelectContent>
+        </Select>
+      ),
+    },
   },
   {
     accessorKey: "email",
     header: "Email",
     cell: ({ row }) => <div className="lowercase">{row.getValue("email")}</div>,
-    search: true,
+    search: {
+      render: ({ value, onChange }) => (
+        <Textarea
+          value={value}
+          onChange={(e) => onChange(e.target.value)}
+          placeholder="Type your message here."
+        />
+      ),
+    },
   },
   {
     accessorKey: "amount",
@@ -164,6 +219,7 @@ export function Component() {
         data={users?.list ?? []}
         isLoading={isLoading}
         onRefresh={() => refetch()}
+
         pagination={{
           pageIndex: pagination.pageIndex,
           pageSize: pagination.pageSize,
@@ -171,6 +227,7 @@ export function Component() {
           onPaginationChange: handlePaginationChange,
         }}
         onSearch={handleSearch}
+
       />
     </div>
   )

@@ -90,26 +90,32 @@ export function SearchToolbar<TData>({
                     <span className="w-20 shrink-0 text-sm font-medium text-muted-foreground">
                       {columnName}
                     </span>
-                    {React.isValidElement(columnDef.search) ? (
-                      columnDef.search
-                    ) : (
-                      <FormField
-                        control={form.control}
-                        name={column.id}
-                        render={({ field }) => (
-                          <FormItem className="flex-1 space-y-0">
-                            <FormControl>
-                              <Input
-                                {...field}
-                                value={field.value || ""}
-                                placeholder={getSearchPlaceholder(columnDef.search!, columnName)}
-                                className="h-8"
-                              />
-                            </FormControl>
-                          </FormItem>
-                        )}
-                      />
-                    )}
+                    <FormField
+                      control={form.control}
+                      name={column.id}
+                      render={({ field }) => (
+                        <FormItem className="flex-1 space-y-0">
+                          <FormControl>
+                            {typeof columnDef.search === "object" &&
+                              (columnDef?.search as SearchConfig)?.render ? (
+                                  (columnDef?.search as SearchConfig).render?.({
+                                    value: field.value || "",
+                                    onChange: field.onChange,
+                                    placeholder: getSearchPlaceholder(columnDef.search, columnName),
+                                  })
+                                ) : (
+                                  <Input
+                                    {...field}
+                                    value={field.value || ""}
+                                    placeholder={getSearchPlaceholder(columnDef.search!, columnName)}
+                                    className="h-8"
+                                  />
+                                )}
+                          </FormControl>
+                        </FormItem>
+                      )}
+                    />
+
                   </div>
                 )
               })}
@@ -132,6 +138,17 @@ export function SearchToolbar<TData>({
                   <span className="ml-1">{expanded ? "Less" : "More"}</span>
                 </Button>
               )}
+              <Button
+                type="button"
+                size="sm"
+                variant="secondary"
+                onClick={() => {
+                  form.reset()
+                  form.handleSubmit(onSubmit)()
+                }}
+              >
+                Reset
+              </Button>
               <Button type="submit" size="sm" variant="secondary">
                 Search
               </Button>

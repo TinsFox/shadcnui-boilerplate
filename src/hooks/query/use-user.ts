@@ -49,9 +49,9 @@ export function useUserLogoutMutation() {
   })
 }
 
-export function useUsers(pagination: PaginationState, searchParams: Partial<IUsers>) {
+export function useUsers(pagination: PaginationState, searchParams?: Partial<IUsers>) {
   const { data, isPending, isFetching, refetch } = useQuery({
-    queryKey: ["users", pagination.pageIndex, pagination.pageSize, ...Object.entries(searchParams)],
+    queryKey: ["users", pagination.pageIndex, pagination.pageSize, ...Object.entries(searchParams || {})],
     queryFn: async () => apiFetch<{
       list: IUsers[]
       total: number

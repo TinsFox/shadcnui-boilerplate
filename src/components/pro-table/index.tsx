@@ -12,30 +12,17 @@ import {
 import * as React from "react"
 
 import { Empty } from "@/components/empty"
-import type { PaginationProps } from "@/components/pro-table/pagination"
 import { ProTablePagination } from "@/components/pro-table/pagination"
 import { ProTableSkeleton } from "@/components/pro-table/skeleton"
 import { ProTableToolbar } from "@/components/pro-table/toolbar"
 import { Table, TableBody, TableCell, TableHead, TableHeader, TableRow } from "@/components/ui/table"
 
 import { SearchToolbar } from "./search-toolbar"
-import type { ColumnDef, SearchParams } from "./types"
+import type { ProTableProps, SearchParams } from "./types"
 
 export const DEFAULT_PAGINATION_STEP = 3
 export const DEFAULT_PAGE_INDEX = 0
 export const DEFAULT_PAGE_SIZE = 10
-
-interface ProTableProps<TData, TValue> {
-  columns: ColumnDef<TData, TValue>[]
-  data: TData[]
-  isLoading: boolean
-  toolbar?: React.ReactNode
-  pagination?: PaginationProps
-  onRefresh?: () => void
-  onSearch?: (params: SearchParams) => void
-  onDensityChange?: (density: "default" | "compact" | "comfortable") => void
-  onColumnSettingChange?: (columnVisibility: VisibilityState) => void
-}
 
 export function ProTable<TData, TValue>({
   columns,
