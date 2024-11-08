@@ -34,7 +34,7 @@ docker run -d -p 80:80 --name shadcnui-boilerplate shadcnui-boilerplate
 
 如果你有需要的话，可以参考下面的配置文件，然后进行修改。经过验证，这个配置文件是可用的。
 
-```nginx.conf{12-20}
+```nginx{12-20}
 server {
     listen       80;
     server_name  localhost;
