@@ -27,7 +27,7 @@ If you have multiple applications that need to be connected to different clients
 
 If you have such needs, you can refer to the following configuration file and modify it. After verification, this configuration file is available.
 
-```nginx.conf{12-20}
+```nginx{12-20}
 server {
     listen       80;
     server_name  localhost;
