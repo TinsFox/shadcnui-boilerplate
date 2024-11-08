@@ -1,7 +1,6 @@
 import type {
   ColumnDef as TanstackColumnDef,
   TableOptions,
-  VisibilityState,
 } from "@tanstack/react-table"
 
 import type { PaginationProps } from "./pagination"
@@ -137,14 +136,4 @@ export interface ProTableProps<TData, TValue> {
    * 执行搜索时的回调函数
    */
   onSearch?: (params: SearchParams) => void
-  /**
-   * Callback function when row density changes
-   * 行密度改变时的回调函数
-   */
-  onDensityChange?: (density: "default" | "compact" | "comfortable") => void
-  /**
-   * Callback function when column visibility changes
-   * 列可见性改变时的回调函数
-   */
-  onColumnSettingChange?: (columnVisibility: VisibilityState) => void
 }
