@@ -19,6 +19,7 @@ import { Table, TableBody, TableCell, TableHead, TableHeader, TableRow } from "@
 
 import { SearchToolbar } from "./search-toolbar"
 import type { ProTableProps, SearchParams } from "./types"
+import { getCommonPinningStyles } from "./util"
 
 export const DEFAULT_PAGINATION_STEP = 3
 export const DEFAULT_PAGE_INDEX = 0
@@ -32,6 +33,7 @@ export function ProTable<TData, TValue>({
   pagination,
   onRefresh,
   onSearch,
+  initialState,
 }: ProTableProps<TData, TValue>) {
   const [rowSelection, setRowSelection] = React.useState({})
   const [columnVisibility, setColumnVisibility] =
@@ -46,6 +48,7 @@ export function ProTable<TData, TValue>({
     data,
     columns,
     rowCount: pagination?.total ?? 0,
+    initialState,
     state: {
       sorting,
       columnFilters,
@@ -86,7 +89,6 @@ export function ProTable<TData, TValue>({
 
   return (
     <div className="space-y-4">
-
       <SearchToolbar
         table={table}
         searchValues={searchValues}
@@ -102,12 +104,19 @@ export function ProTable<TData, TValue>({
       />
 
       <div className="rounded-md border">
-        <Table>
+        <Table style={{
+          width: table.getTotalSize(),
+        }}
+        >
           <TableHeader>
             {table.getHeaderGroups().map((headerGroup) => (
               <TableRow key={headerGroup.id}>
                 {headerGroup.headers.map((header) => (
-                  <TableHead key={header.id}>
+                  <TableHead
+                    key={header.id}
+                    colSpan={header.colSpan}
+                    style={{ ...getCommonPinningStyles(header.column) }}
+                  >
                     {header.isPlaceholder ?
                       null :
                       flexRender(
@@ -135,7 +144,7 @@ export function ProTable<TData, TValue>({
                         data-state={row.getIsSelected() && "selected"}
                       >
                         {row.getVisibleCells().map((cell) => (
-                          <TableCell key={cell.id}>
+                          <TableCell key={cell.id} style={{ ...getCommonPinningStyles(cell.column) }}>
                             {flexRender(
                               cell.column.columnDef.cell,
                               cell.getContext(),
