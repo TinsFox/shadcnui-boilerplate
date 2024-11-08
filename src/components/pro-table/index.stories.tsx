@@ -62,12 +62,15 @@ const columns: ColumnDef<Person>[] = [
     accessorKey: "id",
     header: "ID",
     enablePinning: true,
+    pinned: "left",
     size: 80,
   },
   {
+    id: "firstName",
     accessorKey: "firstName",
     header: "First Name",
     enablePinning: true,
+    pinned: "left",
     size: 150,
   },
   {
@@ -230,11 +233,6 @@ export const WithPinnedColumns: Story = {
     },
   },
   render: function Render(args) {
-    const [columnPinning] = React.useState({
-      left: ["id", "firstName"],
-      right: ["status", "actions"],
-    })
-
     return (
       <div className="mx-auto max-w-[800px] p-4">
         <div className="mb-4 space-y-2">
@@ -250,9 +248,7 @@ export const WithPinnedColumns: Story = {
         </div>
         <ProTable
           {...args}
-          initialState={{
-            columnPinning,
-          }}
+
         />
       </div>
     )

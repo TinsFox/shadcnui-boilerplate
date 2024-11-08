@@ -44,11 +44,23 @@ export function ProTable<TData, TValue>({
   const [sorting, setSorting] = React.useState<SortingState>([])
   const [searchValues, setSearchValues] = React.useState<Record<string, string>>({})
 
+  const columnPinningColumns = React.useMemo(() => {
+    const leftColumns = columns.filter((column) => column.pinned === "left").map((column) => column.id).filter((id): id is string => id !== undefined) || []
+    const rightColumns = columns.filter((column) => column.pinned === "right").map((column) => column.id).filter((id): id is string => id !== undefined) || []
+    return {
+      left: leftColumns,
+      right: rightColumns,
+    }
+  }, [columns])
+
   const table = useReactTable({
     data,
     columns,
     rowCount: pagination?.total ?? 0,
-    initialState,
+    initialState: {
+      ...initialState,
+      columnPinning: columnPinningColumns,
+    },
     state: {
       sorting,
       columnFilters,
