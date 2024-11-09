@@ -1,58 +1,53 @@
-import { Cross2Icon } from "@radix-ui/react-icons"
 import type { Table } from "@tanstack/react-table"
-import { priorities, statuses } from "mock/list"
+import { RefreshCcw } from "lucide-react"
+import * as React from "react"
 
-import { Button } from "@/components/ui/button"
-import { Input } from "@/components/ui/input"
+import { cn } from "@/lib/utils"
+import { Button } from "@/ui/button"
 
-import { DataTableFacetedFilter } from "./data-table-faceted-filter"
 import { DataTableViewOptions } from "./data-table-view-options"
 
 interface DataTableToolbarProps<TData> {
   table: Table<TData>
+  onRefresh?: () => void
+  isLoading?: boolean
+  toolbar?: React.ReactNode
 }
 
 export function DataTableToolbar<TData>({
   table,
+  onRefresh,
+  isLoading,
+  toolbar,
 }: DataTableToolbarProps<TData>) {
-  const isFiltered = table.getState().columnFilters.length > 0
+  const handleRefresh = async () => {
+    if (!onRefresh || isLoading) return
+    onRefresh()
+  }
 
   return (
-    <div className="flex items-center justify-between">
+    <div className="flex items-center justify-between py-4">
       <div className="flex flex-1 items-center space-x-2">
-        <Input
-          placeholder="Filter tasks..."
-          value={(table.getColumn("title")?.getFilterValue() as string) ?? ""}
-          onChange={(event) =>
-            table.getColumn("title")?.setFilterValue(event.target.value)}
-          className="h-8 w-[150px] lg:w-[250px]"
-        />
-        {table.getColumn("status") && (
-          <DataTableFacetedFilter
-            column={table.getColumn("status")}
-            title="Status"
-            options={statuses}
-          />
-        )}
-        {table.getColumn("priority") && (
-          <DataTableFacetedFilter
-            column={table.getColumn("priority")}
-            title="Priority"
-            options={priorities}
-          />
-        )}
-        {isFiltered && (
-          <Button
-            variant="ghost"
-            onClick={() => table.resetColumnFilters()}
-            className="h-8 px-2 lg:px-3"
-          >
-            Reset
-            <Cross2Icon className="ml-2 size-4" />
-          </Button>
-        )}
+        {toolbar}
       </div>
-      <DataTableViewOptions table={table} />
+      <div className="flex items-center space-x-2">
+
+        <DataTableViewOptions table={table} />
+
+        <Button
+          variant="outline"
+          size="sm"
+          onClick={handleRefresh}
+          disabled={isLoading}
+          className="size-8 p-0"
+        >
+          <RefreshCcw className={cn(
+            "size-4",
+            isLoading && "animate-spin",
+          )}
+          />
+        </Button>
+      </div>
     </div>
   )
 }

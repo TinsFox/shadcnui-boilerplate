@@ -103,6 +103,11 @@ export const menus: IMenu[] = [
         to: "/list/basic-list",
       },
       {
+        title: "pro_table",
+        icon: TableProperties,
+        to: "/list/pro-table",
+      },
+      {
         title: "table_list",
         label: "972",
         icon: TableProperties,

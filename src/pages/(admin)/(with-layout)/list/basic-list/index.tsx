@@ -184,6 +184,7 @@ const columns: ColumnDef<IUsers>[] = [
     },
   },
 ]
+
 function Toolbar({ table }: { table: ReturnType<typeof useReactTable<IUsers>> }) {
   return (
     <div className="flex items-center py-4">

@@ -9,9 +9,9 @@ import { Button } from "@/components/ui/button"
 import { Form, FormControl, FormField, FormItem } from "@/components/ui/form"
 import { Input } from "@/components/ui/input"
 
-import type { ColumnDef, SearchConfig, SearchType } from "./types"
+import type { ColumnDef, SearchConfig, SearchType } from "./data-table-types"
 
-interface SearchToolbarProps<TData> {
+interface DataTableSearchToolbarProps<TData> {
   table: Table<TData>
   searchValues: Record<string, string>
   onSearchChange: (field: string, value: string) => void
@@ -35,11 +35,11 @@ const createSearchSchema = (columns: string[]): SearchSchemaType => {
   return z.object(shape)
 }
 
-export function SearchToolbar<TData>({
+export function DataTableSearchToolbar<TData>({
   table,
   searchValues,
   onSubmit,
-}: SearchToolbarProps<TData>) {
+}: DataTableSearchToolbarProps<TData>) {
   const [expanded, setExpanded] = React.useState(false)
   const [searchSchema] = React.useState(() =>
     createSearchSchema(

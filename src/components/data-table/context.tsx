@@ -1,7 +1,7 @@
 import type { Table } from "@tanstack/react-table"
 import * as React from "react"
 
-import type { PaginationProps } from "./pagination"
+import type { PaginationProps } from "./data-table-pagination"
 
 interface ProTableContextValue<TData> {
   table: Table<TData> | null

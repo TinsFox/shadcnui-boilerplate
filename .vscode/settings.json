@@ -54,5 +54,6 @@
   "i18n-ally.keystyle": "nested",
   "i18n-ally.localesPaths": "locales",
   "i18n-ally.displayLanguage": "zh-CN",
-  "typescript.tsdk": "node_modules/typescript/lib"
+  "typescript.tsdk": "node_modules/typescript/lib",
+  "cSpell.words": ["autodocs", "hookform", "lucide", "tanstack"]
 }

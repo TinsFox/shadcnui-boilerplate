@@ -1,6 +1,9 @@
 import type { Column } from "@tanstack/react-table"
 import type { CSSProperties } from "react"
 
+export const DEFAULT_PAGINATION_STEP = 3
+export const DEFAULT_PAGE_INDEX = 0
+export const DEFAULT_PAGE_SIZE = 10
 export function getCommonPinningStyles<T = unknown>(column: Column<T>): CSSProperties {
   const isPinned = column.getIsPinned()
   const isLastLeftPinnedColumn =

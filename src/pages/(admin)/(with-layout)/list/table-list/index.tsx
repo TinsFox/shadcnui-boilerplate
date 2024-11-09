@@ -1,15 +1,36 @@
-import type { ColumnDef } from "@tanstack/react-table"
+import { Cross2Icon, DotsHorizontalIcon } from "@radix-ui/react-icons"
+import type { ColumnDef, ColumnFiltersState, SortingState, VisibilityState } from "@tanstack/react-table"
+import { getCoreRowModel, getFacetedRowModel, getFacetedUniqueValues, getFilteredRowModel, getPaginationRowModel, getSortedRowModel, useReactTable } from "@tanstack/react-table"
 import { labels, priorities, statuses } from "mock/list"
+import * as React from "react"
 
 import { DataTable } from "@/components/data-table/data-table"
 import { DataTableColumnHeader } from "@/components/data-table/data-table-column-header"
-import { DataTableRowActions } from "@/components/data-table/data-table-row-actions"
+import { DataTableFacetedFilter } from "@/components/data-table/data-table-faceted-filter"
+import { DataTablePagination } from "@/components/data-table/data-table-pagination"
+import { DataTableViewOptions } from "@/components/data-table/data-table-view-options"
 import { Badge } from "@/components/ui/badge"
+import { Button } from "@/components/ui/button"
 import { Checkbox } from "@/components/ui/checkbox"
+import {
+  DropdownMenu,
+  DropdownMenuContent,
+  DropdownMenuItem,
+  DropdownMenuRadioGroup,
+  DropdownMenuRadioItem,
+  DropdownMenuSeparator,
+  DropdownMenuShortcut,
+  DropdownMenuSub,
+  DropdownMenuSubContent,
+  DropdownMenuSubTrigger,
+  DropdownMenuTrigger,
+} from "@/components/ui/dropdown-menu"
+import { Input } from "@/components/ui/input"
 import { useBasicList } from "@/hooks/query/use-list"
-import type { IAlbum } from "@/schema/album"
+import type { Task } from "@/schema/task"
+import { taskSchema } from "@/schema/task"
 
-const columns: ColumnDef<IAlbum>[] = [
+const columns: ColumnDef<Task>[] = [
   {
     id: "select",
     header: ({ table }) => (
@@ -111,26 +132,130 @@ const columns: ColumnDef<IAlbum>[] = [
   },
   {
     id: "actions",
-    cell: ({ row }) => <DataTableRowActions row={row} />,
+    cell: ({ row }) => {
+      const task = taskSchema.parse(row.original)
+      return (
+        <DropdownMenu>
+          <DropdownMenuTrigger asChild>
+            <Button
+              variant="ghost"
+              className="flex size-8 p-0 data-[state=open]:bg-muted"
+            >
+              <DotsHorizontalIcon className="size-4" />
+              <span className="sr-only">Open menu</span>
+            </Button>
+          </DropdownMenuTrigger>
+          <DropdownMenuContent align="end" className="w-[160px]">
+            <DropdownMenuItem>Edit</DropdownMenuItem>
+            <DropdownMenuItem>Make a copy</DropdownMenuItem>
+            <DropdownMenuItem>Favorite</DropdownMenuItem>
+            <DropdownMenuSeparator />
+            <DropdownMenuSub>
+              <DropdownMenuSubTrigger>Labels</DropdownMenuSubTrigger>
+              <DropdownMenuSubContent>
+                <DropdownMenuRadioGroup value={task.label}>
+                  {labels.map((label) => (
+                    <DropdownMenuRadioItem key={label.value} value={label.value}>
+                      {label.label}
+                    </DropdownMenuRadioItem>
+                  ))}
+                </DropdownMenuRadioGroup>
+              </DropdownMenuSubContent>
+            </DropdownMenuSub>
+            <DropdownMenuSeparator />
+            <DropdownMenuItem>
+              Delete
+              <DropdownMenuShortcut>⌘⌫</DropdownMenuShortcut>
+            </DropdownMenuItem>
+          </DropdownMenuContent>
+        </DropdownMenu>
+      )
+    },
   },
 ]
 
 export function Component() {
   const { data } = useBasicList()
+  const [rowSelection, setRowSelection] = React.useState({})
+  const [columnVisibility, setColumnVisibility] =
+    React.useState<VisibilityState>({})
+  const [columnFilters, setColumnFilters] = React.useState<ColumnFiltersState>(
+    [],
+  )
+  const [sorting, setSorting] = React.useState<SortingState>([])
+  const table = useReactTable({
+    data: data?.map((item) => ({
+      ...item,
+      cover: "",
+      url: "",
+      slogan: "",
+      updatedAt: new Date(),
+      digitalDownloads: 0,
+    })) ?? [],
+    columns,
+    state: {
+      sorting,
+      columnVisibility,
+      rowSelection,
+      columnFilters,
+    },
+    enableRowSelection: true,
+    onRowSelectionChange: setRowSelection,
+    onSortingChange: setSorting,
+    onColumnFiltersChange: setColumnFilters,
+    onColumnVisibilityChange: setColumnVisibility,
+    getCoreRowModel: getCoreRowModel(),
+    getFilteredRowModel: getFilteredRowModel(),
+    getPaginationRowModel: getPaginationRowModel(),
+    getSortedRowModel: getSortedRowModel(),
+    getFacetedRowModel: getFacetedRowModel(),
+    getFacetedUniqueValues: getFacetedUniqueValues(),
+  })
+  const isFiltered = table.getState().columnFilters.length > 0
 
   return (
-    <div>
+    <div className="space-y-2">
+      <div className="flex items-center justify-between">
+        <div className="flex flex-1 items-center space-x-2">
+          <Input
+            placeholder="Filter tasks..."
+            value={(table.getColumn("title")?.getFilterValue() as string) ?? ""}
+            onChange={(event) =>
+              table.getColumn("title")?.setFilterValue(event.target.value)}
+            className="h-8 w-[150px] lg:w-[250px]"
+          />
+          {table.getColumn("status") && (
+            <DataTableFacetedFilter
+              column={table.getColumn("status")}
+              title="Status"
+              options={statuses}
+            />
+          )}
+          {table.getColumn("priority") && (
+            <DataTableFacetedFilter
+              column={table.getColumn("priority")}
+              title="Priority"
+              options={priorities}
+            />
+          )}
+          {isFiltered && (
+            <Button
+              variant="ghost"
+              onClick={() => table.resetColumnFilters()}
+              className="h-8 px-2 lg:px-3"
+            >
+              Reset
+              <Cross2Icon className="ml-2 size-4" />
+            </Button>
+          )}
+        </div>
+        <DataTableViewOptions table={table} />
+      </div>
       <DataTable
-        data={data?.map((item) => ({
-          ...item,
-          cover: "",
-          url: "",
-          slogan: "",
-          updatedAt: new Date(),
-          digitalDownloads: 0,
-        })) ?? []}
-        columns={columns}
+        table={table}
+        isLoading={false}
       />
+      <DataTablePagination table={table} />
     </div>
   )
 }

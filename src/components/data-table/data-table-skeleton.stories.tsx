@@ -1,10 +1,12 @@
 import type { Meta, StoryObj } from "@storybook/react"
 
-import { ProTableSkeleton } from "./skeleton"
+import { Table, TableBody } from "@/components/ui/table"
+
+import { DataTableSkeleton } from "./data-table-skeleton"
 
 const meta = {
   title: "Components/ProTable/Loading",
-  component: ProTableSkeleton,
+  component: DataTableSkeleton,
   parameters: {
     layout: "padded",
     viewport: {
@@ -13,23 +15,27 @@ const meta = {
   },
   decorators: [
     (Story) => (
-      <div className="min-h-screen w-full p-4">
-        <Story />
+      <div className="rounded-md border">
+        <Table>
+          <TableBody>
+            <Story />
+          </TableBody>
+        </Table>
       </div>
     ),
   ],
   tags: ["autodocs"],
-} satisfies Meta<typeof ProTableSkeleton>
+} satisfies Meta<typeof DataTableSkeleton>
 
 export default meta
-type Story = StoryObj<typeof ProTableSkeleton>
+type Story = StoryObj<typeof DataTableSkeleton>
 
 export const Default: Story = {
   args: {
     pagination: {
       pageSize: 10,
-
     },
+    columns: 6,
   },
 }
 
@@ -37,8 +43,8 @@ export const LongList: Story = {
   args: {
     pagination: {
       pageSize: 20,
-
     },
+    columns: 6,
   },
 }
 
@@ -47,5 +53,15 @@ export const ShortList: Story = {
     pagination: {
       pageSize: 5,
     },
+    columns: 4,
+  },
+}
+
+export const ManyColumns: Story = {
+  args: {
+    pagination: {
+      pageSize: 10,
+    },
+    columns: 10,
   },
 }

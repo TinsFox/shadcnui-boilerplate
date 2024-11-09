@@ -171,6 +171,7 @@ const columns: ColumnDef<IUsers>[] = [
   {
     id: "actions",
     enableHiding: false,
+    header: () => <div className="">Actions</div>,
     cell: ({ row }) => {
       const user = row.original
       return (
@@ -219,7 +220,6 @@ export function Component() {
         data={users?.list ?? []}
         isLoading={isLoading}
         onRefresh={() => refetch()}
-
         pagination={{
           pageIndex: pagination.pageIndex,
           pageSize: pagination.pageSize,
@@ -227,7 +227,6 @@ export function Component() {
           onPaginationChange: handlePaginationChange,
         }}
         onSearch={handleSearch}
-
       />
     </div>
   )

@@ -12,19 +12,19 @@ const searchSchema = z.object({
 
 type SearchForm = z.infer<typeof searchSchema>
 
-interface ProTableSearchProps {
+interface DataTableSearchProps {
   name: string
   placeholder?: string
   value?: string
   onChange?: (value: string) => void
 }
 
-export function ProTableSearch({
+export function DataTableSearch({
   name,
   placeholder = "Search...",
   value,
   onChange,
-}: ProTableSearchProps) {
+}: DataTableSearchProps) {
   const form = useForm<SearchForm>({
     resolver: zodResolver(searchSchema),
     defaultValues: {

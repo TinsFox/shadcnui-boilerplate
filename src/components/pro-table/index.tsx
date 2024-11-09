@@ -10,21 +10,17 @@ import {
 } from "@tanstack/react-table"
 import * as React from "react"
 
-import { ProTablePagination } from "./pagination"
-import { SearchToolbar } from "./search-toolbar"
-import { ProTableSkeleton } from "./skeleton"
-import { ProTableMain } from "./table"
-import { ProTableToolbar } from "./toolbar"
+import { DataTable } from "../data-table/data-table"
+import { DataTablePagination } from "../data-table/data-table-pagination"
+import { DataTableSearchToolbar } from "../data-table/data-table-search-toolbar"
+import { DataTableToolbar } from "../data-table/data-table-toolbar"
 import type { ProTableProps, SearchParams } from "./types"
-import { DataTableViewOptions } from "./view-options"
 
 // Constants
-export const DEFAULT_PAGINATION_STEP = 3
 export const DEFAULT_PAGE_INDEX = 0
 export const DEFAULT_PAGE_SIZE = 10
 
-// Main Component
-function ProTableRoot<TData, TValue>({
+export function ProTable<TData, TValue>({
   columns,
   data,
   isLoading,
@@ -100,14 +96,14 @@ function ProTableRoot<TData, TValue>({
 
   return (
     <div className="space-y-4">
-      <SearchToolbar
+      <DataTableSearchToolbar
         table={table}
         searchValues={searchValues}
         onSearchChange={handleSearchChange}
         onSubmit={handleSearch}
       />
 
-      <ProTableToolbar
+      <DataTableToolbar
         table={table}
         onRefresh={onRefresh}
         isLoading={isLoading}
@@ -115,8 +111,8 @@ function ProTableRoot<TData, TValue>({
       />
 
       <div className="rounded-md border">
-        <ProTableMain table={table} isLoading={isLoading} />
-        <ProTablePagination
+        <DataTable table={table} isLoading={isLoading} pagination={pagination} />
+        <DataTablePagination
           table={table}
           pagination={pagination}
         />
@@ -124,23 +120,3 @@ function ProTableRoot<TData, TValue>({
     </div>
   )
 }
-
-// Compound Components Export
-export const ProTable = {
-  Root: ProTableRoot,
-  Search: SearchToolbar,
-  Toolbar: ProTableToolbar,
-  Table: ProTableMain,
-  Pagination: ProTablePagination,
-  ViewOptions: DataTableViewOptions,
-  Skeleton: ProTableSkeleton,
-}
-
-// Type Exports
-export type {
-  ColumnDef,
-  ProTableProps,
-  SearchConfig,
-  SearchParams,
-  SearchType,
-} from "./types"

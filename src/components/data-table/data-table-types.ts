@@ -1,9 +1,10 @@
 import type {
   ColumnDef as TanstackColumnDef,
+  Table,
   TableOptions,
 } from "@tanstack/react-table"
 
-import type { PaginationProps } from "../data-table/data-table-pagination"
+import type { PaginationProps } from "./data-table-pagination"
 
 /**
  * Configuration options for the search functionality
@@ -91,21 +92,12 @@ export type SearchParams = Record<string, string>
 /**
  * Props for the ProTable component
  * ProTable 组件的属性
- * @interface ProTableProps
+ * @interface DataTableProps
  * @template TData The type of data in the table / 表格数据的类型
  * @template TValue The type of value in the columns / 列值的类型
  */
-export interface ProTableProps<TData, TValue> {
-  /**
-   * Array of column definitions
-   * 列定义数组
-   */
-  columns: ColumnDef<TData, TValue>[]
-  /**
-   * Array of data items to display in the table
-   * 要在表格中显示的数据项数组
-   */
-  data: TData[]
+export interface DataTableProps<TData> {
+
   /**
    * Loading state of the table
    * 表格的加载状态
@@ -136,4 +128,5 @@ export interface ProTableProps<TData, TValue> {
    * 执行搜索时的回调函数
    */
   onSearch?: (params: SearchParams) => void
+  table: Table<TData>
 }

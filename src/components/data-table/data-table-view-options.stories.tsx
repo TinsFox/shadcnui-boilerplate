@@ -3,7 +3,7 @@ import type { VisibilityState } from "@tanstack/react-table"
 import { getCoreRowModel, useReactTable } from "@tanstack/react-table"
 import * as React from "react"
 
-import { DataTableViewOptions } from "./view-options"
+import { DataTableViewOptions } from "./data-table-view-options"
 
 // 创建一个包装组件来使用 Hook
 function ViewOptionsWrapper() {
