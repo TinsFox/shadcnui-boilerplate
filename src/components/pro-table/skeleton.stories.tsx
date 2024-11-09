@@ -6,8 +6,18 @@ const meta = {
   title: "Components/ProTable/Loading",
   component: ProTableSkeleton,
   parameters: {
-    layout: "centered",
+    layout: "padded",
+    viewport: {
+      defaultViewport: "desktop",
+    },
   },
+  decorators: [
+    (Story) => (
+      <div className="min-h-screen w-full p-4">
+        <Story />
+      </div>
+    ),
+  ],
   tags: ["autodocs"],
 } satisfies Meta<typeof ProTableSkeleton>
 
@@ -17,7 +27,8 @@ type Story = StoryObj<typeof ProTableSkeleton>
 export const Default: Story = {
   args: {
     pagination: {
-      pageSize: 5,
+      pageSize: 10,
+
     },
   },
 }
@@ -25,7 +36,8 @@ export const Default: Story = {
 export const LongList: Story = {
   args: {
     pagination: {
-      pageSize: 10,
+      pageSize: 20,
+
     },
   },
 }
@@ -33,11 +45,7 @@ export const LongList: Story = {
 export const ShortList: Story = {
   args: {
     pagination: {
-      pageSize: 3,
+      pageSize: 5,
     },
   },
-}
-
-export const WithoutPagination: Story = {
-  args: {},
 }

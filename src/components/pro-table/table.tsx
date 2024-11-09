@@ -15,10 +15,7 @@ interface ProTableMainProps<TData> {
 export function ProTableMain<TData>({ table, isLoading }: ProTableMainProps<TData>) {
   const columns = table.getAllColumns()
   return (
-    <Table style={{
-      width: table.getTotalSize(),
-    }}
-    >
+    <Table>
       <TableHeader>
         {table.getHeaderGroups().map((headerGroup) => (
           <TableRow key={headerGroup.id}>

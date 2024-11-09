@@ -10,18 +10,21 @@ import {
 } from "@tanstack/react-table"
 import * as React from "react"
 
-import { ProTablePagination } from "@/components/pro-table/pagination"
-import { ProTableToolbar } from "@/components/pro-table/toolbar"
-
+import { ProTablePagination } from "./pagination"
 import { SearchToolbar } from "./search-toolbar"
+import { ProTableSkeleton } from "./skeleton"
 import { ProTableMain } from "./table"
+import { ProTableToolbar } from "./toolbar"
 import type { ProTableProps, SearchParams } from "./types"
+import { DataTableViewOptions } from "./view-options"
 
+// Constants
 export const DEFAULT_PAGINATION_STEP = 3
 export const DEFAULT_PAGE_INDEX = 0
 export const DEFAULT_PAGE_SIZE = 10
 
-export function ProTable<TData, TValue>({
+// Main Component
+function ProTableRoot<TData, TValue>({
   columns,
   data,
   isLoading,
@@ -121,3 +124,23 @@ export function ProTable<TData, TValue>({
     </div>
   )
 }
+
+// Compound Components Export
+export const ProTable = {
+  Root: ProTableRoot,
+  Search: SearchToolbar,
+  Toolbar: ProTableToolbar,
+  Table: ProTableMain,
+  Pagination: ProTablePagination,
+  ViewOptions: DataTableViewOptions,
+  Skeleton: ProTableSkeleton,
+}
+
+// Type Exports
+export type {
+  ColumnDef,
+  ProTableProps,
+  SearchConfig,
+  SearchParams,
+  SearchType,
+} from "./types"

@@ -5,7 +5,7 @@ interface ProTableSkeletonProps {
 }
 
 /**
- * TODO: 优化 loading 效果, 根据 columns 长度动态生成 loading 效果
+ * 表格骨架屏
  * @param pagination - 分页信息
  * @returns
  */

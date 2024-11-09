@@ -1,14 +1,20 @@
-import type { useReactTable } from "@tanstack/react-table"
+import type { Table } from "@tanstack/react-table"
 import * as React from "react"
 
-import type { PaginationProps } from "@/components/pro-table/pagination"
+import type { PaginationProps } from "./pagination"
 
-export const ProTableContext = React.createContext<{
-  table: ReturnType<typeof useReactTable<any>> | null
+interface ProTableContextValue<TData> {
+  table: Table<TData> | null
   isLoading?: boolean
   onRefresh?: () => void
   pagination?: PaginationProps
-  data?: any[]
-}>({
-      table: null,
-    })
+  data?: TData[]
+}
+
+export const ProTableContext = React.createContext<ProTableContextValue<any>>({
+  table: null,
+})
+
+export function useProTable<TData>() {
+  return React.useContext(ProTableContext) as ProTableContextValue<TData>
+}
