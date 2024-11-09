@@ -1,7 +1,6 @@
 import { Cross2Icon, DotsHorizontalIcon } from "@radix-ui/react-icons"
 import type { ColumnDef, ColumnFiltersState, SortingState, VisibilityState } from "@tanstack/react-table"
 import { getCoreRowModel, getFacetedRowModel, getFacetedUniqueValues, getFilteredRowModel, getPaginationRowModel, getSortedRowModel, useReactTable } from "@tanstack/react-table"
-import { labels, priorities, statuses } from "mock/list"
 import * as React from "react"
 
 import { DataTable } from "@/components/data-table/data-table"
@@ -26,11 +25,12 @@ import {
   DropdownMenuTrigger,
 } from "@/components/ui/dropdown-menu"
 import { Input } from "@/components/ui/input"
-import { useBasicList } from "@/hooks/query/use-list"
-import type { Task } from "@/schema/task"
+import { useTasks } from "@/hooks/query/use-tasks"
+import { labels, priorities, statuses } from "@/lib/data-dictionary"
+import type { ITask } from "@/schema/task"
 import { taskSchema } from "@/schema/task"
 
-const columns: ColumnDef<Task>[] = [
+const columns: ColumnDef<ITask>[] = [
   {
     id: "select",
     header: ({ table }) => (
@@ -175,7 +175,8 @@ const columns: ColumnDef<Task>[] = [
 ]
 
 export function Component() {
-  const { data } = useBasicList()
+  const { data: listData } = useTasks()
+
   const [rowSelection, setRowSelection] = React.useState({})
   const [columnVisibility, setColumnVisibility] =
     React.useState<VisibilityState>({})
@@ -184,14 +185,7 @@ export function Component() {
   )
   const [sorting, setSorting] = React.useState<SortingState>([])
   const table = useReactTable({
-    data: data?.map((item) => ({
-      ...item,
-      cover: "",
-      url: "",
-      slogan: "",
-      updatedAt: new Date(),
-      digitalDownloads: 0,
-    })) ?? [],
+    data: listData?.list,
     columns,
     state: {
       sorting,
