@@ -1,6 +1,5 @@
 import type { ColumnFiltersState, SortingState, VisibilityState } from "@tanstack/react-table"
 import {
-  flexRender,
   getCoreRowModel,
   getFacetedRowModel,
   getFacetedUniqueValues,
@@ -11,15 +10,12 @@ import {
 } from "@tanstack/react-table"
 import * as React from "react"
 
-import { Empty } from "@/components/empty"
 import { ProTablePagination } from "@/components/pro-table/pagination"
-import { ProTableSkeleton } from "@/components/pro-table/skeleton"
 import { ProTableToolbar } from "@/components/pro-table/toolbar"
-import { Table, TableBody, TableCell, TableHead, TableHeader, TableRow } from "@/components/ui/table"
 
 import { SearchToolbar } from "./search-toolbar"
+import { ProTableMain } from "./table"
 import type { ProTableProps, SearchParams } from "./types"
-import { getCommonPinningStyles } from "./util"
 
 export const DEFAULT_PAGINATION_STEP = 3
 export const DEFAULT_PAGE_INDEX = 0
@@ -116,69 +112,7 @@ export function ProTable<TData, TValue>({
       />
 
       <div className="rounded-md border">
-        <Table style={{
-          width: table.getTotalSize(),
-        }}
-        >
-          <TableHeader>
-            {table.getHeaderGroups().map((headerGroup) => (
-              <TableRow key={headerGroup.id}>
-                {headerGroup.headers.map((header) => (
-                  <TableHead
-                    key={header.id}
-                    colSpan={header.colSpan}
-                    style={{ ...getCommonPinningStyles(header.column) }}
-                  >
-                    {header.isPlaceholder ?
-                      null :
-                      flexRender(
-                        header.column.columnDef.header,
-                        header.getContext(),
-                      )}
-                  </TableHead>
-                ))}
-              </TableRow>
-            ))}
-          </TableHeader>
-          <TableBody>
-            {isLoading ? (
-              <TableRow>
-                <TableCell colSpan={columns.length} className="h-24 text-center">
-                  <ProTableSkeleton />
-                </TableCell>
-              </TableRow>
-            ) : (
-              table.getRowModel().rows?.length ?
-                  (
-                    table.getRowModel().rows.map((row) => (
-                      <TableRow
-                        key={row.id}
-                        data-state={row.getIsSelected() && "selected"}
-                      >
-                        {row.getVisibleCells().map((cell) => (
-                          <TableCell key={cell.id} style={{ ...getCommonPinningStyles(cell.column) }}>
-                            {flexRender(
-                              cell.column.columnDef.cell,
-                              cell.getContext(),
-                            )}
-                          </TableCell>
-                        ))}
-                      </TableRow>
-                    ))
-                  ) :
-                  (
-                    <TableRow>
-                      <TableCell
-                        colSpan={columns.length}
-                        className="h-24 text-center"
-                      >
-                        <Empty />
-                      </TableCell>
-                    </TableRow>
-                  )
-            )}
-          </TableBody>
-        </Table>
+        <ProTableMain table={table} isLoading={isLoading} />
         <ProTablePagination
           table={table}
           pagination={pagination}

@@ -1,5 +1,5 @@
 import { ChevronLeftIcon, ChevronRightIcon } from "@radix-ui/react-icons"
-import type { PaginationState, useReactTable } from "@tanstack/react-table"
+import type { PaginationState, Table } from "@tanstack/react-table"
 import * as React from "react"
 
 import { DEFAULT_PAGE_INDEX, DEFAULT_PAGE_SIZE, DEFAULT_PAGINATION_STEP } from "@/components/pro-table/index"
@@ -8,7 +8,7 @@ import { Pagination, PaginationContent, PaginationEllipsis, PaginationItem, Pagi
 import { Select, SelectContent, SelectItem, SelectTrigger, SelectValue } from "@/ui/select"
 
 interface ProTablePaginationProps<TData> {
-  table: ReturnType<typeof useReactTable<TData>>
+  table: Table<TData>
   pagination?: PaginationProps
 }
 
