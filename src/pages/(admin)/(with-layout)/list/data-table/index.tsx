@@ -143,6 +143,7 @@ const columns: ColumnDef<IUsers>[] = [
   {
     id: "actions",
     enableHiding: false,
+    header: "Action",
     cell: ({ row }) => {
       const user = row.original
       return (

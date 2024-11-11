@@ -34,7 +34,7 @@ export const userProfileSchema = z.object({
 export type IUserProfile = z.infer<typeof userProfileSchema>
 export const userStatuses = ["pending", "processing", "success", "failed"] as const
 
-export const userRoles = ["admin", "user", "guest"] as const
+export const userRoles = ["admin", "user", "guest", "member"] as const
 
 export const userSchema = z.object({
   id: z.string(),
