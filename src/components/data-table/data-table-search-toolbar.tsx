@@ -13,9 +13,9 @@ import type { ColumnDef, SearchConfig, SearchType } from "./data-table-types"
 
 interface DataTableSearchToolbarProps<TData> {
   table: Table<TData>
-  searchValues: Record<string, string>
-  onSearchChange: (field: string, value: string) => void
-  onSubmit: (value: Record<string, string>) => void
+  searchValues?: Record<string, string>
+  onSearchChange?: (field: string, value: string) => void
+  onSubmit?: (value: Record<string, string>) => void
 }
 
 function getSearchPlaceholder(search: SearchType, columnName: string): string {
@@ -52,7 +52,7 @@ export function DataTableSearchToolbar<TData>({
   const form = useForm<z.infer<typeof searchSchema>>({
     resolver: zodResolver(searchSchema),
     defaultValues: searchValues,
-    values: Object.keys(searchSchema.shape).reduce((acc, key) => {
+    values: searchValues && Object.keys(searchSchema.shape).reduce((acc, key) => {
       acc[key] = searchValues[key] || ""
       return acc
     }, {} as Record<string, string>),
@@ -70,10 +70,13 @@ export function DataTableSearchToolbar<TData>({
   if (searchableColumns.length === 0) {
     return null
   }
+  const handleSubmit = (value: Record<string, string>) => {
+    onSubmit?.(value)
+  }
 
   return (
     <Form {...form}>
-      <form onSubmit={form.handleSubmit(onSubmit)}>
+      <form onSubmit={form.handleSubmit(handleSubmit)}>
         <div className="rounded-md border">
           <div className="p-3">
 

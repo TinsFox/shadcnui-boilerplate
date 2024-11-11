@@ -20,7 +20,7 @@ import {
 import * as React from "react"
 
 import { DataTablePagination } from "@/components/data-table/data-table-pagination"
-import { DataTableSearch } from "@/components/data-table/data-table-search"
+import { DataTableSearchToolbar } from "@/components/data-table/data-table-search-toolbar"
 import { Empty } from "@/components/empty"
 import { Loading } from "@/components/loading"
 import { Avatar, AvatarFallback, AvatarImage } from "@/components/ui/avatar"
@@ -207,7 +207,7 @@ export function Component() {
 
   return (
     <div>
-      <DataTableSearch
+      <DataTableSearchToolbar
         table={table}
       />
       <div className="rounded-md border">
