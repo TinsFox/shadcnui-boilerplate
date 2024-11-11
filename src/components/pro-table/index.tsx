@@ -12,7 +12,7 @@ import * as React from "react"
 
 import { DataTable } from "../data-table/data-table"
 import { DataTablePagination } from "../data-table/data-table-pagination"
-import { DataTableSearchToolbar } from "../data-table/data-table-search-toolbar"
+import { DataTableSearch } from "../data-table/data-table-search"
 import { DataTableToolbar } from "../data-table/data-table-toolbar"
 import type { ProTableProps, SearchParams } from "./types"
 
@@ -98,7 +98,7 @@ export function ProTable<TData, TValue>({
   return (
     <div className="space-y-4">
       {enableSearch && (
-        <DataTableSearchToolbar
+        <DataTableSearch
           table={table}
           searchValues={searchValues}
           onSearchChange={handleSearchChange}

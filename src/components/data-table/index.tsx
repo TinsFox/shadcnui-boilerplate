@@ -1,6 +1,6 @@
 import { DataTable as DataTablePrimitive } from "./data-table"
 import { DataTablePagination } from "./data-table-pagination"
-import { DataTableSearchToolbar } from "./data-table-search-toolbar"
+import { DataTableSearch } from "./data-table-search"
 import { DataTableSkeleton } from "./data-table-skeleton"
 import { DataTableToolbar } from "./data-table-toolbar"
 import { DataTableViewOptions } from "./data-table-view-options"
@@ -10,7 +10,7 @@ export const DEFAULT_PAGE_INDEX = 0
 export const DEFAULT_PAGE_SIZE = 10
 
 export const DataTable = {
-  Search: DataTableSearchToolbar,
+  Search: DataTableSearch,
   Toolbar: DataTableToolbar,
   Table: DataTablePrimitive,
   Pagination: DataTablePagination,
