@@ -29,6 +29,7 @@ export function ProTable<TData, TValue>({
   onRefresh,
   onSearch,
   initialState,
+  enableSearch = true,
 }: ProTableProps<TData, TValue>) {
   const [rowSelection, setRowSelection] = React.useState({})
   const [columnVisibility, setColumnVisibility] =
@@ -96,12 +97,14 @@ export function ProTable<TData, TValue>({
 
   return (
     <div className="space-y-4">
-      <DataTableSearchToolbar
-        table={table}
-        searchValues={searchValues}
-        onSearchChange={handleSearchChange}
-        onSubmit={handleSearch}
-      />
+      {enableSearch && (
+        <DataTableSearchToolbar
+          table={table}
+          searchValues={searchValues}
+          onSearchChange={handleSearchChange}
+          onSubmit={handleSearch}
+        />
+      )}
 
       <DataTableToolbar
         table={table}
@@ -114,7 +117,11 @@ export function ProTable<TData, TValue>({
         <DataTable table={table} isLoading={isLoading} pagination={pagination} />
         <DataTablePagination
           table={table}
-          pagination={pagination}
+          pagination={{
+            ...pagination,
+            quickJump: true,
+          }}
+
         />
       </div>
     </div>

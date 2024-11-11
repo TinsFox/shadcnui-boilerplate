@@ -136,4 +136,5 @@ export interface ProTableProps<TData, TValue> {
    * 执行搜索时的回调函数
    */
   onSearch?: (params: SearchParams) => void
+  enableSearch?: boolean
 }

@@ -13,6 +13,7 @@ export interface PaginationProps {
   pageSize?: number
   onPaginationChange?: (pagination: PaginationState) => void
   total?: number
+  quickJump?: boolean
 }
 interface DataTablePaginationProps<TData> {
   table: Table<TData>
@@ -75,79 +76,83 @@ export function DataTablePagination<TData>({ table, pagination }: DataTablePagin
                   </Button>
                 </PaginationItem>
 
-                {(() => {
-                  const currentPage = table.getState().pagination.pageIndex
-                  const totalPages = table.getPageCount()
-                  const visiblePages = []
-                  const addPage = (index: number) => {
-                    visiblePages.push(
-                      <PaginationItem key={index}>
-                        <PaginationLink
-                          onClick={() => {
-                            handlePageIndexChange(index)
-                          }}
-                          isActive={currentPage === index}
-                        >
-                          {String(index + 1)}
-                        </PaginationLink>
-                      </PaginationItem>,
-                    )
-                  }
+                {pagination?.quickJump && (
+                  <>
+                    {(() => {
+                      const currentPage = table.getState().pagination.pageIndex
+                      const totalPages = table.getPageCount()
+                      const visiblePages = []
+                      const addPage = (index: number) => {
+                        visiblePages.push(
+                          <PaginationItem key={index}>
+                            <PaginationLink
+                              onClick={() => {
+                                handlePageIndexChange(index)
+                              }}
+                              isActive={currentPage === index}
+                            >
+                              {String(index + 1)}
+                            </PaginationLink>
+                          </PaginationItem>,
+                        )
+                      }
 
-                  // Always show first page
-                  addPage(0)
+                      // Always show first page
+                      addPage(0)
 
-                  if (totalPages <= 7) {
-                    // If total pages are 7 or less, show all pages
-                    for (let i = 1; i < totalPages; i++) {
-                      addPage(i)
-                    }
-                  } else {
-                    let startPage = Math.max(1, currentPage - 1)
-                    let endPage = Math.min(totalPages - 2, currentPage + 1)
+                      if (totalPages <= 7) {
+                        // If total pages are 7 or less, show all pages
+                        for (let i = 1; i < totalPages; i++) {
+                          addPage(i)
+                        }
+                      } else {
+                        let startPage = Math.max(1, currentPage - 1)
+                        let endPage = Math.min(totalPages - 2, currentPage + 1)
 
-                    // Adjust start and end page to always show 3 pages when possible
-                    if (startPage === 1) {
-                      endPage = Math.min(3, totalPages - 2)
-                    } else if (endPage === totalPages - 2) {
-                      startPage = Math.max(1, totalPages - 4)
-                    }
+                        // Adjust start and end page to always show 3 pages when possible
+                        if (startPage === 1) {
+                          endPage = Math.min(3, totalPages - 2)
+                        } else if (endPage === totalPages - 2) {
+                          startPage = Math.max(1, totalPages - 4)
+                        }
 
-                    // Show ellipsis at the start if needed
-                    if (startPage > 1) {
-                      visiblePages.push(
-                        <PaginationEllipsis
-                          key="ellipsis1"
-                          className="cursor-pointer"
-                          onClick={() => handlePageIndexChange(Math.max(0, currentPage - DEFAULT_PAGINATION_STEP))}
-                        />,
-                      )
-                    }
+                        // Show ellipsis at the start if needed
+                        if (startPage > 1) {
+                          visiblePages.push(
+                            <PaginationEllipsis
+                              key="ellipsis1"
+                              className="cursor-pointer"
+                              onClick={() => handlePageIndexChange(Math.max(0, currentPage - DEFAULT_PAGINATION_STEP))}
+                            />,
+                          )
+                        }
 
-                    // Add visible pages
-                    for (let i = startPage; i <= endPage; i++) {
-                      addPage(i)
-                    }
+                        // Add visible pages
+                        for (let i = startPage; i <= endPage; i++) {
+                          addPage(i)
+                        }
 
-                    // Show ellipsis at the end if needed
-                    if (endPage < totalPages - 2) {
-                      visiblePages.push(
-                        <PaginationEllipsis
-                          key="ellipsis2"
-                          className="cursor-pointer"
-                          onClick={() => {
-                            handlePageIndexChange(Math.min(totalPages - 1, currentPage + DEFAULT_PAGINATION_STEP))
-                          }}
-                        />,
-                      )
-                    }
+                        // Show ellipsis at the end if needed
+                        if (endPage < totalPages - 2) {
+                          visiblePages.push(
+                            <PaginationEllipsis
+                              key="ellipsis2"
+                              className="cursor-pointer"
+                              onClick={() => {
+                                handlePageIndexChange(Math.min(totalPages - 1, currentPage + DEFAULT_PAGINATION_STEP))
+                              }}
+                            />,
+                          )
+                        }
 
-                    // Always show last page
-                    addPage(totalPages - 1)
-                  }
+                        // Always show last page
+                        addPage(totalPages - 1)
+                      }
 
-                  return visiblePages
-                })()}
+                      return visiblePages
+                    })()}
+                  </>
+                )}
 
                 <PaginationItem>
                   <Button

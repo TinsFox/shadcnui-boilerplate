@@ -1,6 +1,5 @@
 import {
   CaretSortIcon,
-  ChevronDownIcon,
   DotsHorizontalIcon,
 } from "@radix-ui/react-icons"
 import type {
@@ -20,6 +19,8 @@ import {
 } from "@tanstack/react-table"
 import * as React from "react"
 
+import { DataTablePagination } from "@/components/data-table/data-table-pagination"
+import { DataTableSearch } from "@/components/data-table/data-table-search"
 import { Empty } from "@/components/empty"
 import { Loading } from "@/components/loading"
 import { Avatar, AvatarFallback, AvatarImage } from "@/components/ui/avatar"
@@ -27,29 +28,11 @@ import { Button } from "@/components/ui/button"
 import { Checkbox } from "@/components/ui/checkbox"
 import {
   DropdownMenu,
-  DropdownMenuCheckboxItem,
   DropdownMenuContent,
   DropdownMenuItem,
   DropdownMenuLabel,
   DropdownMenuTrigger,
 } from "@/components/ui/dropdown-menu"
-import { Input } from "@/components/ui/input"
-import {
-  Pagination,
-  PaginationContent,
-  PaginationEllipsis,
-  PaginationItem,
-  PaginationLink,
-  PaginationNext,
-  PaginationPrevious,
-} from "@/components/ui/pagination"
-import {
-  Select,
-  SelectContent,
-  SelectItem,
-  SelectTrigger,
-  SelectValue,
-} from "@/components/ui/select"
 import {
   Table,
   TableBody,
@@ -185,44 +168,6 @@ const columns: ColumnDef<IUsers>[] = [
   },
 ]
 
-function Toolbar({ table }: { table: ReturnType<typeof useReactTable<IUsers>> }) {
-  return (
-    <div className="flex items-center py-4">
-      <Input
-        placeholder="Filter emails..."
-        value={(table.getColumn("email")?.getFilterValue() as string) ?? ""}
-        onChange={(event) =>
-          table.getColumn("email")?.setFilterValue(event.target.value)}
-        className="max-w-sm"
-      />
-      <DropdownMenu>
-        <DropdownMenuTrigger asChild>
-          <Button variant="outline" className="ml-auto">
-            Columns <ChevronDownIcon className="ml-2 size-4" />
-          </Button>
-        </DropdownMenuTrigger>
-        <DropdownMenuContent align="end">
-          {table
-            .getAllColumns()
-            .filter((column) => column.getCanHide())
-            .map((column) => (
-              <DropdownMenuCheckboxItem
-                key={column.id}
-                className="capitalize"
-                checked={column.getIsVisible()}
-                onCheckedChange={(value) =>
-                  column.toggleVisibility(!!value)}
-              >
-                {column.id}
-              </DropdownMenuCheckboxItem>
-            ))}
-        </DropdownMenuContent>
-      </DropdownMenu>
-    </div>
-  )
-}
-const PAGINATION_STEP = 3
-const PAGE_SIZE = 10
 export function Component() {
   const [sorting, setSorting] = React.useState<SortingState>([])
   const [columnFilters, setColumnFilters] = React.useState<ColumnFiltersState>(
@@ -230,7 +175,7 @@ export function Component() {
   )
   const [pagination, setPagination] = React.useState<PaginationState>({
     pageIndex: 0,
-    pageSize: PAGE_SIZE,
+    pageSize: 10,
   })
   const [columnVisibility, setColumnVisibility] =
     React.useState<VisibilityState>({})
@@ -240,6 +185,15 @@ export function Component() {
   const table = useReactTable({
     data: users.list,
     columns,
+    rowCount: users.total,
+    manualPagination: true,
+    state: {
+      sorting,
+      columnFilters,
+      columnVisibility,
+      rowSelection,
+      pagination,
+    },
     onSortingChange: setSorting,
     onColumnFiltersChange: setColumnFilters,
     getCoreRowModel: getCoreRowModel(),
@@ -249,23 +203,13 @@ export function Component() {
     onColumnVisibilityChange: setColumnVisibility,
     onRowSelectionChange: setRowSelection,
     onPaginationChange: setPagination,
-    manualPagination: true,
-    rowCount: users.total,
-    state: {
-      sorting,
-      columnFilters,
-      columnVisibility,
-      rowSelection,
-      pagination: {
-        pageIndex: users.page, // Set the starting page to 1 instead of 0
-        pageSize: users.pageSize,
-      },
-    },
   })
 
   return (
     <div>
-      <Toolbar table={table} />
+      <DataTableSearch
+        table={table}
+      />
       <div className="rounded-md border">
         <Table>
           <TableHeader>
@@ -316,134 +260,10 @@ export function Component() {
           </TableBody>
         </Table>
       </div>
-      <DataTablePagination table={table} pagination={pagination} setPagination={setPagination} />
-    </div>
-  )
-}
-
-interface DataTablePaginationProps {
-  table: ReturnType<typeof useReactTable<IUsers>>
-  pagination: PaginationState
-  setPagination: (pagination: PaginationState) => void
-}
-
-function DataTablePagination({ table, pagination, setPagination }: DataTablePaginationProps) {
-  return (
-    <div>
-      {table.getPageCount() > 1 && (
-        <div className="flex items-center justify-end space-x-2 py-4">
-          <div className="flex-1 text-sm text-muted-foreground">
-            Page
-            {" "}
-            {table.getState().pagination.pageIndex + 1}
-            {" "}
-            of
-            {" "}
-            {table.getPageCount() ? table.getPageCount().toLocaleString() : "-"}
-          </div>
-          <div className="space-x-2">
-            <Pagination>
-              <PaginationContent>
-                <PaginationItem>
-                  <PaginationPrevious onClick={() => table.previousPage()} disabled={!table.getCanPreviousPage()} />
-                </PaginationItem>
-
-                {(() => {
-                  const currentPage = table.getState().pagination.pageIndex
-                  const totalPages = table.getPageCount()
-                  const visiblePages = []
-                  const addPage = (index: number) => {
-                    visiblePages.push(
-                      <PaginationItem key={index}>
-                        <PaginationLink
-                          onClick={() => {
-                            setPagination({
-                              ...pagination,
-                              pageIndex: index,
-                            })
-                          }}
-                          isActive={currentPage === index}
-                        >
-
-                          {String(index + 1)}
-                        </PaginationLink>
-                      </PaginationItem>,
-                    )
-                  }
-
-                  // Always show first page
-                  addPage(0)
-
-                  if (totalPages <= 7) {
-                    // If total pages are 7 or less, show all pages
-                    for (let i = 1; i < totalPages; i++) {
-                      addPage(i)
-                    }
-                  } else {
-                    let startPage = Math.max(1, currentPage - 1)
-                    let endPage = Math.min(totalPages - 2, currentPage + 1)
-
-                    // Adjust start and end page to always show 3 pages when possible
-                    if (startPage === 1) {
-                      endPage = Math.min(3, totalPages - 2)
-                    } else if (endPage === totalPages - 2) {
-                      startPage = Math.max(1, totalPages - 4)
-                    }
-
-                    // Show ellipsis at the start if needed
-                    if (startPage > 1) {
-                      visiblePages.push(
-                        <PaginationEllipsis
-                          key="ellipsis1"
-                          onClick={() => setPagination({ ...pagination, pageIndex: Math.max(0, currentPage - PAGINATION_STEP) })}
-                        />,
-                      )
-                    }
-
-                    // Add visible pages
-                    for (let i = startPage; i <= endPage; i++) {
-                      addPage(i)
-                    }
-
-                    // Show ellipsis at the end if needed
-                    if (endPage < totalPages - 2) {
-                      visiblePages.push(
-                        <PaginationEllipsis
-                          key="ellipsis2"
-                          onClick={() => setPagination({ ...pagination, pageIndex: Math.min(totalPages - 1, currentPage + PAGINATION_STEP) })}
-                        />,
-                      )
-                    }
-
-                    // Always show last page
-                    addPage(totalPages - 1)
-                  }
-
-                  return visiblePages
-                })()}
-
-                <PaginationItem>
-                  <PaginationNext onClick={() => table.nextPage()} disabled={!table.getCanNextPage()} />
-                </PaginationItem>
-                <PaginationItem>
-                  <Select value={pagination.pageSize.toString()} onValueChange={(value) => setPagination({ ...pagination, pageSize: Number(value) })}>
-                    <SelectTrigger>
-                      <SelectValue placeholder="Select a page size" />
-                    </SelectTrigger>
-                    <SelectContent>
-                      {[10, 20, 30, 40, 50].map((pageSize) => (
-                        <SelectItem key={pageSize} value={pageSize.toString()}>
-                          {pageSize} / page
-                        </SelectItem>
-                      ))}
-                    </SelectContent>
-                  </Select>
-                </PaginationItem>
-              </PaginationContent>
-            </Pagination>
-          </div>
-        </div>
-      )}
+      <DataTablePagination
+        table={table}
+        pagination={pagination}
+      />
     </div>
   )
 }
