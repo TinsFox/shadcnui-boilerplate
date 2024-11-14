@@ -3,6 +3,7 @@ import {
   queryOptions,
   useMutation,
   useQuery,
+  useQueryClient,
   useSuspenseQuery,
 } from "@tanstack/react-query"
 import type { PaginationState } from "@tanstack/react-table"
@@ -13,13 +14,15 @@ import type { ILoginForm, IUserProfile, IUsers } from "@/schema/user"
 
 export const queryUser = () => queryOptions({
   queryKey: ["userInfo"],
-  queryFn: async () => apiFetch<IUserProfile>("/api/user"),
+  queryFn: async () => apiFetch<IUserProfile>("/api/users"),
 })
 
 export const queryUserInfo = () =>
   queryOptions({
     queryKey: ["user-info"],
-    queryFn: async () => apiFetch<IUserProfile>(`/api/user/info`),
+    queryFn: async () => apiFetch<{
+      data: IUserProfile
+    }>(`/api/users/info`),
   })
 
 export function useUser() {
@@ -58,7 +61,7 @@ export function useUsers(pagination?: PaginationState, searchParams?: Partial<IU
       total: number
       page: number
       pageSize: number
-    }>("/api/team-users", {
+    }>("/api/users", {
       params: {
         page: pageIndex,
         pageSize,
@@ -79,4 +82,20 @@ export function useUsers(pagination?: PaginationState, searchParams?: Partial<IU
       pageSize: data?.pageSize || 0,
     },
   }
+}
+
+export function useUpdateUser() {
+  const queryClient = useQueryClient()
+
+  return useMutation({
+    mutationFn: async (user: IUsers) =>
+      await apiFetch(`/api/${user.id}`, {
+        method: "PUT",
+        body: user,
+      }),
+    onSuccess: () => {
+      // 更新用户列表缓存
+      queryClient.invalidateQueries({ queryKey: ["users"] })
+    },
+  })
 }

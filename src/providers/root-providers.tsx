@@ -37,11 +37,11 @@ export const RootProviders: FC<PropsWithChildren> = ({ children }) => (
               </TooltipProvider>
               <ThemesStyle />
               <Toaster richColors />
+              <PrimitiveToaster />
             </ThemeProvider>
           </ThemeWrapper>
         </QueryClientProvider>
       </MotionConfig>
-      <PrimitiveToaster />
     </LazyMotion>
   </I18nextProvider>
 )

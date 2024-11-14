@@ -32,13 +32,13 @@ export const userProfileSchema = z.object({
     .default([]),
 })
 export type IUserProfile = z.infer<typeof userProfileSchema>
-export const userStatuses = ["pending", "processing", "success", "failed"] as const
+export const userStatuses = ["active", "inactive", "busy"] as const
 
 export const userRoles = ["admin", "user", "guest", "member"] as const
 
 export const userSchema = z.object({
   id: z.string(),
-  amount: z.number(),
+  amount: z.string(),
   status: z.enum(userStatuses),
   email: z.string().email(),
   name: z.string(),
@@ -63,3 +63,5 @@ export const loginFormSchema = z.object({
 })
 
 export type ILoginForm = z.infer<typeof loginFormSchema>
+
+export const userStatus = ["active", "inactive", "pending"] as const

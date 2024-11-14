@@ -122,7 +122,7 @@ describe("User Hooks", () => {
         expect(result.current.isPending).toBe(false)
       })
 
-      expect(apiFetch).toHaveBeenCalledWith("/api/team-users", {
+      expect(apiFetch).toHaveBeenCalledWith("/api/users", {
         params: {
           page: pagination.pageIndex,
           pageSize: pagination.pageSize,

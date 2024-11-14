@@ -1,7 +1,9 @@
 import { zodResolver } from "@hookform/resolvers/zod"
+import { useRef, useState } from "react"
 import { useForm } from "react-hook-form"
 import type { z } from "zod"
 
+import { Avatar, AvatarFallback, AvatarImage } from "@/components/ui/avatar"
 import { Button } from "@/components/ui/button"
 import { DropdownMenuItem } from "@/components/ui/dropdown-menu"
 import {
@@ -10,6 +12,7 @@ import {
   FormField,
   FormItem,
   FormLabel,
+  FormMessage,
 } from "@/components/ui/form"
 import { Input } from "@/components/ui/input"
 import {
@@ -30,80 +33,112 @@ import {
   SheetTrigger,
 } from "@/components/ui/sheet"
 import { toast } from "@/components/ui/use-toast"
+import { useUpdateUser } from "@/hooks/query/use-user"
 import type { IUsers } from "@/schema/user"
-import { userRoles, userSchema } from "@/schema/user"
+import { userRoles, userSchema, userStatus } from "@/schema/user"
 
 export function ViewUser({ user }: { user: IUsers }) {
+  const [state, setState] = useState(false)
+  const sheetCloseRef = useRef<HTMLButtonElement>(null)
   const form = useForm<IUsers>({
     resolver: zodResolver(userSchema),
     defaultValues: user,
   })
 
+  const { mutate: updateUser, isPending } = useUpdateUser()
+
   function onSubmit(values: z.infer<typeof userSchema>) {
-    toast({
-      title: "You submitted the following values:",
-      description: (
-        <pre className="mt-2 w-[340px] rounded-md bg-slate-950 p-4">
-          <code className="text-white">{JSON.stringify(values, null, 2)}</code>
-        </pre>
-      ),
+    updateUser(values, {
+      onSuccess: () => {
+        toast({
+          title: "Success",
+          description: "User information updated successfully",
+        })
+      },
+      onError: (error) => {
+        toast({
+          title: "Error",
+          description: error.message || "Failed to update user information",
+          variant: "destructive",
+        })
+      },
     })
   }
-  return (
-    <>
-      <Sheet>
-        <SheetTrigger asChild>
-          <DropdownMenuItem onSelect={(event) => {
-            event.preventDefault()
-          }}
-          >
-            View customer
-          </DropdownMenuItem>
-        </SheetTrigger>
-        <SheetContent>
-          <SheetHeader>
-            <SheetTitle>View User</SheetTitle>
-            <SheetDescription>
-              View user details here.
-            </SheetDescription>
-          </SheetHeader>
 
-          <Form {...form}>
-            <form onSubmit={form.handleSubmit(onSubmit)}>
-              <div className="grid gap-4 py-4">
+  return (
+    <Sheet open={state} onOpenChange={setState}>
+      <SheetTrigger asChild>
+        <DropdownMenuItem onSelect={(event) => {
+          event.preventDefault()
+          setState(true)
+        }}
+        >
+          View customer
+        </DropdownMenuItem>
+      </SheetTrigger>
+      <SheetContent className="sm:max-w-[500px]">
+        <SheetHeader>
+          <SheetTitle>User Profile</SheetTitle>
+          <SheetDescription>
+            View and edit user information
+          </SheetDescription>
+        </SheetHeader>
+
+        <Form {...form}>
+          <form onSubmit={form.handleSubmit(onSubmit)} className="space-y-6">
+            <div className="mt-6">
+
+              <div className="mb-6 flex items-center space-x-4">
+                <Avatar className="size-20">
+                  <AvatarImage src={user.avatar} />
+                  <AvatarFallback className="text-lg">
+                    {user.name.charAt(0)}
+                  </AvatarFallback>
+                </Avatar>
+                <div className="space-y-1">
+                  <h3 className="text-xl font-semibold">{user.name}</h3>
+                  <p className="text-sm text-muted-foreground">{user.email}</p>
+                </div>
+              </div>
+
+              <div className="space-y-4">
                 <FormField
                   control={form.control}
                   name="name"
                   render={({ field }) => (
-                    <FormItem className="grid grid-cols-4 items-center gap-4 space-y-0">
-                      <FormLabel className="text-right">Name</FormLabel>
-                      <FormControl className="col-span-3">
-                        <Input {...field} placeholder="user name" />
+                    <FormItem>
+                      <FormLabel>Name</FormLabel>
+                      <FormControl>
+                        <Input {...field} />
                       </FormControl>
+                      <FormMessage />
                     </FormItem>
                   )}
                 />
+
                 <FormField
                   control={form.control}
                   name="email"
                   render={({ field }) => (
-                    <FormItem className="grid grid-cols-4 items-center gap-4 space-y-0">
-                      <FormLabel className="text-right">Email</FormLabel>
+                    <FormItem>
+                      <FormLabel>Email</FormLabel>
                       <FormControl>
-                        <Input {...field} placeholder="user@example.com" className="col-span-3" />
+                        <Input {...field} type="email" />
                       </FormControl>
+                      <FormMessage />
                     </FormItem>
                   )}
                 />
+
                 <FormField
                   control={form.control}
                   name="role"
                   render={({ field }) => (
-                    <FormItem className="grid grid-cols-4 items-center gap-4 space-y-0">
-                      <FormLabel className="col-span-1 text-right">Role</FormLabel>
+                    <FormItem>
+                      <FormLabel>Role</FormLabel>
                       <Select onValueChange={field.onChange} defaultValue={field.value}>
                         <FormControl>
-                          <SelectTrigger className="col-span-3">
+                          <SelectTrigger>
                             <SelectValue placeholder="Select a role" />
                           </SelectTrigger>
                         </FormControl>
@@ -113,31 +148,105 @@ export function ViewUser({ user }: { user: IUsers }) {
                           ))}
                         </SelectContent>
                       </Select>
+                      <FormMessage />
                     </FormItem>
                   )}
                 />
+
+                <FormField
+                  control={form.control}
+                  name="status"
+                  render={({ field }) => (
+                    <FormItem>
+                      <FormLabel>Status</FormLabel>
+                      <Select onValueChange={field.onChange} defaultValue={field.value}>
+                        <FormControl>
+                          <SelectTrigger>
+                            <SelectValue placeholder="Select a status" />
+                          </SelectTrigger>
+                        </FormControl>
+                        <SelectContent>
+                          {userStatus.map((status) => (
+                            <SelectItem key={status} value={status}>{status}</SelectItem>
+                          ))}
+                        </SelectContent>
+                      </Select>
+                      <FormMessage />
+                    </FormItem>
+                  )}
+                />
+
                 <FormField
                   control={form.control}
                   name="avatar"
                   render={({ field }) => (
-                    <FormItem className="grid grid-cols-4 items-center gap-4 space-y-0">
-                      <FormLabel className="text-right">Avatar</FormLabel>
+                    <FormItem>
+                      <FormLabel>Avatar URL</FormLabel>
                       <FormControl>
-                        <Input {...field} placeholder="user avatar" className="col-span-3" />
+                        <Input {...field} />
                       </FormControl>
+                      <FormMessage />
                     </FormItem>
                   )}
                 />
+
+                <FormField
+                  control={form.control}
+                  name="amount"
+                  render={({ field }) => (
+                    <FormItem>
+                      <FormLabel>Amount</FormLabel>
+                      <FormControl>
+                        <Input
+                          {...field}
+                        />
+                      </FormControl>
+                      <FormMessage />
+                    </FormItem>
+                  )}
+                />
+
+                <div className="grid grid-cols-2 gap-4 border-t pt-4">
+                  <div>
+                    <p className="text-sm text-muted-foreground">User ID</p>
+                    <p className="font-mono text-sm">{user.id}</p>
+                  </div>
+                  <div>
+                    <p className="text-sm text-muted-foreground">Member Since</p>
+                    <p className="font-medium">
+                      {new Date(user.createdAt).toLocaleDateString()}
+                    </p>
+                  </div>
+                  <div>
+                    <p className="text-sm text-muted-foreground">Status</p>
+                    <p className="font-medium capitalize">{user.status}</p>
+                  </div>
+                  <div>
+                    <p className="text-sm text-muted-foreground">Total Spent</p>
+                    <p className="font-medium">
+                      {new Intl.NumberFormat("en-US", {
+                        style: "currency",
+                        currency: "USD",
+                      }).format(Number(user.amount))}
+                    </p>
+                  </div>
+                </div>
               </div>
-            </form>
-          </Form>
-          <SheetFooter>
-            <SheetClose asChild>
-              <Button type="submit">Save changes</Button>
-            </SheetClose>
-          </SheetFooter>
-        </SheetContent>
-      </Sheet>
-    </>
+            </div>
+
+            <SheetFooter className="flex flex-row gap-2">
+              <SheetClose ref={sheetCloseRef} asChild>
+                <Button variant="outline">Cancel</Button>
+              </SheetClose>
+              <Button
+                disabled={isPending}
+              >
+                {isPending ? "Saving..." : "Save changes"}
+              </Button>
+            </SheetFooter>
+          </form>
+        </Form>
+      </SheetContent>
+    </Sheet>
   )
 }
