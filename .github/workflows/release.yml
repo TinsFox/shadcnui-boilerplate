@@ -1,22 +1,36 @@
 name: Release
 
+permissions:
+  contents: write
+  id-token: write
+
 on:
-  push:
-    tags:
-      - "v*"
+  workflow_dispatch:
 
 jobs:
   release:
     runs-on: ubuntu-latest
     steps:
-      - uses: actions/checkout@v2
+      - uses: actions/checkout@v4
         with:
           fetch-depth: 0
       - name: git config
         run: |
           git config user.name "${ACTION_ACTOR}"
           git config user.email "${ACTION_ACTOR}@users.noreply.github.com"
-      - run: npm install
-      - run: npm run release
+
+      - name: Set node
+        uses: actions/setup-node@v4
+        with:
+          node-version: lts/*
+          registry-url: "https://registry.npmjs.org"
+      - name: Setup pnpm
+        uses: pnpm/action-setup@v3
+
+      - name: Install dependencies
+        run: pnpm install
+
+      - name: Release
+        run: pnpm run release --verbose
         env:
           GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
