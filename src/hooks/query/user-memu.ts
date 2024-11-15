@@ -97,10 +97,15 @@ export const menus: IMenu[] = [
     icon: Table,
     children: [
       {
-        title: "basic_list",
+        title: "data_table",
         label: "128",
         icon: List,
-        to: "/list/basic-list",
+        to: "/list/data-table",
+      },
+      {
+        title: "pro_table",
+        icon: TableProperties,
+        to: "/list/pro-table",
       },
       {
         title: "table_list",

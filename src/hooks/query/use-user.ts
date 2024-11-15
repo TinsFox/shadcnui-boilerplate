@@ -3,6 +3,7 @@ import {
   queryOptions,
   useMutation,
   useQuery,
+  useQueryClient,
   useSuspenseQuery,
 } from "@tanstack/react-query"
 import type { PaginationState } from "@tanstack/react-table"
@@ -13,13 +14,15 @@ import type { ILoginForm, IUserProfile, IUsers } from "@/schema/user"
 
 export const queryUser = () => queryOptions({
   queryKey: ["userInfo"],
-  queryFn: async () => apiFetch<IUserProfile>("/api/user"),
+  queryFn: async () => apiFetch<IUserProfile>("/api/users"),
 })
 
 export const queryUserInfo = () =>
   queryOptions({
     queryKey: ["user-info"],
-    queryFn: async () => apiFetch<IUserProfile>(`/api/user/info`),
+    queryFn: async () => apiFetch<{
+      data: IUserProfile
+    }>(`/api/users/info`),
   })
 
 export function useUser() {
@@ -49,18 +52,20 @@ export function useUserLogoutMutation() {
   })
 }
 
-export function useUsers(pagination: PaginationState) {
-  const { data, isPending } = useQuery({
-    queryKey: ["users", pagination.pageIndex, pagination.pageSize],
+export function useUsers(pagination?: PaginationState, searchParams?: Partial<IUsers>) {
+  const { pageIndex = 1, pageSize = 10 } = pagination || {}
+  const { data, isPending, isFetching, refetch } = useQuery({
+    queryKey: ["users", pageIndex, pageSize, ...Object.entries(searchParams || {})],
     queryFn: async () => apiFetch<{
       list: IUsers[]
       total: number
       page: number
       pageSize: number
-    }>("/api/team-users", {
+    }>("/api/users", {
       params: {
-        page: pagination.pageIndex,
-        pageSize: pagination.pageSize,
+        page: pageIndex,
+        pageSize,
+        ...searchParams,
       },
     }),
     placeholderData: keepPreviousData,
@@ -68,6 +73,8 @@ export function useUsers(pagination: PaginationState) {
 
   return {
     isPending,
+    isLoading: isFetching,
+    refetch,
     data: {
       list: data?.list || [],
       total: data?.total || 0,
@@ -75,4 +82,20 @@ export function useUsers(pagination: PaginationState) {
       pageSize: data?.pageSize || 0,
     },
   }
+}
+
+export function useUpdateUser() {
+  const queryClient = useQueryClient()
+
+  return useMutation({
+    mutationFn: async (user: IUsers) =>
+      await apiFetch(`/api/${user.id}`, {
+        method: "PUT",
+        body: user,
+      }),
+    onSuccess: () => {
+      // 更新用户列表缓存
+      queryClient.invalidateQueries({ queryKey: ["users"] })
+    },
+  })
 }
