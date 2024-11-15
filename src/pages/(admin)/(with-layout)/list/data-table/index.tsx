@@ -263,7 +263,14 @@ export function Component() {
       </div>
       <DataTablePagination
         table={table}
-        pagination={pagination}
+        pagination={{
+          pageIndex: pagination.pageIndex,
+          pageSize: pagination.pageSize,
+          onPaginationChange: (pagination) => {
+            setPagination(pagination)
+          },
+          quickJump: true,
+        }}
       />
     </div>
   )
