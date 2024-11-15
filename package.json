@@ -1,7 +1,7 @@
 {
   "name": "shadcnui-boilerplate",
   "type": "module",
-  "version": "1.0.0",
+  "version": "1.1.0",
   "private": true,
   "packageManager": "pnpm@9.12.3",
   "homepage": "https://github.com/TinsFox/shadcnui-boilerplate",

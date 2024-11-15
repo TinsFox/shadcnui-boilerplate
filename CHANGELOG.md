@@ -1,5 +1,48 @@
 # Changelog
 
+## 1.1.0
+
+### &nbsp;&nbsp;&nbsp;Features
+
+- Add rehype-raw to parse html &nbsp;-&nbsp; by **TinsFox** [<samp>(b6d0c)</samp>](https://github.com/TinsFox/vite-boilerplate/commit/b6d0c8d)
+- Simplify environment variable injection &nbsp;-&nbsp; by **TinsFox** [<samp>(8b9ff)</samp>](https://github.com/TinsFox/vite-boilerplate/commit/8b9ffa0)
+- Table data &nbsp;-&nbsp; by **TinsFox** [<samp>(f9eb5)</samp>](https://github.com/TinsFox/vite-boilerplate/commit/f9eb573)
+- Adjust the layout &nbsp;-&nbsp; by **TinsFox** [<samp>(9b560)</samp>](https://github.com/TinsFox/vite-boilerplate/commit/9b56021)
+- Add view user sheet &nbsp;-&nbsp; by **TinsFox** [<samp>(4afeb)</samp>](https://github.com/TinsFox/vite-boilerplate/commit/4afeb8f)
+- Hide pagination when no data &nbsp;-&nbsp; by **TinsFox** [<samp>(7911c)</samp>](https://github.com/TinsFox/vite-boilerplate/commit/7911c33)
+- Update user api &nbsp;-&nbsp; by **TinsFox** [<samp>(c06ff)</samp>](https://github.com/TinsFox/vite-boilerplate/commit/c06ff83)
+- Use shadcn sidebar component &nbsp;-&nbsp; by **TinsFox** in https://github.com/TinsFox/vite-boilerplate/issues/14 [<samp>(7f1f7)</samp>](https://github.com/TinsFox/vite-boilerplate/commit/7f1f70e)
+- Add document icon &nbsp;-&nbsp; by **TinsFox** [<samp>(479be)</samp>](https://github.com/TinsFox/vite-boilerplate/commit/479be5a)
+- I18n text &nbsp;-&nbsp; by **TinsFox** [<samp>(826cb)</samp>](https://github.com/TinsFox/vite-boilerplate/commit/826cbee)
+- Nav user &nbsp;-&nbsp; by **TinsFox** [<samp>(36a77)</samp>](https://github.com/TinsFox/vite-boilerplate/commit/36a77ae)
+- Layout header &nbsp;-&nbsp; by **TinsFox** [<samp>(6787a)</samp>](https://github.com/TinsFox/vite-boilerplate/commit/6787adf)
+- Fetch nav menu data &nbsp;-&nbsp; by **TinsFox** [<samp>(b1be7)</samp>](https://github.com/TinsFox/vite-boilerplate/commit/b1be784)
+- Table loading state &nbsp;-&nbsp; by **TinsFox** [<samp>(1a57a)</samp>](https://github.com/TinsFox/vite-boilerplate/commit/1a57a44)
+- Sidebar state &nbsp;-&nbsp; by **TinsFox** [<samp>(c259d)</samp>](https://github.com/TinsFox/vite-boilerplate/commit/c259d57)
+- Feedback url &nbsp;-&nbsp; by **TinsFox** [<samp>(e8f5d)</samp>](https://github.com/TinsFox/vite-boilerplate/commit/e8f5d69)
+- External link &nbsp;-&nbsp; by **TinsFox** [<samp>(cc0f2)</samp>](https://github.com/TinsFox/vite-boilerplate/commit/cc0f238)
+- Document icon &nbsp;-&nbsp; by **TinsFox** [<samp>(3bf04)</samp>](https://github.com/TinsFox/vite-boilerplate/commit/3bf044b)
+- Pro table &nbsp;-&nbsp; by **TinsFox** in https://github.com/TinsFox/vite-boilerplate/issues/15 [<samp>(7c138)</samp>](https://github.com/TinsFox/vite-boilerplate/commit/7c13833)
+
+### &nbsp;&nbsp;&nbsp;Bug Fixes
+
+- Fixed home page not scrolling &nbsp;-&nbsp; by **TinsFox** [<samp>(e72d7)</samp>](https://github.com/TinsFox/vite-boilerplate/commit/e72d719)
+- Fix search command navigation &nbsp;-&nbsp; by **akazwz** [<samp>(6a051)</samp>](https://github.com/TinsFox/vite-boilerplate/commit/6a0513c)
+- Doc link &nbsp;-&nbsp; by **Loogeek** [<samp>(09e46)</samp>](https://github.com/TinsFox/vite-boilerplate/commit/09e46de)
+- Home page nav wrap &nbsp;-&nbsp; by **TinsFox** [<samp>(0ddf2)</samp>](https://github.com/TinsFox/vite-boilerplate/commit/0ddf282)
+- Use vite load env &nbsp;-&nbsp; by **Daniel** [<samp>(4aa38)</samp>](https://github.com/TinsFox/vite-boilerplate/commit/4aa380c)
+- Headers cannot be set &nbsp;-&nbsp; by **Daniel** and **TinsFox** in https://github.com/TinsFox/vite-boilerplate/issues/12 [<samp>(16b80)</samp>](https://github.com/TinsFox/vite-boilerplate/commit/16b804e)
+- Make main area scrollable &nbsp;-&nbsp; by **TinsFox** [<samp>(780e0)</samp>](https://github.com/TinsFox/vite-boilerplate/commit/780e0bc)
+- Update import statement for LanguageSwitch component &nbsp;-&nbsp; by **TinsFox** [<samp>(eb17a)</samp>](https://github.com/TinsFox/vite-boilerplate/commit/eb17ad7)
+- Fix vitest config &nbsp;-&nbsp; by **TinsFox** [<samp>(7b1b4)</samp>](https://github.com/TinsFox/vite-boilerplate/commit/7b1b466)
+- 401 redirect exception &nbsp;-&nbsp; by **TinsFox** [<samp>(3cbb4)</samp>](https://github.com/TinsFox/vite-boilerplate/commit/3cbb4b3)
+- Fix duplicate dependency issues &nbsp;-&nbsp; by **TinsFox** [<samp>(6cd2c)</samp>](https://github.com/TinsFox/vite-boilerplate/commit/6cd2c27)
+- Update button size &nbsp;-&nbsp; by **TinsFox** [<samp>(6f689)</samp>](https://github.com/TinsFox/vite-boilerplate/commit/6f6899f)
+- Vitepress build &nbsp;-&nbsp; by **TinsFox** [<samp>(4c976)</samp>](https://github.com/TinsFox/vite-boilerplate/commit/4c97674)
+- **eslint**: Restrict react-refresh rule to pages directory only &nbsp;-&nbsp; by **TinsFox** [<samp>(c2406)</samp>](https://github.com/TinsFox/vite-boilerplate/commit/c240686)
+
+##### &nbsp;&nbsp;&nbsp;&nbsp;[View changes on GitHub](https://github.com/TinsFox/vite-boilerplate/compare/v1.0.0...1.1.0)
+
 ## 1.0.0
 
 ### &nbsp;&nbsp;&nbsp;Features
