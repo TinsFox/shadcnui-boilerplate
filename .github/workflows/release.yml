@@ -1,0 +1,22 @@
+name: Release
+
+on:
+  push:
+    tags:
+      - "v*"
+
+jobs:
+  release:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v2
+        with:
+          fetch-depth: 0
+      - name: git config
+        run: |
+          git config user.name "${ACTION_ACTOR}"
+          git config user.email "${ACTION_ACTOR}@users.noreply.github.com"
+      - run: npm install
+      - run: npm run release
+        env:
+          GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
