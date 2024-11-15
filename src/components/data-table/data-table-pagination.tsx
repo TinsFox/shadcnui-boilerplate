@@ -26,8 +26,9 @@ export function DataTablePagination<TData>({ table, pagination }: DataTablePagin
     pageSize: pagination?.pageSize ?? DEFAULT_PAGE_SIZE,
   })
 
+  // when change page size, reset page index to 0
   const handlePageSizeChange = (_pageSize: string) => {
-    const newPaginationState = { ...paginationState, pageSize: Number(_pageSize) }
+    const newPaginationState = { pageIndex: 0, pageSize: Number(_pageSize) }
     setPaginationState(newPaginationState)
     pagination?.onPaginationChange?.(newPaginationState)
   }
