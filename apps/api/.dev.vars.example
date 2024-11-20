@@ -1,0 +1,3 @@
+[vars]
+JWT_SECRET = ""
+COOKIE_KEY = "token"

@@ -33,6 +33,8 @@ dist-ssr
 docs/.vitepress/dist
 docs/.vitepress/cache
 
-
 # vitest
 coverage/
+
+# turbo
+.turbo

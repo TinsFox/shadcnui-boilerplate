@@ -14,6 +14,11 @@ export default defineConfig(
     ignores: [
       "src/components/ui",
       "pnpm-lock.yaml",
+      "pnpm-workspace.yaml",
+      "apps/api/**/*",
+      "**/*.png",
+      "**/*.svg",
+      "**/*.avif",
     ],
   },
   {
@@ -24,6 +29,7 @@ export default defineConfig(
     },
     rules: {
       "react-refresh/only-export-components": "off",
+      "tailwindcss/no-custom-classname": "off",
     },
   },
   {

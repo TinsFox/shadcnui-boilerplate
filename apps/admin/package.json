@@ -1,5 +1,5 @@
 {
-  "name": "shadcnui-boilerplate",
+  "name": "admin",
   "type": "module",
   "version": "1.1.0",
   "private": true,
@@ -10,10 +10,10 @@
     "type": "git"
   },
   "scripts": {
-    "admin:dev": "turbo dev --filter admin",
-    "api:dev": "turbo dev --filter api",
     "build": "tsc && vite build",
     "build-storybook": "storybook build",
+    "commit": "commit",
+    "commitlint": "commitlint --edit",
     "coverage": "vitest run --coverage",
     "dev": "turbo dev",
     "docs:build": "vitepress build docs",
@@ -21,9 +21,8 @@
     "docs:preview": "vitepress preview docs",
     "lint": "eslint",
     "lint:fix": "eslint --fix",
-    "prepare": "pnpm exec simple-git-hooks",
+    "prepare": "test -f .env || cp .env.example .env",
     "preview": "vite preview",
-    "release": "release-it",
     "start": "tsc && vite build && vite preview",
     "storybook": "storybook dev -p 6006",
     "test": "vitest",
@@ -145,13 +144,6 @@
     "vite-tsconfig-paths": "^5.0.1",
     "vitepress": "^1.4.3",
     "vitest": "^2.1.4"
-  },
-  "simple-git-hooks": {
-    "pre-commit": "npx lint-staged",
-    "commit-msg": "npx --no -- commitlint --edit"
-  },
-  "lint-staged": {
-    "*": "eslint --fix --quiet --no-warn-ignored"
   },
   "eslintConfig": {
     "extends": [
