@@ -138,7 +138,7 @@
     "simple-git-hooks": "^2.11.1",
     "storybook": "^8.4.2",
     "tailwindcss": "^3.4.14",
-    "turbo": "^2.2.3",
+    "turbo": "^2.3.0",
     "typescript": "^5.6.3",
     "vite": "^5.4.10",
     "vite-plugin-html": "^3.2.2",
