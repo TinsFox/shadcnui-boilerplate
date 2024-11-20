@@ -15,7 +15,7 @@
     "commit": "commit",
     "commitlint": "commitlint --edit",
     "coverage": "vitest run --coverage",
-    "dev": "turbo dev",
+    "dev": "vite dev",
     "docs:build": "vitepress build docs",
     "docs:dev": "vitepress dev docs",
     "docs:preview": "vitepress preview docs",
