@@ -1,3 +1,4 @@
 [vars]
 JWT_SECRET = ""
 COOKIE_KEY = "token"
+DATABASE_URL = "postgresql://xxxx"

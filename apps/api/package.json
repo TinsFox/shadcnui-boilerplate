@@ -8,8 +8,10 @@
     "db:seed": "tsx ./src/db/seed.ts",
     "deploy": "wrangler deploy --minify src/index.ts",
     "dev": "wrangler dev src/index.ts",
+    "dev:local": "tsx --watch src/index.ts",
     "test": "vitest",
-    "typecheck": "tsc --noEmit"
+    "typecheck": "tsc --noEmit",
+    "prepare": "test -f .dev.vars || cp .dev.vars.example .dev.vars"
   },
   "dependencies": {
     "@faker-js/faker": "^9.2.0",
