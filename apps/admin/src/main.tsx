@@ -1,4 +1,3 @@
-// import "./styles/index.css"
 import "@repo/ui/globals.css"
 import "./i18n"
 
