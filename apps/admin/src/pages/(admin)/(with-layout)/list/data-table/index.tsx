@@ -2,6 +2,10 @@ import {
   CaretSortIcon,
   DotsHorizontalIcon,
 } from "@radix-ui/react-icons"
+import {
+  DataTablePagination,
+  DataTableSearch,
+} from "@repo/pro-components/data-table"
 import { Avatar, AvatarFallback, AvatarImage } from "@repo/ui/avatar"
 import { Button } from "@repo/ui/button"
 import { Checkbox } from "@repo/ui/checkbox"
@@ -37,8 +41,6 @@ import {
 } from "@tanstack/react-table"
 import * as React from "react"
 
-import { DataTablePagination } from "@/components/data-table/data-table-pagination"
-import { DataTableSearch } from "@/components/data-table/data-table-search"
 import { Empty } from "@/components/empty"
 import { Loading } from "@/components/loading"
 import { useUsers } from "@/hooks/query/use-user"

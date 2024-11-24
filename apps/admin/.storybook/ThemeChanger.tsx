@@ -1,9 +1,9 @@
+import { Button } from "@repo/ui/button"
 import { addons } from "@storybook/manager-api"
+import { useTheme } from "@storybook/theming"
 import { Moon, Sun } from "lucide-react"
 import * as React from "react"
 
-import { useTheme } from "../../../src/components/theme/theme-provider"
-import { Button } from "../../../src/components/ui/button"
 import { darkTheme, lightTheme } from "./theme"
 
 export function ThemeChanger() {
