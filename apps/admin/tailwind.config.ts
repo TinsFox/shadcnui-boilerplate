@@ -8,6 +8,7 @@ export default {
   darkMode: ["class"],
   content: [
     "../../packages/ui/src/**/*.{js,ts,jsx,tsx}",
+    "../../packages/pro-components/src/**/*.{js,ts,jsx,tsx}",
     "./pages/**/*.{ts,tsx}",
     "./components/**/*.{ts,tsx}",
     "./app/**/*.{ts,tsx}",

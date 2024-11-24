@@ -4,6 +4,7 @@ import {
   DataTableColumnHeader,
   DataTableFacetedFilter,
   DataTablePagination,
+  DataTableViewOptions,
 } from "@repo/pro-components/data-table"
 import { Badge } from "@repo/ui/badge"
 import { Button } from "@repo/ui/button"
@@ -26,7 +27,6 @@ import type { ColumnDef, ColumnFiltersState, SortingState, VisibilityState } fro
 import { getCoreRowModel, getFacetedRowModel, getFacetedUniqueValues, getFilteredRowModel, getPaginationRowModel, getSortedRowModel, useReactTable } from "@tanstack/react-table"
 import * as React from "react"
 
-import { DataTableViewOptions } from "@/components/data-table/data-table-view-options"
 import { useTasks } from "@/hooks/query/use-tasks"
 import { labels, priorities, statuses } from "@/lib/data-dictionary"
 import type { ITask } from "@/schema/task"
