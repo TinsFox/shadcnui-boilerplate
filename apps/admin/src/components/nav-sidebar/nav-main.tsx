@@ -1,3 +1,6 @@
+import { Button } from "@repo/ui/button"
+import { Collapsible, CollapsibleContent, CollapsibleTrigger } from "@repo/ui/collapsible"
+import { SidebarGroup, SidebarGroupLabel, SidebarMenu, SidebarMenuAction, SidebarMenuButton, SidebarMenuItem, SidebarMenuSub, SidebarMenuSubButton, SidebarMenuSubItem } from "@repo/ui/sidebar"
 import { useAtom } from "jotai"
 import { ChevronRight, Maximize2, Minimize2 } from "lucide-react"
 import { useEffect, useMemo } from "react"
@@ -5,25 +8,7 @@ import { useTranslation } from "react-i18next"
 import { Link, useLocation } from "react-router-dom"
 
 import { navOpenItemsAtom } from "@/atoms/nav"
-import {
-  Collapsible,
-  CollapsibleContent,
-  CollapsibleTrigger,
-} from "@/components/ui/collapsible"
-import {
-  SidebarGroup,
-  SidebarGroupLabel,
-  SidebarMenu,
-  SidebarMenuAction,
-  SidebarMenuButton,
-  SidebarMenuItem,
-  SidebarMenuSub,
-  SidebarMenuSubButton,
-  SidebarMenuSubItem,
-} from "@/components/ui/sidebar"
 import type { IMenu } from "@/schema/menu"
-
-import { Button } from "../ui/button"
 
 export function NavMain({
   items,

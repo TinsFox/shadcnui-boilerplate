@@ -4,16 +4,16 @@ import {
   CaretSortIcon,
   EyeNoneIcon,
 } from "@radix-ui/react-icons"
-import type { Column } from "@tanstack/react-table"
-
-import { Button } from "@/components/ui/button"
+import { Button } from "@repo/ui/button"
 import {
   DropdownMenu,
   DropdownMenuContent,
   DropdownMenuItem,
   DropdownMenuSeparator,
   DropdownMenuTrigger,
-} from "@/components/ui/dropdown-menu"
+} from "@repo/ui/dropdown-menu"
+import type { Column } from "@tanstack/react-table"
+
 import { cn } from "@/lib/utils"
 
 interface DataTableColumnHeaderProps<TData, TValue>

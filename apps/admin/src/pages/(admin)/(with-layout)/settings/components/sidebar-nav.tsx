@@ -1,6 +1,6 @@
+import { buttonVariants } from "@repo/ui/button"
 import { NavLink } from "react-router-dom"
 
-import { buttonVariants } from "@/components/ui/button"
 import { cn } from "@/lib/utils"
 
 interface SidebarNavProps extends React.HTMLAttributes<HTMLElement> {

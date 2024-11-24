@@ -1,10 +1,15 @@
 import { ChevronLeftIcon, ChevronRightIcon } from "@radix-ui/react-icons"
+import { Button } from "@repo/ui/button"
+import {
+  Pagination,
+  PaginationContent,
+  PaginationEllipsis,
+  PaginationItem,
+  PaginationLink,
+} from "@repo/ui/pagination"
+import { Select, SelectContent, SelectItem, SelectTrigger, SelectValue } from "@repo/ui/select"
 import type { PaginationState, Table } from "@tanstack/react-table"
 import * as React from "react"
-
-import { Button } from "@/ui/button"
-import { Pagination, PaginationContent, PaginationEllipsis, PaginationItem, PaginationLink } from "@/ui/pagination"
-import { Select, SelectContent, SelectItem, SelectTrigger, SelectValue } from "@/ui/select"
 
 import { DEFAULT_PAGE_INDEX, DEFAULT_PAGE_SIZE, DEFAULT_PAGINATION_STEP } from "./data-table-util"
 
@@ -87,6 +92,7 @@ export function DataTablePagination<TData>({ table, pagination }: DataTablePagin
                         visiblePages.push(
                           <PaginationItem key={index}>
                             <PaginationLink
+                              size="sm"
                               onClick={() => {
                                 handlePageIndexChange(index)
                               }}

@@ -1,30 +1,27 @@
-import * as React from "react"
-import { Label, Pie, PieChart, Sector } from "recharts"
-import type { PieSectorDataItem } from "recharts/types/polar/Pie"
-
 import {
   Card,
   CardContent,
   CardDescription,
   CardHeader,
   CardTitle,
-} from "@/ui/card"
-import type {
-  ChartConfig,
-} from "@/ui/chart"
+} from "@repo/ui/card"
+import type { ChartConfig } from "@repo/ui/chart"
 import {
   ChartContainer,
   ChartStyle,
   ChartTooltip,
   ChartTooltipContent,
-} from "@/ui/chart"
+} from "@repo/ui/chart"
 import {
   Select,
   SelectContent,
   SelectItem,
   SelectTrigger,
   SelectValue,
-} from "@/ui/select"
+} from "@repo/ui/select"
+import * as React from "react"
+import { Label, Pie, PieChart, Sector } from "recharts"
+import type { PieSectorDataItem } from "recharts/types/polar/Pie"
 
 export const description = "An interactive pie chart"
 

@@ -19,6 +19,8 @@ export default defineConfig(
       "**/*.png",
       "**/*.svg",
       "**/*.avif",
+      "packages/ui/**/*",
+      "scripts/generate-exports.ts",
     ],
   },
   {
@@ -30,15 +32,6 @@ export default defineConfig(
     rules: {
       "react-refresh/only-export-components": "off",
       "tailwindcss/no-custom-classname": "off",
-    },
-  },
-  {
-    files: ["**/pages/**/*.tsx"],
-    rules: {
-      "react-refresh/only-export-components": [
-        "warn",
-        { allowExportNames: ["loader", "Component", "action"] },
-      ],
     },
   },
 )

@@ -8,7 +8,7 @@ import tsconfigPaths from "vite-tsconfig-paths"
 import { getGitHash } from "./scripts/lib.ts"
 
 const pkg = JSON.parse(readFileSync("package.json", "utf8"))
-const readme = readFileSync("README.md", "utf8")
+const readme = readFileSync("../../README.md", "utf8")
 
 export default defineConfig(({ mode }) => {
   const viteEnv = loadEnv(mode, process.cwd(), "")
@@ -42,6 +42,11 @@ export default defineConfig(({ mode }) => {
           target: viteEnv.VITE_API_URL,
           changeOrigin: true,
         },
+      },
+    },
+    build: {
+      rollupOptions: {
+        // external: ["react-hook-form"],
       },
     },
   }

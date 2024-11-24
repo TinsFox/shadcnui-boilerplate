@@ -19,6 +19,7 @@
     "docs:build": "vitepress build docs",
     "docs:dev": "vitepress dev docs",
     "docs:preview": "vitepress preview docs",
+    "generate": "tsx scripts/generate-exports.ts",
     "lint": "eslint",
     "lint:fix": "eslint --fix",
     "prepare": "pnpm exec simple-git-hooks",

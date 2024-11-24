@@ -1,18 +1,10 @@
-import type { LucideIcon } from "lucide-react"
-import {
-  Folder,
-  MoreHorizontal,
-  Share,
-  Trash2,
-} from "lucide-react"
-
 import {
   DropdownMenu,
   DropdownMenuContent,
   DropdownMenuItem,
   DropdownMenuSeparator,
   DropdownMenuTrigger,
-} from "@/components/ui/dropdown-menu"
+} from "@repo/ui/dropdown-menu"
 import {
   SidebarGroup,
   SidebarGroupLabel,
@@ -21,7 +13,14 @@ import {
   SidebarMenuButton,
   SidebarMenuItem,
   useSidebar,
-} from "@/components/ui/sidebar"
+} from "@repo/ui/sidebar"
+import type { LucideIcon } from "lucide-react"
+import {
+  Folder,
+  MoreHorizontal,
+  Share,
+  Trash2,
+} from "lucide-react"
 
 export function NavProjects({
   projects,

@@ -1,9 +1,8 @@
+import { Table, TableBody, TableCell, TableHead, TableHeader, TableRow } from "@repo/ui/table"
 import {
   flexRender,
 } from "@tanstack/react-table"
 import { useMemo } from "react"
-
-import { Table, TableBody, TableCell, TableHead, TableHeader, TableRow } from "@/components/ui/table"
 
 import { Empty } from "../empty"
 import { DataTableSkeleton } from "./data-table-skeleton"

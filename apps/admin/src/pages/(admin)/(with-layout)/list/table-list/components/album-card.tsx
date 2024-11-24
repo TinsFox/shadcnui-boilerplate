@@ -1,13 +1,13 @@
+import { Button } from "@repo/ui/button"
+import { Card, CardContent, CardDescription, CardFooter, CardHeader, CardTitle } from "@repo/ui/card"
+import { Separator } from "@repo/ui/separator"
+import { Tooltip, TooltipContent, TooltipTrigger } from "@repo/ui/tooltip"
 import { format } from "date-fns"
 import { CheckIcon, ClipboardIcon, Share, TrendingDown, TrendingUp } from "lucide-react"
 import { QRCodeSVG } from "qrcode.react"
 import * as React from "react"
 import { toast } from "sonner"
 
-import { Button } from "@/components/ui/button"
-import { Card, CardContent, CardDescription, CardFooter, CardHeader, CardTitle } from "@/components/ui/card"
-import { Separator } from "@/components/ui/separator"
-import { Tooltip, TooltipContent, TooltipTrigger } from "@/components/ui/tooltip"
 import { cn } from "@/lib/utils"
 import type { IAlbum } from "@/schema/album"
 

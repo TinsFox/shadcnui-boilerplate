@@ -1,14 +1,13 @@
-import type { LucideIcon } from "lucide-react"
-import * as React from "react"
-import { Link } from "react-router-dom"
-
 import {
   SidebarGroup,
   SidebarGroupContent,
   SidebarMenu,
   SidebarMenuButton,
   SidebarMenuItem,
-} from "@/components/ui/sidebar"
+} from "@repo/ui/sidebar"
+import type { LucideIcon } from "lucide-react"
+import * as React from "react"
+import { Link } from "react-router-dom"
 
 export function NavSecondary({
   items,

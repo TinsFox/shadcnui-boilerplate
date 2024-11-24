@@ -27,8 +27,7 @@
     "paths": {
       "@/*": ["./src/*"],
       "@env": ["env.ts"],
-      "@pkg": ["./package.json"],
-      "@/ui/*": ["./src/components/ui/*"]
+      "@pkg": ["./package.json"]
     }
   },
   "include": ["src", "env.ts", "types/**/*.d.ts", ".storybook"]

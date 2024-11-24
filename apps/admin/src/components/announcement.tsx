@@ -1,8 +1,7 @@
 import { ArrowRightIcon } from "@radix-ui/react-icons"
+import { Separator } from "@repo/ui/separator"
 import { PieChart } from "lucide-react"
 import { Link } from "react-router-dom"
-
-import { Separator } from "@/ui/separator"
 
 export function Announcement() {
   return (

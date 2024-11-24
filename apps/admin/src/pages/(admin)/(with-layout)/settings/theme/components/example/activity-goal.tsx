@@ -1,9 +1,5 @@
 import { MinusIcon, PlusIcon } from "@radix-ui/react-icons"
-import * as React from "react"
-import { Bar, BarChart, ResponsiveContainer } from "recharts"
-
-import { useTheme } from "@/components/theme/theme-provider"
-import { Button } from "@/components/ui/button"
+import { Button } from "@repo/ui/button"
 import {
   Card,
   CardContent,
@@ -11,7 +7,11 @@ import {
   CardFooter,
   CardHeader,
   CardTitle,
-} from "@/components/ui/card"
+} from "@repo/ui/card"
+import * as React from "react"
+import { Bar, BarChart, ResponsiveContainer } from "recharts"
+
+import { useTheme } from "@/components/theme/theme-provider"
 import { themes } from "@/hooks/themes"
 import { useConfig } from "@/hooks/use-config"
 

@@ -1,11 +1,5 @@
 import { zodResolver } from "@hookform/resolvers/zod"
-import { useEffect } from "react"
-import { useFieldArray, useForm } from "react-hook-form"
-import { useTranslation } from "react-i18next"
-import { Link } from "react-router-dom"
-import { z } from "zod"
-
-import { Button } from "@/components/ui/button"
+import { Button } from "@repo/ui/button"
 import {
   Form,
   FormControl,
@@ -14,17 +8,23 @@ import {
   FormItem,
   FormLabel,
   FormMessage,
-} from "@/components/ui/form"
-import { Input } from "@/components/ui/input"
+} from "@repo/ui/form"
+import { useToast } from "@repo/ui/hooks/use-toast"
+import { Input } from "@repo/ui/input"
 import {
   Select,
   SelectContent,
   SelectItem,
   SelectTrigger,
   SelectValue,
-} from "@/components/ui/select"
-import { Textarea } from "@/components/ui/textarea"
-import { toast } from "@/components/ui/use-toast"
+} from "@repo/ui/select"
+import { Textarea } from "@repo/ui/textarea"
+import { useEffect } from "react"
+import { useFieldArray, useForm } from "react-hook-form"
+import { useTranslation } from "react-i18next"
+import { Link } from "react-router-dom"
+import { z } from "zod"
+
 import { useUser } from "@/hooks/query/use-user"
 import { cn } from "@/lib/utils"
 
@@ -65,7 +65,7 @@ type ProfileFormValues = z.infer<typeof profileFormSchema>
 export function ProfileForm() {
   const { t } = useTranslation(["settings"])
   const user = useUser()
-
+  const { toast } = useToast()
   const form = useForm<ProfileFormValues>({
     resolver: zodResolver(profileFormSchema),
     defaultValues,

@@ -1,6 +1,24 @@
 import {
   DotsHorizontalIcon,
 } from "@radix-ui/react-icons"
+import { Avatar, AvatarFallback, AvatarImage } from "@repo/ui/avatar"
+import { Button } from "@repo/ui/button"
+import { Checkbox } from "@repo/ui/checkbox"
+import {
+  DropdownMenu,
+  DropdownMenuContent,
+  DropdownMenuItem,
+  DropdownMenuLabel,
+  DropdownMenuTrigger,
+} from "@repo/ui/dropdown-menu"
+import {
+  Select,
+  SelectContent,
+  SelectItem,
+  SelectTrigger,
+  SelectValue,
+} from "@repo/ui/select"
+import { Textarea } from "@repo/ui/textarea"
 import type {
   PaginationState,
 } from "@tanstack/react-table"
@@ -8,18 +26,6 @@ import * as React from "react"
 
 import { ProTable } from "@/components/pro-table"
 import type { ColumnDef, SearchParams } from "@/components/pro-table/types"
-import { Avatar, AvatarFallback, AvatarImage } from "@/components/ui/avatar"
-import { Button } from "@/components/ui/button"
-import { Checkbox } from "@/components/ui/checkbox"
-import {
-  DropdownMenu,
-  DropdownMenuContent,
-  DropdownMenuItem,
-  DropdownMenuLabel,
-  DropdownMenuTrigger,
-} from "@/components/ui/dropdown-menu"
-import { Select, SelectContent, SelectItem, SelectTrigger, SelectValue } from "@/components/ui/select"
-import { Textarea } from "@/components/ui/textarea"
 import { useUsers } from "@/hooks/query/use-user"
 import type { IUsers } from "@/schema/user"
 

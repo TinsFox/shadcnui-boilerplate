@@ -1,5 +1,14 @@
 import { env } from "@env"
 import {
+  Sidebar,
+  SidebarContent,
+  SidebarFooter,
+  SidebarHeader,
+  SidebarMenu,
+  SidebarMenuButton,
+  SidebarMenuItem,
+} from "@repo/ui/sidebar"
+import {
   Command,
   Send,
 } from "lucide-react"
@@ -9,16 +18,7 @@ import { Link } from "react-router-dom"
 import { NavMain } from "@/components/nav-sidebar/nav-main"
 import { NavSecondary } from "@/components/nav-sidebar/nav-secondary"
 import { NavUser } from "@/components/nav-sidebar/nav-user"
-import {
-  Sidebar,
-  SidebarContent,
-  SidebarFooter,
-  SidebarHeader,
-  SidebarMenu,
-  SidebarMenuButton,
-  SidebarMenuItem,
-} from "@/components/ui/sidebar"
-import { useNavMenu } from "@/hooks/query/user-memu"
+import { useNavMenu } from "@/hooks/query/user-menu"
 
 const navSecondary = [
   {

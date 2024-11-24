@@ -1,12 +1,8 @@
+import { Skeleton } from "@repo/ui/skeleton"
+import { ToggleGroup, ToggleGroupItem } from "@repo/ui/toggle-group"
+import { Tooltip, TooltipContent, TooltipTrigger } from "@repo/ui/tooltip"
 import * as React from "react"
 
-import { Skeleton } from "@/components/ui/skeleton"
-import { ToggleGroup, ToggleGroupItem } from "@/components/ui/toggle-group"
-import {
-  Tooltip,
-  TooltipContent,
-  TooltipTrigger,
-} from "@/components/ui/tooltip"
 import { useMediaQuery } from "@/hooks/use-media-query"
 import { useThemesConfig } from "@/hooks/use-themes-config"
 import type { Theme } from "@/lib/themes"

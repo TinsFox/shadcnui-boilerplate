@@ -1,13 +1,13 @@
-import { Link } from "react-router-dom"
-
-import { Logo } from "@/components/icons/logo"
-import { logos } from "@/components/icons/logos"
 import {
   Tooltip,
   TooltipContent,
   TooltipProvider,
   TooltipTrigger,
-} from "@/components/ui/tooltip.js"
+} from "@repo/ui/tooltip"
+import { Link } from "react-router-dom"
+
+import { Logo } from "@/components/icons/logo"
+import { logos } from "@/components/icons/logos"
 import { cn } from "@/lib/utils"
 
 // Tailwind Grid cell classes lookup

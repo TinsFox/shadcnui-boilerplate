@@ -1,8 +1,8 @@
+import { buttonVariants } from "@repo/ui/button"
 import { m } from "framer-motion"
 import { useNavigate } from "react-router-dom"
 
 import { cn } from "@/lib/utils"
-import { buttonVariants } from "@/ui/button"
 
 export const NotFound = () => {
   const navigate = useNavigate()

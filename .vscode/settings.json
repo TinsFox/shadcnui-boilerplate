@@ -58,9 +58,13 @@
   "cSpell.words": [
     "autodocs",
     "classname",
+    "clsx",
     "hookform",
+    "hyoban",
     "lucide",
     "ofetch",
     "tanstack"
-  ]
+  ],
+  "typescript.preferences.autoImportFileExcludePatterns": ["react-day-picker"],
+  "typescript.preferences.importModuleSpecifier": "shortest"
 }

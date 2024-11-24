@@ -1,13 +1,8 @@
 import { zodResolver } from "@hookform/resolvers/zod"
 import { CalendarIcon, CaretSortIcon, CheckIcon } from "@radix-ui/react-icons"
-import { format } from "date-fns"
-import { useForm } from "react-hook-form"
-import { Link } from "react-router-dom"
-import { z } from "zod"
-
-import { Button } from "@/components/ui/button"
-import { Calendar } from "@/components/ui/calendar"
-import { Checkbox } from "@/components/ui/checkbox"
+import { Button } from "@repo/ui/button"
+import { Calendar } from "@repo/ui/calendar"
+import { Checkbox } from "@repo/ui/checkbox"
 import {
   Command,
   CommandEmpty,
@@ -15,7 +10,7 @@ import {
   CommandInput,
   CommandItem,
   CommandList,
-} from "@/components/ui/command"
+} from "@repo/ui/command"
 import {
   Form,
   FormControl,
@@ -24,24 +19,29 @@ import {
   FormItem,
   FormLabel,
   FormMessage,
-} from "@/components/ui/form"
-import { Input } from "@/components/ui/input"
+} from "@repo/ui/form"
+import { useToast } from "@repo/ui/hooks/use-toast"
+import { Input } from "@repo/ui/input"
 import {
   Popover,
   PopoverContent,
   PopoverTrigger,
-} from "@/components/ui/popover"
-import { RadioGroup, RadioGroupItem } from "@/components/ui/radio-group"
+} from "@repo/ui/popover"
+import { RadioGroup, RadioGroupItem } from "@repo/ui/radio-group"
 import {
   Select,
   SelectContent,
   SelectItem,
   SelectTrigger,
   SelectValue,
-} from "@/components/ui/select"
-import { Switch } from "@/components/ui/switch"
-import { Textarea } from "@/components/ui/textarea"
-import { toast } from "@/components/ui/use-toast"
+} from "@repo/ui/select"
+import { Switch } from "@repo/ui/switch"
+import { Textarea } from "@repo/ui/textarea"
+import { format } from "date-fns"
+import { useForm } from "react-hook-form"
+import { Link } from "react-router-dom"
+import { z } from "zod"
+
 import { cn } from "@/lib/utils"
 
 const languages = [
@@ -113,6 +113,8 @@ const formSchema = z.object({
   }),
 })
 export function Component() {
+  const { toast } = useToast()
+
   // 1. Define your form.
   const form = useForm<z.infer<typeof formSchema>>({
     resolver: zodResolver(formSchema),

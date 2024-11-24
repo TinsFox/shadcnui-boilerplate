@@ -1,7 +1,7 @@
+import { ScrollArea, ScrollBar } from "@repo/ui/scroll-area"
 import { NavLink } from "react-router-dom"
 
 import { cn } from "@/lib/utils"
-import { ScrollArea, ScrollBar } from "@/ui/scroll-area"
 
 const links = [
   {

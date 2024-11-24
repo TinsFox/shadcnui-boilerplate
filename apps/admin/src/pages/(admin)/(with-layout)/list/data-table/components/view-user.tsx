@@ -1,11 +1,7 @@
 import { zodResolver } from "@hookform/resolvers/zod"
-import { useRef, useState } from "react"
-import { useForm } from "react-hook-form"
-import type { z } from "zod"
-
-import { Avatar, AvatarFallback, AvatarImage } from "@/components/ui/avatar"
-import { Button } from "@/components/ui/button"
-import { DropdownMenuItem } from "@/components/ui/dropdown-menu"
+import { Avatar, AvatarFallback, AvatarImage } from "@repo/ui/avatar"
+import { Button } from "@repo/ui/button"
+import { DropdownMenuItem } from "@repo/ui/dropdown-menu"
 import {
   Form,
   FormControl,
@@ -13,15 +9,16 @@ import {
   FormItem,
   FormLabel,
   FormMessage,
-} from "@/components/ui/form"
-import { Input } from "@/components/ui/input"
+} from "@repo/ui/form"
+import { useToast } from "@repo/ui/hooks/use-toast"
+import { Input } from "@repo/ui/input"
 import {
   Select,
   SelectContent,
   SelectItem,
   SelectTrigger,
   SelectValue,
-} from "@/components/ui/select"
+} from "@repo/ui/select"
 import {
   Sheet,
   SheetClose,
@@ -31,14 +28,18 @@ import {
   SheetHeader,
   SheetTitle,
   SheetTrigger,
-} from "@/components/ui/sheet"
-import { toast } from "@/components/ui/use-toast"
+} from "@repo/ui/sheet"
+import { useRef, useState } from "react"
+import { useForm } from "react-hook-form"
+import type { z } from "zod"
+
 import { useUpdateUser } from "@/hooks/query/use-user"
 import type { IUsers } from "@/schema/user"
 import { userRoles, userSchema, userStatus } from "@/schema/user"
 
 export function ViewUser({ user }: { user: IUsers }) {
   const [state, setState] = useState(false)
+  const { toast } = useToast()
   const sheetCloseRef = useRef<HTMLButtonElement>(null)
   const form = useForm<IUsers>({
     resolver: zodResolver(userSchema),

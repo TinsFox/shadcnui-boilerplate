@@ -1,6 +1,5 @@
+import { Table, TableBody } from "@repo/ui/table"
 import type { Meta, StoryObj } from "@storybook/react"
-
-import { Table, TableBody } from "@/components/ui/table"
 
 import { DataTableSkeleton } from "./data-table-skeleton"
 

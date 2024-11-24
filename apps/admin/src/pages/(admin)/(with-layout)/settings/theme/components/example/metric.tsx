@@ -1,13 +1,13 @@
-import { Line, LineChart, ResponsiveContainer, Tooltip } from "recharts"
-
-import { useTheme } from "@/components/theme/theme-provider"
 import {
   Card,
   CardContent,
   CardDescription,
   CardHeader,
   CardTitle,
-} from "@/components/ui/card"
+} from "@repo/ui/card"
+import { Line, LineChart, ResponsiveContainer, Tooltip } from "recharts"
+
+import { useTheme } from "@/components/theme/theme-provider"
 import { themes } from "@/hooks/themes"
 import { useConfig } from "@/hooks/use-config"
 

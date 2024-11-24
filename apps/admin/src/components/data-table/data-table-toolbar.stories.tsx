@@ -1,7 +1,6 @@
+import { Button } from "@repo/ui/button"
 import type { Meta, StoryObj } from "@storybook/react"
 import { getCoreRowModel, useReactTable } from "@tanstack/react-table"
-
-import { Button } from "@/ui/button"
 
 import { DataTableToolbar } from "./data-table-toolbar"
 

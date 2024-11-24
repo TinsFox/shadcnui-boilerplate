@@ -1,7 +1,6 @@
+import { Calendar } from "@repo/ui/calendar"
+import { Card, CardContent } from "@repo/ui/card"
 import { addDays } from "date-fns"
-
-import { Calendar } from "@/components/ui/calendar"
-import { Card, CardContent } from "@/components/ui/card"
 
 const start = new Date(2023, 5, 5)
 

@@ -1,12 +1,12 @@
-import { useTranslation } from "react-i18next"
-
 import {
   Select,
   SelectContent,
   SelectItem,
   SelectTrigger,
   SelectValue,
-} from "@/components/ui/select"
+} from "@repo/ui/select"
+import { useTranslation } from "react-i18next"
+
 import { languages } from "@/i18n"
 
 export const LanguageSwitch = () => {

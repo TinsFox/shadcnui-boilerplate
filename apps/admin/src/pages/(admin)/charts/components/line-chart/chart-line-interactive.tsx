@@ -1,21 +1,18 @@
-import * as React from "react"
-import { CartesianGrid, Line, LineChart, XAxis } from "recharts"
-
 import {
   Card,
   CardContent,
   CardDescription,
   CardHeader,
   CardTitle,
-} from "@/ui/card"
-import type {
-  ChartConfig,
-} from "@/ui/chart"
+} from "@repo/ui/card"
+import type { ChartConfig } from "@repo/ui/chart"
 import {
   ChartContainer,
   ChartTooltip,
   ChartTooltipContent,
-} from "@/ui/chart"
+} from "@repo/ui/chart"
+import * as React from "react"
+import { CartesianGrid, Line, LineChart, XAxis } from "recharts"
 
 export const description = "An interactive line chart"
 

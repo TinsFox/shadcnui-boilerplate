@@ -7,29 +7,25 @@ import {
   ResetIcon,
   SunIcon,
 } from "@radix-ui/react-icons"
-import { Palette } from "lucide-react"
-import * as React from "react"
-
-import { ThemeWrapper } from "@/components/theme/theme-wrapper"
-import { Button } from "@/components/ui/button"
-import {
-  Drawer,
-  DrawerContent,
-  DrawerTrigger,
-} from "@/components/ui/drawer"
-import { Label } from "@/components/ui/label"
+import { Button } from "@repo/ui/button"
+import { Drawer, DrawerContent, DrawerTrigger } from "@repo/ui/drawer"
+import { Label } from "@repo/ui/label"
 import {
   Popover,
   PopoverContent,
   PopoverTrigger,
-} from "@/components/ui/popover"
-import { Skeleton } from "@/components/ui/skeleton"
+} from "@repo/ui/popover"
+import { Skeleton } from "@repo/ui/skeleton"
 import {
   Tooltip,
   TooltipContent,
   TooltipProvider,
   TooltipTrigger,
-} from "@/components/ui/tooltip"
+} from "@repo/ui/tooltip"
+import { Palette } from "lucide-react"
+import * as React from "react"
+
+import { ThemeWrapper } from "@/components/theme/theme-wrapper"
 import { themes } from "@/hooks/themes"
 import { useConfig } from "@/hooks/use-config"
 import { cn } from "@/lib/utils"

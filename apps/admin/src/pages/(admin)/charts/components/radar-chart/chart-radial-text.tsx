@@ -1,3 +1,13 @@
+import {
+  Card,
+  CardContent,
+  CardDescription,
+  CardFooter,
+  CardHeader,
+  CardTitle,
+} from "@repo/ui/card"
+import type { ChartConfig } from "@repo/ui/chart"
+import { ChartContainer } from "@repo/ui/chart"
 import { TrendingUp } from "lucide-react"
 import {
   Label,
@@ -6,17 +16,6 @@ import {
   RadialBar,
   RadialBarChart,
 } from "recharts"
-
-import {
-  Card,
-  CardContent,
-  CardDescription,
-  CardFooter,
-  CardHeader,
-  CardTitle,
-} from "@/ui/card"
-import type { ChartConfig } from "@/ui/chart"
-import { ChartContainer } from "@/ui/chart"
 
 export const description = "A radial chart with text"
 

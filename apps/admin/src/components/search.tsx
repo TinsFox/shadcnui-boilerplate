@@ -1,26 +1,18 @@
-import type { DialogProps } from "@radix-ui/react-dialog"
 import { LaptopIcon, MoonIcon, SunIcon } from "@radix-ui/react-icons"
+import type { ButtonProps } from "@repo/ui/button"
+import { Button } from "@repo/ui/button"
+import { CommandDialog, CommandEmpty, CommandGroup, CommandInput, CommandItem, CommandList, CommandSeparator } from "@repo/ui/command"
+import type { DialogProps } from "@repo/ui/dialog"
 import { CircleHelp, SearchIcon } from "lucide-react"
 import * as React from "react"
 import { useTranslation } from "react-i18next"
 import { useNavigate } from "react-router-dom"
 
-import type { ButtonProps } from "@/components/ui/button"
-import { Button } from "@/components/ui/button"
 import { languages } from "@/i18n"
 import { cn } from "@/lib/utils"
 
 import { Icons } from "./icons"
 import { useTheme } from "./theme/theme-provider"
-import {
-  CommandDialog,
-  CommandEmpty,
-  CommandGroup,
-  CommandInput,
-  CommandItem,
-  CommandList,
-  CommandSeparator,
-} from "./ui/command"
 
 export function Search({ ...props }: ButtonProps & DialogProps) {
   const navigate = useNavigate()

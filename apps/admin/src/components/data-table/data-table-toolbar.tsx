@@ -1,9 +1,9 @@
+import { Button } from "@repo/ui/button"
 import type { Table } from "@tanstack/react-table"
 import { RefreshCcw } from "lucide-react"
 import * as React from "react"
 
 import { cn } from "@/lib/utils"
-import { Button } from "@/ui/button"
 
 import { DataTableViewOptions } from "./data-table-view-options"
 

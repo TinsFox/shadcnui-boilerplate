@@ -1,15 +1,22 @@
 import { zodResolver } from "@hookform/resolvers/zod"
+import { Button } from "@repo/ui/button"
+import { Checkbox } from "@repo/ui/checkbox"
+import {
+  Form,
+  FormControl,
+  FormDescription,
+  FormField,
+  FormItem,
+  FormLabel,
+  FormMessage,
+} from "@repo/ui/form"
+import { useToast } from "@repo/ui/hooks/use-toast"
+import { RadioGroup, RadioGroupItem } from "@repo/ui/radio-group"
+import { Switch } from "@repo/ui/switch"
 import { useForm } from "react-hook-form"
 import { useTranslation } from "react-i18next"
 import { Link } from "react-router-dom"
 import { z } from "zod"
-
-import { Button } from "@/components/ui/button"
-import { Checkbox } from "@/components/ui/checkbox"
-import { Form, FormControl, FormDescription, FormField, FormItem, FormLabel, FormMessage } from "@/components/ui/form"
-import { RadioGroup, RadioGroupItem } from "@/components/ui/radio-group"
-import { Switch } from "@/components/ui/switch"
-import { toast } from "@/components/ui/use-toast"
 
 const notificationsFormSchema = z.object({
   type: z.enum(["all", "mentions", "none"], {
@@ -33,6 +40,7 @@ const defaultValues: Partial<NotificationsFormValues> = {
 }
 export function NotificationsForm() {
   const { t } = useTranslation(["settings"])
+  const { toast } = useToast()
   const form = useForm<NotificationsFormValues>({
     resolver: zodResolver(notificationsFormSchema),
     defaultValues,

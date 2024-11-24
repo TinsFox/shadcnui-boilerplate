@@ -1,6 +1,5 @@
+import { Separator } from "@repo/ui/separator"
 import { useTranslation } from "react-i18next"
-
-import { Separator } from "@/components/ui/separator"
 
 import { NotificationsForm } from "./components/notifications-form"
 

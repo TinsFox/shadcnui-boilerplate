@@ -1,6 +1,4 @@
-import * as React from "react"
-
-import { Button } from "@/components/ui/button"
+import { Button } from "@repo/ui/button"
 import {
   Card,
   CardContent,
@@ -8,17 +6,18 @@ import {
   CardFooter,
   CardHeader,
   CardTitle,
-} from "@/components/ui/card"
-import { Input } from "@/components/ui/input"
-import { Label } from "@/components/ui/label"
+} from "@repo/ui/card"
+import { Input } from "@repo/ui/input"
+import { Label } from "@repo/ui/label"
 import {
   Select,
   SelectContent,
   SelectItem,
   SelectTrigger,
   SelectValue,
-} from "@/components/ui/select"
-import { Textarea } from "@/components/ui/textarea"
+} from "@repo/ui/select"
+import { Textarea } from "@repo/ui/textarea"
+import * as React from "react"
 
 export function CardsReportIssue() {
   const id = React.useId()

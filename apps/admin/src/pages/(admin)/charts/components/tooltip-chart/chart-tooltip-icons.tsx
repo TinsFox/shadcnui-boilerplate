@@ -1,21 +1,18 @@
-import { Footprints, Waves } from "lucide-react"
-import { Bar, BarChart, XAxis } from "recharts"
-
 import {
   Card,
   CardContent,
   CardDescription,
   CardHeader,
   CardTitle,
-} from "@/ui/card"
-import type {
-  ChartConfig,
-} from "@/ui/chart"
+} from "@repo/ui/card"
+import type { ChartConfig } from "@repo/ui/chart"
 import {
   ChartContainer,
   ChartTooltip,
   ChartTooltipContent,
-} from "@/ui/chart"
+} from "@repo/ui/chart"
+import { Footprints, Waves } from "lucide-react"
+import { Bar, BarChart, XAxis } from "recharts"
 
 export const description = "A stacked bar chart with a legend"
 

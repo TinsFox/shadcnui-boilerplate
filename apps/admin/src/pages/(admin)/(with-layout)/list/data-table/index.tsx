@@ -2,6 +2,24 @@ import {
   CaretSortIcon,
   DotsHorizontalIcon,
 } from "@radix-ui/react-icons"
+import { Avatar, AvatarFallback, AvatarImage } from "@repo/ui/avatar"
+import { Button } from "@repo/ui/button"
+import { Checkbox } from "@repo/ui/checkbox"
+import {
+  DropdownMenu,
+  DropdownMenuContent,
+  DropdownMenuItem,
+  DropdownMenuLabel,
+  DropdownMenuTrigger,
+} from "@repo/ui/dropdown-menu"
+import {
+  Table,
+  TableBody,
+  TableCell,
+  TableHead,
+  TableHeader,
+  TableRow,
+} from "@repo/ui/table"
 import type {
   ColumnDef,
   ColumnFiltersState,
@@ -23,24 +41,6 @@ import { DataTablePagination } from "@/components/data-table/data-table-paginati
 import { DataTableSearch } from "@/components/data-table/data-table-search"
 import { Empty } from "@/components/empty"
 import { Loading } from "@/components/loading"
-import { Avatar, AvatarFallback, AvatarImage } from "@/components/ui/avatar"
-import { Button } from "@/components/ui/button"
-import { Checkbox } from "@/components/ui/checkbox"
-import {
-  DropdownMenu,
-  DropdownMenuContent,
-  DropdownMenuItem,
-  DropdownMenuLabel,
-  DropdownMenuTrigger,
-} from "@/components/ui/dropdown-menu"
-import {
-  Table,
-  TableBody,
-  TableCell,
-  TableHead,
-  TableHeader,
-  TableRow,
-} from "@/components/ui/table"
 import { useUsers } from "@/hooks/query/use-user"
 import type { IUsers } from "@/schema/user"
 

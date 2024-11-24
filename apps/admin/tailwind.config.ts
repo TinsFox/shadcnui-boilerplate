@@ -1,10 +1,13 @@
+import uiConfig from "@repo/ui/tailwind.config.ts"
 import tailwindcssTypographyPlugin from "@tailwindcss/typography"
 import type { Config } from "tailwindcss"
 import animatePlugin from "tailwindcss-animate"
 
 export default {
+  ...uiConfig,
   darkMode: ["class"],
   content: [
+    "../../packages/ui/src/**/*.{js,ts,jsx,tsx}",
     "./pages/**/*.{ts,tsx}",
     "./components/**/*.{ts,tsx}",
     "./app/**/*.{ts,tsx}",

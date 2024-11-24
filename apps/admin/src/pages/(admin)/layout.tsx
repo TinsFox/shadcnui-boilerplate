@@ -1,3 +1,11 @@
+import { Button } from "@repo/ui/button"
+import { ScrollArea, ScrollBar } from "@repo/ui/scroll-area"
+import { Separator } from "@repo/ui/separator"
+import {
+  SidebarInset,
+  SidebarProvider,
+  SidebarTrigger,
+} from "@repo/ui/sidebar"
 import { CircleHelp } from "lucide-react"
 import { Link, Outlet } from "react-router-dom"
 
@@ -7,21 +15,13 @@ import { NavBreadcrumb } from "@/components/nav-sidebar/nav-breadcrumb"
 import { Search } from "@/components/search"
 import { ThemeCustomizer } from "@/components/theme/theme-customizer"
 import { ThemeSwitcher } from "@/components/theme/theme-switcher"
-import { Button } from "@/components/ui/button"
-import { ScrollArea, ScrollBar } from "@/components/ui/scroll-area"
-import { Separator } from "@/components/ui/separator"
-import {
-  SidebarInset,
-  SidebarProvider,
-  SidebarTrigger,
-} from "@/components/ui/sidebar"
 import { SIDEBAR_COOKIE_NAME } from "@/constants"
 
 export function Component() {
   const sidebarState = localStorage.getItem(SIDEBAR_COOKIE_NAME) === "true"
 
   return (
-    <SidebarProvider defaultOpen={sidebarState}>
+    <SidebarProvider defaultOpen={sidebarState} storage="local">
       <AppSidebar />
       <SidebarInset className="w-full overflow-hidden">
         <div className="sticky top-0 z-10">

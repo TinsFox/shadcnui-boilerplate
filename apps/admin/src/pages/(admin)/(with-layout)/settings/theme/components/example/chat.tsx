@@ -1,18 +1,16 @@
 import { CheckIcon, PaperPlaneIcon, PlusIcon } from "@radix-ui/react-icons"
-import * as React from "react"
-
 import {
   Avatar,
   AvatarFallback,
   AvatarImage,
-} from "@/components/ui/avatar"
-import { Button } from "@/components/ui/button"
+} from "@repo/ui/avatar"
+import { Button } from "@repo/ui/button"
 import {
   Card,
   CardContent,
   CardFooter,
   CardHeader,
-} from "@/components/ui/card"
+} from "@repo/ui/card"
 import {
   Command,
   CommandEmpty,
@@ -20,7 +18,7 @@ import {
   CommandInput,
   CommandItem,
   CommandList,
-} from "@/components/ui/command"
+} from "@repo/ui/command"
 import {
   Dialog,
   DialogContent,
@@ -28,14 +26,16 @@ import {
   DialogFooter,
   DialogHeader,
   DialogTitle,
-} from "@/components/ui/dialog"
-import { Input } from "@/components/ui/input"
+} from "@repo/ui/dialog"
+import { Input } from "@repo/ui/input"
 import {
   Tooltip,
   TooltipContent,
   TooltipProvider,
   TooltipTrigger,
-} from "@/components/ui/tooltip"
+} from "@repo/ui/tooltip"
+import * as React from "react"
+
 import { cn } from "@/lib/utils"
 
 const users = [

@@ -1,4 +1,4 @@
-import { TableCell, TableRow } from "@/components/ui/table"
+import { TableCell, TableRow } from "@repo/ui/table"
 
 import type { PaginationProps } from "./data-table-pagination"
 
@@ -20,10 +20,8 @@ export function DataTableSkeleton({
   return (
     <>
       {Array.from({ length: pagination?.pageSize ?? 10 }).map((_, rowIndex) => (
-        // eslint-disable-next-line @eslint-react/no-array-index-key
         <TableRow key={`skeleton-row-${rowIndex}`}>
           {Array.from({ length: columns }).map((_, colIndex) => (
-            // eslint-disable-next-line @eslint-react/no-array-index-key
             <TableCell key={`skeleton-cell-${rowIndex}-${colIndex}`}>
               <div className="h-4 w-full animate-pulse rounded-md bg-muted" />
             </TableCell>

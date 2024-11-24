@@ -1,8 +1,8 @@
+import { Button } from "@repo/ui/button"
 import { Link, Outlet } from "react-router-dom"
 
 import { Logo } from "@/components/icons/logo"
 import { Search } from "@/components/search"
-import { Button } from "@/components/ui/button"
 
 export function Component() {
   return (

@@ -1,20 +1,17 @@
-import { Pie, PieChart } from "recharts"
-
 import {
   Card,
   CardContent,
   CardDescription,
   CardHeader,
   CardTitle,
-} from "@/ui/card"
-import type {
-  ChartConfig,
-} from "@/ui/chart"
+} from "@repo/ui/card"
+import type { ChartConfig } from "@repo/ui/chart"
 import {
   ChartContainer,
   ChartLegend,
   ChartLegendContent,
-} from "@/ui/chart"
+} from "@repo/ui/chart"
+import { Pie, PieChart } from "recharts"
 
 export const description = "A pie chart with a legend"
 

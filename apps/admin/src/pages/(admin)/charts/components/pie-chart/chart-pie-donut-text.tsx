@@ -1,7 +1,3 @@
-import { TrendingUp } from "lucide-react"
-import * as React from "react"
-import { Label, Pie, PieChart } from "recharts"
-
 import {
   Card,
   CardContent,
@@ -9,15 +5,16 @@ import {
   CardFooter,
   CardHeader,
   CardTitle,
-} from "@/ui/card"
-import type {
-  ChartConfig,
-} from "@/ui/chart"
+} from "@repo/ui/card"
+import type { ChartConfig } from "@repo/ui/chart"
 import {
   ChartContainer,
   ChartTooltip,
   ChartTooltipContent,
-} from "@/ui/chart"
+} from "@repo/ui/chart"
+import { TrendingUp } from "lucide-react"
+import * as React from "react"
+import { Label, Pie, PieChart } from "recharts"
 
 export const description = "A donut chart with text"
 

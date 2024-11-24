@@ -1,10 +1,6 @@
 import { zodResolver } from "@hookform/resolvers/zod"
 import { ChevronDownIcon } from "@radix-ui/react-icons"
-import { useForm } from "react-hook-form"
-import { useTranslation } from "react-i18next"
-import { z } from "zod"
-
-import { Button, buttonVariants } from "@/components/ui/button"
+import { Button, buttonVariants } from "@repo/ui/button"
 import {
   Form,
   FormControl,
@@ -13,9 +9,13 @@ import {
   FormItem,
   FormLabel,
   FormMessage,
-} from "@/components/ui/form"
-import { RadioGroup, RadioGroupItem } from "@/components/ui/radio-group"
-import { toast } from "@/components/ui/use-toast"
+} from "@repo/ui/form"
+import { useToast } from "@repo/ui/hooks/use-toast"
+import { RadioGroup, RadioGroupItem } from "@repo/ui/radio-group"
+import { useForm } from "react-hook-form"
+import { useTranslation } from "react-i18next"
+import { z } from "zod"
+
 import { cn } from "@/lib/utils"
 
 const appearanceFormSchema = z.object({
@@ -37,6 +37,7 @@ const defaultValues: Partial<AppearanceFormValues> = {
 
 export function AppearanceForm() {
   const { t } = useTranslation(["settings", "common"])
+  const { toast } = useToast()
   const form = useForm<AppearanceFormValues>({
     resolver: zodResolver(appearanceFormSchema),
     defaultValues,

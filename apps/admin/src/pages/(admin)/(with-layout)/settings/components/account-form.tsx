@@ -1,12 +1,7 @@
 import { zodResolver } from "@hookform/resolvers/zod"
 import { CalendarIcon } from "@radix-ui/react-icons"
-import { format } from "date-fns"
-import { useForm } from "react-hook-form"
-import { useTranslation } from "react-i18next"
-import { z } from "zod"
-
-import { Button } from "@/components/ui/button"
-import { Calendar } from "@/components/ui/calendar"
+import { Button } from "@repo/ui/button"
+import { Calendar } from "@repo/ui/calendar"
 import {
   Form,
   FormControl,
@@ -15,21 +10,26 @@ import {
   FormItem,
   FormLabel,
   FormMessage,
-} from "@/components/ui/form"
-import { Input } from "@/components/ui/input"
+} from "@repo/ui/form"
+import { useToast } from "@repo/ui/hooks/use-toast"
+import { Input } from "@repo/ui/input"
 import {
   Popover,
   PopoverContent,
   PopoverTrigger,
-} from "@/components/ui/popover"
+} from "@repo/ui/popover"
 import {
   Select,
   SelectContent,
   SelectItem,
   SelectTrigger,
   SelectValue,
-} from "@/components/ui/select"
-import { toast } from "@/components/ui/use-toast"
+} from "@repo/ui/select"
+import { format } from "date-fns"
+import { useForm } from "react-hook-form"
+import { useTranslation } from "react-i18next"
+import { z } from "zod"
+
 import { languages } from "@/i18n"
 import { cn } from "@/lib/utils"
 
@@ -53,6 +53,7 @@ const accountFormSchema = z.object({
 type AccountFormValues = z.infer<typeof accountFormSchema>
 
 export function AccountForm() {
+  const { toast } = useToast()
   const { t, i18n } = useTranslation(["settings"])
   const form = useForm<AccountFormValues>({
     resolver: zodResolver(accountFormSchema),

@@ -1,6 +1,5 @@
+import { Skeleton } from "@repo/ui/skeleton"
 import * as React from "react"
-
-import { Skeleton } from "@/components/ui/skeleton"
 
 import CardsNewYork from "./components/example"
 

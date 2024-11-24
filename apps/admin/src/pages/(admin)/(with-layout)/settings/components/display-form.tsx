@@ -1,10 +1,6 @@
 import { zodResolver } from "@hookform/resolvers/zod"
-import { useForm } from "react-hook-form"
-import { useTranslation } from "react-i18next"
-import { z } from "zod"
-
-import { Button } from "@/components/ui/button"
-import { Checkbox } from "@/components/ui/checkbox"
+import { Button } from "@repo/ui/button"
+import { Checkbox } from "@repo/ui/checkbox"
 import {
   Form,
   FormControl,
@@ -13,8 +9,11 @@ import {
   FormItem,
   FormLabel,
   FormMessage,
-} from "@/components/ui/form"
-import { toast } from "@/components/ui/use-toast"
+} from "@repo/ui/form"
+import { useToast } from "@repo/ui/hooks/use-toast"
+import { useForm } from "react-hook-form"
+import { useTranslation } from "react-i18next"
+import { z } from "zod"
 
 const items = [
   {
@@ -57,6 +56,7 @@ const defaultValues: Partial<DisplayFormValues> = {
 }
 export function DisplayForm() {
   const { t } = useTranslation(["settings", "common"])
+  const { toast } = useToast()
   const form = useForm<DisplayFormValues>({
     resolver: zodResolver(displayFormSchema),
     defaultValues,

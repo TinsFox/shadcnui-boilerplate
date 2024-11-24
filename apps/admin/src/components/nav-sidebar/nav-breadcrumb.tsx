@@ -1,7 +1,3 @@
-import * as React from "react"
-import { useTranslation } from "react-i18next"
-import { Link, useLocation } from "react-router-dom"
-
 import {
   Breadcrumb,
   BreadcrumbItem,
@@ -9,8 +5,12 @@ import {
   BreadcrumbList,
   BreadcrumbPage,
   BreadcrumbSeparator,
-} from "@/components/ui/breadcrumb"
-import { useNavMenu } from "@/hooks/query/user-memu"
+} from "@repo/ui/breadcrumb"
+import * as React from "react"
+import { useTranslation } from "react-i18next"
+import { Link, useLocation } from "react-router-dom"
+
+import { useNavMenu } from "@/hooks/query/user-menu"
 import { cn } from "@/lib/utils"
 import type { IMenu } from "@/schema/menu"
 

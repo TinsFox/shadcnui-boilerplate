@@ -1,4 +1,5 @@
 import pkg from "@pkg"
+import { Button } from "@repo/ui/button"
 import { useEffect, useRef } from "react"
 import { isRouteErrorResponse, useRouteError } from "react-router-dom"
 import { toast } from "sonner"
@@ -6,8 +7,6 @@ import { toast } from "sonner"
 import { Logo } from "@/components/icons/logo"
 import { attachOpenInEditor } from "@/lib/dev"
 import { getNewIssueUrl } from "@/lib/issues"
-
-import { Button } from "../ui/button"
 
 export function ErrorElement() {
   const error = useRouteError()

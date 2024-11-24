@@ -1,18 +1,17 @@
 import { ChevronDownIcon } from "@radix-ui/react-icons"
-
 import {
   Avatar,
   AvatarFallback,
   AvatarImage,
-} from "@/components/ui/avatar"
-import { Button } from "@/components/ui/button"
+} from "@repo/ui/avatar"
+import { Button } from "@repo/ui/button"
 import {
   Card,
   CardContent,
   CardDescription,
   CardHeader,
   CardTitle,
-} from "@/components/ui/card"
+} from "@repo/ui/card"
 import {
   Command,
   CommandEmpty,
@@ -20,12 +19,12 @@ import {
   CommandInput,
   CommandItem,
   CommandList,
-} from "@/components/ui/command"
+} from "@repo/ui/command"
 import {
   Popover,
   PopoverContent,
   PopoverTrigger,
-} from "@/components/ui/popover"
+} from "@repo/ui/popover"
 
 export function CardsTeamMembers() {
   return (

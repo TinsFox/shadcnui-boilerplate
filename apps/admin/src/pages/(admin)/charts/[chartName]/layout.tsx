@@ -1,8 +1,8 @@
+import { Button } from "@repo/ui/button"
 import { Link, Outlet, useLoaderData } from "react-router-dom"
 
 import { Announcement } from "@/components/announcement"
 import { ThemesSwitcher } from "@/components/theme/themes-selector"
-import { Button } from "@/components/ui/button"
 import { THEMES } from "@/lib/themes"
 
 import { ChartsNav } from "../charts-nav"
