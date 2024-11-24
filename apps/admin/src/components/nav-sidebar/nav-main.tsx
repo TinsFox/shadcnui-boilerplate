@@ -2,7 +2,7 @@ import { Button } from "@repo/ui/button"
 import { Collapsible, CollapsibleContent, CollapsibleTrigger } from "@repo/ui/collapsible"
 import { SidebarGroup, SidebarGroupLabel, SidebarMenu, SidebarMenuAction, SidebarMenuButton, SidebarMenuItem, SidebarMenuSub, SidebarMenuSubButton, SidebarMenuSubItem } from "@repo/ui/sidebar"
 import { useAtom } from "jotai"
-import { ChevronRight, Maximize2, Minimize2 } from "lucide-react"
+import { ChevronRight, ChevronsDownUp, ChevronsUpDown } from "lucide-react"
 import { useEffect, useMemo } from "react"
 import { useTranslation } from "react-i18next"
 import { Link, useLocation } from "react-router-dom"
@@ -68,7 +68,7 @@ export function NavMain({
 
   return (
     <SidebarGroup>
-      <div className="flex items-center justify-between px-2">
+      <div className="flex items-center justify-between">
         <SidebarGroupLabel>Platform</SidebarGroupLabel>
         <Button
           type="button"
@@ -79,9 +79,9 @@ export function NavMain({
           title={items.every((item) => openItems[item.title]) ? "Collapse all" : "Expand all"}
         >
           {items.every((item) => openItems[item.title]) ? (
-            <Minimize2 className="size-4" />
+            <ChevronsDownUp className="size-4" />
           ) : (
-            <Maximize2 className="size-4" />
+            <ChevronsUpDown className="size-4" />
           )}
         </Button>
       </div>
