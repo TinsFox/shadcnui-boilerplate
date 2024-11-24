@@ -10,7 +10,7 @@
     "type": "git"
   },
   "scripts": {
-    "admin:dev": "turbo dev --filter admin",
+    "admin:dev": "pnpm --filter admin dev",
     "api:dev": "turbo dev --filter api",
     "build": "tsc && vite build",
     "build-storybook": "storybook build",
@@ -27,6 +27,8 @@
     "release": "release-it",
     "start": "tsc && vite build && vite preview",
     "storybook": "storybook dev -p 6006",
+    "tauri:build": "turbo build --filter tauri",
+    "tauri:dev": "turbo dev --filter tauri",
     "test": "vitest",
     "test:coverage": "vitest run --coverage",
     "test:ui": "vitest --ui",

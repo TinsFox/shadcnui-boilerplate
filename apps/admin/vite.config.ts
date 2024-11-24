@@ -37,6 +37,8 @@ export default defineConfig(({ mode }) => {
       pkg: JSON.stringify(pkg),
     },
     server: {
+      port: 5173,
+      strictPort: true,
       proxy: {
         "/api/": {
           target: viteEnv.VITE_API_URL,
