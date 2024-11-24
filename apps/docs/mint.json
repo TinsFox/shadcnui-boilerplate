@@ -59,16 +59,44 @@
     {
       "group": "Development",
       "pages": [
-        "development/development",
-        "development/data-fetching",
-        "development/troubleshooting",
-        "development/dynamic-routing",
-        "development/theme",
-        "development/i18n",
-        "development/layout",
-        "development/routing",
-        "development/router-group",
-        "development/code-quality"
+        "development/project-structure",
+        "development/command",
+        {
+          "group": "Admin",
+          "pages": [
+            {
+              "group": "Routing",
+              "pages": [
+                "development/admin/routing/defining-routes",
+                "development/admin/routing/routing",
+                "development/admin/routing/layout",
+                "development/admin/routing/router-group",
+                "development/admin/routing/dynamic-routing"
+              ]
+            },
+            {
+              "group": "Data Fetching",
+              "pages": [
+                "development/admin/data-fetching/data-fetching"
+              ]
+            },
+            {
+              "group": "Styling",
+              "pages": [
+                "development/admin/styling/theme"
+              ]
+            },
+            {
+              "group": "Troubleshooting",
+              "pages": [
+                "development/troubleshooting"
+              ]
+            },
+            "development/theme",
+            "development/i18n",
+            "development/code-quality"
+          ]
+        }
       ]
     },
     {
