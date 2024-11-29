@@ -1,0 +1,23 @@
+{
+  "name": "tauri",
+  "type": "module",
+  "version": "0.1.0",
+  "private": true,
+  "scripts": {
+    "admin:dev": "pnpm --filter admin dev",
+    "build": "tauri build",
+    "dev": "tauri dev"
+  },
+  "dependencies": {
+    "@tauri-apps/api": "^2",
+    "@tauri-apps/plugin-shell": "^2"
+  },
+  "devDependencies": {
+    "@tauri-apps/cli": "^2",
+    "@types/react": "^18.3.12",
+    "@types/react-dom": "^18.3.1",
+    "@vitejs/plugin-react": "^4.2.1",
+    "typescript": "^5.2.2",
+    "vite": "^5.3.1"
+  }
+}

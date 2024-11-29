@@ -33,6 +33,16 @@ dist-ssr
 docs/.vitepress/dist
 docs/.vitepress/cache
 
-
 # vitest
 coverage/
+
+# turbo
+.turbo
+
+# next.js
+/.next/
+/out/
+
+# typescript
+*.tsbuildinfo
+next-env.d.ts

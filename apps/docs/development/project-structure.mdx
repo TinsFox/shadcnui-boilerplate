@@ -1,0 +1,48 @@
+---
+title: Project Structure
+description: 'Learn about the project structure of the monorepo.'
+---
+
+
+
+| Folder/File | Description |
+| --- | --- |
+| `apps/admin` | The Admin Panel built with shadcn/ui and Radix UI. |
+| `apps/api` | The API built with Hono. |
+| `apps/docs` | The documentation site built with mintlify. |
+| `apps/tauri` | The Tauri App. |
+| `packages/ui` | shadcn/ui components. |
+
+### Admin Panel (`apps/admin`)
+
+The structure of the Admin Panel.
+
+| Folder/File | Description |
+| --- | --- |
+| `.storybook` | Storybook configuration and theme setup. |
+| `locales` | i18n source files for multiple languages (en, zh-CN). |
+| `public` | Static files and assets. |
+| `scripts` | Scripts for the Admin Panel. |
+| `src` | Source files. |
+| `src/assets` | Assets (images, icons, etc.). |
+| `src/atoms` | Jotai atoms for state management. |
+| `src/components` | Shared components. |
+| `src/constants` | Constants and configuration values. |
+| `src/hooks` | Shared custom React hooks. |
+| `src/lib` | Shared libraries and utilities. |
+| `src/providers` | Application providers (root-providers). |
+| `src/utils` | Shared utility functions. |
+| `src/types` | TypeScript type definitions. |
+| `src/env.ts` | Environment variables configuration. |
+| `src/styles` | Global styles and Tailwind CSS configuration. |
+| `.env.example` | Example environment variables template. |
+| `tailwind.config.ts` | Tailwind CSS configuration. |
+| `tsconfig.json` | TypeScript configuration. |
+| `vite.config.ts` | Vite build and development configuration. |
+| `package.json` | Project dependencies and scripts. |
+| `vitest.config.ts` | Vitest testing configuration. |
+| `vercel.json` | Vercel deployment configuration. |
+| `postcss.config.cjs` | PostCSS configuration for Tailwind. |
+| `README.md` | Project documentation in English. |
+| `README-zh_CN.md` | Project documentation in Chinese. |
+| `components.json` | shadcn/ui components configuration. |

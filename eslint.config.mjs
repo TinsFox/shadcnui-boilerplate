@@ -14,6 +14,13 @@ export default defineConfig(
     ignores: [
       "src/components/ui",
       "pnpm-lock.yaml",
+      "pnpm-workspace.yaml",
+      "apps/api/**/*",
+      "**/*.png",
+      "**/*.svg",
+      "**/*.avif",
+      "packages/ui/**/*",
+      "scripts/generate-exports.ts",
     ],
   },
   {
@@ -24,15 +31,7 @@ export default defineConfig(
     },
     rules: {
       "react-refresh/only-export-components": "off",
-    },
-  },
-  {
-    files: ["**/pages/**/*.tsx"],
-    rules: {
-      "react-refresh/only-export-components": [
-        "warn",
-        { allowExportNames: ["loader", "Component", "action"] },
-      ],
+      "tailwindcss/no-custom-classname": "off",
     },
   },
 )

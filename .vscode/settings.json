@@ -55,5 +55,18 @@
   "i18n-ally.localesPaths": "locales",
   "i18n-ally.displayLanguage": "zh-CN",
   "typescript.tsdk": "node_modules/typescript/lib",
-  "cSpell.words": ["autodocs", "hookform", "lucide", "ofetch", "tanstack"]
+  "cSpell.words": [
+    "autodocs",
+    "classname",
+    "clsx",
+    "hono",
+    "hookform",
+    "hyoban",
+    "lucide",
+    "ofetch",
+    "tanstack",
+    "tsup"
+  ],
+  "typescript.preferences.autoImportFileExcludePatterns": ["react-day-picker"],
+  "typescript.preferences.importModuleSpecifier": "shortest"
 }

@@ -1,0 +1,128 @@
+{
+  "$schema": "https://mintlify.com/schema.json",
+  "name": "Vite Boilerplate",
+  "logo": {
+    "dark": "/logo/dark.svg",
+    "light": "/logo/light.svg"
+  },
+  "favicon": "/favicon.svg",
+  "colors": {
+    "primary": "#0D9373",
+    "light": "#07C983",
+    "dark": "#0D9373",
+    "anchors": {
+      "from": "#0D9373",
+      "to": "#07C983"
+    }
+  },
+  "topbarLinks": [
+    {
+      "name": "Support",
+      "url": "mailto:hi@mintlify.com"
+    }
+  ],
+  "topbarCtaButton": {
+    "name": "Live Demo",
+    "url": "https://shadcnui-boilerplate.vercel.app"
+  },
+  "tabs": [
+    {
+      "name": "API Reference",
+      "url": "api-reference"
+    }
+  ],
+  "anchors": [
+    {
+      "name": "GitHub",
+      "icon": "github",
+      "url": "https://github.com/TinsFox/vite-boilerplate"
+    },
+    {
+      "name": "Frequently Asked Questions",
+      "icon": "question-mark",
+      "url": "./faq"
+    },
+    {
+      "name": "Blog",
+      "icon": "newspaper",
+      "url": "https://mintlify.com/blog"
+    }
+  ],
+  "navigation": [
+    {
+      "group": "Get Started",
+      "pages": [
+        "introduction",
+        "quickstart"
+      ]
+    },
+    {
+      "group": "Development",
+      "pages": [
+        "development/project-structure",
+        "development/command",
+        {
+          "group": "Admin",
+          "pages": [
+            {
+              "group": "Routing",
+              "pages": [
+                "development/admin/routing/defining-routes",
+                "development/admin/routing/routing",
+                "development/admin/routing/layout",
+                "development/admin/routing/router-group",
+                "development/admin/routing/dynamic-routing"
+              ]
+            },
+            {
+              "group": "Data Fetching",
+              "pages": [
+                "development/admin/data-fetching/data-fetching"
+              ]
+            },
+            {
+              "group": "Styling",
+              "pages": [
+                "development/admin/styling/theme"
+              ]
+            },
+            {
+              "group": "Troubleshooting",
+              "pages": [
+                "development/troubleshooting"
+              ]
+            },
+            "development/theme",
+            "development/i18n",
+            "development/code-quality"
+          ]
+        }
+      ]
+    },
+    {
+      "group": "Deploy",
+      "pages": [
+        "deploy/deploy",
+        "deploy/docker"
+      ]
+    },
+    {
+      "group": "API Documentation",
+      "pages": [
+        "api-reference/introduction"
+      ]
+    },
+    {
+      "group": "Endpoint Examples",
+      "pages": [
+        "api-reference/endpoint/get",
+        "api-reference/endpoint/create",
+        "api-reference/endpoint/delete"
+      ]
+    }
+  ],
+  "footerSocials": {
+    "x": "https://x.com/TinsFox",
+    "github": "https://github.com/TinsFox/vite-boilerplate"
+  }
+}
