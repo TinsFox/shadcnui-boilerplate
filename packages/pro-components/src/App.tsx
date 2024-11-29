@@ -1,5 +1,6 @@
 import "./App.css"
 
+import { Button } from "@repo/ui/button"
 import { useState } from "react"
 
 import viteLogo from "/vite.svg"
@@ -31,6 +32,7 @@ function App() {
       <p className="read-the-docs">
         Click on the Vite and React logos to learn more
       </p>
+      <Button>123</Button>
     </>
   )
 }

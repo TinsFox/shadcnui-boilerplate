@@ -10,9 +10,10 @@
     "type": "git"
   },
   "scripts": {
+    "admin:build": "pnpm --filter admin build",
     "admin:dev": "pnpm --filter admin dev",
     "api:dev": "turbo dev --filter api",
-    "build": "tsc && vite build",
+    "build": "turbo build",
     "build-storybook": "storybook build",
     "coverage": "vitest run --coverage",
     "dev": "turbo dev",
