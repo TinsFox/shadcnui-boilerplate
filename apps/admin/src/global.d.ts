@@ -1,6 +1,6 @@
 import type { useTranslation } from "react-i18next"
 
-// eslint-disable-next-line react-hooks/rules-of-hooks, unused-imports/no-unused-vars
+// eslint-disable-next-line unused-imports/no-unused-vars
 const { t } = useTranslation()
 
 declare global {

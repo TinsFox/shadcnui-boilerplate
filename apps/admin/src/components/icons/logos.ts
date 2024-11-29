@@ -113,13 +113,6 @@ export const logos: ILogo[] = [
     column: 5,
     row: 4,
   },
-  // {
-  //   src: prettier,
-  //   alt: "Prettier",
-  //   href: "https://prettier.io",
-  //   column: 5,
-  //   row: 3,
-  // },
   {
     src: eslint,
     name: "ESLint",

@@ -21,7 +21,6 @@ export const shared = defineConfig({
     },
   },
 
-  /* prettier-ignore */
   head: [
     ["link", { rel: "icon", type: "image/svg+xml", href: "/vite-boilerplate.svg" }],
     ["link", { rel: "icon", type: "image/png", href: "/vite-boilerplate.png" }],

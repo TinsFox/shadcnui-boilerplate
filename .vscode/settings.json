@@ -63,7 +63,8 @@
     "hyoban",
     "lucide",
     "ofetch",
-    "tanstack"
+    "tanstack",
+    "tsup"
   ],
   "typescript.preferences.autoImportFileExcludePatterns": ["react-day-picker"],
   "typescript.preferences.importModuleSpecifier": "shortest"
