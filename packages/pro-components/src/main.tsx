@@ -1,4 +1,3 @@
-import "./index.css"
 import "@repo/ui/globals.css"
 
 import { StrictMode } from "react"

@@ -9,8 +9,5 @@
   "scripts": {
     "dev": "mintlify dev --port 3004",
     "lint": "mintlify broken-links"
-  },
-  "dependencies": {
-    "mintlify": "^4.0.278"
   }
 }
