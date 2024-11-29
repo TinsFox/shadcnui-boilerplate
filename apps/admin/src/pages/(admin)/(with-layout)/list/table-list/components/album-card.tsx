@@ -92,13 +92,12 @@ export function AlbumCard(props: AlbumCardProps) {
             </CardDescription>
           </CardHeader>
           <CardContent>
-            <img className="h-48 w-full rounded-md object-cover transition-all" src={album.cover} />
+            <img className="h-48 w-full rounded-md object-cover transition-all" src={album.coverUrl} />
           </CardContent>
           <CardFooter>
             <div className="flex w-full items-start gap-2 text-sm">
               <div className="grid gap-2">
                 <div className="flex items-center gap-2 font-medium leading-none">
-
                   Trending
                   {" "}
                   {album.digitalDownloads}

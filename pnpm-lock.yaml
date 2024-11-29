@@ -298,9 +298,6 @@ importers:
       '@scalar/hono-api-reference':
         specifier: ^0.5.159
         version: 0.5.159(hono@4.6.11)
-      add:
-        specifier: ^2.0.6
-        version: 2.0.6
       bcryptjs:
         specifier: ^2.4.3
         version: 2.4.3
@@ -339,7 +336,7 @@ importers:
         specifier: ^16.4.5
         version: 16.4.5
       drizzle-kit:
-        specifier: ^0.28.0
+        specifier: ^0.28.1
         version: 0.28.1
       postgres:
         specifier: ^3.4.5
@@ -4297,9 +4294,6 @@ packages:
     resolution: {integrity: sha512-cl669nCJTZBsL97OF4kUQm5g5hC2uihk0NxY3WENAC0TYdILVkAyHymAntgxGkl7K+t0cXIrH5siy5S4XkFycA==}
     engines: {node: '>=0.4.0'}
     hasBin: true
-
-  add@2.0.6:
-    resolution: {integrity: sha512-j5QzrmsokwWWp6kUcJQySpbG+xfOBqqKnup3OIk1pz+kB/80SLorZ9V8zHFLO92Lcd+hbvq8bT+zOGoPkmBV0Q==}
 
   address@1.2.2:
     resolution: {integrity: sha512-4B/qKCfeE/ODUaAUpSwfzazo5x29WD4r3vXiWsB7I2mSDAihwEqKO+g8GELZUQSSAo5e1XTYh3ZVfLyxBc12nA==}
@@ -14274,8 +14268,6 @@ snapshots:
       acorn: 8.14.0
 
   acorn@8.14.0: {}
-
-  add@2.0.6: {}
 
   address@1.2.2: {}
 

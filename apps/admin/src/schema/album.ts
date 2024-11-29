@@ -3,7 +3,6 @@ import { z } from "zod"
 export const albumSchema = z.object({
   id: z.string(),
   title: z.string(),
-  cover: z.string(),
   url: z.string(),
   slogan: z.string(),
   updatedAt: z.date(),

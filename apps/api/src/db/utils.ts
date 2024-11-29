@@ -23,7 +23,7 @@ export function generateRandomAlbum(): NewAlbumType {
     title: faker.music.songName(),
     artist: faker.person.fullName(),
     description: faker.lorem.paragraph(),
-    coverUrl: faker.image.urlLoremFlickr({ category: 'album' }),
+    coverUrl: faker.image.urlPicsumPhotos(),
     releaseDate: faker.date.past(),
     genre: faker.music.genre(),
     label: faker.company.name(),
