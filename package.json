@@ -12,7 +12,8 @@
   "scripts": {
     "admin:build": "pnpm --filter admin build",
     "admin:dev": "pnpm --filter admin dev",
-    "api:dev": "turbo dev --filter api",
+    "api:deploy": "pnpm --filter api deploy",
+    "api:dev": "pnpm --filter api dev",
     "build": "turbo build",
     "build-storybook": "storybook build",
     "coverage": "vitest run --coverage",
