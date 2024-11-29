@@ -147,7 +147,7 @@ taskRouter.openapi(listTasksRoute, async (c) => {
   const data = await db
     .select()
     .from(tasks)
-    .offset((page - 1) * pageSize)
+    .offset((page) * pageSize)
   const totalResult = await db.select({ count: count() }).from(tasks)
 
   return c.json({

@@ -1,11 +1,11 @@
 {
-  "id": "9069cf86-794b-460d-b2f9-53d8dbed71b5",
+  "id": "6e4fda17-3c0d-4c9d-90c0-a56f44eb1ab9",
   "prevId": "00000000-0000-0000-0000-000000000000",
   "version": "7",
   "dialect": "postgresql",
   "tables": {
-    "public.Album": {
-      "name": "Album",
+    "public.albums": {
+      "name": "albums",
       "schema": "",
       "columns": {
         "id": {
@@ -17,47 +17,86 @@
         },
         "title": {
           "name": "title",
-          "type": "text",
+          "type": "varchar(255)",
           "primaryKey": false,
           "notNull": true
         },
-        "cover": {
-          "name": "cover",
+        "artist": {
+          "name": "artist",
+          "type": "varchar(255)",
+          "primaryKey": false,
+          "notNull": true
+        },
+        "description": {
+          "name": "description",
           "type": "text",
           "primaryKey": false,
           "notNull": false
         },
-        "url": {
-          "name": "url",
-          "type": "text",
+        "cover_url": {
+          "name": "cover_url",
+          "type": "varchar(255)",
           "primaryKey": false,
           "notNull": false
         },
-        "slogan": {
-          "name": "slogan",
-          "type": "text",
+        "release_date": {
+          "name": "release_date",
+          "type": "timestamp",
           "primaryKey": false,
           "notNull": false
         },
-        "digitalDownloads": {
-          "name": "digitalDownloads",
-          "type": "numeric",
+        "genre": {
+          "name": "genre",
+          "type": "varchar(100)",
           "primaryKey": false,
           "notNull": false
         },
-        "createdAt": {
-          "name": "createdAt",
+        "label": {
+          "name": "label",
+          "type": "varchar(255)",
+          "primaryKey": false,
+          "notNull": false
+        },
+        "total_tracks": {
+          "name": "total_tracks",
+          "type": "integer",
+          "primaryKey": false,
+          "notNull": false,
+          "default": 0
+        },
+        "play_count": {
+          "name": "play_count",
+          "type": "integer",
+          "primaryKey": false,
+          "notNull": false,
+          "default": 0
+        },
+        "like_count": {
+          "name": "like_count",
+          "type": "integer",
+          "primaryKey": false,
+          "notNull": false,
+          "default": 0
+        },
+        "is_published": {
+          "name": "is_published",
+          "type": "boolean",
+          "primaryKey": false,
+          "notNull": false,
+          "default": false
+        },
+        "created_at": {
+          "name": "created_at",
           "type": "timestamp",
           "primaryKey": false,
           "notNull": true,
           "default": "now()"
         },
-        "updatedAt": {
-          "name": "updatedAt",
+        "updated_at": {
+          "name": "updated_at",
           "type": "timestamp",
           "primaryKey": false,
-          "notNull": true,
-          "default": "now()"
+          "notNull": true
         }
       },
       "indexes": {},
@@ -68,8 +107,8 @@
       "checkConstraints": {},
       "isRLSEnabled": false
     },
-    "public.Task": {
-      "name": "Task",
+    "public.tasks": {
+      "name": "tasks",
       "schema": "",
       "columns": {
         "id": {
@@ -87,35 +126,40 @@
         },
         "status": {
           "name": "status",
-          "type": "text",
+          "type": "task_status",
+          "typeSchema": "public",
           "primaryKey": false,
-          "notNull": true
+          "notNull": true,
+          "default": "'TODO'"
         },
         "label": {
           "name": "label",
-          "type": "text",
+          "type": "task_label",
+          "typeSchema": "public",
           "primaryKey": false,
-          "notNull": true
+          "notNull": true,
+          "default": "'BUG'"
         },
         "priority": {
           "name": "priority",
-          "type": "text",
+          "type": "task_priority",
+          "typeSchema": "public",
+          "primaryKey": false,
+          "notNull": true,
+          "default": "'LOW'"
+        },
+        "created_at": {
+          "name": "created_at",
+          "type": "timestamp",
+          "primaryKey": false,
+          "notNull": true,
+          "default": "now()"
+        },
+        "updated_at": {
+          "name": "updated_at",
+          "type": "timestamp",
           "primaryKey": false,
           "notNull": true
-        },
-        "createdAt": {
-          "name": "createdAt",
-          "type": "timestamp",
-          "primaryKey": false,
-          "notNull": true,
-          "default": "now()"
-        },
-        "updatedAt": {
-          "name": "updatedAt",
-          "type": "timestamp",
-          "primaryKey": false,
-          "notNull": true,
-          "default": "now()"
         }
       },
       "indexes": {},
@@ -126,8 +170,8 @@
       "checkConstraints": {},
       "isRLSEnabled": false
     },
-    "public.User": {
-      "name": "User",
+    "public.users": {
+      "name": "users",
       "schema": "",
       "columns": {
         "id": {
@@ -179,8 +223,8 @@
           "primaryKey": false,
           "notNull": true
         },
-        "registeredAt": {
-          "name": "registeredAt",
+        "registered_at": {
+          "name": "registered_at",
           "type": "timestamp",
           "primaryKey": false,
           "notNull": true,
@@ -204,34 +248,37 @@
           "primaryKey": false,
           "notNull": true
         },
-        "createdAt": {
-          "name": "createdAt",
+        "created_at": {
+          "name": "created_at",
           "type": "timestamp",
           "primaryKey": false,
           "notNull": true,
           "default": "now()"
         },
-        "updatedAt": {
-          "name": "updatedAt",
+        "updated_at": {
+          "name": "updated_at",
           "type": "timestamp",
           "primaryKey": false,
-          "notNull": true,
-          "default": "now()"
+          "notNull": true
         }
       },
       "indexes": {},
       "foreignKeys": {},
       "compositePrimaryKeys": {},
       "uniqueConstraints": {
-        "User_email_unique": {
-          "name": "User_email_unique",
+        "users_email_unique": {
+          "name": "users_email_unique",
           "nullsNotDistinct": false,
-          "columns": ["email"]
+          "columns": [
+            "email"
+          ]
         },
-        "User_username_unique": {
-          "name": "User_username_unique",
+        "users_username_unique": {
+          "name": "users_username_unique",
           "nullsNotDistinct": false,
-          "columns": ["username"]
+          "columns": [
+            "username"
+          ]
         }
       },
       "policies": {},
@@ -239,7 +286,38 @@
       "isRLSEnabled": false
     }
   },
-  "enums": {},
+  "enums": {
+    "public.task_label": {
+      "name": "task_label",
+      "schema": "public",
+      "values": [
+        "BUG",
+        "FEATURE",
+        "IMPROVEMENT",
+        "DOCUMENTATION"
+      ]
+    },
+    "public.task_priority": {
+      "name": "task_priority",
+      "schema": "public",
+      "values": [
+        "LOW",
+        "MEDIUM",
+        "HIGH",
+        "URGENT"
+      ]
+    },
+    "public.task_status": {
+      "name": "task_status",
+      "schema": "public",
+      "values": [
+        "TODO",
+        "IN_PROGRESS",
+        "DONE",
+        "CANCELLED"
+      ]
+    }
+  },
   "schemas": {},
   "sequences": {},
   "roles": {},

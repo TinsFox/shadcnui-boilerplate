@@ -2,7 +2,7 @@ import { createInsertSchema, createSelectSchema } from 'drizzle-zod'
 import { integer, pgTable, text, timestamp, uuid, boolean, varchar } from 'drizzle-orm/pg-core'
 
 // Album table
-export const albumsTableSchema = pgTable('Album', {
+export const albumsTableSchema = pgTable('albums', {
   id: uuid('id').primaryKey().defaultRandom(),
   title: varchar('title', { length: 255 }).notNull(),
   artist: varchar('artist', { length: 255 }).notNull(),

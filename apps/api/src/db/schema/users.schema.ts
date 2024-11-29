@@ -1,8 +1,9 @@
-// User table
+
 import { numeric, pgTable, text, timestamp, uuid } from 'drizzle-orm/pg-core'
 import { createInsertSchema, createSelectSchema } from 'drizzle-zod'
 
-export const users = pgTable('User', {
+// User table
+export const users = pgTable('users', {
   id: uuid('id').primaryKey().defaultRandom(),
   email: text('email').notNull().unique(),
   username: text('username').unique(),
@@ -11,12 +12,12 @@ export const users = pgTable('User', {
   birthdate: text('birthdate'),
   bio: text('bio'),
   password: text('password').notNull(),
-  registeredAt: timestamp('registeredAt').notNull().defaultNow(),
+  registeredAt: timestamp('registered_at').notNull().defaultNow(),
   status: text('status').notNull(),
   role: text('role').notNull(),
   amount: numeric('amount').notNull(),
-  createdAt: timestamp('createdAt').notNull().defaultNow(),
-  updatedAt: timestamp('updatedAt')
+  createdAt: timestamp('created_at').notNull().defaultNow(),
+  updatedAt: timestamp('updated_at')
     .notNull()
     .$onUpdate(() => new Date()),
 })

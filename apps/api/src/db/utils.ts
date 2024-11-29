@@ -3,7 +3,7 @@ import { faker } from '@faker-js/faker'
 import { hashPassword } from '../lib/crypto'
 import { TaskLabelEnum, TaskPriorityEnum, TaskStatusEnum } from '@/module/tasks/enums'
 import { NewUser } from '@/db/schema/users.schema'
-import { AlbumType, NewAlbumType } from '@/db/schema/album.schema'
+import { NewAlbumType } from '@/db/schema/album.schema'
 import { Task } from '@/db/schema/tasks.schema'
 
 export function generateRandomTask(): Task {

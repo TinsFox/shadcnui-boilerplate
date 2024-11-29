@@ -34,7 +34,7 @@ albumRouter.openapi(listAlbumsRoute, async (c) => {
   const data = await dbClientInWorker(c.env.DATABASE_URL)
     .select()
     .from(albumsTableSchema)
-    .offset((page - 1) * pageSize)
+    .offset((page) * pageSize)
 
   // 查询总数
   const totalResult = await dbClientInWorker(c.env.DATABASE_URL).select({ count: count() }).from(albumsTableSchema)

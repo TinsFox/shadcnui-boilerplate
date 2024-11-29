@@ -1,20 +1,21 @@
-// Task table
+
 import { pgEnum, pgTable, text, timestamp, uuid } from 'drizzle-orm/pg-core'
 import { TaskLabelEnum, TaskPriorityEnum, TaskStatusEnum } from '@/module/tasks/enums'
 import { createInsertSchema, createSelectSchema } from 'drizzle-zod'
 
-const taskStatusEnum = pgEnum('taskStatus', TaskStatusEnum)
-const taskPriorityEnum = pgEnum('taskPriority', TaskPriorityEnum)
-const taskLabelEnum = pgEnum('taskLabel', TaskLabelEnum)
+export const taskStatusEnum = pgEnum('task_status', TaskStatusEnum)
+export const taskPriorityEnum = pgEnum('task_priority', TaskPriorityEnum)
+export const taskLabelEnum = pgEnum('task_label', TaskLabelEnum)
 
-export const tasks = pgTable('Task', {
+// Task table
+export const tasks = pgTable('tasks', {
   id: uuid('id').primaryKey().defaultRandom(),
   title: text('title').notNull(),
-  status: taskStatusEnum('status').notNull().default('TODO'),
-  label: taskLabelEnum('label').notNull().default('FEATURE'),
-  priority: taskPriorityEnum('priority').notNull().default('MEDIUM'),
-  createdAt: timestamp('createdAt').notNull().defaultNow(),
-  updatedAt: timestamp('updatedAt')
+  status: taskStatusEnum().notNull().default(TaskStatusEnum[0]),
+  label: taskLabelEnum().notNull().default(TaskLabelEnum[0]),
+  priority: taskPriorityEnum('priority').notNull().default(TaskPriorityEnum[0]),
+  createdAt: timestamp('created_at').notNull().defaultNow(),
+  updatedAt: timestamp('updated_at')
     .notNull()
     .$onUpdate(() => new Date()),
 })
