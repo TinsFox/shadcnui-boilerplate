@@ -8,6 +8,7 @@
     "db:seed": "tsx ./src/db/seed.ts",
     "db:studio": "drizzle-kit studio",
     "deploy": "wrangler deploy --minify src/index.ts",
+    "workers:deploy": "wrangler deploy --minify src/index.ts",
     "dev": "wrangler dev src/index.ts",
     "dev:local": "tsx --watch src/index.ts",
     "test": "vitest",

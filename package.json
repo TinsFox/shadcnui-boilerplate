@@ -12,7 +12,7 @@
   "scripts": {
     "admin:build": "pnpm --filter admin build",
     "admin:dev": "pnpm --filter admin dev",
-    "api:deploy": "pnpm --filter api deploy",
+    "api:deploy": "pnpm --filter api workers:deploy",
     "api:dev": "pnpm --filter api dev",
     "build": "turbo build",
     "build-storybook": "storybook build",
