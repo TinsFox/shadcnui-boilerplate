@@ -5,7 +5,7 @@ import {
   DataTableFacetedFilter,
   DataTablePagination,
   DataTableViewOptions,
-} from "@repo/pro-components/data-table"
+} from "@repo/pro-table/data-table"
 import { Badge } from "@repo/ui/badge"
 import { Button } from "@repo/ui/button"
 import { Checkbox } from "@repo/ui/checkbox"
@@ -134,6 +134,7 @@ const columns: ColumnDef<ITask>[] = [
   },
   {
     id: "actions",
+    header: ({ column }) => <DataTableColumnHeader column={column} title="Actions" />,
     cell: ({ row }) => {
       const task = taskSchema.parse(row.original)
       return (

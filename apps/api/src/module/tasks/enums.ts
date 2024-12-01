@@ -1,6 +1,6 @@
 import { z } from 'zod'
 
-export const TaskStatusEnum = ['TODO', 'IN_PROGRESS', 'DONE', 'CANCELLED'] as const
+export const TaskStatusEnum = ['BACKLOG', 'TODO', 'IN_PROGRESS', 'DONE', 'CANCELLED'] as const
 
 export const TaskStatusEnumSchema = z.enum(TaskStatusEnum)
 export type TaskStatusType = z.infer<typeof TaskStatusEnumSchema>

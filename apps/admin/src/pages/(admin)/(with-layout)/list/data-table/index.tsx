@@ -5,7 +5,7 @@ import {
 import {
   DataTablePagination,
   DataTableSearch,
-} from "@repo/pro-components/data-table"
+} from "@repo/pro-table/data-table"
 import { Avatar, AvatarFallback, AvatarImage } from "@repo/ui/avatar"
 import { Button } from "@repo/ui/button"
 import { Checkbox } from "@repo/ui/checkbox"

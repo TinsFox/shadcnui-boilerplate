@@ -1,8 +1,8 @@
 import {
   DotsHorizontalIcon,
 } from "@radix-ui/react-icons"
-import type { ColumnDef, SearchParams } from "@repo/pro-components/pro-table"
-import { ProTable } from "@repo/pro-components/pro-table"
+import type { ColumnDef, SearchParams } from "@repo/pro-table/pro-table"
+import { ProTable } from "@repo/pro-table/pro-table"
 import { Avatar, AvatarFallback, AvatarImage } from "@repo/ui/avatar"
 import { Button } from "@repo/ui/button"
 import { Checkbox } from "@repo/ui/checkbox"

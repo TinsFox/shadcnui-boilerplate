@@ -8,6 +8,7 @@ import {
   QuestionMarkCircledIcon,
   StopwatchIcon,
 } from "@radix-ui/react-icons"
+import { FileWarning } from "lucide-react"
 
 export const labels = [
   {
@@ -26,27 +27,27 @@ export const labels = [
 
 export const statuses = [
   {
-    value: "backlog",
+    value: "BACKLOG",
     label: "Backlog",
     icon: QuestionMarkCircledIcon,
   },
   {
-    value: "todo",
+    value: "TODO",
     label: "Todo",
     icon: CircleIcon,
   },
   {
-    value: "in progress",
+    value: "IN_PROGRESS",
     label: "In Progress",
     icon: StopwatchIcon,
   },
   {
-    value: "done",
+    value: "DONE",
     label: "Done",
     icon: CheckCircledIcon,
   },
   {
-    value: "canceled",
+    value: "CANCELLED",
     label: "Canceled",
     icon: CrossCircledIcon,
   },
@@ -55,17 +56,22 @@ export const statuses = [
 export const priorities = [
   {
     label: "Low",
-    value: "low",
+    value: "LOW",
     icon: ArrowDownIcon,
   },
   {
     label: "Medium",
-    value: "medium",
+    value: "MEDIUM",
     icon: ArrowRightIcon,
   },
   {
     label: "High",
-    value: "high",
+    value: "HIGH",
     icon: ArrowUpIcon,
+  },
+  {
+    label: "Urgent",
+    value: "URGENT",
+    icon: FileWarning,
   },
 ]
