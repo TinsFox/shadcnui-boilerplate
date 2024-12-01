@@ -3,6 +3,8 @@ import {
   DotsHorizontalIcon,
 } from "@radix-ui/react-icons"
 import {
+  DataTableColumnCell,
+  DataTableColumnHeader,
   DataTablePagination,
   DataTableSearch,
 } from "@repo/pro-table/data-table"
@@ -44,6 +46,7 @@ import * as React from "react"
 import { Empty } from "@/components/empty"
 import { Loading } from "@/components/loading"
 import { useUsers } from "@/hooks/query/use-user"
+import { setClipboardText } from "@/lib/clipboard"
 import type { IUsers } from "@/schema/user"
 
 import { ViewUser } from "./components/view-user"
@@ -71,8 +74,8 @@ const columns: ColumnDef<IUsers>[] = [
   },
   {
     accessorKey: "id",
-    header: "ID",
-    cell: ({ row }) => <div className="lowercase">{row.getValue("id")}</div>,
+    header: ({ column }) => <DataTableColumnHeader title="ID" column={column} className="line-clamp-1" />,
+    cell: ({ row, column }) => <DataTableColumnCell className="lowercase line-clamp-1" row={row} column={column} />,
   },
   {
     accessorKey: "name",
@@ -159,9 +162,9 @@ const columns: ColumnDef<IUsers>[] = [
           <DropdownMenuContent align="end">
             <DropdownMenuLabel>Actions</DropdownMenuLabel>
             <DropdownMenuItem
-              onClick={() => navigator.clipboard.writeText(user.id)}
+              onClick={() => setClipboardText({ text: user.id, info: `User ID ${user.id}` })}
             >
-              Copy payment ID
+              Copy user ID
             </DropdownMenuItem>
             <ViewUser user={row.original} />
           </DropdownMenuContent>
