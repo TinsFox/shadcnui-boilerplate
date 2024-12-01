@@ -53,7 +53,7 @@ const columns: ColumnDef<IUsers>[] = [
   {
     accessorKey: "id",
     header: "ID",
-    cell: ({ row }) => <div className="lowercase">{row.getValue("id")}</div>,
+    cell: ({ row }) => <div className="lowercase line-clamp-1">{row.getValue("id")}</div>,
     search: {
       placeholder: "Search by ID",
     },

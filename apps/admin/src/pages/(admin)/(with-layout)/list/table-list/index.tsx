@@ -23,6 +23,7 @@ import {
   DropdownMenuTrigger,
 } from "@repo/ui/dropdown-menu"
 import { Input } from "@repo/ui/input"
+import { Tooltip, TooltipContent, TooltipTrigger } from "@repo/ui/tooltip"
 import type { ColumnDef, ColumnFiltersState, SortingState, VisibilityState } from "@tanstack/react-table"
 import { getCoreRowModel, getFacetedRowModel, getFacetedUniqueValues, getFilteredRowModel, getPaginationRowModel, getSortedRowModel, useReactTable } from "@tanstack/react-table"
 import * as React from "react"
@@ -60,7 +61,19 @@ const columns: ColumnDef<ITask>[] = [
     header: ({ column }) => (
       <DataTableColumnHeader column={column} title="Task" />
     ),
-    cell: ({ row }) => <div className="w-[80px]">{row.getValue("id")}</div>,
+    cell: ({ row }) => (
+      <Tooltip>
+        <TooltipTrigger asChild>
+          <div className="w-[80px] line-clamp-1">
+            {row.getValue("id")}
+          </div>
+        </TooltipTrigger>
+        <TooltipContent>
+          <p>{row.getValue("id")}</p>
+        </TooltipContent>
+      </Tooltip>
+
+    ),
     enableSorting: false,
     enableHiding: false,
   },
