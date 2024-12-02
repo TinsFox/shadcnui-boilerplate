@@ -29,7 +29,7 @@
     /* Paths */
     "baseUrl": ".",
     "paths": {
-      "@/*": ["./src/*"],
+      "@/*": ["./app/*"],
       "@env": ["env.ts"],
       "@pkg": ["./package.json"]
     }

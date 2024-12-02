@@ -11,10 +11,10 @@ export default {
     "../../packages/pro-table/src/**/*.{js,ts,jsx,tsx}",
     "./pages/**/*.{ts,tsx}",
     "./components/**/*.{ts,tsx}",
-    "./app/**/*.{ts,tsx}",
     "./src/**/*.{ts,tsx}",
     "./src/**/*.stories.{ts,tsx}",
     "./stories/**/*.stories.{ts,tsx}",
+    "./app/**/{**,.client,.server}/**/*.{js,jsx,ts,tsx}",
   ],
   prefix: "",
   theme: {

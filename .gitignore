@@ -48,3 +48,6 @@ coverage/
 next-env.d.ts
 
 storybook-static
+
+.react-router/
+build

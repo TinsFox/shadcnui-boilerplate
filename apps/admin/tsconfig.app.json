@@ -25,10 +25,11 @@
 
     "baseUrl": ".",
     "paths": {
-      "@/*": ["./src/*"],
+      "@/*": ["./app/*"],
+      "@/locales/*": ["./locales/*"],
       "@env": ["env.ts"],
       "@pkg": ["./package.json"]
     }
   },
-  "include": ["src", "env.ts", "types/**/*.d.ts", ".storybook"]
+  "include": ["app", "env.ts", "types/**/*.d.ts", ".storybook"]
 }
