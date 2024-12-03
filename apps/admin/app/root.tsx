@@ -5,9 +5,10 @@ import { env } from "@env"
 // @ts-ignore
 import { ClickToComponent } from "click-to-react-component"
 import * as React from "react"
-import { Links, Meta, Outlet, Scripts, ScrollRestoration } from "react-router"
+import { Links, Meta, Outlet, RouterProvider, Scripts, ScrollRestoration } from "react-router"
 
 import { RootProviders } from "./providers/root-providers"
+import flatRoutes from "./routes"
 
 export function Layout({ children }: { children: React.ReactNode }) {
   return (
@@ -32,5 +33,9 @@ export function Layout({ children }: { children: React.ReactNode }) {
 }
 
 export default function App() {
-  return <Outlet />
+  return (
+    <RouterProvider router={flatRoutes}>
+      <Outlet />
+    </RouterProvider>
+  )
 }

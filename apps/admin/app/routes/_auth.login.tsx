@@ -88,7 +88,7 @@ function UserAuthForm({ className, ...props }: UserAuthFormProps) {
   const { t } = useTranslation(["auth", "common", "errors"])
   const redirectUrl =
     new URLSearchParams(window.location.search).get("redirectTo") ||
-    "/dashboard"
+      "/dashboard"
 
   const loginMutation = useUserLoginMutation()
   const navigate = useNavigate()

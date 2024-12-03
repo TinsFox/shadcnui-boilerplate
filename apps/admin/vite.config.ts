@@ -16,6 +16,7 @@ export default defineConfig(({ mode }) => {
   return {
     plugins: [
       tsconfigPaths(),
+      // react(),
       reactRouter(),
       createHtmlPlugin({
         template: "index.html",
