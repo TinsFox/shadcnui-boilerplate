@@ -8,10 +8,12 @@ export function Component() {
 
   return (
     <div>
-      <div className="grid flex-1 scroll-mt-20 grid-cols-2 items-start gap-10 md:grid-cols-3 md:gap-6 lg:grid-cols-4 lg:gap-5 xl:grid-cols-4 xl:gap-10 2xl:grid-cols-5 2xl:gap-5">
-        {data?.list?.map((album: IAlbum) => (
-          <AlbumCard key={album.id} album={album} />
-        ))}
+      <div className="container mx-auto px-4 sm:px-6 lg:px-8">
+        <div className="grid grid-cols-1 gap-4 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-4 xl:grid-cols-4 2xl:grid-cols-5">
+          {data?.list?.map((album: IAlbum) => (
+            <AlbumCard key={album.id} album={album} />
+          ))}
+        </div>
       </div>
     </div>
   )

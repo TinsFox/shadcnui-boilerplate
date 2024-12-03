@@ -26,16 +26,16 @@ export function AlbumCard(props: AlbumCardProps) {
   return (
     <div
       className={cn(
-        "group relative flex max-w-xs flex-col overflow-hidden rounded-xl border shadow transition-all duration-200 ease-in-out",
+        "group relative flex h-full flex-col overflow-hidden rounded-xl border shadow transition-all duration-200 ease-in-out hover:shadow-lg",
         className,
       )}
       {...prop}
     >
-      <div className={cn("relative flex items-center  justify-end gap-2 border-b bg-card px-3 py-2.5 text-card-foreground")}>
-        <div className="flex items-center gap-1.5 pl-1 text-[13px] text-muted-foreground [&>svg]:size-[0.9rem]">
+      <div className={cn("relative flex items-center justify-between gap-2 border-b bg-card p-3 text-card-foreground")}>
+        <div className="flex items-center gap-1.5 text-sm text-muted-foreground truncate">
           {album.title}
         </div>
-        <div className="invisible ml-auto flex items-center gap-2 transition-all duration-300 group-hover:visible">
+        <div className="flex items-center gap-2 sm:invisible sm:group-hover:visible">
           <Tooltip>
             <TooltipTrigger asChild>
               <Button
@@ -83,18 +83,22 @@ export function AlbumCard(props: AlbumCardProps) {
           </Tooltip>
         </div>
       </div>
-      <div className="relative  [&>div]:rounded-none [&>div]:border-none [&>div]:shadow-none">
-        <Card>
-          <CardHeader>
-            <CardTitle>{album.title}</CardTitle>
-            <CardDescription>
+      <div className="flex-grow [&>div]:rounded-none [&>div]:border-none [&>div]:shadow-none">
+        <Card className="h-full">
+          <CardHeader className="space-y-2 p-4 py-2">
+            <CardTitle className="line-clamp-1 text-base sm:text-lg">{album.title}</CardTitle>
+            <CardDescription className="line-clamp-2 text-sm">
               {album.slogan}
             </CardDescription>
           </CardHeader>
-          <CardContent>
-            <img className="h-48 w-full rounded-md object-cover transition-all" src={album.coverUrl} />
+          <CardContent className="p-4 pt-0">
+            <img
+              className="aspect-video w-full rounded-md object-cover transition-all hover:scale-[1.02]"
+              src={album.coverUrl}
+              alt={album.title}
+            />
           </CardContent>
-          <CardFooter>
+          <CardFooter className="p-4">
             <div className="flex w-full items-start gap-2 text-sm">
               <div className="grid gap-2">
                 <div className="flex items-center gap-2 font-medium leading-none">
