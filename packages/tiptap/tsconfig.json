@@ -19,8 +19,8 @@
     "baseUrl": ".",
     "paths": {
       "@/*": ["./src/*"],
-      "@/components/*": ["./src/components/*"]
-    },
+      "@/components/*": ["../../packages/ui/src/components/*"]
+    }
   },
   "include": ["src/**/*", "tailwind.config.ts"],
   "exclude": ["node_modules", "dist"]

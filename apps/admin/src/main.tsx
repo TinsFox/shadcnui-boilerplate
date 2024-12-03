@@ -1,4 +1,5 @@
 import "@repo/ui/globals.css"
+import "@repo/tiptap/tiptap.css"
 import "./i18n"
 
 import { env } from "@env"

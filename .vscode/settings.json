@@ -64,8 +64,10 @@
     "hyoban",
     "lucide",
     "ofetch",
+    "openapi",
     "sonner",
     "tanstack",
+    "tiptap",
     "tsup"
   ],
   "typescript.preferences.autoImportFileExcludePatterns": ["react-day-picker"],
