@@ -223,16 +223,16 @@ export function Component() {
       <div className="mb-4 text-2xl font-bold">Pro Data Table</div>
       <ProTable
         columns={columns}
-        data={users?.list ?? []}
+        data={users?.list}
         isLoading={isLoading}
-        onRefresh={() => refetch()}
+        onRefresh={refetch}
+        onSearch={handleSearch}
         pagination={{
           pageIndex: pagination.pageIndex,
           pageSize: pagination.pageSize,
           total: users?.total ?? 0,
           onPaginationChange: handlePaginationChange,
         }}
-        onSearch={handleSearch}
       />
     </div>
   )

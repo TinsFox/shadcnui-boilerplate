@@ -93,6 +93,7 @@ export function ProTable<TData, TValue>({
       Object.entries(value).filter(([, value]) => value !== ""),
     )
     onSearch?.(filteredValue)
+    onRefresh?.()
   }
 
   return (
@@ -121,7 +122,6 @@ export function ProTable<TData, TValue>({
             ...pagination,
             quickJump: true,
           }}
-
         />
       </div>
     </div>
