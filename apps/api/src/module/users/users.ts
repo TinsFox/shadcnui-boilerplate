@@ -9,7 +9,7 @@ import { OpenAPIHono, createRoute, z } from "@hono/zod-openapi";
 import { users } from "auth-schema";
 import { eq } from "drizzle-orm";
 import { count } from "drizzle-orm";
-import { dbClientInWorker } from "../../db/client.serverless";
+
 import {
 	ParamsSchema,
 	SearchQuerySchema,
@@ -109,15 +109,13 @@ const getUserByIdRoute = createRoute({
 userRouter.openapi(getUsersRoute, async (c) => {
 	const { page, pageSize } = c.req.valid("query");
 
-	const allUsers = await dbClientInWorker(c.env.DATABASE_URL)
+	const allUsers = await db
 		.select()
 		.from(users)
 		.offset(page * pageSize)
 		.limit(pageSize);
 
-	const totalResult = await dbClientInWorker(c.env.DATABASE_URL)
-		.select({ count: count() })
-		.from(users);
+	const totalResult = await db.select({ count: count() }).from(users);
 	const total = Number(totalResult[0].count);
 
 	return c.json({
@@ -185,7 +183,7 @@ userRouter.openapi(getUserInfoRoute, async (c) => {
 userRouter.openapi(getUserByIdRoute, async (c) => {
 	const { id } = c.req.valid("param");
 
-	const [user] = await dbClientInWorker(c.env.DATABASE_URL)
+	const [user] = await db
 		.select({
 			id: users.id,
 			email: users.email,
@@ -279,7 +277,7 @@ userRouter.openapi(updateUserRoute, async (c) => {
 	const { id } = c.req.valid("param");
 	const updateData = c.req.valid("json");
 
-	await dbClientInWorker(c.env.DATABASE_URL)
+	await db
 		.update(users)
 		.set({
 			...updateData,
@@ -333,10 +331,7 @@ const deleteUserRoute = createRoute({
 userRouter.openapi(deleteUserRoute, async (c) => {
 	const { id } = c.req.valid("param");
 
-	const [existingUser] = await dbClientInWorker(c.env.DATABASE_URL)
-		.select()
-		.from(users)
-		.where(eq(users.id, id));
+	const [existingUser] = await db.select().from(users).where(eq(users.id, id));
 
 	if (!existingUser) {
 		return c.json(
@@ -349,9 +344,7 @@ userRouter.openapi(deleteUserRoute, async (c) => {
 		);
 	}
 
-	await dbClientInWorker(c.env.DATABASE_URL)
-		.delete(users)
-		.where(eq(users.id, id));
+	await db.delete(users).where(eq(users.id, id));
 
 	return c.json({
 		code: 200,

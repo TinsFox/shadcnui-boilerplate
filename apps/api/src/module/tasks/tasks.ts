@@ -1,8 +1,8 @@
-import { dbClientInWorker } from "@/db/client.serverless";
 import { OpenAPIHono, createRoute } from "@hono/zod-openapi";
 import { count, eq } from "drizzle-orm";
 import { ParamsSchema, createTaskSchema } from "./schema";
 
+import { db } from "@/db";
 import { selectTaskSchema, tasks } from "@/db/schema/tasks.schema";
 import {
 	BaseDetailSchema,
@@ -144,7 +144,6 @@ const deleteTaskRoute = createRoute({
 taskRouter.openapi(listTasksRoute, async (c) => {
 	const { page, pageSize } = c.req.valid("query");
 
-	const db = dbClientInWorker(c.env.DATABASE_URL);
 	const data = await db
 		.select()
 		.from(tasks)
@@ -166,7 +165,7 @@ taskRouter.openapi(listTasksRoute, async (c) => {
 taskRouter.openapi(createTaskRoute, async (c) => {
 	const data = c.req.valid("json");
 
-	const [task] = await dbClientInWorker(c.env.DATABASE_URL)
+	const [task] = await db
 		.insert(tasks)
 		.values({
 			...data,
@@ -187,10 +186,7 @@ taskRouter.openapi(updateTaskRoute, async (c) => {
 	const { id } = c.req.valid("param");
 	const updateData = c.req.valid("json");
 
-	const [existingTask] = await dbClientInWorker(c.env.DATABASE_URL)
-		.select()
-		.from(tasks)
-		.where(eq(tasks.id, id));
+	const [existingTask] = await db.select().from(tasks).where(eq(tasks.id, id));
 
 	if (!existingTask) {
 		return c.json(
@@ -202,7 +198,7 @@ taskRouter.openapi(updateTaskRoute, async (c) => {
 		);
 	}
 
-	await dbClientInWorker(c.env.DATABASE_URL)
+	await db
 		.update(tasks)
 		.set({
 			...updateData,
@@ -220,10 +216,7 @@ taskRouter.openapi(updateTaskRoute, async (c) => {
 taskRouter.openapi(deleteTaskRoute, async (c) => {
 	const { id } = c.req.valid("param");
 
-	const [existingTask] = await dbClientInWorker(c.env.DATABASE_URL)
-		.select()
-		.from(tasks)
-		.where(eq(tasks.id, id));
+	const [existingTask] = await db.select().from(tasks).where(eq(tasks.id, id));
 
 	if (!existingTask) {
 		return c.json(
@@ -235,9 +228,7 @@ taskRouter.openapi(deleteTaskRoute, async (c) => {
 		);
 	}
 
-	await dbClientInWorker(c.env.DATABASE_URL)
-		.delete(tasks)
-		.where(eq(tasks.id, id));
+	await db.delete(tasks).where(eq(tasks.id, id));
 
 	return c.json({
 		code: 200,

@@ -1,10 +1,10 @@
 import { OpenAPIHono, createRoute } from "@hono/zod-openapi";
 import { count } from "drizzle-orm";
 
-import { dbClientInWorker } from "@/db/client.serverless";
 import { BasePaginateQuerySchema, BasePaginationSchema } from "@/schema/base";
 import { queryAlbumSchema } from "./schema";
 
+import { db } from "@/db";
 import { albumsTableSchema } from "@/db/schema/album.schema";
 
 const albumRouter = new OpenAPIHono<HonoEnvType>();
@@ -31,13 +31,13 @@ const listAlbumsRoute = createRoute({
 albumRouter.openapi(listAlbumsRoute, async (c) => {
 	const { page, pageSize } = c.req.valid("query");
 
-	const data = await dbClientInWorker(c.env.DATABASE_URL)
+	const data = await db
 		.select()
 		.from(albumsTableSchema)
 		.offset(page * pageSize);
 
 	// 查询总数
-	const totalResult = await dbClientInWorker(c.env.DATABASE_URL)
+	const totalResult = await db
 		.select({ count: count() })
 		.from(albumsTableSchema);
 	const total = Number(totalResult[0].count);
