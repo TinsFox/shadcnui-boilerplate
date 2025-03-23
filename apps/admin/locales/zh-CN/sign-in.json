@@ -1,0 +1,19 @@
+{
+	"welcome_back": "欢迎回来",
+	"login_description": "登录到您的 Acme Inc 账户",
+	"email": "邮箱",
+	"email_placeholder": "请输入邮箱",
+	"password": "密码",
+	"password_placeholder": "请输入密码",
+	"login_button": "登录",
+	"or_continue_with": "或继续使用",
+	"login_with_apple": "使用 Apple 登录",
+	"login_with_google": "使用 Google 登录",
+	"login_with_meta": "使用 Meta 登录",
+	"no_account": "还没有账户？",
+	"sign_up": "注册",
+	"terms_notice": "点击继续，即表示您同意我们的",
+	"terms_of_service": "服务条款",
+	"privacy_policy": "隐私政策",
+	"and": "和"
+}

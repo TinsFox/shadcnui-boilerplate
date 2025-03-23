@@ -1,10 +1,10 @@
 import type {
-  ColumnDef as TanstackColumnDef,
-  Table,
-  TableOptions,
-} from "@tanstack/react-table"
+	Table,
+	TableOptions,
+	ColumnDef as TanstackColumnDef,
+} from "@tanstack/react-table";
 
-import type { PaginationProps } from "./data-table-pagination"
+import type { PaginationProps } from "./data-table-pagination";
 
 /**
  * Configuration options for the search functionality
@@ -12,20 +12,20 @@ import type { PaginationProps } from "./data-table-pagination"
  * @interface SearchConfig
  */
 export interface SearchConfig {
-  /**
-   * Placeholder text for the search input
-   * 搜索输入框的占位文本
-   */
-  placeholder?: string
-  /**
-   * Custom render function for the search input
-   * 自定义搜索输入框的渲染函数
-   */
-  render?: (props: {
-    value: string
-    onChange: (value: string) => void
-    placeholder?: string
-  }) => React.ReactNode
+	/**
+	 * Placeholder text for the search input
+	 * 搜索输入框的占位文本
+	 */
+	placeholder?: string;
+	/**
+	 * Custom render function for the search input
+	 * 自定义搜索输入框的渲染函数
+	 */
+	render?: (props: {
+		value: string;
+		onChange: (value: string) => void;
+		placeholder?: string;
+	}) => React.ReactNode;
 }
 
 /**
@@ -33,7 +33,7 @@ export interface SearchConfig {
  * 搜索类型可以是布尔值或 SearchConfig 对象
  * @typedef {boolean | SearchConfig} SearchType
  */
-export type SearchType = boolean | SearchConfig
+export type SearchType = boolean | SearchConfig;
 
 /**
  * Common extensions for table columns
@@ -41,18 +41,18 @@ export type SearchType = boolean | SearchConfig
  * @interface ColumnExtensions
  */
 interface ColumnExtensions {
-  /**
-   * Enable column search functionality
-   * 启用列搜索功能
-   * @default false
-   */
-  search?: SearchType
-  /**
-   * Column width in pixels
-   * 列宽度（像素）
-   * @default auto
-   */
-  width?: number
+	/**
+	 * Enable column search functionality
+	 * 启用列搜索功能
+	 * @default false
+	 */
+	search?: SearchType;
+	/**
+	 * Column width in pixels
+	 * 列宽度（像素）
+	 * @default auto
+	 */
+	width?: number;
 }
 
 /**
@@ -62,32 +62,34 @@ interface ColumnExtensions {
  * @template TValue The type of value in the column / 列值的类型
  */
 export type ColumnDef<TData, TValue = unknown> =
-  | (TanstackColumnDef<TData, TValue> & ColumnExtensions & {
-    /**
-     * Optional pin position. When undefined, id is optional
-     * 可选的固定位置。当未定义时，id 是可选的
-     */
-    pinned?: undefined
-  })
-  | (TanstackColumnDef<TData, TValue> & ColumnExtensions & {
-    /**
-     * Pin position of the column. When set, id is required
-     * 列的固定位置。设置时，id 是必需的
-     */
-    pinned: "left" | "right"
-    /**
-     * Required column identifier when pinned is set
-     * 当设置 pinned 时，必需的列标识符
-     */
-    id: string
-  })
+	| (TanstackColumnDef<TData, TValue> &
+			ColumnExtensions & {
+				/**
+				 * Optional pin position. When undefined, id is optional
+				 * 可选的固定位置。当未定义时，id 是可选的
+				 */
+				pinned?: undefined;
+			})
+	| (TanstackColumnDef<TData, TValue> &
+			ColumnExtensions & {
+				/**
+				 * Pin position of the column. When set, id is required
+				 * 列的固定位置。设置时，id 是必需的
+				 */
+				pinned: "left" | "right";
+				/**
+				 * Required column identifier when pinned is set
+				 * 当设置 pinned 时，必需的列标识符
+				 */
+				id: string;
+			});
 
 /**
  * Search parameters type
  * 搜索参数类型
  * @typedef {Record<string, string>} SearchParams
  */
-export type SearchParams = Record<string, string>
+export type SearchParams = Record<string, string>;
 
 /**
  * Props for the ProTable component
@@ -97,36 +99,35 @@ export type SearchParams = Record<string, string>
  * @template TValue The type of value in the columns / 列值的类型
  */
 export interface DataTableProps<TData> {
-
-  /**
-   * Loading state of the table
-   * 表格的加载状态
-   */
-  isLoading: boolean
-  /**
-   * Optional toolbar component to render above the table
-   * 可选的工具栏组件，渲染在表格上方
-   */
-  toolbar?: React.ReactNode
-  /**
-   * Pagination configuration and callbacks
-   * 分页配置和回调
-   */
-  pagination?: PaginationProps
-  /**
-   * Initial state configuration for the table
-   * 表格的初始状态配置
-   */
-  initialState?: TableOptions<TData>["initialState"]
-  /**
-   * Callback function to refresh table data
-   * 刷新表格数据的回调函数
-   */
-  onRefresh?: () => void
-  /**
-   * Callback function when search is performed
-   * 执行搜索时的回调函数
-   */
-  onSearch?: (params: SearchParams) => void
-  table: Table<TData>
+	/**
+	 * Loading state of the table
+	 * 表格的加载状态
+	 */
+	isLoading: boolean;
+	/**
+	 * Optional toolbar component to render above the table
+	 * 可选的工具栏组件，渲染在表格上方
+	 */
+	toolbar?: React.ReactNode;
+	/**
+	 * Pagination configuration and callbacks
+	 * 分页配置和回调
+	 */
+	pagination?: PaginationProps;
+	/**
+	 * Initial state configuration for the table
+	 * 表格的初始状态配置
+	 */
+	initialState?: TableOptions<TData>["initialState"];
+	/**
+	 * Callback function to refresh table data
+	 * 刷新表格数据的回调函数
+	 */
+	onRefresh?: () => void;
+	/**
+	 * Callback function when search is performed
+	 * 执行搜索时的回调函数
+	 */
+	onSearch?: (params: SearchParams) => void;
+	table: Table<TData>;
 }

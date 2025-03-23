@@ -1,17 +1,17 @@
 {
-  "plugins": {
-    "release-it-pnpm": {
-      "disableRelease": true,
-      "inFile": "CHANGELOG.md",
-      "publishCommand": "vsce publish --no-dependencies"
-    }
-  },
-  "git": {
-    "commitMessage": "chore: release v${version}",
-    "tagName": "v${version}"
-  },
-  "github": {
-    "release": true,
-    "draft": true
-  }
+	"plugins": {
+		"release-it-pnpm": {
+			"disableRelease": true,
+			"inFile": "CHANGELOG.md",
+			"publishCommand": "vsce publish --no-dependencies"
+		}
+	},
+	"git": {
+		"commitMessage": "chore: release v${version}",
+		"tagName": "v${version}"
+	},
+	"github": {
+		"release": true,
+		"draft": true
+	}
 }

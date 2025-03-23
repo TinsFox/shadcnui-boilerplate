@@ -25,9 +25,6 @@
 - [**TypeScript**](https://www.typescriptlang.org/): 为 JavaScript 添加静态类型，提高代码质量和开发体验。
 - [**Vite**](https://vitejs.dev)：快速构建工具和开发服务器，提供优化构建以实现流畅的开发工作流。
 - [**Storybook**](https://storybook.js.org/): 在隔离环境中开发和测试 UI 组件。
-- [**ESLint**](https://eslint.org/): 通过 linting 进行代码质量保证。
-  - [**Lint-staged**](https://github.com/okonet/lint-staged)：在提交时对暂存文件运行 linter。
-  - [**simple-git-hooks**](https://github.com/toplenboren/simple-git-hooks)：在提交前自动执行任务，如 linting。
 - [**React Hook Form**](https://react-hook-form.com)：通过最小化重新渲染简化表单处理。
 - [**Zod**](https://github.com/colinhacks/zod)：用于表单数据的模式验证。
 - [**Jotai**](https://github.com/pmndrs/jotai)：用于细粒度控制的原子状态管理。

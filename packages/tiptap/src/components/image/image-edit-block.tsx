@@ -1,83 +1,95 @@
-import type { Editor } from "@tiptap/react"
-import * as React from "react"
+import type { Editor } from "@tiptap/react";
+import * as React from "react";
 
-import { Button } from "@/components/ui/button"
-import { Input } from "@/components/ui/input"
-import { Label } from "@/components/ui/label"
+import { Button } from "@/components/ui/button";
+import { Input } from "@/components/ui/input";
+import { Label } from "@/components/ui/label";
 
 interface ImageEditBlockProps {
-  editor: Editor
-  close: () => void
+	editor: Editor;
+	close: () => void;
 }
 
-export const ImageEditBlock: React.FC<ImageEditBlockProps> = ({ editor, close }) => {
-  const fileInputRef = React.useRef<HTMLInputElement>(null)
-  const [link, setLink] = React.useState("")
+export const ImageEditBlock: React.FC<ImageEditBlockProps> = ({
+	editor,
+	close,
+}) => {
+	const fileInputRef = React.useRef<HTMLInputElement>(null);
+	const [link, setLink] = React.useState("");
 
-  const handleClick = React.useCallback(() => {
-    fileInputRef.current?.click()
-  }, [])
+	const handleClick = React.useCallback(() => {
+		fileInputRef.current?.click();
+	}, []);
 
-  const handleFile = React.useCallback(
-    async (e: React.ChangeEvent<HTMLInputElement>) => {
-      const { files } = e.target
-      if (!files?.length) return
+	const handleFile = React.useCallback(
+		async (e: React.ChangeEvent<HTMLInputElement>) => {
+			const { files } = e.target;
+			if (!files?.length) return;
 
-      const insertImages = async () => {
-        const contentBucket = []
-        const filesArray = Array.from(files)
+			const insertImages = async () => {
+				const contentBucket = [];
+				const filesArray = Array.from(files);
 
-        for (const file of filesArray) {
-          contentBucket.push({ src: file })
-        }
+				for (const file of filesArray) {
+					contentBucket.push({ src: file });
+				}
 
-        editor.commands.setImages(contentBucket)
-      }
+				editor.commands.setImages(contentBucket);
+			};
 
-      await insertImages()
-      close()
-    },
-    [editor, close],
-  )
+			await insertImages();
+			close();
+		},
+		[editor, close],
+	);
 
-  const handleSubmit = React.useCallback(
-    (e: React.FormEvent<HTMLFormElement>) => {
-      e.preventDefault()
-      e.stopPropagation()
+	const handleSubmit = React.useCallback(
+		(e: React.FormEvent<HTMLFormElement>) => {
+			e.preventDefault();
+			e.stopPropagation();
 
-      if (link) {
-        editor.commands.setImages([{ src: link }])
-        close()
-      }
-    },
-    [editor, link, close],
-  )
+			if (link) {
+				editor.commands.setImages([{ src: link }]);
+				close();
+			}
+		},
+		[editor, link, close],
+	);
 
-  return (
-    <form onSubmit={handleSubmit} className="space-y-6">
-      <div className="space-y-1">
-        <Label htmlFor="image-link">Attach an image link</Label>
-        <div className="flex">
-          <Input
-            id="image-link"
-            type="url"
-            required
-            placeholder="https://example.com"
-            value={link}
-            className="grow"
-            onChange={(e: React.ChangeEvent<HTMLInputElement>) => setLink(e.target.value)}
-          />
-          <Button type="submit" className="ml-2">
-            Submit
-          </Button>
-        </div>
-      </div>
-      <Button type="button" className="w-full" onClick={handleClick}>
-        Upload from your computer
-      </Button>
-      <input type="file" accept="image/*" ref={fileInputRef} multiple className="hidden" onChange={handleFile} />
-    </form>
-  )
-}
+	return (
+		<form onSubmit={handleSubmit} className="space-y-6">
+			<div className="space-y-1">
+				<Label htmlFor="image-link">Attach an image link</Label>
+				<div className="flex">
+					<Input
+						id="image-link"
+						type="url"
+						required
+						placeholder="https://example.com"
+						value={link}
+						className="grow"
+						onChange={(e: React.ChangeEvent<HTMLInputElement>) =>
+							setLink(e.target.value)
+						}
+					/>
+					<Button type="submit" className="ml-2">
+						Submit
+					</Button>
+				</div>
+			</div>
+			<Button type="button" className="w-full" onClick={handleClick}>
+				Upload from your computer
+			</Button>
+			<input
+				type="file"
+				accept="image/*"
+				ref={fileInputRef}
+				multiple
+				className="hidden"
+				onChange={handleFile}
+			/>
+		</form>
+	);
+};
 
-export default ImageEditBlock
+export default ImageEditBlock;

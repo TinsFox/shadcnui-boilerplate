@@ -1,55 +1,64 @@
-import type { Node } from "@tiptap/pm/model"
-import type { Editor } from "@tiptap/react"
-import * as React from "react"
+import type { Node } from "@tiptap/pm/model";
+import type { Editor } from "@tiptap/react";
+import * as React from "react";
 
-import { isUrl } from "../../../utils"
+import { isUrl } from "../../../utils";
 
 interface UseImageActionsProps {
-  editor: Editor
-  node: Node
-  src: string
-  onViewClick: (value: boolean) => void
+	editor: Editor;
+	node: Node;
+	src: string;
+	onViewClick: (value: boolean) => void;
 }
 
 export type ImageActionHandlers = {
-  onView?: () => void
-  onDownload?: () => void
-  onCopy?: () => void
-  onCopyLink?: () => void
-  onRemoveImg?: () => void
-}
+	onView?: () => void;
+	onDownload?: () => void;
+	onCopy?: () => void;
+	onCopyLink?: () => void;
+	onRemoveImg?: () => void;
+};
 
-export const useImageActions = ({ editor, node, src, onViewClick }: UseImageActionsProps) => {
-  const isLink = React.useMemo(() => isUrl(src), [src])
+export const useImageActions = ({
+	editor,
+	node,
+	src,
+	onViewClick,
+}: UseImageActionsProps) => {
+	const isLink = React.useMemo(() => isUrl(src), [src]);
 
-  const onView = React.useCallback(() => {
-    onViewClick(true)
-  }, [onViewClick])
+	const onView = React.useCallback(() => {
+		onViewClick(true);
+	}, [onViewClick]);
 
-  const onDownload = React.useCallback(() => {
-    editor.commands.downloadImage({ src: node.attrs.src, alt: node.attrs.alt })
-  }, [editor.commands, node.attrs.alt, node.attrs.src])
+	const onDownload = React.useCallback(() => {
+		editor.commands.downloadImage({ src: node.attrs.src, alt: node.attrs.alt });
+	}, [editor.commands, node.attrs.alt, node.attrs.src]);
 
-  const onCopy = React.useCallback(() => {
-    editor.commands.copyImage({ src: node.attrs.src })
-  }, [editor.commands, node.attrs.src])
+	const onCopy = React.useCallback(() => {
+		editor.commands.copyImage({ src: node.attrs.src });
+	}, [editor.commands, node.attrs.src]);
 
-  const onCopyLink = React.useCallback(() => {
-    editor.commands.copyLink({ src: node.attrs.src })
-  }, [editor.commands, node.attrs.src])
+	const onCopyLink = React.useCallback(() => {
+		editor.commands.copyLink({ src: node.attrs.src });
+	}, [editor.commands, node.attrs.src]);
 
-  const onRemoveImg = React.useCallback(() => {
-    editor.commands.command(({ tr, dispatch }) => {
-      const { selection } = tr
-      const nodeAtSelection = tr.doc.nodeAt(selection.from)
+	const onRemoveImg = React.useCallback(() => {
+		editor.commands.command(({ tr, dispatch }) => {
+			const { selection } = tr;
+			const nodeAtSelection = tr.doc.nodeAt(selection.from);
 
-      if (nodeAtSelection && nodeAtSelection.type.name === "image" && dispatch) {
-        tr.deleteSelection()
-        return true
-      }
-      return false
-    })
-  }, [editor.commands])
+			if (
+				nodeAtSelection &&
+				nodeAtSelection.type.name === "image" &&
+				dispatch
+			) {
+				tr.deleteSelection();
+				return true;
+			}
+			return false;
+		});
+	}, [editor.commands]);
 
-  return { isLink, onView, onDownload, onCopy, onCopyLink, onRemoveImg }
-}
+	return { isLink, onView, onDownload, onCopy, onCopyLink, onRemoveImg };
+};

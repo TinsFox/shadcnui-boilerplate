@@ -1,7 +1,7 @@
-import { redirect } from "react-router-dom"
+import { redirect } from "react-router-dom";
 
-export const loader = () => redirect(`/dashboard/overview`)
+export const loader = () => redirect("/dashboard/overview");
 
 export function Component() {
-  return null
+	return null;
 }

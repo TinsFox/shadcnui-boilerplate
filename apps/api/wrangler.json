@@ -1,0 +1,19 @@
+{
+	"$schema": "node_modules/wrangler/config-schema.json",
+	"name": "mock-service",
+	"main": "src/index.ts",
+	"dev": {
+		"port": 2111
+	},
+	"assets": {
+		"directory": "public"
+	},
+	"compatibility_flags": [
+		"nodejs_compat",
+		"nodejs_compat_populate_process_env"
+	],
+	"compatibility_date": "2025-02-12",
+	"observability": {
+		"enabled": true
+	}
+}

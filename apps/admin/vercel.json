@@ -1,12 +1,12 @@
 {
-  "rewrites": [
-    {
-      "source": "/api/:path(.*)",
-      "destination": "https://mock-service.tinsfox4012370.workers.dev/api/:path"
-    },
-    {
-      "source": "/(.*)",
-      "destination": "/"
-    }
-  ]
+	"rewrites": [
+		{
+			"source": "/api/:path(.*)",
+			"destination": "https://mock-service.tinsfox4012370.workers.dev/api/:path"
+		},
+		{
+			"source": "/(.*)",
+			"destination": "/"
+		}
+	]
 }

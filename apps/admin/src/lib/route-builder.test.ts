@@ -1,28 +1,28 @@
-import { describe, expect, test } from "vitest"
+import { describe, expect, test } from "vitest";
 
-import { buildGlobRoutes } from "./route-builder"
+import { buildGlobRoutes } from "./route-builder";
 
-const fakePromise = () => Promise.resolve({ default: () => {} })
+const fakePromise = () => Promise.resolve({ default: () => {} });
 describe("test route builder", () => {
-  test("match snapshot", () => {
-    expect(
-      buildGlobRoutes({
-        "./pages/(external)/layout.tsx": fakePromise,
-        "./pages/(external)/(with-layout)/index.tsx": fakePromise,
-        "./pages/(external)/(with-layout)/layout.tsx": fakePromise,
-        "./pages/(external)/(with-layout)/feed/[id]/index.tsx": fakePromise,
-        "./pages/(external)/(with-layout)/feed/[id]/layout.tsx": fakePromise,
+	test("match snapshot", () => {
+		expect(
+			buildGlobRoutes({
+				"./pages/(external)/layout.tsx": fakePromise,
+				"./pages/(external)/(with-layout)/index.tsx": fakePromise,
+				"./pages/(external)/(with-layout)/layout.tsx": fakePromise,
+				"./pages/(external)/(with-layout)/feed/[id]/index.tsx": fakePromise,
+				"./pages/(external)/(with-layout)/feed/[id]/layout.tsx": fakePromise,
 
-        "./pages/(main)/layout.tsx": fakePromise,
-        "./pages/(main)/(context)/layout.tsx": fakePromise,
-        "./pages/(main)/(context)/discover/layout.tsx": fakePromise,
-        "./pages/(main)/(context)/discover/index.tsx": fakePromise,
+				"./pages/(main)/layout.tsx": fakePromise,
+				"./pages/(main)/(context)/layout.tsx": fakePromise,
+				"./pages/(main)/(context)/discover/layout.tsx": fakePromise,
+				"./pages/(main)/(context)/discover/index.tsx": fakePromise,
 
-        "./pages/preview.tsx": fakePromise,
-        "./pages/add/layout.tsx": fakePromise,
-        "./pages/add/index.tsx": fakePromise,
-      }),
-    ).toMatchInlineSnapshot(`
+				"./pages/preview.tsx": fakePromise,
+				"./pages/add/layout.tsx": fakePromise,
+				"./pages/add/index.tsx": fakePromise,
+			}),
+		).toMatchInlineSnapshot(`
       [
         {
           "children": [
@@ -171,6 +171,6 @@ describe("test route builder", () => {
           "path": "",
         },
       ]
-    `)
-  })
-})
+    `);
+	});
+});

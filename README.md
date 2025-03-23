@@ -25,9 +25,6 @@ A boilerplate built with [**shadcn/ui**](https://github.com/shadcn-ui/ui) for ra
 - [**TypeScript**](https://www.typescriptlang.org/): Static typing for enhanced code quality and developer experience.
 - [**Vite**](https://vitejs.dev): Fast build tool and development server with optimized builds.
 - [**Storybook**](https://storybook.js.org/): Develop and test UI components in isolation.
-- [**ESLint**](https://eslint.org/): Code quality assurance through linting.
-  - [**Lint-staged**](https://github.com/okonet/lint-staged): Runs linters on staged files during commits.
-  - [**simple-git-hooks**](https://github.com/toplenboren/simple-git-hooks): Automates tasks like linting before commits.
 - [**React Hook Form**](https://react-hook-form.com): Simplifies form handling with minimal re-renders.
 - [**Zod**](https://github.com/colinhacks/zod): Schema validation for form data.
 - [**Jotai**](https://github.com/pmndrs/jotai): Atomic state management for fine-grained control.

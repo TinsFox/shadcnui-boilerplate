@@ -1,13 +1,16 @@
 {
-  "name": "docs",
-  "version": "1.0.0",
-  "description": "",
-  "author": "",
-  "license": "ISC",
-  "keywords": [],
-  "main": "index.js",
-  "scripts": {
-    "dev": "mintlify dev --port 3004",
-    "lint": "mintlify broken-links"
-  }
+	"name": "docs",
+	"version": "1.0.0",
+	"description": "",
+	"author": "",
+	"license": "ISC",
+	"keywords": [],
+	"main": "index.js",
+	"scripts": {
+		"dev": "mintlify dev --port 3004",
+		"lint": "mintlify broken-links"
+	},
+	"devDependencies": {
+		"mintlify": "^4.0.441"
+	}
 }

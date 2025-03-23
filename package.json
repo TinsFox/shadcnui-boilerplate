@@ -1,66 +1,51 @@
 {
-  "name": "shadcnui-boilerplate",
-  "type": "module",
-  "version": "1.1.0",
-  "private": true,
-  "packageManager": "pnpm@9.12.3",
-  "homepage": "https://github.com/TinsFox/shadcnui-boilerplate",
-  "repository": {
-    "url": "https://github.com/TinsFox/shadcnui-boilerplate",
-    "type": "git"
-  },
-  "scripts": {
-    "admin:build": "turbo --filter admin build",
-    "admin:dev": "turbo --filter admin dev",
-    "api:deploy": "pnpm --filter api workers:deploy",
-    "api:dev": "turbo --filter api dev",
-    "coverage": "vitest run --coverage",
-    "dev": "turbo dev",
-    "docs:build": "turbo vitepress build docs",
-    "docs:dev": "turbo vitepress dev docs",
-    "docs:preview": "turbo vitepress preview docs",
-    "generate": "tsx scripts/generate-exports.ts",
-    "lint": "eslint",
-    "lint:fix": "eslint --fix --quiet --no-warn-ignored",
-    "prepare": "pnpm exec simple-git-hooks",
-    "release": "release-it",
-    "tauri:build": "turbo build --filter tauri",
-    "tauri:dev": "turbo dev --filter tauri",
-    "test": "vitest",
-    "test:coverage": "vitest run --coverage",
-    "test:ui": "vitest --ui",
-    "test:watch": "vitest watch"
-  },
-  "dependencies": {
-    "dotenv": "^16.4.5"
-  },
-  "devDependencies": {
-    "@chromatic-com/storybook": "^3.2.2",
-    "@commitlint/cli": "^19.5.0",
-    "@commitlint/config-conventional": "^19.5.0",
-    "@faker-js/faker": "^9.2.0",
-    "@types/node": "^22.9.3",
-    "eslint": "^9.14.0",
-    "eslint-config-hyoban": "^3.1.12",
-    "eslint-plugin-storybook": "^0.11.0",
-    "lint-staged": "^15.2.10",
-    "release-it": "^17.10.0",
-    "release-it-pnpm": "^4.6.3",
-    "simple-git-hooks": "^2.11.1",
-    "tsx": "^4.19.2",
-    "turbo": "^2.3.0",
-    "typescript": "^5.6.3"
-  },
-  "simple-git-hooks": {
-    "pre-commit": "npx lint-staged",
-    "commit-msg": "npx --no -- commitlint --edit"
-  },
-  "lint-staged": {
-    "*": "eslint --fix --quiet --no-warn-ignored"
-  },
-  "eslintConfig": {
-    "extends": [
-      "plugin:storybook/recommended"
-    ]
-  }
+	"name": "shadcnui-boilerplate",
+	"type": "module",
+	"version": "1.1.0",
+	"private": true,
+	"packageManager": "pnpm@9.15.9",
+	"homepage": "https://github.com/TinsFox/shadcnui-boilerplate",
+	"repository": {
+		"url": "https://github.com/TinsFox/shadcnui-boilerplate",
+		"type": "git"
+	},
+	"scripts": {
+		"admin:build": "turbo --filter admin build",
+		"admin:dev": "turbo --filter admin dev",
+		"api:deploy": "pnpm --filter api workers:deploy",
+		"api:dev": "turbo --filter api dev",
+		"coverage": "vitest run --coverage",
+		"dev": "turbo dev",
+		"docs:build": "turbo vitepress build docs",
+		"docs:dev": "turbo vitepress dev docs",
+		"docs:preview": "turbo vitepress preview docs",
+		"generate": "tsx scripts/generate-exports.ts",
+		"release": "release-it",
+		"tauri:build": "turbo build --filter tauri",
+		"tauri:dev": "turbo dev --filter tauri",
+		"test": "vitest",
+		"test:coverage": "vitest run --coverage",
+		"test:ui": "vitest --ui",
+		"test:watch": "vitest watch",
+		"format": "biome format --write .",
+		"lint": "pnpm biome lint --write .",
+		"prepare": "pnpm dlx lefthook install",
+		"check": "biome check --fix --unsafe"
+	},
+	"devDependencies": {
+		"@biomejs/biome": "1.9.4",
+		"@chromatic-com/storybook": "^3.2.6",
+		"@commitlint/cli": "^19.8.0",
+		"@commitlint/config-conventional": "^19.8.0",
+		"@faker-js/faker": "^9.6.0",
+		"@types/node": "^22.13.11",
+		"dotenv": "^16.4.7",
+		"lefthook": "^1.11.3",
+		"lint-staged": "^15.5.0",
+		"release-it": "^17.11.0",
+		"release-it-pnpm": "^4.6.4",
+		"tsx": "^4.19.3",
+		"turbo": "^2.4.4",
+		"typescript": "^5.8.2"
+	}
 }

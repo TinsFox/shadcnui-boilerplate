@@ -1,7 +1,7 @@
-import { redirect } from "react-router-dom"
+import { redirect } from "react-router-dom";
 
-export const loader = () => redirect(`/form/basic-form`)
+export const loader = () => redirect("/form/basic-form");
 
 export function Component() {
-  return null
+	return null;
 }

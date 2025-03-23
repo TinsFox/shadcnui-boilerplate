@@ -1,75 +1,30 @@
 {
-  // You shouldn't use formatter with this ESLint config
-  "[javascript][javascriptreact][typescript][typescriptreact][json][jsonc]": {
-    "editor.formatOnSave": true,
-    "editor.codeActionsOnSave": {
-      "source.fixAll.eslint": "explicit"
-    },
-    "editor.defaultFormatter": "vscode.typescript-language-features"
-  },
-
-  // If you are using ESLint 9.9.0 and eslint.config.ts
-  "eslint.options": {
-    "flags": ["unstable_ts_config"]
-  },
-
-  // If you do not want to auto fix some rules on save
-  // You can put this in your user settings or workspace settings
-  "eslint.codeActionsOnSave.rules": [
-    "!prefer-const",
-    "!unused-imports/no-unused-imports",
-    // "!@stylistic/jsx-self-closing-comp",
-    // "!tailwindcss/classnames-order",
-    "*"
-  ],
-
-  // If you want to silent stylistic rules
-  // You can put this in your user settings or workspace settings
-  "eslint.rules.customizations": [
-    { "rule": "@stylistic/*", "severity": "off", "fixable": true },
-    { "rule": "antfu/consistent-list-newline", "severity": "off" },
-    { "rule": "hyoban/jsx-attribute-spacing", "severity": "off" },
-    { "rule": "simple-import-sort/*", "severity": "off" },
-    { "rule": "prefer-const", "severity": "off" },
-    { "rule": "unused-imports/no-unused-imports", "severity": "off" },
-    { "rule": "tailwindcss/classnames-order", "severity": "off" }
-  ],
-  "[typescript]": {
-    "editor.defaultFormatter": "vscode.typescript-language-features"
-  },
-  "search.exclude": {
-    "**/dist/**": true,
-    "public/**/*.js": true,
-    "**/*.svg": true
-  },
-  "[typescriptreact]": {
-    "editor.defaultFormatter": "vscode.typescript-language-features"
-  },
-  "tailwindCSS.experimental.classRegex": [
-    ["cva\\(([^)]*)\\)", "[\"'`]([^\"'`]*).*?[\"'`]"],
-    ["cn\\(([^)]*)\\)", "[\"'`]([^\"'`]*).*?[\"'`]"]
-  ],
-  "i18n-ally.pathMatcher": "{locale}/{namespaces}.json",
-  "i18n-ally.namespace": true,
-  "i18n-ally.keystyle": "nested",
-  "i18n-ally.localesPaths": "locales",
-  "i18n-ally.displayLanguage": "zh-CN",
-  "typescript.tsdk": "node_modules/typescript/lib",
-  "cSpell.words": [
-    "autodocs",
-    "classname",
-    "clsx",
-    "hono",
-    "hookform",
-    "hyoban",
-    "lucide",
-    "ofetch",
-    "openapi",
-    "sonner",
-    "tanstack",
-    "tiptap",
-    "tsup"
-  ],
-  "typescript.preferences.autoImportFileExcludePatterns": ["react-day-picker"],
-  "typescript.preferences.importModuleSpecifier": "shortest"
+	"tailwindCSS.experimental.classRegex": [
+		["cx\\(([^)]*)\\)", "(?:'|\"|`)([^']*)(?:'|\"|`)"],
+		["cva\\(([^)]*)\\)", "[\"'`]([^\"'`]*).*?[\"'`]"],
+		["cn\\(([^)]*)\\)", "[\"'`]([^\"'`]*).*?[\"'`]"]
+	],
+	"[javascript]": {
+		"editor.defaultFormatter": "biomejs.biome"
+	},
+	"[javascriptreact]": {
+		"editor.defaultFormatter": "biomejs.biome"
+	},
+	"[typescript]": {
+		"editor.defaultFormatter": "biomejs.biome"
+	},
+	"[typescriptreact]": {
+		"editor.defaultFormatter": "biomejs.biome"
+	},
+	"[json]": {
+		"editor.quickSuggestions": {
+			"strings": true
+		},
+		"editor.defaultFormatter": "biomejs.biome",
+		"editor.suggest.insertMode": "replace"
+	},
+	"editor.codeActionsOnSave": {
+		"quickfix.biome": "explicit",
+		"source.organizeImports.biome": "explicit"
+	}
 }

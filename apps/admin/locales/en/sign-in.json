@@ -1,0 +1,19 @@
+{
+	"welcome_back": "Welcome back",
+	"login_description": "Login to your Acme Inc account",
+	"email": "Email",
+	"email_placeholder": "Enter your email",
+	"password": "Password",
+	"password_placeholder": "Enter your password",
+	"login_button": "Login",
+	"or_continue_with": "Or continue with",
+	"login_with_apple": "Login with Apple",
+	"login_with_google": "Login with Google",
+	"login_with_meta": "Login with Meta",
+	"no_account": "Don't have an account?",
+	"sign_up": "Sign up",
+	"terms_notice": "By clicking continue, you agree to our",
+	"terms_of_service": "Terms of Service",
+	"privacy_policy": "Privacy Policy",
+	"and": "and"
+}

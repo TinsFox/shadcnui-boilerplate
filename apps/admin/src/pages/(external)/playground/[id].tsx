@@ -1,10 +1,10 @@
-import { useParams } from "react-router-dom"
+import { useParams } from "react-router-dom";
 
 export function Component() {
-  const { id } = useParams()
-  return (
-    <div>
-      <h1>Id: {id}</h1>
-    </div>
-  )
+	const { id } = useParams();
+	return (
+		<div>
+			<h1>Id: {id}</h1>
+		</div>
+	);
 }

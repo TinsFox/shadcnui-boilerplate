@@ -1,0 +1,23 @@
+{
+	"name": "姓名",
+	"name_placeholder": "请输入姓名",
+	"email": "邮箱",
+	"email_placeholder": "请输入邮箱",
+	"password": "密码",
+	"password_placeholder": "请输入密码",
+	"confirm_password": "确认密码",
+	"confirm_password_placeholder": "请确认密码",
+	"create_account": "创建账户",
+	"already_have_account": "已有账户？",
+	"login": "登录",
+	"title": "创建账户",
+	"subtitle": "请输入您的信息以开始使用",
+	"or_continue_with": "或继续使用",
+	"sign_up_with_apple": "使用 Apple 注册",
+	"sign_up_with_google": "使用 Google 注册",
+	"sign_up_with_meta": "使用 Meta 注册",
+	"terms_notice": "点击继续即表示您同意我们的",
+	"terms_of_service": "服务条款",
+	"privacy_policy": "隐私政策",
+	"and": "和"
+}

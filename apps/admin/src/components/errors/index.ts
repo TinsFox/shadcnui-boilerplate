@@ -1,11 +1,12 @@
-import { ModalErrorFallback } from "./ModalError"
+import { ModalErrorFallback } from "./ModalError";
 
 export enum ErrorComponentType {
-  Modal = "Modal",
+	Modal = "Modal",
 }
 
 export const ErrorFallbackMap = {
-  [ErrorComponentType.Modal]: ModalErrorFallback,
-}
+	[ErrorComponentType.Modal]: ModalErrorFallback,
+};
 
-export const getErrorFallback = (type: ErrorComponentType) => ErrorFallbackMap[type]
+export const getErrorFallback = (type: ErrorComponentType) =>
+	ErrorFallbackMap[type];

@@ -1,10 +1,9 @@
 {
-  "recommendations": [
-    "streetsidesoftware.code-spell-checker",
-    "ezforo.copy-relative-path-and-line-numbers",
-    "editorconfig.editorconfig",
-    "dbaeumer.vscode-eslint",
-    "bradlc.vscode-tailwindcss",
-    "vitest.explorer"
-  ]
+	"recommendations": [
+		"streetsidesoftware.code-spell-checker",
+		"ezforo.copy-relative-path-and-line-numbers",
+		"editorconfig.editorconfig",
+		"bradlc.vscode-tailwindcss",
+		"vitest.explorer"
+	]
 }

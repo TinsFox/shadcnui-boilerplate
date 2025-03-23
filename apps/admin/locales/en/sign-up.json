@@ -1,0 +1,23 @@
+{
+	"name": "Name",
+	"name_placeholder": "Please enter your name",
+	"email": "Email",
+	"email_placeholder": "Please enter your email",
+	"password": "Password",
+	"password_placeholder": "Please enter your password",
+	"confirm_password": "Confirm Password",
+	"confirm_password_placeholder": "Please confirm your password",
+	"create_account": "Create Account",
+	"already_have_account": "Already have an account?",
+	"login": "Login",
+	"title": "Create an account",
+	"subtitle": "Enter your information to get started",
+	"or_continue_with": "Or continue with",
+	"sign_up_with_apple": "Sign up with Apple",
+	"sign_up_with_google": "Sign up with Google",
+	"sign_up_with_meta": "Sign up with Meta",
+	"terms_notice": "By clicking continue, you agree to our",
+	"terms_of_service": "Terms of Service",
+	"privacy_policy": "Privacy Policy",
+	"and": "and"
+}

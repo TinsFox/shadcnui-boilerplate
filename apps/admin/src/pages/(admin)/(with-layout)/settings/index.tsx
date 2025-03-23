@@ -1,7 +1,7 @@
-import { redirect } from "react-router-dom"
+import { redirect } from "react-router-dom";
 
 export function Component() {
-  return null
+	return null;
 }
 
-export const loader = () => redirect(`/settings/profile`)
+export const loader = () => redirect("/settings/profile");

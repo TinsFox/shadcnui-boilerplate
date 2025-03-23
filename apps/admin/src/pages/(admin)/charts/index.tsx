@@ -1,11 +1,11 @@
-import { redirect } from "react-router-dom"
+import { redirect } from "react-router-dom";
 
 export const loader = ({
-  request,
+	request,
 }: {
-  request: Request
-  params: { chartName: string }
+	request: Request;
+	params: { chartName: string };
 }) => {
-  const url = new URL(request.url)
-  return redirect(`${url.pathname}/area-chart`)
-}
+	const url = new URL(request.url);
+	return redirect(`${url.pathname}/area-chart`);
+};

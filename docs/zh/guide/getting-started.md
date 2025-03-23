@@ -56,7 +56,6 @@ pnpm dev
 ├── src/
 │   ├── assets/
 │   │   ├── logo/
-│   │   │   ├── eslint.svg
 │   │   │   └── faker.svg
 │   │   └── stories/
 │   │       └── assets/

@@ -1,24 +1,24 @@
-import type { Meta, StoryObj } from "@storybook/react"
-import { BrowserRouter } from "react-router-dom"
+import type { Meta, StoryObj } from "@storybook/react";
+import { BrowserRouter } from "react-router-dom";
 
-import { Announcement } from "./announcement"
+import { Announcement } from "./announcement";
 
 const meta = {
-  title: "Components/Announcement",
-  component: Announcement,
-  decorators: [
-    (Story) => (
-      <BrowserRouter>
-        <Story />
-      </BrowserRouter>
-    ),
-  ],
-  parameters: {
-    layout: "centered",
-  },
-} satisfies Meta<typeof Announcement>
+	title: "Components/Announcement",
+	component: Announcement,
+	decorators: [
+		(Story) => (
+			<BrowserRouter>
+				<Story />
+			</BrowserRouter>
+		),
+	],
+	parameters: {
+		layout: "centered",
+	},
+} satisfies Meta<typeof Announcement>;
 
-export default meta
-type Story = StoryObj<typeof meta>
+export default meta;
+type Story = StoryObj<typeof meta>;
 
-export const Default: Story = {}
+export const Default: Story = {};

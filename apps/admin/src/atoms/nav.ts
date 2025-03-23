@@ -1,3 +1,6 @@
-import { atomWithStorage } from "jotai/utils"
+import { atomWithStorage } from "jotai/utils";
 
-export const navOpenItemsAtom = atomWithStorage<Record<string, boolean>>("nav-open-items", {})
+export const navOpenItemsAtom = atomWithStorage<Record<string, boolean>>(
+	"nav-open-items",
+	{},
+);

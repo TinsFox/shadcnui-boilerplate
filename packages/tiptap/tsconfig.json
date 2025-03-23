@@ -1,27 +1,27 @@
 {
-  "$schema": "https://json.schemastore.org/tsconfig",
-  "compilerOptions": {
-    "strict": true,
-    "noUncheckedIndexedAccess": true,
-    "noImplicitOverride": true,
-    "esModuleInterop": true,
-    "skipLibCheck": true,
-    "target": "es2022",
-    "allowJs": true,
-    "module": "preserve",
-    "noEmit": true,
-    "lib": ["es2022", "dom", "dom.iterable"],
-    "jsx": "react-jsx",
-    "resolveJsonModule": true,
-    "moduleDetection": "force",
-    "isolatedModules": true,
-    "verbatimModuleSyntax": false,
-    "baseUrl": ".",
-    "paths": {
-      "@/*": ["./src/*"],
-      "@/components/*": ["../../packages/ui/src/components/*"]
-    }
-  },
-  "include": ["src/**/*", "tailwind.config.ts"],
-  "exclude": ["node_modules", "dist"]
+	"$schema": "https://json.schemastore.org/tsconfig",
+	"compilerOptions": {
+		"strict": true,
+		"noUncheckedIndexedAccess": true,
+		"noImplicitOverride": true,
+		"esModuleInterop": true,
+		"skipLibCheck": true,
+		"target": "es2022",
+		"allowJs": true,
+		"module": "preserve",
+		"noEmit": true,
+		"lib": ["es2022", "dom", "dom.iterable"],
+		"jsx": "react-jsx",
+		"resolveJsonModule": true,
+		"moduleDetection": "force",
+		"isolatedModules": true,
+		"verbatimModuleSyntax": false,
+		"baseUrl": ".",
+		"paths": {
+			"@/*": ["./src/*"],
+			"@/components/*": ["../../packages/ui/src/components/*"]
+		}
+	},
+	"include": ["src/**/*", "tailwind.config.ts"],
+	"exclude": ["node_modules", "dist"]
 }
