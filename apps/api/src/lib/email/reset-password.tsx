@@ -17,7 +17,7 @@ interface ResetPasswordEmailProps {
 export const ResetPasswordEmail = ({ resetLink }: ResetPasswordEmailProps) => (
 	<Html>
 		<Head />
-		<Preview>Reset your password for {env.PUBLIC_URL}</Preview>
+		<Preview>Reset your password for {env.BETTER_AUTH_URL}</Preview>
 		<Body style={main}>
 			<Container style={container}>
 				<Heading style={h1}>Reset your password</Heading>

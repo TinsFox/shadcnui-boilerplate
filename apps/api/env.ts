@@ -1,12 +1,10 @@
-import { config } from "dotenv";
-// import * as process from "node:process";
+import * as process from "node:process";
 import { z } from "zod";
-config({ path: "./.dev.vars", debug: true });
 
 // 定义环境变量的 schema
 const envSchema = z.object({
-	PUBLIC_URL: z.string(),
 	DATABASE_URL: z.string(),
+	BETTER_AUTH_URL: z.string(),
 	S3_ACCESS_KEY_ID: z.string().optional(),
 	S3_SECRET_ACCESS_KEY: z.string().optional(),
 	S3_BUCKET: z.string().optional(),
@@ -19,8 +17,8 @@ const envSchema = z.object({
 
 // 从 process.env 中获取环境变量
 const rawEnv = {
-	PUBLIC_URL: process.env.PUBLIC_URL,
 	DATABASE_URL: process.env.DATABASE_URL,
+	BETTER_AUTH_URL: process.env.BETTER_AUTH_URL,
 	S3_ACCESS_KEY_ID: process.env.S3_ACCESS_KEY_ID,
 	S3_SECRET_ACCESS_KEY: process.env.S3_SECRET_ACCESS_KEY,
 	S3_BUCKET: process.env.S3_BUCKET,

@@ -33,10 +33,9 @@ app.get("/", (c) => {
 });
 
 app.route("/albums", albumRouter);
-// app.route(`/users`, userRouter)
+
 app.route("/tasks", taskRouter);
 
-showRoutes(app);
 app.get(
 	"/openapi",
 	openAPISpecs(app, {
@@ -71,10 +70,10 @@ app.get(
 );
 app.notFound((c) => c.json({ message: "Not Found", ok: false }, 404));
 
-showRoutes(app, {
-	colorize: true,
-	verbose: true,
-});
+// showRoutes(app, {
+// 	colorize: true,
+// 	verbose: true,
+// });
 
 const serverInfo = [
 	{ Description: "Server", URL: `http://localhost:${env.API_PORT}` },
