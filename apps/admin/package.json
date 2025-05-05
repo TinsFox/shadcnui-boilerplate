@@ -8,7 +8,7 @@
 		"type": "git"
 	},
 	"scripts": {
-		"build": "tsc && react-router build",
+		"build": "react-router typegen && tsc && react-router build",
 		"build-storybook": "storybook build",
 		"commit": "commit",
 		"coverage": "vitest run --coverage",
