@@ -1,0 +1,134 @@
+---
+title: 'Command'
+description: 'Learn how to use the development commands'
+---
+import { Tab, Tabs } from 'fumadocs-ui/components/tabs';
+import { Accordion, Accordions } from 'fumadocs-ui/components/accordion';
+
+<Callout title="Title">
+For basic setup instructions, see the [Quickstart Guide](./quickstart).
+</Callout>
+
+
+## Development Scripts
+
+Here are the available development commands:
+
+```bash tab="development"
+pnpm dev         # Start all services using Turborepo
+```
+
+```bash tab="development admin"
+pnpm admin:dev   # Start the admin panel at http://localhost:5173
+```
+
+```bash tab="development api"
+pnpm api:dev     # Start the API server at http://localhost:8787
+```
+
+
+## Environment Variables
+
+### API Variables
+
+For API environment variables, check `/apps/api/.dev.vars.example`.
+<Accordions>
+  <Accordion title="Available Environment Variables for API">
+    - `DATABASE_URL`: Database connection string, you can get it from [Neon Console](https://console.neon.tech)
+      after creating a new database
+    - `JWT_SECRET`: JWT secret key, use `openssl rand -base64 32` to generate
+    - `COOKIE_KEY`: Cookie key, it uesed to be cookie name to store JWT token.
+      You can use any string as the cookie key, but it should be the same as the one in the admin frontend.
+      default to `token`
+  </Accordion>
+</Accordions>
+
+
+### Admin Frontend Variables
+
+For Admin Frontend environment variables, check `/apps/admin/.env.example`.
+
+<Accordions>
+  <Accordion title="Available Environment Variables for Admin Frontend">
+    - `VITE_APP_NAME`: Application name, it will be used as the title of the admin panel
+    - `VITE_API_URL`: API endpoint URL, it will be used to fetch data from the API
+    - `VITE_ENABLE_DEVTOOLS`: Enable/disable development tools, default to `false`
+    - `VITE_EDITOR`: Editor configuration, default to `vscode`, you can use `cursor` if you are using Cursor IDE
+  </Accordion>
+</Accordions>
+## Testing
+
+The project includes several testing utilities:
+
+```bash
+# Run tests
+pnpm test
+
+# Run tests in watch mode
+pnpm test:watch
+
+# Run tests with UI
+pnpm test:ui
+
+# Run tests with coverage
+pnpm test:coverage
+```
+
+## Component Development
+
+We use Storybook for component development and testing:
+
+```bash
+# Start Storybook
+pnpm storybook   # Available at http://localhost:6006
+
+# Build Storybook
+pnpm build-storybook
+```
+
+## Documentation
+
+To work on the documentation locally:
+
+```bash
+# Start documentation site
+pnpm docs:dev    # Available at http://localhost:3004
+
+# Build documentation
+pnpm docs:build
+
+# Check for broken links
+pnpm docs:lint
+```
+
+## Code Quality
+
+The project uses several tools to maintain code quality:
+
+- **commitlint**: For commit message conventions
+
+```bash
+# Fix linting issues
+pnpm lint:fix
+```
+
+## Troubleshooting
+
+<Accordions type="single">
+  <Accordion title="Can't run the development script">
+    If you're having trouble running the development script:
+    1. Make sure you have installed the project dependencies using [pnpm](https://pnpm.io)
+    2. Make sure you have set up the environment variables correctly
+
+    <Callout title="environment" type="warn">
+    Sometimes environment variables will change because the project is still under development and not yet stable.
+    This requires you to manually compare the variables in the sample file with those actually used. We are very sorry for the inconvenience.
+    </Callout>
+  </Accordion>
+</Accordions>
+
+## Next Steps
+
+- Learn about our [routing system](./routing)
+- Explore [state management](./state-management)
+- Read the [deployment guide](./deploy)

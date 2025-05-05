@@ -1,0 +1,15 @@
+{
+	"root": true,
+	"pages": [
+		"---Introduction---",
+		"quickstart",
+		"what-is-poketto-stack",
+		"--- Development ---",
+		"development/command",
+		"development/state-management",
+		"--- Deployment ---",
+		"deploying/deploy",
+		"deploying/docker",
+		"faq"
+	]
+}
