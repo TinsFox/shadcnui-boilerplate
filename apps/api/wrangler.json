@@ -5,9 +5,6 @@
 	"dev": {
 		"port": 2111
 	},
-	"assets": {
-		"directory": "public"
-	},
 	"compatibility_flags": [
 		"nodejs_compat",
 		"nodejs_compat_populate_process_env"
