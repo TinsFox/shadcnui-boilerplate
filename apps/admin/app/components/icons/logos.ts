@@ -2,7 +2,6 @@ import docker from "@/assets/logo/docker.svg";
 
 import fakerJS from "@/assets/logo/faker.svg";
 import github from "@/assets/logo/github.svg";
-import msw from "@/assets/logo/msw.svg";
 import playwright from "@/assets/logo/playwright.svg";
 import radixUI from "@/assets/logo/radix.svg";
 import react from "@/assets/logo/react.svg";
@@ -70,13 +69,6 @@ export const logos: ILogo[] = [
 		href: "https://playwright.dev/",
 		column: 3,
 		row: 3,
-	},
-	{
-		src: msw,
-		name: "MSW",
-		href: "https://mswjs.io",
-		column: 3,
-		row: 4,
 	},
 	{
 		src: fakerJS,

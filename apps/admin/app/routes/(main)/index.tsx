@@ -9,6 +9,7 @@ import { Link } from "react-router";
 import { Logo } from "@/components/icons/logo";
 import { logos } from "@/components/icons/logos";
 import { cn } from "@/lib/utils";
+import { env } from "~/env";
 import { HomeLayout } from "./layout";
 
 // Tailwind Grid cell classes lookup
@@ -45,7 +46,7 @@ export default function HomePage() {
 							className="mt-8 animate-slide-top text-4xl font-medium text-foreground [animation-delay:0.3s] [animation-fill-mode:backwards] md:text-5xl xl:mt-4 xl:animate-slide-left xl:text-6xl xl:[animation-delay:0.8s] xl:[animation-fill-mode:backwards]"
 						>
 							<a href="https://github.com/TinsFox/vite-boilerplate">
-								Shadcn UI Boilerplate
+								{env.VITE_APP_NAME}
 							</a>
 						</h1>
 						<p
