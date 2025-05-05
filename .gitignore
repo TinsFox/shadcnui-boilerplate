@@ -11,6 +11,7 @@ node_modules
 dist
 dist-ssr
 *.local
+build
 
 # Editor directories and files
 .vscode/*
@@ -48,3 +49,4 @@ coverage/
 next-env.d.ts
 
 storybook-static
+.react-router

@@ -10,8 +10,8 @@ import {
 	DialogHeader,
 	DialogTitle,
 	DialogTrigger,
-} from "@/components/ui/dialog";
-import type { toggleVariants } from "@/components/ui/toggle";
+} from "@repo/ui/dialog";
+import type { toggleVariants } from "@repo/ui/toggle";
 
 import { ToolbarButton } from "../toolbar-button";
 import { ImageEditBlock } from "./image-edit-block";

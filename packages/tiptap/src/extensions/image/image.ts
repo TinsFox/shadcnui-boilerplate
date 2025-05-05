@@ -137,6 +137,8 @@ const downloadImage = async (
 
 	try {
 		const { blob, extension } = await fetchImageBlob(src);
+    if (!blob) throw new Error("Failed to fetch image blob");
+    if (!extension) throw new Error("Failed to determine image extension");
 		await saveImage(blob, potentialName, extension);
 		options.onActionSuccess?.({ ...props, action: "download" });
 	} catch (error) {

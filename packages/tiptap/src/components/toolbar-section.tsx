@@ -8,8 +8,8 @@ import {
 	DropdownMenuContent,
 	DropdownMenuItem,
 	DropdownMenuTrigger,
-} from "@/components/ui/dropdown-menu";
-import type { toggleVariants } from "@/components/ui/toggle";
+} from "@repo/ui/dropdown-menu";
+import type { toggleVariants } from "@repo/ui/toggle";
 import { cn } from "@/lib/utils";
 
 import type { FormatAction } from "../types";

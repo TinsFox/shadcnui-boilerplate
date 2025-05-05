@@ -7,14 +7,14 @@ import {
 	Popover,
 	PopoverContent,
 	PopoverTrigger,
-} from "@/components/ui/popover";
-import type { toggleVariants } from "@/components/ui/toggle";
-import { ToggleGroup, ToggleGroupItem } from "@/components/ui/toggle-group";
+} from "@repo/ui/popover";
+import type { toggleVariants } from "@repo/ui/toggle";
+import { ToggleGroup, ToggleGroupItem } from "@repo/ui/toggle-group";
 import {
 	Tooltip,
 	TooltipContent,
 	TooltipTrigger,
-} from "@/components/ui/tooltip";
+} from "@repo/ui/tooltip";
 
 import { useTheme } from "../../hooks/use-theme";
 import { ToolbarButton } from "../toolbar-button";

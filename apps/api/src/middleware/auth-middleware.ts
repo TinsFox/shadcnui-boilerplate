@@ -30,7 +30,6 @@ export const adminMiddleware = () => {
 		const session = await auth.api.getSession({
 			headers: c.req.raw.headers,
 		});
-		console.log("adminMiddleware session: ", session);
 		await next();
 	});
 };

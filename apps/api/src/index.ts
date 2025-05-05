@@ -74,7 +74,10 @@ app.notFound((c) => c.json({ message: "Not Found", ok: false }, 404));
 // 	colorize: true,
 // 	verbose: true,
 // });
-
+app.get("/better-auth/reference", async (c) => {
+	const openAPISchema = await auth.api.generateOpenAPISchema();
+	return c.json(openAPISchema);
+});
 const serverInfo = [
 	{ Description: "Server", URL: `http://localhost:${env.API_PORT}` },
 	{ Description: "Server API", URL: `http://localhost:${env.API_PORT}/api` },
@@ -85,6 +88,10 @@ const serverInfo = [
 	{
 		Description: "Scalar Docs",
 		URL: `http://localhost:${env.API_PORT}/api/scalar-docs`,
+	},
+	{
+		Description: "Better Auth Reference",
+		URL: `http://localhost:${env.API_PORT}/api/auth/reference`,
 	},
 ];
 

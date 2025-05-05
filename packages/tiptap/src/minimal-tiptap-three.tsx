@@ -12,7 +12,7 @@ import { SectionThree } from "@/components/minimal-tiptap/components/section/thr
 import { SectionTwo } from "@/components/minimal-tiptap/components/section/two";
 import type { UseMinimalTiptapEditorProps } from "@/components/minimal-tiptap/hooks/use-minimal-tiptap";
 import { useMinimalTiptapEditor } from "@/components/minimal-tiptap/hooks/use-minimal-tiptap";
-import { Separator } from "@/components/ui/separator";
+import { Separator } from "@repo/ui/separator";
 import { cn } from "@/lib/utils";
 
 import { MeasuredContainer } from "../minimal-tiptap/components/measured-container";

@@ -1,7 +1,5 @@
 import { z } from "@hono/zod-openapi";
 
-import { selectUserSchema } from "@/db/schema/users.schema";
-
 // 定义查询参数 Schema
 export const SearchQuerySchema = selectUserSchema.extend({
 	id: z

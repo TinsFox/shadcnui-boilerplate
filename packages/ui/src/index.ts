@@ -54,3 +54,5 @@ export * from "./hooks/use-toast";
 
 // Utils exports
 export * from "./lib/utils";
+
+export * from "./components/copy-button"

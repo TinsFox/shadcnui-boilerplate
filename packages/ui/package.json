@@ -59,7 +59,8 @@
 		"./tooltip": "./src/components/ui/tooltip.tsx",
 		"./hooks/use-mobile": "./src/hooks/use-mobile.tsx",
 		"./hooks/use-toast": "./src/hooks/use-toast.ts",
-		"./utils": "./src/lib/utils.ts"
+		"./utils": "./src/lib/utils.ts",
+    "./copy-button": "./src/components/copy-button.tsx"
 	},
 	"scripts": {
 		"generate": "tsx scripts/generate-exports.ts",

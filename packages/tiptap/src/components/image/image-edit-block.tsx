@@ -1,9 +1,9 @@
 import type { Editor } from "@tiptap/react";
 import * as React from "react";
 
-import { Button } from "@/components/ui/button";
-import { Input } from "@/components/ui/input";
-import { Label } from "@/components/ui/label";
+import { Button } from "@repo/ui/button";
+import { Input } from "@repo/ui/input";
+import { Label } from "@repo/ui/label";
 
 interface ImageEditBlockProps {
 	editor: Editor;

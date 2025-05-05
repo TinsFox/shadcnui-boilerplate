@@ -19,7 +19,7 @@
 		"@neondatabase/serverless": "^0.10.4",
 		"@scalar/hono-api-reference": "^0.7.2",
 		"bcryptjs": "^2.4.3",
-		"better-auth": "^1.2.4",
+		"better-auth": "^1.2.7",
 		"drizzle-orm": "^0.41.0",
 		"drizzle-zod": "^0.7.0",
 		"hono": "^4.7.5",

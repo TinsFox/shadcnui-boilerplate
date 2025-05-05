@@ -1,4 +1,4 @@
-import react from "@vitejs/plugin-react-swc";
+import { reactRouter } from "@react-router/dev/vite";
 import { mergeConfig } from "vite";
 import { configDefaults, defineConfig } from "vitest/config";
 
@@ -8,11 +8,10 @@ export default defineConfig((configEnv) =>
 	mergeConfig(
 		viteConfig(configEnv),
 		defineConfig({
-			plugins: [react()],
 			test: {
 				environment: "jsdom",
 				globals: true,
-				setupFiles: "./src/test/setup.ts",
+				setupFiles: "./app/test/setup.ts",
 				coverage: {
 					provider: "v8",
 					reporter: ["text", "json", "html"],

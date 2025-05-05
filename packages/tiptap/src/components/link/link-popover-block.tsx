@@ -5,7 +5,7 @@ import {
 } from "@radix-ui/react-icons";
 import * as React from "react";
 
-import { Separator } from "@/components/ui/separator";
+import { Separator } from "@repo/ui/separator";
 
 import { ToolbarButton } from "../toolbar-button";
 
