@@ -1,7 +1,6 @@
 import { openAPISpecs } from "hono-openapi";
 import { cors } from "hono/cors";
 import { csrf } from "hono/csrf";
-// import { userRouter } from './module/users/users'
 import { albumRouter } from "./module/albums/albums";
 
 import { logger } from "hono/logger";
@@ -9,7 +8,7 @@ import { requestId } from "hono/request-id";
 
 import { apiReference } from "@scalar/hono-api-reference";
 import { Hono } from "hono";
-import { showRoutes } from "hono/dev";
+
 import { env } from "../env";
 import { auth } from "./lib/auth";
 import { formatTable } from "./lib/log";
@@ -70,10 +69,6 @@ app.get(
 );
 app.notFound((c) => c.json({ message: "Not Found", ok: false }, 404));
 
-// showRoutes(app, {
-// 	colorize: true,
-// 	verbose: true,
-// });
 app.get("/better-auth/reference", async (c) => {
 	const openAPISchema = await auth.api.generateOpenAPISchema();
 	return c.json(openAPISchema);
