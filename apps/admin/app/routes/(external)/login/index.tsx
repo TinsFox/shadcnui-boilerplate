@@ -41,7 +41,7 @@ export default function LoginPage() {
 		resolver: zodResolver(loginFormSchema),
 		defaultValues: {
 			email: "admin@shadcn.com",
-			password: "admin",
+			password: "admin@shadcn.com",
 		},
 	});
 

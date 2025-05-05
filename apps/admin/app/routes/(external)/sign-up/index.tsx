@@ -26,7 +26,7 @@ const signUpSchema = z
 	.object({
 		username: z.string().min(1, "username is required"),
 		email: z.string().email("Please enter a valid email address"),
-		password: z.string().min(6, "Password must be at least 6 characters"),
+		password: z.string().min(8, "Password must be at least 6 characters"),
 		passwordConfirmation: z.string(),
 	})
 	.refine((data) => data.password === data.passwordConfirmation, {
@@ -38,7 +38,7 @@ import { useState } from "react";
 
 type SignUpValues = z.infer<typeof signUpSchema>;
 
-export function Component() {
+export default function SignUpPage() {
 	const [loading, setLoading] = useState(false);
 	const { t } = useTranslation(["signUp"]);
 	const navigate = useNavigate();
