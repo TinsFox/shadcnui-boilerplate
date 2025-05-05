@@ -17,9 +17,10 @@ import {
 
 import { RootProviders } from "@/providers/root-providers";
 import { Fallback } from "./components/fallback";
+import { env } from "./env";
 
 export function meta() {
-	return [{ title: "Boilerplate" }];
+	return [{ title: env.VITE_APP_NAME }];
 }
 
 export function Layout({ children }: { children: React.ReactNode }) {

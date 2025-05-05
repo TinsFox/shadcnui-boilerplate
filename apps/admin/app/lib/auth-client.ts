@@ -1,8 +1,9 @@
 import { adminClient } from "better-auth/client/plugins";
 import { createAuthClient } from "better-auth/react";
+import { env } from "~/env";
 
 export const authClient = createAuthClient({
-	baseURL: "http://localhost:5173",
+	baseURL: env.VITE_APP_URL,
 	plugins: [adminClient()],
 });
 
