@@ -127,8 +127,7 @@ export function NavUser() {
 							className="flex items-center gap-2 px-2 py-1.5"
 							onSelect={() =>
 								signOut().then(() => {
-									console.log("signOut");
-									// window.location.reload();
+									window.location.replace("/");
 								})
 							}
 						>
