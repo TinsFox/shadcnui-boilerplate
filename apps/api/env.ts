@@ -12,7 +12,7 @@ const envSchema = z.object({
 	S3_PUBLIC_DOMAIN: z.string().optional(),
 	RESEND_API_KEY: z.string(),
 	BETTER_AUTH_EMAIL: z.string(),
-	API_PORT: z.string().default("3000"),
+	API_PORT: z.string().default("2111"),
 });
 
 // 从 process.env 中获取环境变量
