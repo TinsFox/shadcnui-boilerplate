@@ -50,3 +50,5 @@ next-env.d.ts
 
 storybook-static
 .react-router
+.production.vars
+.env.production

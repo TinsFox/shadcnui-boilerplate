@@ -26,5 +26,6 @@
 	"editor.codeActionsOnSave": {
 		"quickfix.biome": "explicit",
 		"source.organizeImports.biome": "explicit"
-	}
+	},
+	"cSpell.words": ["VITE"]
 }
