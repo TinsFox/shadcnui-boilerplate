@@ -2,7 +2,7 @@
 	"rewrites": [
 		{
 			"source": "/api/:path(.*)",
-			"destination": "https://mock-service.tinsfox4012370.workers.dev/api/:path"
+			"destination": "https://poketto-api.afjs.dev/api/:path"
 		},
 		{
 			"source": "/(.*)",
