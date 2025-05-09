@@ -1,3 +1,4 @@
+import { env } from "cloudflare:workers";
 import {
 	Body,
 	Container,
@@ -8,7 +9,7 @@ import {
 	Preview,
 	Text,
 } from "@react-email/components";
-import { env } from "env.js";
+import * as React from "react";
 
 interface ResetPasswordEmailProps {
 	resetLink: string;

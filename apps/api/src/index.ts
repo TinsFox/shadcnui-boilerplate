@@ -12,7 +12,7 @@ import { Hono } from "hono";
 import { auth } from "./lib/auth";
 import { formatTable } from "./lib/log";
 
-import { env } from "env";
+import { env } from "cloudflare:workers";
 import { adminMiddleware } from "./middleware/auth-middleware";
 import { taskRouter } from "./module/tasks/tasks";
 const app = new Hono<HonoEnvType>().basePath("/api");

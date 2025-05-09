@@ -3,7 +3,7 @@ import { betterAuth } from "better-auth";
 import { drizzleAdapter } from "better-auth/adapters/drizzle";
 import { admin, openAPI, username } from "better-auth/plugins";
 
-import { env } from "env";
+import { env } from "cloudflare:workers";
 import * as authSchema from "../../auth-schema";
 import { resend } from "./email/resend";
 import { reactResetPasswordEmail } from "./email/rest-password";
