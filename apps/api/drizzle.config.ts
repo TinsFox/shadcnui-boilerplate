@@ -1,5 +1,5 @@
-import { env } from "cloudflare:workers";
 import { defineConfig } from "drizzle-kit";
+import { env } from "env";
 
 export default defineConfig({
 	schema: ["./src/db/schema/**/*.ts", "./auth-schema.ts"],

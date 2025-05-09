@@ -1,5 +1,5 @@
-import { env } from "cloudflare:workers";
 import { drizzle } from "drizzle-orm/neon-http";
+import { env } from "env";
 import * as authSchema from "../../auth-schema";
 import * as schema from "./schema";
 

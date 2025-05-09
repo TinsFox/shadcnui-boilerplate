@@ -1,6 +1,8 @@
 import * as process from "node:process";
 import { z } from "zod";
 
+import { env as cloudflareEnv } from "cloudflare:workers";
+
 // 定义环境变量的 schema
 const envSchema = z.object({
 	DATABASE_URL: z.string(),
@@ -15,18 +17,18 @@ const envSchema = z.object({
 	API_PORT: z.string().default("2111"),
 });
 
-// 从 process.env 中获取环境变量
+// 从 cloudflareEnv 中获取环境变量
 const rawEnv = {
-	DATABASE_URL: process.env.DATABASE_URL,
-	BETTER_AUTH_URL: process.env.BETTER_AUTH_URL,
-	S3_ACCESS_KEY_ID: process.env.S3_ACCESS_KEY_ID,
-	S3_SECRET_ACCESS_KEY: process.env.S3_SECRET_ACCESS_KEY,
-	S3_BUCKET: process.env.S3_BUCKET,
-	S3_ENDPOINT: process.env.S3_ENDPOINT,
-	S3_PUBLIC_DOMAIN: process.env.S3_PUBLIC_DOMAIN,
-	RESEND_API_KEY: process.env.RESEND_API_KEY,
-	BETTER_AUTH_EMAIL: process.env.BETTER_AUTH_EMAIL,
-	API_PORT: process.env.API_PORT,
+	DATABASE_URL: cloudflareEnv.DATABASE_URL,
+	BETTER_AUTH_URL: cloudflareEnv.BETTER_AUTH_URL,
+	S3_ACCESS_KEY_ID: cloudflareEnv.S3_ACCESS_KEY_ID,
+	S3_SECRET_ACCESS_KEY: cloudflareEnv.S3_SECRET_ACCESS_KEY,
+	S3_BUCKET: cloudflareEnv.S3_BUCKET,
+	S3_ENDPOINT: cloudflareEnv.S3_ENDPOINT,
+	S3_PUBLIC_DOMAIN: cloudflareEnv.S3_PUBLIC_DOMAIN,
+	RESEND_API_KEY: cloudflareEnv.RESEND_API_KEY,
+	BETTER_AUTH_EMAIL: cloudflareEnv.BETTER_AUTH_EMAIL,
+	API_PORT: cloudflareEnv.API_PORT,
 };
 type Env = z.infer<typeof envSchema>;
 let env: Env;

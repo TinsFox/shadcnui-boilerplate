@@ -1,14 +1,13 @@
-import * as process from "node:process";
 import { db } from "@/db";
 import { betterAuth } from "better-auth";
 import { drizzleAdapter } from "better-auth/adapters/drizzle";
 import { admin, openAPI, username } from "better-auth/plugins";
 
+import { env } from "env";
 import * as authSchema from "../../auth-schema";
 import { resend } from "./email/resend";
 import { reactResetPasswordEmail } from "./email/rest-password";
-
-const from = process.env.BETTER_AUTH_EMAIL || "";
+const from = env.BETTER_AUTH_EMAIL;
 
 export const auth = betterAuth({
 	plugins: [username(), admin(), openAPI()],
