@@ -18,7 +18,8 @@
 			"apps/admin/src/lib/dev.tsx",
 			"apps/admin/src/lib/route-builder.ts",
 			"packages/ui",
-			"packages/tiptap"
+			"packages/tiptap",
+			"worker-configuration.d.ts"
 		]
 	},
 	"formatter": {

@@ -1,4 +1,3 @@
-import * as process from "node:process";
 import { z } from "zod";
 
 import { env as cloudflareEnv } from "cloudflare:workers";
@@ -35,6 +34,7 @@ let env: Env;
 
 try {
 	// 使用 envSchema 进行验证和解析
+	console.log("rawEnv", rawEnv);
 	env = envSchema.parse(rawEnv);
 } catch (error) {
 	if (error instanceof z.ZodError) {

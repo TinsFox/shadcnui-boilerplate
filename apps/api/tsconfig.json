@@ -4,12 +4,13 @@
 		"module": "NodeNext",
 		"strict": true,
 		"skipLibCheck": true,
-		"types": ["node", "@cloudflare/workers-types"],
+		"types": ["node"],
 		"jsx": "react-jsx",
 		"jsxImportSource": "react",
 		"baseUrl": ".",
 		"paths": {
 			"@/*": ["./src/*"]
 		}
-	}
+	},
+	"include": ["worker-configuration.d.ts", "src/**/*.ts"]
 }

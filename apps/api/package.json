@@ -6,10 +6,12 @@
 		"db:seed": "tsx ./src/db/seed.ts",
 		"db:studio": "drizzle-kit studio",
 		"workers:deploy": "wrangler deploy --minify",
-		"dev": "wrangler dev",
+		"dev": "generate-types && wrangler dev",
 		"prepare": "test -f .dev.vars || cp .dev.vars.example .dev.vars",
 		"test": "vitest",
-		"typecheck": "tsc --noEmit"
+		"typecheck": "tsc --noEmit",
+		"generate-types": "wrangler types",
+		"type-check": "generate-types && tsc"
 	},
 	"dependencies": {
 		"@faker-js/faker": "^9.6.0",
@@ -27,12 +29,10 @@
 		"pg": "^8.14.1",
 		"react": "19.0.0-rc.1",
 		"resend": "^4.1.2",
-		"zod": "^3.24.2",
-		"cloudflare": "^4.2.0"
+		"zod": "^3.24.2"
 	},
 	"devDependencies": {
 		"@cloudflare/vitest-pool-workers": "^0.5.41",
-		"@cloudflare/workers-types": "^4.20250321.0",
 		"@types/bcryptjs": "^2.4.6",
 		"@types/node": "^22.13.11",
 		"@types/pg": "^8.11.11",
@@ -42,6 +42,6 @@
 		"tsx": "^4.19.3",
 		"typescript": "^5.8.2",
 		"vitest": "^2.1.9",
-		"wrangler": "^4.4.0"
+		"wrangler": "^4.14.4"
 	}
 }
