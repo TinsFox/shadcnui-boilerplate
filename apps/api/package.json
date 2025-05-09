@@ -12,11 +12,11 @@
 		"typecheck": "tsc --noEmit"
 	},
 	"dependencies": {
-		"@react-email/components": "^0.0.34",
 		"@faker-js/faker": "^9.6.0",
 		"@hono/swagger-ui": "^0.4.1",
 		"@hono/zod-openapi": "^0.17.1",
 		"@neondatabase/serverless": "^0.10.4",
+		"@react-email/components": "^0.0.34",
 		"@scalar/hono-api-reference": "^0.7.2",
 		"bcryptjs": "^2.4.3",
 		"better-auth": "^1.2.7",
@@ -25,9 +25,10 @@
 		"hono": "^4.7.5",
 		"hono-openapi": "^0.4.6",
 		"pg": "^8.14.1",
-		"zod": "^3.24.2",
+		"react": "19.0.0-rc.1",
 		"resend": "^4.1.2",
-		"react": "19.0.0-rc.1"
+		"zod": "^3.24.2",
+		"cloudflare": "^4.2.0"
 	},
 	"devDependencies": {
 		"@cloudflare/vitest-pool-workers": "^0.5.41",
