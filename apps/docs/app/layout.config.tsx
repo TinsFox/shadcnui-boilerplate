@@ -43,7 +43,7 @@ export const baseOptions: BaseLayoutProps = {
 		},
 		{
 			type: "icon",
-			url: "https://github.com/TinsFox/shadcnui-boilerplate",
+			url: "https://github.com/TinsFox/poketto-stack",
 			text: "Github",
 			icon: (
 				<svg role="img" viewBox="0 0 24 24" fill="currentColor">

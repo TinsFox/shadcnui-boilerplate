@@ -1,4 +1,4 @@
-import { Avatar, AvatarFallback, AvatarImage } from "@repo/ui/avatar";
+import { Avatar, AvatarFallback, AvatarImage } from "@poketto/ui/avatar";
 import {
 	DropdownMenu,
 	DropdownMenuContent,
@@ -7,13 +7,13 @@ import {
 	DropdownMenuLabel,
 	DropdownMenuSeparator,
 	DropdownMenuTrigger,
-} from "@repo/ui/dropdown-menu";
+} from "@poketto/ui/dropdown-menu";
 import {
 	SidebarMenu,
 	SidebarMenuButton,
 	SidebarMenuItem,
 	useSidebar,
-} from "@repo/ui/sidebar";
+} from "@poketto/ui/sidebar";
 import {
 	BadgeCheck,
 	Bell,

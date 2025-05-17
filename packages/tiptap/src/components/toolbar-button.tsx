@@ -1,12 +1,12 @@
 import type { TooltipContentProps } from "@radix-ui/react-tooltip";
 import * as React from "react";
 
-import { Toggle } from "@repo/ui/toggle";
+import { Toggle } from "@poketto/ui/toggle";
 import {
 	Tooltip,
 	TooltipContent,
 	TooltipTrigger,
-} from "@repo/ui/tooltip";
+} from "@poketto/ui/tooltip";
 import { cn } from "@/lib/utils";
 
 interface ToolbarButtonProps

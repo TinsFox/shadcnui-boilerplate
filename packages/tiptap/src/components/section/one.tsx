@@ -9,8 +9,8 @@ import {
 	DropdownMenuContent,
 	DropdownMenuItem,
 	DropdownMenuTrigger,
-} from "@repo/ui/dropdown-menu";
-import type { toggleVariants } from "@repo/ui/toggle";
+} from "@poketto/ui/dropdown-menu";
+import type { toggleVariants } from "@poketto/ui/toggle";
 import { cn } from "@/lib/utils";
 
 import type { FormatAction } from "../../types";

@@ -11,7 +11,10 @@
 		"prefix": ""
 	},
 	"aliases": {
-		"components": "@/components",
-		"utils": "@/lib/utils"
+		"components": "@poketto/ui/components",
+		"hooks": "@poketto/ui/hooks",
+		"lib": "@poketto/ui/lib",
+		"utils": "@poketto/ui/lib/utils",
+		"ui": "@poketto/ui/components"
 	}
 }

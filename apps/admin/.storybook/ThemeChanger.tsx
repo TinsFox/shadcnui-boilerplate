@@ -1,4 +1,4 @@
-import { Button } from "@repo/ui/button";
+import { Button } from "@poketto/ui/button";
 import { addons } from "@storybook/manager-api";
 import { useTheme } from "@storybook/theming";
 import { Moon, Sun } from "lucide-react";

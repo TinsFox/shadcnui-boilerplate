@@ -1,12 +1,12 @@
-import { Button } from "@repo/ui/button";
+import { Button } from "@poketto/ui/button";
 import {
 	DropdownMenu,
 	DropdownMenuContent,
 	DropdownMenuItem,
 	DropdownMenuSeparator,
 	DropdownMenuTrigger,
-} from "@repo/ui/dropdown-menu";
-import { cn } from "@repo/ui/utils";
+} from "@poketto/ui/dropdown-menu";
+import { cn } from "@poketto/ui/utils";
 import type { Column } from "@tanstack/react-table";
 import { ArrowDown, ArrowUp, ArrowUpDown, EyeOff } from "lucide-react";
 

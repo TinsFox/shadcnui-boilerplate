@@ -1,4 +1,4 @@
-import { Card, CardContent, CardHeader, CardTitle } from "@repo/ui/card";
+import { Card, CardContent, CardHeader, CardTitle } from "@poketto/ui/card";
 import { Bar, BarChart, Line, LineChart, ResponsiveContainer } from "recharts";
 
 import { useTheme } from "@/components/theme/theme-provider";

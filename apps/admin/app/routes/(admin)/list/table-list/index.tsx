@@ -1,14 +1,13 @@
-import { Cross2Icon, DotsHorizontalIcon } from "@radix-ui/react-icons";
 import {
 	DataTable,
 	DataTableColumnHeader,
 	DataTableFacetedFilter,
 	DataTablePagination,
 	DataTableViewOptions,
-} from "@repo/pro-table/data-table";
-import { Badge } from "@repo/ui/badge";
-import { Button } from "@repo/ui/button";
-import { Checkbox } from "@repo/ui/checkbox";
+} from "@poketto/pro-table/data-table";
+import { Badge } from "@poketto/ui/badge";
+import { Button } from "@poketto/ui/button";
+import { Checkbox } from "@poketto/ui/checkbox";
 import {
 	DropdownMenu,
 	DropdownMenuContent,
@@ -21,9 +20,10 @@ import {
 	DropdownMenuSubContent,
 	DropdownMenuSubTrigger,
 	DropdownMenuTrigger,
-} from "@repo/ui/dropdown-menu";
-import { Input } from "@repo/ui/input";
-import { Tooltip, TooltipContent, TooltipTrigger } from "@repo/ui/tooltip";
+} from "@poketto/ui/dropdown-menu";
+import { Input } from "@poketto/ui/input";
+import { Tooltip, TooltipContent, TooltipTrigger } from "@poketto/ui/tooltip";
+import { Cross2Icon, DotsHorizontalIcon } from "@radix-ui/react-icons";
 import type {
 	ColumnDef,
 	ColumnFiltersState,

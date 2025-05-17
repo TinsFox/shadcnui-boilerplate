@@ -14,7 +14,7 @@ hero:
       link: /zh/guide/getting-started
     - theme: alt
       text: "GitHub"
-      link: https://github.com/TinsFox/shadcnui-boilerplate
+      link: https://github.com/TinsFox/poketto-stack
   image:
     src: /index.png
     alt: shadcn/ui Boilerplate

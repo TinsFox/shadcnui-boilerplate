@@ -5,13 +5,13 @@ import {
 	CardFooter,
 	CardHeader,
 	CardTitle,
-} from "@repo/ui/card";
-import type { ChartConfig } from "@repo/ui/chart";
+} from "@poketto/ui/card";
+import type { ChartConfig } from "@poketto/ui/chart";
 import {
 	ChartContainer,
 	ChartTooltip,
 	ChartTooltipContent,
-} from "@repo/ui/chart";
+} from "@poketto/ui/chart";
 import { TrendingUp } from "lucide-react";
 import { CartesianGrid, Dot, Line, LineChart } from "recharts";
 

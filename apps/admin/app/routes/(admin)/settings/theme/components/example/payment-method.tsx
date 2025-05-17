@@ -1,4 +1,4 @@
-import { Button } from "@repo/ui/button";
+import { Button } from "@poketto/ui/button";
 import {
 	Card,
 	CardContent,
@@ -6,17 +6,17 @@ import {
 	CardFooter,
 	CardHeader,
 	CardTitle,
-} from "@repo/ui/card";
-import { Input } from "@repo/ui/input";
-import { Label } from "@repo/ui/label";
-import { RadioGroup, RadioGroupItem } from "@repo/ui/radio-group";
+} from "@poketto/ui/card";
+import { Input } from "@poketto/ui/input";
+import { Label } from "@poketto/ui/label";
+import { RadioGroup, RadioGroupItem } from "@poketto/ui/radio-group";
 import {
 	Select,
 	SelectContent,
 	SelectItem,
 	SelectTrigger,
 	SelectValue,
-} from "@repo/ui/select";
+} from "@poketto/ui/select";
 
 import { Icons } from "@/components/icons";
 

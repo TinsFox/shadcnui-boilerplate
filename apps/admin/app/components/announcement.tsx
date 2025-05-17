@@ -1,5 +1,5 @@
+import { Separator } from "@poketto/ui/separator";
 import { ArrowRightIcon } from "@radix-ui/react-icons";
-import { Separator } from "@repo/ui/separator";
 import { PieChart } from "lucide-react";
 import { Link } from "react-router";
 

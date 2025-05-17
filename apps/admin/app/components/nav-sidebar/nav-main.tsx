@@ -1,9 +1,9 @@
-import { Button } from "@repo/ui/button";
+import { Button } from "@poketto/ui/button";
 import {
 	Collapsible,
 	CollapsibleContent,
 	CollapsibleTrigger,
-} from "@repo/ui/collapsible";
+} from "@poketto/ui/collapsible";
 import {
 	SidebarGroup,
 	SidebarGroupLabel,
@@ -14,7 +14,7 @@ import {
 	SidebarMenuSub,
 	SidebarMenuSubButton,
 	SidebarMenuSubItem,
-} from "@repo/ui/sidebar";
+} from "@poketto/ui/sidebar";
 import { useAtom } from "jotai";
 import { ChevronRight, ChevronsDownUp, ChevronsUpDown } from "lucide-react";
 import { useEffect, useMemo } from "react";

@@ -1,5 +1,5 @@
 import { zodResolver } from "@hookform/resolvers/zod";
-import { Button } from "@repo/ui/button";
+import { Button } from "@poketto/ui/button";
 import {
 	Form,
 	FormControl,
@@ -7,8 +7,8 @@ import {
 	FormItem,
 	FormLabel,
 	FormMessage,
-} from "@repo/ui/form";
-import { Input } from "@repo/ui/input";
+} from "@poketto/ui/form";
+import { Input } from "@poketto/ui/input";
 
 import { useForm } from "react-hook-form";
 import { useTranslation } from "react-i18next";
@@ -24,7 +24,7 @@ import { cn } from "@/lib/utils";
 import { signIn } from "@/lib/auth-client";
 import type { ILoginForm } from "@/schema/user";
 import { loginFormSchema } from "@/schema/user";
-import { Card, CardContent } from "@repo/ui/card";
+import { Card, CardContent } from "@poketto/ui/card";
 
 import { useState } from "react";
 

@@ -2,24 +2,24 @@
 
 ## 使用 Vercel 部署
 
-[![Deploy with Vercel](https://vercel.com/button)](https://vercel.com/new/clone?repository-url=https%3A%2F%2Fgithub.com%2FTinsFox%2Fshadcnui-boilerplate&env=VITE_APP_NAME,VITE_API_URL,VITE_ENABLE_DEVTOOLS,VITE_EDITOR,VITE_ENABLE_MOCK)
+[![Deploy with Vercel](https://vercel.com/button)](https://vercel.com/new/clone?repository-url=https%3A%2F%2Fgithub.com%2FTinsFox%2Fpoketto-stack&env=VITE_APP_NAME,VITE_API_URL,VITE_ENABLE_DEVTOOLS,VITE_EDITOR,VITE_ENABLE_MOCK)
 
 
 ## 使用 Docker 部署
 
-项目中包含了 [dockerfile](https://github.com/TinsFox/shadcnui-boilerplate/blob/main/Dockerfile) 与 [Nginx Conf](https://github.com/TinsFox/shadcnui-boilerplate/blob/main/docker/nginx.conf)
+项目中包含了 [dockerfile](https://github.com/TinsFox/poketto-stack/blob/main/Dockerfile) 与 [Nginx Conf](https://github.com/TinsFox/poketto-stack/blob/main/docker/nginx.conf)
 
 
 1. 构建镜像
 
 ```bash
-docker build -t shadcnui-boilerplate .
+docker build -t poketto-stack .
 ```
 
 2. 运行容器
 
 ```bash
-docker run -d -p 80:80 --name shadcnui-boilerplate shadcnui-boilerplate
+docker run -d -p 80:80 --name poketto-stack poketto-stack
 ```
 
 ::: details 为什么会有自己的 Nginx Conf?
@@ -30,7 +30,7 @@ docker run -d -p 80:80 --name shadcnui-boilerplate shadcnui-boilerplate
 :::
 
 > [!WARNING]
-> 期望是可以读取 [环境变量](https://github.com/TinsFox/shadcnui-boilerplate/blob/main/docker/nginx.conf#L14)，然后 Nginx 反代环境变量指向的服务，但是目前这个模板我还没有用到生产中，这个功能还没有经过测试。
+> 期望是可以读取 [环境变量](https://github.com/TinsFox/poketto-stack/blob/main/docker/nginx.conf#L14)，然后 Nginx 反代环境变量指向的服务，但是目前这个模板我还没有用到生产中，这个功能还没有经过测试。
 
 如果你有需要的话，可以参考下面的配置文件，然后进行修改。经过验证，这个配置文件是可用的。
 

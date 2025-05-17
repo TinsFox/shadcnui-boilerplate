@@ -1,4 +1,4 @@
-import { MinimalTiptapEditor } from "@repo/tiptap/minimal-tiptap";
+import { MinimalTiptapEditor } from "@poketto/tiptap/minimal-tiptap";
 import type { Content } from "@tiptap/react";
 import { useState } from "react";
 

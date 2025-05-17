@@ -1,6 +1,6 @@
-import { Skeleton } from "@repo/ui/skeleton";
-import { ToggleGroup, ToggleGroupItem } from "@repo/ui/toggle-group";
-import { Tooltip, TooltipContent, TooltipTrigger } from "@repo/ui/tooltip";
+import { Skeleton } from "@poketto/ui/skeleton";
+import { ToggleGroup, ToggleGroupItem } from "@poketto/ui/toggle-group";
+import { Tooltip, TooltipContent, TooltipTrigger } from "@poketto/ui/tooltip";
 import * as React from "react";
 
 import { useMediaQuery } from "@/hooks/use-media-query";

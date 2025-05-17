@@ -10,13 +10,13 @@
 ### Clone the repository
 
 ```bash
-git clone https://github.com/TinsFox/shadcnui-boilerplate.git
+git clone https://github.com/TinsFox/poketto-stack.git
 ```
 
 ### Install dependencies
 
 ```bash
-cd shadcnui-boilerplate
+cd poketto-stack
 pnpm install
 ```
 

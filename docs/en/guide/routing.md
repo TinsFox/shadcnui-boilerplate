@@ -1,6 +1,6 @@
 # Routing
 
-shadcnui-boilerplate uses a **file-system based router** where folders are used to define routes.
+poketto-stack uses a **file-system based router** where folders are used to define routes.
 
 > [!IMPORTANT]
 > This feature is implemented by [Innei](https://github.com/innei). Source code is [here](https://github.com/innei-template/vite-react-tailwind-template/blob/master/src/utils/route-builder.ts). Thanks for **Innei**!

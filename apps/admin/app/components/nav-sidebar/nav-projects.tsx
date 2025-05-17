@@ -4,7 +4,7 @@ import {
 	DropdownMenuItem,
 	DropdownMenuSeparator,
 	DropdownMenuTrigger,
-} from "@repo/ui/dropdown-menu";
+} from "@poketto/ui/dropdown-menu";
 import {
 	SidebarGroup,
 	SidebarGroupLabel,
@@ -13,7 +13,7 @@ import {
 	SidebarMenuButton,
 	SidebarMenuItem,
 	useSidebar,
-} from "@repo/ui/sidebar";
+} from "@poketto/ui/sidebar";
 import type { LucideIcon } from "lucide-react";
 import { Folder, MoreHorizontal, Share, Trash2 } from "lucide-react";
 

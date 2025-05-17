@@ -1,4 +1,4 @@
-import { Button } from "@repo/ui/button";
+import { Button } from "@poketto/ui/button";
 import {
 	Card,
 	CardContent,
@@ -6,9 +6,9 @@ import {
 	CardFooter,
 	CardHeader,
 	CardTitle,
-} from "@repo/ui/card";
-import { Label } from "@repo/ui/label";
-import { Switch } from "@repo/ui/switch";
+} from "@poketto/ui/card";
+import { Label } from "@poketto/ui/label";
+import { Switch } from "@poketto/ui/switch";
 
 export function CardsCookieSettings() {
 	return (

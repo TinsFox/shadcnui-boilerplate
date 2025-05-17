@@ -3,46 +3,150 @@ title: Project Structure
 description: 'Learn about the project structure of the monorepo.'
 ---
 
+import { File, Folder, Files } from 'fumadocs-ui/components/files';
 
 
-| Folder/File | Description |
-| --- | --- |
-| `apps/admin` | The Admin Panel built with shadcn/ui and Radix UI. |
-| `apps/api` | The API built with Hono. |
-| `apps/docs` | The documentation site built with mintlify. |
-| `apps/tauri` | The Tauri App. |
-| `packages/ui` | shadcn/ui components. |
+## Repo
 
-### Admin Panel (`apps/admin`)
+<Files>
+  <Folder name="apps" defaultOpen>
+    <File name="admin" />
+    <File name="api" />
+    <File name="docs" />
+    <File name="tauri" />
+    <File name="website" />
+  </Folder>
+  <Folder name="packages">
+    <File name="pro-table" />
+    <File name="tiptap" />
+    <File name="ui" />
+  </Folder>
+  <File name="docker" />
+  <File name="package.json" />
+</Files>
 
-The structure of the Admin Panel.
+#### 目录结构说明
 
-| Folder/File | Description |
-| --- | --- |
-| `.storybook` | Storybook configuration and theme setup. |
-| `locales` | i18n source files for multiple languages (en, zh-CN). |
-| `public` | Static files and assets. |
-| `scripts` | Scripts for the Admin Panel. |
-| `src` | Source files. |
-| `src/assets` | Assets (images, icons, etc.). |
-| `src/atoms` | Jotai atoms for state management. |
-| `src/components` | Shared components. |
-| `src/constants` | Constants and configuration values. |
-| `src/hooks` | Shared custom React hooks. |
-| `src/lib` | Shared libraries and utilities. |
-| `src/providers` | Application providers (root-providers). |
-| `src/utils` | Shared utility functions. |
-| `src/types` | TypeScript type definitions. |
-| `src/env.ts` | Environment variables configuration. |
-| `src/styles` | Global styles and Tailwind CSS configuration. |
-| `.env.example` | Example environment variables template. |
-| `tailwind.config.ts` | Tailwind CSS configuration. |
-| `tsconfig.json` | TypeScript configuration. |
-| `vite.config.ts` | Vite build and development configuration. |
-| `package.json` | Project dependencies and scripts. |
-| `vitest.config.ts` | Vitest testing configuration. |
-| `vercel.json` | Vercel deployment configuration. |
-| `postcss.config.cjs` | PostCSS configuration for Tailwind. |
-| `README.md` | Project documentation in English. |
-| `README-zh_CN.md` | Project documentation in Chinese. |
-| `components.json` | shadcn/ui components configuration. |
+| 文件/文件夹     | 说明                         |
+|----------------|------------------------------|
+| apps/          | 应用主目录，包含各端子项目：<br/>• admin - 后台管理系统，基于 React + Vite<br/>• api - 后端 API 服务，基于 Cloudflare Workers<br/>• docs - 项目文档站点，基于 Next.js<br/>• tauri - 桌面端应用，基于 Tauri + Rust<br/>• website - 官网前台，基于 Next.js |
+| packages/      | 复用的包和组件库：<br/>• pro-table - 高级表格组件库<br/>• tiptap - 富文本编辑器封装<br/>• ui - 通用 UI 组件库 |
+| docker/        | Docker 相关配置               |
+| package.json   | 顶层依赖与脚本配置            |
+
+以上表格对 monorepo 根目录下主要文件和文件夹的作用进行了简要说明。
+
+### Admin Dashboard (`apps/admin`)
+
+<Files>
+  <Folder name="app">
+    <File name="entry.client.tsx" />
+    <File name="env.ts" />
+    <File name="framer-lazy-feature.ts" />
+    <File name="root.tsx" />
+    <File name="routes.ts" />
+    <File name="assets" />
+    <File name="atoms" />
+    <File name="components" />
+    <File name="constants" />
+    <File name="hooks" />
+    <File name="i18n" />
+    <File name="lib" />
+    <File name="providers" />
+    <File name="routes" />
+    <File name="schema" />
+    <File name="styles" />
+    <File name="tests" />
+  </Folder>
+  <Folder name="locales">
+    <File name="en" />
+    <File name="zh-CN" />
+  </Folder>
+  <Folder name="public">
+  </Folder>
+  <Folder name="scripts">
+    <File name="lib.ts" />
+  </Folder>
+  <Folder name="types">
+    <File name="global.d.ts" />
+    <File name="i18next.d.ts" />
+    <File name="vite-env.d.ts" />
+  </Folder>
+  <File name="components.json" />
+  <File name="index.html" />
+  <File name="package.json" />
+  <File name="postcss.config.cjs" />
+  <File name="react-router.config.ts" />
+  <File name="tailwind.config.ts" />
+  <File name="tsconfig.json" />
+  <File name="vercel.json" />
+  <File name="vite.config.ts" />
+  <File name="vitest.config.ts" />
+  <File name=".env.example" />
+  <File name="README-zh_CN.md" />
+  <File name="README.md" />
+</Files>
+
+#### 目录结构说明
+
+| 文件/文件夹                | 说明                         |
+|--------------------------|------------------------------|
+| app/                     | 源码主目录，包含各类业务代码和资源 |
+| locales/                 | 国际化相关资源                |
+| public/                  | 公共静态资源                  |
+| scripts/                 | 脚本文件                      |
+| types/                   | TypeScript 类型声明            |
+| components.json          | 组件配置文件                  |
+| index.html               | 入口 HTML 文件                |
+| package.json             | 项目依赖与脚本配置            |
+| postcss.config.cjs       | PostCSS 配置                  |
+| react-router.config.ts   | 路由配置                      |
+| tailwind.config.ts       | TailwindCSS 配置              |
+| tsconfig.json            | TypeScript 配置               |
+| vercel.json              | Vercel 部署配置               |
+| vite.config.ts           | Vite 构建工具配置             |
+| vitest.config.ts         | Vitest 测试配置               |
+| .env.example             | 环境变量示例文件              |
+| README.md/README-zh_CN.md| 项目说明文档（中英文）         |
+
+以上表格对 `apps/admin` 目录下主要文件和文件夹的作用进行了简要说明，便于快速了解项目结构。
+
+### API Service (`apps/api`)
+
+<Files>
+  <Folder name="drizzle" />
+  <Folder name="public" />
+  <Folder name="src">
+    <File name="index.test.ts" />
+  </Folder>
+  <File name="auth-schema.ts" />
+  <File name="drizzle.config.ts" />
+  <File name="env.ts" />
+  <File name="LICENSE" />
+  <File name="package.json" />
+  <File name="README.md" />
+  <File name="tsconfig.json" />
+  <File name="vitest.config.ts" />
+  <File name="worker-configuration.d.ts" />
+  <File name="wrangler.json" />
+</Files>
+
+#### 目录结构说明
+
+| 文件/文件夹                | 说明                         |
+|--------------------------|------------------------------|
+| drizzle/                 | Drizzle ORM 相关配置与迁移脚本 |
+| public/                  | 公共静态资源                  |
+| src/                     | 源码主目录，包含 API 业务代码  |
+| auth-schema.ts           | 认证相关的 schema 定义         |
+| drizzle.config.ts        | Drizzle ORM 配置文件           |
+| env.ts                   | 环境变量类型与加载             |
+| LICENSE                  | 许可证文件                    |
+| package.json             | 项目依赖与脚本配置            |
+| README.md                | 项目说明文档                  |
+| tsconfig.json            | TypeScript 配置               |
+| vitest.config.ts         | Vitest 测试配置               |
+| worker-configuration.d.ts| Worker 相关类型声明           |
+| wrangler.json            | Cloudflare Workers 配置        |
+
+以上表格对 `apps/api` 目录下主要文件和文件夹的作用进行了简要说明，便于快速了解 API 服务结构。

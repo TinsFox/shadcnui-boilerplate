@@ -1,4 +1,4 @@
-import { Button } from "@repo/ui/button";
+import { Button } from "@poketto/ui/button";
 import { Link } from "react-router";
 
 import { Logo } from "@/components/icons/logo";

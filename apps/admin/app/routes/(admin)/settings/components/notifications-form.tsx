@@ -1,6 +1,6 @@
 import { zodResolver } from "@hookform/resolvers/zod";
-import { Button } from "@repo/ui/button";
-import { Checkbox } from "@repo/ui/checkbox";
+import { Button } from "@poketto/ui/button";
+import { Checkbox } from "@poketto/ui/checkbox";
 import {
 	Form,
 	FormControl,
@@ -9,10 +9,10 @@ import {
 	FormItem,
 	FormLabel,
 	FormMessage,
-} from "@repo/ui/form";
-import { useToast } from "@repo/ui/hooks/use-toast";
-import { RadioGroup, RadioGroupItem } from "@repo/ui/radio-group";
-import { Switch } from "@repo/ui/switch";
+} from "@poketto/ui/form";
+import { useToast } from "@poketto/ui/hooks/use-toast";
+import { RadioGroup, RadioGroupItem } from "@poketto/ui/radio-group";
+import { Switch } from "@poketto/ui/switch";
 import { useForm } from "react-hook-form";
 import { useTranslation } from "react-i18next";
 import { Link } from "react-router";

@@ -1,8 +1,8 @@
 import { defineConfig } from "vitepress";
 
-export const githubLink = "https://github.com/TinsFox/shadcnui-boilerplate";
+export const githubLink = "https://github.com/TinsFox/poketto-stack";
 
-export const docsLink = "https://shadcnui-boilerplate.pages.dev";
+export const docsLink = "https://poketto-stack.pages.dev";
 
 export const shared = defineConfig({
 	title: "shadcn/ui Boilerplate",

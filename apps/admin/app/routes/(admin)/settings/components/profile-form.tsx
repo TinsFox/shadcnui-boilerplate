@@ -1,5 +1,5 @@
 import { zodResolver } from "@hookform/resolvers/zod";
-import { Button } from "@repo/ui/button";
+import { Button } from "@poketto/ui/button";
 import {
 	Form,
 	FormControl,
@@ -8,17 +8,17 @@ import {
 	FormItem,
 	FormLabel,
 	FormMessage,
-} from "@repo/ui/form";
-import { useToast } from "@repo/ui/hooks/use-toast";
-import { Input } from "@repo/ui/input";
+} from "@poketto/ui/form";
+import { useToast } from "@poketto/ui/hooks/use-toast";
+import { Input } from "@poketto/ui/input";
 import {
 	Select,
 	SelectContent,
 	SelectItem,
 	SelectTrigger,
 	SelectValue,
-} from "@repo/ui/select";
-import { Textarea } from "@repo/ui/textarea";
+} from "@poketto/ui/select";
+import { Textarea } from "@poketto/ui/textarea";
 import { useEffect } from "react";
 import { useFieldArray, useForm } from "react-hook-form";
 import { useTranslation } from "react-i18next";

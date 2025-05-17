@@ -3,22 +3,22 @@
 ## Deploy with Vercel
 
 
-[![Deploy with Vercel](https://vercel.com/button)](https://vercel.com/new/clone?repository-url=https%3A%2F%2Fgithub.com%2FTinsFox%2Fshadcnui-boilerplate&env=VITE_APP_NAME,VITE_API_URL,VITE_ENABLE_DEVTOOLS,VITE_EDITOR,VITE_ENABLE_MOCK)
+[![Deploy with Vercel](https://vercel.com/button)](https://vercel.com/new/clone?repository-url=https%3A%2F%2Fgithub.com%2FTinsFox%2Fpoketto-stack&env=VITE_APP_NAME,VITE_API_URL,VITE_ENABLE_DEVTOOLS,VITE_EDITOR,VITE_ENABLE_MOCK)
 
 ## Deploy with Docker
 
-The project includes [dockerfile](https://github.com/TinsFox/shadcnui-boilerplate/blob/main/Dockerfile) and [Nginx Conf](https://github.com/TinsFox/shadcnui-boilerplate/blob/main/docker/nginx.conf)
+The project includes [dockerfile](https://github.com/TinsFox/poketto-stack/blob/main/Dockerfile) and [Nginx Conf](https://github.com/TinsFox/poketto-stack/blob/main/docker/nginx.conf)
 
 1. Build image
 
 ```bash
-docker build -t shadcnui-boilerplate .
+docker build -t poketto-stack .
 ```
 
 2. Run container
 
 ```bash
-docker run -d -p 80:80 --name shadcnui-boilerplate shadcnui-boilerplate
+docker run -d -p 80:80 --name poketto-stack poketto-stack
 ```
 
 ::: details Why have your own Nginx Conf?

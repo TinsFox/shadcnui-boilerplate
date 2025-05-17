@@ -1,6 +1,6 @@
 import { zodResolver } from "@hookform/resolvers/zod";
-import { Button } from "@repo/ui/button";
-import { Checkbox } from "@repo/ui/checkbox";
+import { Button } from "@poketto/ui/button";
+import { Checkbox } from "@poketto/ui/checkbox";
 import {
 	Form,
 	FormControl,
@@ -9,8 +9,8 @@ import {
 	FormItem,
 	FormLabel,
 	FormMessage,
-} from "@repo/ui/form";
-import { useToast } from "@repo/ui/hooks/use-toast";
+} from "@poketto/ui/form";
+import { useToast } from "@poketto/ui/hooks/use-toast";
 import { useForm } from "react-hook-form";
 import { useTranslation } from "react-i18next";
 import { z } from "zod";

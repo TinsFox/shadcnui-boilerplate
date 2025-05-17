@@ -1,7 +1,6 @@
-import { CheckIcon, PaperPlaneIcon, PlusIcon } from "@radix-ui/react-icons";
-import { Avatar, AvatarFallback, AvatarImage } from "@repo/ui/avatar";
-import { Button } from "@repo/ui/button";
-import { Card, CardContent, CardFooter, CardHeader } from "@repo/ui/card";
+import { Avatar, AvatarFallback, AvatarImage } from "@poketto/ui/avatar";
+import { Button } from "@poketto/ui/button";
+import { Card, CardContent, CardFooter, CardHeader } from "@poketto/ui/card";
 import {
 	Command,
 	CommandEmpty,
@@ -9,7 +8,7 @@ import {
 	CommandInput,
 	CommandItem,
 	CommandList,
-} from "@repo/ui/command";
+} from "@poketto/ui/command";
 import {
 	Dialog,
 	DialogContent,
@@ -17,14 +16,15 @@ import {
 	DialogFooter,
 	DialogHeader,
 	DialogTitle,
-} from "@repo/ui/dialog";
-import { Input } from "@repo/ui/input";
+} from "@poketto/ui/dialog";
+import { Input } from "@poketto/ui/input";
 import {
 	Tooltip,
 	TooltipContent,
 	TooltipProvider,
 	TooltipTrigger,
-} from "@repo/ui/tooltip";
+} from "@poketto/ui/tooltip";
+import { CheckIcon, PaperPlaneIcon, PlusIcon } from "@radix-ui/react-icons";
 import * as React from "react";
 
 import { cn } from "@/lib/utils";

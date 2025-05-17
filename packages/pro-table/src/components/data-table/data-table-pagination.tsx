@@ -1,19 +1,19 @@
-import { ChevronLeftIcon, ChevronRightIcon } from "@radix-ui/react-icons";
-import { Button } from "@repo/ui/button";
+import { Button } from "@poketto/ui/button";
 import {
 	Pagination,
 	PaginationContent,
 	PaginationEllipsis,
 	PaginationItem,
 	PaginationLink,
-} from "@repo/ui/pagination";
+} from "@poketto/ui/pagination";
 import {
 	Select,
 	SelectContent,
 	SelectItem,
 	SelectTrigger,
 	SelectValue,
-} from "@repo/ui/select";
+} from "@poketto/ui/select";
+import { ChevronLeftIcon, ChevronRightIcon } from "@radix-ui/react-icons";
 import type { PaginationState, Table } from "@tanstack/react-table";
 import * as React from "react";
 

@@ -7,14 +7,14 @@ import {
 	Popover,
 	PopoverContent,
 	PopoverTrigger,
-} from "@repo/ui/popover";
-import type { toggleVariants } from "@repo/ui/toggle";
-import { ToggleGroup, ToggleGroupItem } from "@repo/ui/toggle-group";
+} from "@poketto/ui/popover";
+import type { toggleVariants } from "@poketto/ui/toggle";
+import { ToggleGroup, ToggleGroupItem } from "@poketto/ui/toggle-group";
 import {
 	Tooltip,
 	TooltipContent,
 	TooltipTrigger,
-} from "@repo/ui/tooltip";
+} from "@poketto/ui/tooltip";
 
 import { useTheme } from "../../hooks/use-theme";
 import { ToolbarButton } from "../toolbar-button";

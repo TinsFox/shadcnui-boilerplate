@@ -5,9 +5,9 @@ import {
 	CardFooter,
 	CardHeader,
 	CardTitle,
-} from "@repo/ui/card";
-import type { ChartConfig } from "@repo/ui/chart";
-import { ChartContainer } from "@repo/ui/chart";
+} from "@poketto/ui/card";
+import type { ChartConfig } from "@poketto/ui/chart";
+import { ChartContainer } from "@poketto/ui/chart";
 import { TrendingUp } from "lucide-react";
 import {
 	Label,

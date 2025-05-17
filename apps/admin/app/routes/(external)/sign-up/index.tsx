@@ -1,6 +1,6 @@
 import { zodResolver } from "@hookform/resolvers/zod";
-import { Button } from "@repo/ui/button";
-import { Card, CardContent } from "@repo/ui/card";
+import { Button } from "@poketto/ui/button";
+import { Card, CardContent } from "@poketto/ui/card";
 import {
 	Form,
 	FormControl,
@@ -8,8 +8,8 @@ import {
 	FormItem,
 	FormLabel,
 	FormMessage,
-} from "@repo/ui/form";
-import { Input } from "@repo/ui/input";
+} from "@poketto/ui/form";
+import { Input } from "@poketto/ui/input";
 import { useForm } from "react-hook-form";
 import { useTranslation } from "react-i18next";
 import { Link, useNavigate } from "react-router";

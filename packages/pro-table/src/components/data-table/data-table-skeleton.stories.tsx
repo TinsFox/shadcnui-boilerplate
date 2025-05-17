@@ -1,4 +1,4 @@
-import { Table, TableBody } from "@repo/ui/table";
+import { Table, TableBody } from "@poketto/ui/table";
 import type { Meta, StoryObj } from "@storybook/react";
 
 import { DataTableSkeleton } from "./data-table-skeleton";

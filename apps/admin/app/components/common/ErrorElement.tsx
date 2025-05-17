@@ -1,5 +1,5 @@
 import pkg from "@pkg";
-import { Button } from "@repo/ui/button";
+import { Button } from "@poketto/ui/button";
 import { useEffect, useRef } from "react";
 import { isRouteErrorResponse, useRouteError } from "react-router";
 import { toast } from "sonner";

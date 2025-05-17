@@ -1,7 +1,7 @@
 <p align="center">
 
-<a href="https://github.com/TinsFox/shadcnui-boilerplate">
-  <img src="https://shadcnui-boilerplate.pages.dev/index.png" alt="Cover image" width="700px">
+<a href="https://github.com/TinsFox/poketto-stack">
+  <img src="https://poketto-stack.pages.dev/index.png" alt="Cover image" width="700px">
   <h3 align="center">shadcn/ui boilerplate</h3>
 </a>
 
@@ -43,7 +43,7 @@
 
 ## 文档
 
-访问 [文档](https://shadcnui-boilerplate.pages.dev) 获取详细使用说明。
+访问 [文档](https://poketto-stack.pages.dev) 获取详细使用说明。
 
 ## 贡献
 

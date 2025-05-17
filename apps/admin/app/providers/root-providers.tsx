@@ -1,6 +1,6 @@
-import { Toaster as SonnerToaster } from "@repo/ui/sonner";
-import { ToasterPrimitive } from "@repo/ui/toaster";
-import { TooltipProvider } from "@repo/ui/tooltip";
+import { Toaster as SonnerToaster } from "@poketto/ui/sonner";
+import { ToasterPrimitive } from "@poketto/ui/toaster";
+import { TooltipProvider } from "@poketto/ui/tooltip";
 import { QueryClientProvider } from "@tanstack/react-query";
 import { LazyMotion, MotionConfig } from "framer-motion";
 import type { FC, PropsWithChildren } from "react";

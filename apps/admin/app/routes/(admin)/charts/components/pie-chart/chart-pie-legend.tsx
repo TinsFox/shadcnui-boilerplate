@@ -4,13 +4,13 @@ import {
 	CardDescription,
 	CardHeader,
 	CardTitle,
-} from "@repo/ui/card";
-import type { ChartConfig } from "@repo/ui/chart";
+} from "@poketto/ui/card";
+import type { ChartConfig } from "@poketto/ui/chart";
 import {
 	ChartContainer,
 	ChartLegend,
 	ChartLegendContent,
-} from "@repo/ui/chart";
+} from "@poketto/ui/chart";
 import { Pie, PieChart } from "recharts";
 
 export const description = "A pie chart with a legend";

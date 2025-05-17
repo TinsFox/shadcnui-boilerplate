@@ -1,7 +1,7 @@
 <p align="center">
 
-<a href="https://github.com/TinsFox/shadcnui-boilerplate">
-  <img src="https://shadcnui-boilerplate.pages.dev/index.png" alt="Cover image" width="700px">
+<a href="https://github.com/TinsFox/poketto-stack">
+  <img src="https://poketto-stack.pages.dev/index.png" alt="Cover image" width="700px">
 <h3 align="center">shadcn/ui boilerplate</h3>
 </a>
 
@@ -43,7 +43,7 @@ A boilerplate built with [**shadcn/ui**](https://github.com/shadcn-ui/ui) for ra
 
 ## Documentation
 
-Visit [Documentation](https://shadcnui-boilerplate.pages.dev) for detailed usage instructions.
+Visit [Documentation](https://poketto-stack.pages.dev) for detailed usage instructions.
 Mock data server is here https://github.com/TinsFox/mock-service
 
 ## Contributing

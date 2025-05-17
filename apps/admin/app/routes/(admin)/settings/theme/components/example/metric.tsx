@@ -4,7 +4,7 @@ import {
 	CardDescription,
 	CardHeader,
 	CardTitle,
-} from "@repo/ui/card";
+} from "@poketto/ui/card";
 import { Line, LineChart, ResponsiveContainer, Tooltip } from "recharts";
 
 import { useTheme } from "@/components/theme/theme-provider";

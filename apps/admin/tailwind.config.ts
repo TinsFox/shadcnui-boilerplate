@@ -1,4 +1,4 @@
-import uiConfig from "@repo/ui/tailwind.config.ts";
+import uiConfig from "@poketto/ui/tailwind.config.ts";
 import tailwindcssTypographyPlugin from "@tailwindcss/typography";
 import type { Config } from "tailwindcss";
 import animatePlugin from "tailwindcss-animate";

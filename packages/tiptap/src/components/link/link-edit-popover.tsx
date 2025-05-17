@@ -7,8 +7,8 @@ import {
 	Popover,
 	PopoverContent,
 	PopoverTrigger,
-} from "@repo/ui/popover";
-import type { toggleVariants } from "@repo/ui/toggle";
+} from "@poketto/ui/popover";
+import type { toggleVariants } from "@poketto/ui/toggle";
 
 import { ToolbarButton } from "../toolbar-button";
 import { LinkEditBlock } from "./link-edit-block";

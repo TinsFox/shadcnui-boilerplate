@@ -1,5 +1,4 @@
-import { MinusIcon, PlusIcon } from "@radix-ui/react-icons";
-import { Button } from "@repo/ui/button";
+import { Button } from "@poketto/ui/button";
 import {
 	Card,
 	CardContent,
@@ -7,7 +6,8 @@ import {
 	CardFooter,
 	CardHeader,
 	CardTitle,
-} from "@repo/ui/card";
+} from "@poketto/ui/card";
+import { MinusIcon, PlusIcon } from "@radix-ui/react-icons";
 import * as React from "react";
 import { Bar, BarChart, ResponsiveContainer } from "recharts";
 

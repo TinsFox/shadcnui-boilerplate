@@ -1,4 +1,4 @@
-import { Button } from "@repo/ui/button";
+import { Button } from "@poketto/ui/button";
 import {
 	Card,
 	CardContent,
@@ -6,9 +6,9 @@ import {
 	CardFooter,
 	CardHeader,
 	CardTitle,
-} from "@repo/ui/card";
-import { Separator } from "@repo/ui/separator";
-import { Tooltip, TooltipContent, TooltipTrigger } from "@repo/ui/tooltip";
+} from "@poketto/ui/card";
+import { Separator } from "@poketto/ui/separator";
+import { Tooltip, TooltipContent, TooltipTrigger } from "@poketto/ui/tooltip";
 import { format } from "date-fns";
 import {
 	CheckIcon,

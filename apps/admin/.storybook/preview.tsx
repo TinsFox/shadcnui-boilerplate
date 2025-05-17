@@ -1,4 +1,4 @@
-import "@repo/ui/globals.css";
+import "@poketto/ui/globals.css";
 
 import type { Preview } from "@storybook/react";
 import { themes } from "@storybook/theming";

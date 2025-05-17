@@ -1,11 +1,11 @@
-import { Button } from "@repo/ui/button";
-import { ScrollArea, ScrollBar } from "@repo/ui/scroll-area";
-import { Separator } from "@repo/ui/separator";
+import { Button } from "@poketto/ui/button";
+import { ScrollArea, ScrollBar } from "@poketto/ui/scroll-area";
+import { Separator } from "@poketto/ui/separator";
 import {
 	SidebarInset,
 	SidebarProvider,
 	SidebarTrigger,
-} from "@repo/ui/sidebar";
+} from "@poketto/ui/sidebar";
 import { CircleHelp } from "lucide-react";
 import { Link, Outlet, redirect } from "react-router";
 
@@ -47,14 +47,14 @@ export default function AdminLayout() {
 						<div className="ml-auto flex flex-1 items-center space-x-2 px-2 sm:px-4 md:max-w-96 lg:max-w-lg">
 							<Search />
 							<Link
-								to="https://github.com/TinsFox/shadcnui-boilerplate"
+								to="https://github.com/TinsFox/poketto-stack"
 								target="_blank"
 							>
 								<Button variant="ghost" size="icon">
 									<Icons.gitHub className="size-5" />
 								</Button>
 							</Link>
-							<Link to="https://shadcnui-boilerplate.pages.dev" target="_blank">
+							<Link to="https://poketto-stack.pages.dev" target="_blank">
 								<Button variant="ghost" size="icon">
 									<CircleHelp className="size-5" />
 								</Button>

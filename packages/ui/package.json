@@ -1,12 +1,16 @@
 {
-	"name": "@repo/ui",
+	"name": "@poketto/ui",
 	"version": "1.0.0",
 	"description": "",
 	"author": "",
 	"license": "MIT",
 	"keywords": [],
 	"exports": {
-		"./globals.css": "./src/globals.css",
+    "./lib/*": "./src/lib/*.ts",
+    "./globals.css": "./src/globals.css",
+    "./postcss.config": "./postcss.config.cjs",
+    "./components/*": "./src/components/*.tsx",
+    "./hooks/*": "./src/hooks/*.ts",
 		"./tailwind.config.ts": "./tailwind.config.ts",
 		"./components.json": "./components.json",
 		"./accordion": "./src/components/ui/accordion.tsx",

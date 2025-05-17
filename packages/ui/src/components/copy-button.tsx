@@ -1,6 +1,6 @@
 import { Button } from "./ui/button";
 import type { ButtonProps } from "./ui/button";
-import { cn } from "@/lib/utils";
+import { cn } from "@poketto/ui/lib/utils"
 import { ClipboardIcon, CheckIcon } from "lucide-react";
 import * as React from "react";
 import { toast } from "sonner";

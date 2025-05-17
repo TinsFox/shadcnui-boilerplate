@@ -7,18 +7,18 @@ import {
 } from "@radix-ui/react-icons";
 import * as React from "react";
 
-import { Button } from "@repo/ui/button";
+import { Button } from "@poketto/ui/button";
 import {
 	DropdownMenu,
 	DropdownMenuContent,
 	DropdownMenuItem,
 	DropdownMenuTrigger,
-} from "@repo/ui/dropdown-menu";
+} from "@poketto/ui/dropdown-menu";
 import {
 	Tooltip,
 	TooltipContent,
 	TooltipTrigger,
-} from "@repo/ui/tooltip";
+} from "@poketto/ui/tooltip";
 import { cn } from "@/lib/utils";
 
 interface ImageActionsProps {

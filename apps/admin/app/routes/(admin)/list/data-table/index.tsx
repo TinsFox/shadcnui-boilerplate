@@ -1,20 +1,19 @@
-import { CaretSortIcon, DotsHorizontalIcon } from "@radix-ui/react-icons";
 import {
 	DataTableColumnCell,
 	DataTableColumnHeader,
 	DataTablePagination,
 	DataTableSearch,
-} from "@repo/pro-table/data-table";
-import { Avatar, AvatarFallback, AvatarImage } from "@repo/ui/avatar";
-import { Button } from "@repo/ui/button";
-import { Checkbox } from "@repo/ui/checkbox";
+} from "@poketto/pro-table/data-table";
+import { Avatar, AvatarFallback, AvatarImage } from "@poketto/ui/avatar";
+import { Button } from "@poketto/ui/button";
+import { Checkbox } from "@poketto/ui/checkbox";
 import {
 	DropdownMenu,
 	DropdownMenuContent,
 	DropdownMenuItem,
 	DropdownMenuLabel,
 	DropdownMenuTrigger,
-} from "@repo/ui/dropdown-menu";
+} from "@poketto/ui/dropdown-menu";
 import {
 	Table,
 	TableBody,
@@ -22,7 +21,8 @@ import {
 	TableHead,
 	TableHeader,
 	TableRow,
-} from "@repo/ui/table";
+} from "@poketto/ui/table";
+import { CaretSortIcon, DotsHorizontalIcon } from "@radix-ui/react-icons";
 import type {
 	ColumnDef,
 	ColumnFiltersState,
@@ -44,7 +44,7 @@ import { Empty } from "@/components/empty";
 import { Loading } from "@/components/loading";
 import { useUsers } from "@/hooks/query/use-user";
 
-import { CopyButton } from "@repo/ui/copy-button";
+import { CopyButton } from "@poketto/ui/copy-button";
 
 import type { UserWithRole } from "better-auth/plugins/admin";
 

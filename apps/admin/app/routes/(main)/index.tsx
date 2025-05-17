@@ -3,7 +3,7 @@ import {
 	TooltipContent,
 	TooltipProvider,
 	TooltipTrigger,
-} from "@repo/ui/tooltip";
+} from "@poketto/ui/tooltip";
 import { Link } from "react-router";
 
 import { Logo } from "@/components/icons/logo";
@@ -56,7 +56,7 @@ export default function HomePage() {
 							Check the{" "}
 							<a
 								className="underline hover:no-underline"
-								href="https://shadcnui-boilerplate.pages.dev/guide/what-is-shadcn-ui-boilerplate"
+								href="https://poketto-stack.pages.dev/guide/what-is-shadcn-ui-boilerplate"
 							>
 								Getting Started guide
 							</a>{" "}

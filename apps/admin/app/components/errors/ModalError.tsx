@@ -3,7 +3,7 @@ import { m } from "framer-motion";
 import { attachOpenInEditor } from "@/lib/dev";
 import { getNewIssueUrl } from "@/lib/issues";
 
-import { Button } from "@repo/ui/button";
+import { Button } from "@poketto/ui/button";
 import { parseError } from "./helper";
 
 export const ModalErrorFallback = (props: { error: unknown }) => {

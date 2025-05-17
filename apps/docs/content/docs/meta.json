@@ -5,6 +5,7 @@
 		"quickstart",
 		"what-is-poketto-stack",
 		"--- Development ---",
+		"development/project-structure",
 		"development/command",
 		"development/state-management",
 		"--- Deployment ---",

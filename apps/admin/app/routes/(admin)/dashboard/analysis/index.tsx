@@ -4,7 +4,7 @@ import {
 	CardDescription,
 	CardHeader,
 	CardTitle,
-} from "@repo/ui/card";
+} from "@poketto/ui/card";
 
 import { Overview } from "./components/overview";
 import { RecentSales } from "./components/recent-sales";

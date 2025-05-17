@@ -6,7 +6,7 @@ import {
 	SidebarMenu,
 	SidebarMenuButton,
 	SidebarMenuItem,
-} from "@repo/ui/sidebar";
+} from "@poketto/ui/sidebar";
 import { Command, Send } from "lucide-react";
 import type * as React from "react";
 import { Link } from "react-router";
@@ -20,7 +20,7 @@ import { env } from "~/env";
 const navSecondary = [
 	{
 		title: "Feedback",
-		url: "https://github.com/TinsFox/shadcnui-boilerplate/issues",
+		url: "https://github.com/TinsFox/poketto-stack/issues",
 		icon: Send,
 		external: true,
 	},

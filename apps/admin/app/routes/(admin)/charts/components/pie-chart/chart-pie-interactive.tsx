@@ -4,21 +4,21 @@ import {
 	CardDescription,
 	CardHeader,
 	CardTitle,
-} from "@repo/ui/card";
-import type { ChartConfig } from "@repo/ui/chart";
+} from "@poketto/ui/card";
+import type { ChartConfig } from "@poketto/ui/chart";
 import {
 	ChartContainer,
 	ChartStyle,
 	ChartTooltip,
 	ChartTooltipContent,
-} from "@repo/ui/chart";
+} from "@poketto/ui/chart";
 import {
 	Select,
 	SelectContent,
 	SelectItem,
 	SelectTrigger,
 	SelectValue,
-} from "@repo/ui/select";
+} from "@poketto/ui/select";
 import * as React from "react";
 import { Label, Pie, PieChart, Sector } from "recharts";
 import type { PieSectorDataItem } from "recharts/types/polar/Pie";

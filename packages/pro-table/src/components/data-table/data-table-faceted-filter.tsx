@@ -1,6 +1,5 @@
-import { CheckIcon, PlusCircledIcon } from "@radix-ui/react-icons";
-import { Badge } from "@repo/ui/badge";
-import { Button } from "@repo/ui/button";
+import { Badge } from "@poketto/ui/badge";
+import { Button } from "@poketto/ui/button";
 import {
 	Command,
 	CommandEmpty,
@@ -9,10 +8,11 @@ import {
 	CommandItem,
 	CommandList,
 	CommandSeparator,
-} from "@repo/ui/command";
-import { Popover, PopoverContent, PopoverTrigger } from "@repo/ui/popover";
-import { Separator } from "@repo/ui/separator";
-import { cn } from "@repo/ui/utils";
+} from "@poketto/ui/command";
+import { Popover, PopoverContent, PopoverTrigger } from "@poketto/ui/popover";
+import { Separator } from "@poketto/ui/separator";
+import { cn } from "@poketto/ui/utils";
+import { CheckIcon, PlusCircledIcon } from "@radix-ui/react-icons";
 import type { Column } from "@tanstack/react-table";
 import type * as React from "react";
 

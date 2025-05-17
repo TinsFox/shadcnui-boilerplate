@@ -1,4 +1,4 @@
-import { Button } from "@repo/ui/button";
+import { Button } from "@poketto/ui/button";
 import {
 	Table,
 	TableBody,
@@ -6,7 +6,7 @@ import {
 	TableHead,
 	TableHeader,
 	TableRow,
-} from "@repo/ui/table";
+} from "@poketto/ui/table";
 import type { ColumnDef } from "@tanstack/react-table";
 import {
 	flexRender,

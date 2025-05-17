@@ -1,22 +1,22 @@
-import { Avatar, AvatarFallback, AvatarImage } from "@repo/ui/avatar";
-import { Button } from "@repo/ui/button";
+import { Avatar, AvatarFallback, AvatarImage } from "@poketto/ui/avatar";
+import { Button } from "@poketto/ui/button";
 import {
 	Card,
 	CardContent,
 	CardDescription,
 	CardHeader,
 	CardTitle,
-} from "@repo/ui/card";
-import { Input } from "@repo/ui/input";
-import { Label } from "@repo/ui/label";
+} from "@poketto/ui/card";
+import { Input } from "@poketto/ui/input";
+import { Label } from "@poketto/ui/label";
 import {
 	Select,
 	SelectContent,
 	SelectItem,
 	SelectTrigger,
 	SelectValue,
-} from "@repo/ui/select";
-import { Separator } from "@repo/ui/separator";
+} from "@poketto/ui/select";
+import { Separator } from "@poketto/ui/separator";
 
 export function CardsShare() {
 	return (

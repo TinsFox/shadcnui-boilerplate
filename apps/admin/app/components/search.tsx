@@ -1,6 +1,5 @@
-import { LaptopIcon, MoonIcon, SunIcon } from "@radix-ui/react-icons";
-import type { ButtonProps } from "@repo/ui/button";
-import { Button } from "@repo/ui/button";
+import type { ButtonProps } from "@poketto/ui/button";
+import { Button } from "@poketto/ui/button";
 import {
 	CommandDialog,
 	CommandEmpty,
@@ -9,8 +8,9 @@ import {
 	CommandItem,
 	CommandList,
 	CommandSeparator,
-} from "@repo/ui/command";
-import type { DialogProps } from "@repo/ui/dialog";
+} from "@poketto/ui/command";
+import type { DialogProps } from "@poketto/ui/dialog";
+import { LaptopIcon, MoonIcon, SunIcon } from "@radix-ui/react-icons";
 import { CircleHelp, SearchIcon } from "lucide-react";
 import * as React from "react";
 import { useTranslation } from "react-i18next";
@@ -94,11 +94,9 @@ export function Search({ ...props }: ButtonProps & DialogProps) {
 							GitHub
 						</CommandItem>
 						<CommandItem
-							value="https://shadcnui-boilerplate.pages.dev/"
+							value="https://poketto-stack.pages.dev/"
 							onSelect={() => {
-								runCommand(() =>
-									navigate("https://shadcnui-boilerplate.pages.dev/"),
-								);
+								runCommand(() => navigate("https://poketto-stack.pages.dev/"));
 							}}
 						>
 							<CircleHelp className="mr-2 size-4" />

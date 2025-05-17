@@ -1,5 +1,4 @@
-import { MixerHorizontalIcon } from "@radix-ui/react-icons";
-import { Button } from "@repo/ui/button";
+import { Button } from "@poketto/ui/button";
 import {
 	DropdownMenu,
 	DropdownMenuCheckboxItem,
@@ -7,7 +6,8 @@ import {
 	DropdownMenuLabel,
 	DropdownMenuSeparator,
 	DropdownMenuTrigger,
-} from "@repo/ui/dropdown-menu";
+} from "@poketto/ui/dropdown-menu";
+import { MixerHorizontalIcon } from "@radix-ui/react-icons";
 import type { Table } from "@tanstack/react-table";
 
 interface DataTableViewOptionsProps<TData> {

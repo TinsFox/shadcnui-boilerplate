@@ -1,4 +1,4 @@
-import { buttonVariants } from "@repo/ui/button";
+import { buttonVariants } from "@poketto/ui/button";
 import { m } from "framer-motion";
 import { useNavigate } from "react-router";
 

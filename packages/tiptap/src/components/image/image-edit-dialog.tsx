@@ -10,8 +10,8 @@ import {
 	DialogHeader,
 	DialogTitle,
 	DialogTrigger,
-} from "@repo/ui/dialog";
-import type { toggleVariants } from "@repo/ui/toggle";
+} from "@poketto/ui/dialog";
+import type { toggleVariants } from "@poketto/ui/toggle";
 
 import { ToolbarButton } from "../toolbar-button";
 import { ImageEditBlock } from "./image-edit-block";

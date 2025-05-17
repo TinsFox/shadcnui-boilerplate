@@ -1,4 +1,4 @@
-import { cn } from "@repo/ui/utils";
+import { cn } from "@poketto/ui/utils";
 import type { Column, Row } from "@tanstack/react-table";
 
 export interface DataTableColumnCellProps<TData, TValue>

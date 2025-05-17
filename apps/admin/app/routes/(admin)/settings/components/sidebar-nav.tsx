@@ -1,4 +1,4 @@
-import { buttonVariants } from "@repo/ui/button";
+import { buttonVariants } from "@poketto/ui/button";
 import { NavLink } from "react-router";
 
 import { cn } from "@/lib/utils";

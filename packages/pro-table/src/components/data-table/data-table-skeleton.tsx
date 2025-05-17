@@ -1,4 +1,4 @@
-import { TableCell, TableRow } from "@repo/ui/table";
+import { TableCell, TableRow } from "@poketto/ui/table";
 
 import type { PaginationProps } from "./data-table-pagination";
 

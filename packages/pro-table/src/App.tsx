@@ -1,6 +1,6 @@
 import "./App.css";
 
-import { Button } from "@repo/ui/button";
+import { Button } from "@poketto/ui/button";
 import { useState } from "react";
 
 import viteLogo from "/vite.svg";

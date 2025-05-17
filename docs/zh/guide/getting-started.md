@@ -10,14 +10,14 @@
 ### 克隆仓库
 
 ```bash
-git clone https://github.com/TinsFox/shadcnui-boilerplate.git
+git clone https://github.com/TinsFox/poketto-stack.git
 ```
 
 
 ### 安装依赖
 
 ```bash
-cd shadcnui-boilerplate
+cd poketto-stack
 pnpm install
 ```
 

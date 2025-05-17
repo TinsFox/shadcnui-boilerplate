@@ -1,17 +1,12 @@
-import {
-	CaretSortIcon,
-	ChevronDownIcon,
-	DotsHorizontalIcon,
-} from "@radix-ui/react-icons";
-import { Button } from "@repo/ui/button";
+import { Button } from "@poketto/ui/button";
 import {
 	Card,
 	CardContent,
 	CardDescription,
 	CardHeader,
 	CardTitle,
-} from "@repo/ui/card";
-import { Checkbox } from "@repo/ui/checkbox";
+} from "@poketto/ui/card";
+import { Checkbox } from "@poketto/ui/checkbox";
 import {
 	DropdownMenu,
 	DropdownMenuCheckboxItem,
@@ -20,8 +15,8 @@ import {
 	DropdownMenuLabel,
 	DropdownMenuSeparator,
 	DropdownMenuTrigger,
-} from "@repo/ui/dropdown-menu";
-import { Input } from "@repo/ui/input";
+} from "@poketto/ui/dropdown-menu";
+import { Input } from "@poketto/ui/input";
 import {
 	Table,
 	TableBody,
@@ -29,7 +24,12 @@ import {
 	TableHead,
 	TableHeader,
 	TableRow,
-} from "@repo/ui/table";
+} from "@poketto/ui/table";
+import {
+	CaretSortIcon,
+	ChevronDownIcon,
+	DotsHorizontalIcon,
+} from "@radix-ui/react-icons";
 import type {
 	ColumnDef,
 	ColumnFiltersState,

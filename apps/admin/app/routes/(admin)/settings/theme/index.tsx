@@ -1,4 +1,4 @@
-import { Skeleton } from "@repo/ui/skeleton";
+import { Skeleton } from "@poketto/ui/skeleton";
 import * as React from "react";
 
 import CardsNewYork from "./components/example";

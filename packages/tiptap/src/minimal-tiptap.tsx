@@ -4,7 +4,7 @@ import type { Content, Editor } from "@tiptap/react";
 import { EditorContent } from "@tiptap/react";
 import * as React from "react";
 
-import { Separator } from "@repo/ui/separator";
+import { Separator } from "@poketto/ui/separator";
 import { cn } from "@/lib/utils";
 
 import { LinkBubbleMenu } from "./components/bubble-menu/link-bubble-menu";

@@ -1,12 +1,12 @@
 {
-	"name": "shadcnui-boilerplate",
+	"name": "poketto-stack",
 	"type": "module",
 	"version": "1.1.0",
 	"private": true,
 	"packageManager": "pnpm@9.15.9",
-	"homepage": "https://github.com/TinsFox/shadcnui-boilerplate",
+	"homepage": "https://github.com/TinsFox/poketto-stack",
 	"repository": {
-		"url": "https://github.com/TinsFox/shadcnui-boilerplate",
+		"url": "https://github.com/TinsFox/poketto-stack",
 		"type": "git"
 	},
 	"scripts": {

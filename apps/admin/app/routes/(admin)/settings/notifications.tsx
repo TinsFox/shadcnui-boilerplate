@@ -1,4 +1,4 @@
-import { Separator } from "@repo/ui/separator";
+import { Separator } from "@poketto/ui/separator";
 import { useTranslation } from "react-i18next";
 
 import { NotificationsForm } from "./components/notifications-form";

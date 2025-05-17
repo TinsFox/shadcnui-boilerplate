@@ -1,5 +1,5 @@
 {
-	"name": "@repo/tiptap",
+	"name": "@poketto/tiptap",
 	"version": "1.0.0",
 	"description": "",
 	"author": "",
@@ -14,7 +14,7 @@
 	"dependencies": {
 		"@radix-ui/react-icons": "^1.3.2",
 		"@radix-ui/react-tooltip": "^1.1.8",
-		"@repo/ui": "workspace:*",
+		"@poketto/ui": "workspace:*",
 		"@tiptap/extension-code-block-lowlight": "^2.11.5",
 		"@tiptap/extension-color": "^2.11.5",
 		"@tiptap/extension-heading": "^2.11.5",

@@ -4,7 +4,7 @@ import {
 	SidebarMenu,
 	SidebarMenuButton,
 	SidebarMenuItem,
-} from "@repo/ui/sidebar";
+} from "@poketto/ui/sidebar";
 import type { LucideIcon } from "lucide-react";
 import type * as React from "react";
 import { Link } from "react-router";

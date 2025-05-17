@@ -15,7 +15,7 @@ describe("HomePage", () => {
 		const link = screen.getByText("Getting Started guide");
 		expect(link).toHaveAttribute(
 			"href",
-			"https://shadcnui-boilerplate.pages.dev/guide/what-is-shadcn-ui-boilerplate",
+			"https://poketto-stack.pages.dev/guide/what-is-shadcn-ui-boilerplate",
 		);
 	});
 });

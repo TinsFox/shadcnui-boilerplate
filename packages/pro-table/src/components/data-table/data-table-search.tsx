@@ -1,7 +1,7 @@
 import { zodResolver } from "@hookform/resolvers/zod";
-import { Button } from "@repo/ui/button";
-import { Form, FormControl, FormField, FormItem } from "@repo/ui/form";
-import { Input } from "@repo/ui/input";
+import { Button } from "@poketto/ui/button";
+import { Form, FormControl, FormField, FormItem } from "@poketto/ui/form";
+import { Input } from "@poketto/ui/input";
 import type { Table } from "@tanstack/react-table";
 import { ChevronDown, ChevronUp } from "lucide-react";
 import * as React from "react";

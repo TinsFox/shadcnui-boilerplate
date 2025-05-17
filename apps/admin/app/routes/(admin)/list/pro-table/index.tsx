@@ -1,24 +1,24 @@
-import { DotsHorizontalIcon } from "@radix-ui/react-icons";
-import type { ColumnDef, SearchParams } from "@repo/pro-table/pro-table";
-import { ProTable } from "@repo/pro-table/pro-table";
-import { Avatar, AvatarFallback, AvatarImage } from "@repo/ui/avatar";
-import { Button } from "@repo/ui/button";
-import { Checkbox } from "@repo/ui/checkbox";
+import type { ColumnDef, SearchParams } from "@poketto/pro-table/pro-table";
+import { ProTable } from "@poketto/pro-table/pro-table";
+import { Avatar, AvatarFallback, AvatarImage } from "@poketto/ui/avatar";
+import { Button } from "@poketto/ui/button";
+import { Checkbox } from "@poketto/ui/checkbox";
 import {
 	DropdownMenu,
 	DropdownMenuContent,
 	DropdownMenuItem,
 	DropdownMenuLabel,
 	DropdownMenuTrigger,
-} from "@repo/ui/dropdown-menu";
+} from "@poketto/ui/dropdown-menu";
 import {
 	Select,
 	SelectContent,
 	SelectItem,
 	SelectTrigger,
 	SelectValue,
-} from "@repo/ui/select";
-import { Textarea } from "@repo/ui/textarea";
+} from "@poketto/ui/select";
+import { Textarea } from "@poketto/ui/textarea";
+import { DotsHorizontalIcon } from "@radix-ui/react-icons";
 import type { PaginationState } from "@tanstack/react-table";
 import * as React from "react";
 

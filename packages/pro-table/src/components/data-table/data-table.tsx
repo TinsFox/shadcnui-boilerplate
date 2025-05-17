@@ -5,7 +5,7 @@ import {
 	TableHead,
 	TableHeader,
 	TableRow,
-} from "@repo/ui/table";
+} from "@poketto/ui/table";
 import { flexRender } from "@tanstack/react-table";
 import { useMemo } from "react";
 

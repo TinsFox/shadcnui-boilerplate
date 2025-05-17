@@ -1,5 +1,5 @@
-import { Calendar } from "@repo/ui/calendar";
-import { Card, CardContent } from "@repo/ui/card";
+import { Calendar } from "@poketto/ui/calendar";
+import { Card, CardContent } from "@poketto/ui/card";
 import { addDays } from "date-fns";
 
 const start = new Date(2023, 5, 5);

@@ -1,5 +1,5 @@
-import "@repo/ui/globals.css";
-import "@repo/tiptap/tiptap.css";
+import "@poketto/ui/globals.css";
+import "@poketto/tiptap/tiptap.css";
 import "./i18n";
 
 import { ClickToComponent } from "click-to-react-component";

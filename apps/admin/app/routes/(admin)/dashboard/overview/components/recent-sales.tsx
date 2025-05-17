@@ -1,4 +1,4 @@
-import { Avatar, AvatarFallback, AvatarImage } from "@repo/ui/avatar";
+import { Avatar, AvatarFallback, AvatarImage } from "@poketto/ui/avatar";
 
 export function RecentSales() {
 	return (

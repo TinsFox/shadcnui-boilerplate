@@ -4,7 +4,7 @@ import {
 	SelectItem,
 	SelectTrigger,
 	SelectValue,
-} from "@repo/ui/select";
+} from "@poketto/ui/select";
 import { useTranslation } from "react-i18next";
 
 import { languages } from "@/i18n";

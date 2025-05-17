@@ -1,6 +1,6 @@
 # 路由
 
-shadcnui-boilerplate 使用 **文件系统的路由** 来定义路由。
+poketto-stack 使用 **文件系统的路由** 来定义路由。
 
 
 > [!IMPORTANT]

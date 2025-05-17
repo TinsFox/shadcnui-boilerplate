@@ -1,4 +1,4 @@
-import { Button } from "@repo/ui/button";
+import { Button } from "@poketto/ui/button";
 import type { Meta, StoryObj } from "@storybook/react";
 import { getCoreRowModel, useReactTable } from "@tanstack/react-table";
 

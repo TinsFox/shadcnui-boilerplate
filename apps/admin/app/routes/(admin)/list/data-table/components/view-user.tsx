@@ -1,7 +1,7 @@
 import { zodResolver } from "@hookform/resolvers/zod";
-import { Avatar, AvatarFallback, AvatarImage } from "@repo/ui/avatar";
-import { Button } from "@repo/ui/button";
-import { DropdownMenuItem } from "@repo/ui/dropdown-menu";
+import { Avatar, AvatarFallback, AvatarImage } from "@poketto/ui/avatar";
+import { Button } from "@poketto/ui/button";
+import { DropdownMenuItem } from "@poketto/ui/dropdown-menu";
 import {
 	Form,
 	FormControl,
@@ -9,16 +9,16 @@ import {
 	FormItem,
 	FormLabel,
 	FormMessage,
-} from "@repo/ui/form";
-import { useToast } from "@repo/ui/hooks/use-toast";
-import { Input } from "@repo/ui/input";
+} from "@poketto/ui/form";
+import { useToast } from "@poketto/ui/hooks/use-toast";
+import { Input } from "@poketto/ui/input";
 import {
 	Select,
 	SelectContent,
 	SelectItem,
 	SelectTrigger,
 	SelectValue,
-} from "@repo/ui/select";
+} from "@poketto/ui/select";
 import {
 	Sheet,
 	SheetClose,
@@ -28,14 +28,14 @@ import {
 	SheetHeader,
 	SheetTitle,
 	SheetTrigger,
-} from "@repo/ui/sheet";
+} from "@poketto/ui/sheet";
 import { useRef, useState } from "react";
 import { useForm } from "react-hook-form";
 
 import { useUpdateUser } from "@/hooks/query/use-user";
 
 import { betterUserWithRoleSchema, userRoles } from "@/schema/user";
-import { CopyButton } from "@repo/ui/copy-button";
+import { CopyButton } from "@poketto/ui/copy-button";
 import type { UserWithRole } from "better-auth/plugins/admin";
 import dayjs from "dayjs";
 

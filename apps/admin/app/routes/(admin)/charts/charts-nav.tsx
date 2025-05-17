@@ -1,4 +1,4 @@
-import { ScrollArea, ScrollBar } from "@repo/ui/scroll-area";
+import { ScrollArea, ScrollBar } from "@poketto/ui/scroll-area";
 import { NavLink } from "react-router";
 
 import { cn } from "@/lib/utils";

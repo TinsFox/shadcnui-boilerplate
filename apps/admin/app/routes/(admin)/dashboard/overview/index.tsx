@@ -4,8 +4,8 @@ import {
 	CardDescription,
 	CardHeader,
 	CardTitle,
-} from "@repo/ui/card";
-import { Tabs, TabsContent, TabsList, TabsTrigger } from "@repo/ui/tabs";
+} from "@poketto/ui/card";
+import { Tabs, TabsContent, TabsList, TabsTrigger } from "@poketto/ui/tabs";
 
 import { Overview } from "./components/overview";
 import { RecentSales } from "./components/recent-sales";

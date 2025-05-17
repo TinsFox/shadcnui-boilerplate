@@ -1,5 +1,5 @@
-import { Button } from "@repo/ui/button";
-import { cn } from "@repo/ui/utils";
+import { Button } from "@poketto/ui/button";
+import { cn } from "@poketto/ui/utils";
 import type { Table } from "@tanstack/react-table";
 import { RefreshCcw } from "lucide-react";
 import type * as React from "react";
