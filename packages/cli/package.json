@@ -1,0 +1,45 @@
+{
+	"name": "@poketto/cli",
+	"version": "1.0.0",
+	"keywords": [
+		"monorepo",
+		"rename",
+		"cli",
+		"devtools",
+		"refactor",
+		"lerna",
+		"yarn-workspaces",
+		"pnpm",
+		"nx"
+	],
+	"description": "CLI tool to rename organization in monorepo projects",
+	"main": "dist/index.js",
+	"bin": {
+		"poketto-cli": "./dist/cli.js"
+	},
+	"scripts": {
+		"build": "tsdown",
+		"dev": "tsdown --watch",
+		"clean": "pnpm dlx rimraf dist",
+		"prebuild": "pnpm run clean",
+		"prepare": "pnpm run build",
+		"lint": "eslint 'src/**/*.ts'"
+	},
+	"dependencies": {
+		"chalk": "5.4.1",
+		"commander": "13.1.0",
+		"glob": "11.0.2",
+		"inquirer": "12.6.1",
+		"js-yaml": "^4.1.0",
+		"ora": "8.2.0"
+	},
+	"devDependencies": {
+		"@types/glob": "^8.0.0",
+		"@types/inquirer": "9.0.8",
+		"@types/js-yaml": "^4.0.9",
+		"@types/node": "22.15.18",
+		"tsdown": "^0.11.11",
+		"typescript": "5.8.3"
+	},
+	"files": ["dist", "LICENSE", "README.md"]
+}
