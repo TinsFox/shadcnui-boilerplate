@@ -8,7 +8,7 @@ export function useTasks(
 	pagination?: PaginationState,
 	searchParams?: Partial<ITask>,
 ) {
-	const { pageIndex = 0, pageSize = 10 } = pagination || {};
+	const { pageIndex = 1, pageSize = 10 } = pagination || {};
 	const { data, isPending, isFetching, refetch } = useQuery({
 		queryKey: [
 			"use-tasks",
@@ -34,7 +34,7 @@ export function useTasks(
 		data: {
 			list: data?.list || [],
 			total: data?.total || 0,
-			page: data?.page || 0,
+			page: data?.page || 1,
 			pageSize: data?.pageSize || 0,
 		},
 	};
