@@ -37,37 +37,40 @@ export default function AdminLayout() {
 			<SidebarInset className="w-full overflow-hidden">
 				<div className="sticky top-0 z-10">
 					<header className="flex h-14 w-full shrink-0 items-center justify-between border-b bg-background/80 px-2 backdrop-blur-sm sm:h-16 sm:px-4">
-						<div className="flex items-center gap-2">
+						<div className="flex items-center gap-1 sm:gap-2">
 							<SidebarTrigger className="-ml-0.5 sm:-ml-1" />
 							<Separator
 								orientation="vertical"
-								className="mr-2 hidden h-4 sm:block"
+								className="mr-1 hidden h-4 sm:mr-2 sm:block"
 							/>
-							<NavBreadcrumb className="hidden sm:flex" />
+							<NavBreadcrumb className="hidden md:flex text-nowrap" />
 						</div>
-						<div className="ml-auto flex flex-1 items-center gap-2 px-2 sm:px-4 md:max-w-96 lg:max-w-lg">
-							<Search />
-							<Link
-								to="https://github.com/TinsFox/poketto-stack"
-								target="_blank"
-							>
-								<Button variant="ghost" size="icon">
-									<Icons.gitHub className="size-5" />
-								</Button>
-							</Link>
-							<Link to="https://poketto-stack.pages.dev" target="_blank">
-								<Button variant="ghost" size="icon">
-									<CircleHelp className="size-5" />
-								</Button>
-							</Link>
-							<LanguageSwitch />
-							<ThemeSwitcher />
-							<ThemeCustomizer />
+						<div className="ml-auto flex items-center justify-end gap-1 px-1 sm:gap-2 sm:px-2 md:flex-1 md:justify-between md:px-4 md:max-w-96 lg:max-w-lg">
+							<Search className="w-full max-w-[200px] md:max-w-none" />
+							<div className="flex items-center gap-1 sm:gap-2">
+								<Link
+									to="https://github.com/TinsFox/poketto-stack"
+									target="_blank"
+									className="hidden sm:inline-flex"
+								>
+									<Button variant="ghost" size="icon">
+										<Icons.gitHub className="size-4 sm:size-5" />
+									</Button>
+								</Link>
+								<Link to="https://poketto-stack.pages.dev" target="_blank">
+									<Button variant="ghost" size="icon">
+										<CircleHelp className="size-4 sm:size-5" />
+									</Button>
+								</Link>
+								<LanguageSwitch />
+								<ThemeSwitcher />
+								<ThemeCustomizer />
+							</div>
 						</div>
 					</header>
 				</div>
 
-				<ScrollArea className="flex h-[calc(100vh-5rem)] flex-col gap-4 p-2 pt-0 sm:h-[calc(100vh-5rem)] sm:p-4">
+				<ScrollArea className="flex h-[calc(100vh-3.5rem)] flex-col gap-4 p-2 pt-0 sm:h-[calc(100vh-4rem)] sm:p-4">
 					<div className="p-2 sm:py-4">
 						<Outlet />
 					</div>
