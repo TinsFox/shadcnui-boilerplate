@@ -10,6 +10,7 @@ import { CircleHelp } from "lucide-react";
 import { Link, Outlet, redirect } from "react-router";
 
 import { Icons } from "@/components/icons";
+import { LanguageSwitch } from "@/components/language-switch";
 import { AppSidebar } from "@/components/nav-sidebar/app-sidebar";
 import { NavBreadcrumb } from "@/components/nav-sidebar/nav-breadcrumb";
 import { Search } from "@/components/search";
@@ -44,7 +45,7 @@ export default function AdminLayout() {
 							/>
 							<NavBreadcrumb className="hidden sm:flex" />
 						</div>
-						<div className="ml-auto flex flex-1 items-center space-x-2 px-2 sm:px-4 md:max-w-96 lg:max-w-lg">
+						<div className="ml-auto flex flex-1 items-center gap-2 px-2 sm:px-4 md:max-w-96 lg:max-w-lg">
 							<Search />
 							<Link
 								to="https://github.com/TinsFox/poketto-stack"
@@ -59,6 +60,7 @@ export default function AdminLayout() {
 									<CircleHelp className="size-5" />
 								</Button>
 							</Link>
+							<LanguageSwitch />
 							<ThemeSwitcher />
 							<ThemeCustomizer />
 						</div>

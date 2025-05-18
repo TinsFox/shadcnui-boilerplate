@@ -7,7 +7,7 @@ export default function Component() {
 	const { t } = useTranslation("settings");
 
 	return (
-		<div className="space-y-6">
+		<div className="space-y-6 w-full">
 			<div>
 				<h3 className="text-lg font-medium">{t("nav.appearance")}</h3>
 				<p className="text-sm text-muted-foreground">

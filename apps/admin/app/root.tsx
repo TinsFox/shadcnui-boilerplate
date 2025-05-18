@@ -32,9 +32,8 @@ export function Layout({ children }: { children: React.ReactNode }) {
 				<Meta />
 				<Links />
 			</head>
-			<body className="font-sans antialiased bg-background">
+			<body className="antialiased bg-background">
 				<RootProviders>{children}</RootProviders>
-				{/* editor={env.VITE_EDITOR}  */}
 				<ClickToComponent />
 				<ScrollRestoration />
 				<Scripts />

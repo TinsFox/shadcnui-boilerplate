@@ -35,7 +35,7 @@ export default function Component() {
 	return (
 		<div className="space-y-6 p-10 py-0 md:block ">
 			<div className="relative flex flex-col space-y-8 lg:flex-row lg:space-x-12 lg:space-y-0">
-				<aside className="-mx-4 lg:w-1/6 ">
+				<aside className=" lg:w-1/6 ">
 					<SidebarNav items={sidebarNavItems} />
 				</aside>
 				<Outlet />

@@ -26,7 +26,19 @@
 			"email_options_description": "This is the email options that will be displayed on your profile.",
 			"urls_description": "This is the urls that will be displayed on your profile.",
 			"bio": "Bio",
-			"bio_description": "This is the bio that will be displayed on your profile."
+			"bio_description": "This is the bio that will be displayed on your profile.",
+			"name": "Name",
+			"name_description": "This is your public display name.",
+			"role": "Role",
+			"role_description": "Your role in the system.",
+			"banned": "Account Status",
+			"banned_description": "Current status of your account.",
+			"banReason": "Ban Reason",
+			"banReason_description": "Reason for account suspension if applicable.",
+			"banExpires": "Ban Expiration",
+			"banExpires_description": "When the account suspension will expire.",
+			"banned_true": "Banned",
+			"banned_false": "Not Banned"
 		},
 		"appearance": {
 			"title": "Appearance",

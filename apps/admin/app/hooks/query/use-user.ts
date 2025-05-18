@@ -19,13 +19,7 @@ const userKeys = {
 	detail: (id: string) => [...userKeys.all, id] as const,
 };
 
-export const queryUser = () =>
-	queryOptions({
-		queryKey: userKeys.all,
-		queryFn: async () => apiFetch<IUserProfile>("/api/users"),
-	});
-
-export const queryUserInfo = () =>
+export const queryUserSession = () =>
 	queryOptions({
 		queryKey: ["user-info"],
 		queryFn: async () => {
@@ -33,8 +27,8 @@ export const queryUserInfo = () =>
 		},
 	});
 
-export function useUser() {
-	return useSuspenseQuery(queryUserInfo());
+export function useSession() {
+	return useSuspenseQuery(queryUserSession());
 }
 
 export function useUserLoginMutation() {

@@ -26,7 +26,19 @@
 			"email_options_description": "这是将在您的个人资料中显示的电子邮件选项。",
 			"urls_description": "这是将在您的个人资料中显示的链接。",
 			"bio": "个人简介",
-			"bio_description": "这是将在您的个人资料中显示的个人简介。"
+			"bio_description": "这是将在您的个人资料中显示的个人简介。",
+			"name": "姓名",
+			"name_description": "这是您的公开显示名称。",
+			"role": "角色",
+			"role_description": "您在系统中的角色。",
+			"banned": "账号状态",
+			"banned_description": "您的账号当前状态。",
+			"banReason": "封禁原因",
+			"banReason_description": "如果适用，这里显示账号被封禁的原因。",
+			"banExpires": "封禁到期时间",
+			"banExpires_description": "账号封禁将在此时间解除。",
+			"banned_true": "已封禁",
+			"banned_false": "正常"
 		},
 		"appearance": {
 			"title": "外观",

@@ -6,7 +6,7 @@
 		"db:seed": "tsx ./src/db/seed.ts",
 		"db:studio": "drizzle-kit studio",
 		"workers:deploy": "wrangler deploy --minify",
-		"dev": "generate-types && wrangler dev",
+		"dev": "pnpm run generate-types && wrangler dev",
 		"prepare": "test -f .dev.vars || cp .dev.vars.example .dev.vars",
 		"test": "vitest",
 		"typecheck": "tsc --noEmit",

@@ -25,13 +25,13 @@ import {
 import { useTranslation } from "react-i18next";
 import { Link } from "react-router";
 
-import { useUser } from "@/hooks/query/use-user";
+import { useSession } from "@/hooks/query/use-user";
 import { signOut } from "@/lib/auth-client";
 
 export function NavUser() {
 	const { isMobile } = useSidebar();
 	const { t } = useTranslation("navigation");
-	const { data: user } = useUser();
+	const { data: user } = useSession();
 
 	return (
 		<SidebarMenu>

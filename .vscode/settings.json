@@ -27,5 +27,10 @@
 		"quickfix.biome": "explicit",
 		"source.organizeImports.biome": "explicit"
 	},
-	"cSpell.words": ["VITE"]
+	"cSpell.words": ["VITE"],
+	"search.exclude": {
+		"**/build/**": true,
+		"**/node_modules/**": true,
+		"**/dist/**": true
+	}
 }

@@ -18,12 +18,19 @@ export const LanguageSwitch = () => {
 
 	return (
 		<Select value={i18n.language} onValueChange={changeLanguage}>
-			<SelectTrigger className="w-[120px]">
-				<SelectValue placeholder={t("select_language")} />
+			<SelectTrigger className="w-[180px]">
+				<SelectValue
+					placeholder={t("select_language")}
+					className="w-[180px] truncate"
+				/>
 			</SelectTrigger>
-			<SelectContent>
+			<SelectContent className="w-[180px]">
 				{languages.map((language) => (
-					<SelectItem key={language.value} value={language.value}>
+					<SelectItem
+						key={language.value}
+						value={language.value}
+						className="truncate"
+					>
 						{language.icon} {language.label}
 					</SelectItem>
 				))}

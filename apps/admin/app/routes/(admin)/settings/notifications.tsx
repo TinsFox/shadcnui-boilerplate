@@ -6,7 +6,7 @@ import { NotificationsForm } from "./components/notifications-form";
 export default function Component() {
 	const { t } = useTranslation(["settings", "common"]);
 	return (
-		<div className="space-y-6">
+		<div className="space-y-6 w-full">
 			<div>
 				<h3 className="text-lg font-medium">{t("nav.notifications")}</h3>
 				<p className="text-sm text-muted-foreground">
