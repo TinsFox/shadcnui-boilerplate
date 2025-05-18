@@ -2,6 +2,7 @@ import { openAPISpecs } from "hono-openapi";
 import { cors } from "hono/cors";
 import { csrf } from "hono/csrf";
 import { albumRouter } from "./module/albums/albums";
+import { rbacRouter } from "./module/rbac/rbac";
 
 import { logger } from "hono/logger";
 import { requestId } from "hono/request-id";
@@ -34,6 +35,9 @@ app.get("/", (c) => {
 app.route("/albums", albumRouter);
 
 app.route("/tasks", taskRouter);
+
+// 添加 RBAC 相关路由
+app.route("/rbac", rbacRouter);
 
 app.get(
 	"/openapi",
