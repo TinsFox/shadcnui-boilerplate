@@ -25,6 +25,13 @@ export const RootProviders: FC<PropsWithChildren> = ({ children }) => (
 			options={{
 				api_host: env.VITE_PUBLIC_POSTHOG_HOST,
 				debug: import.meta.env.DEV,
+				autocapture: import.meta.env.PROD,
+				loaded: (posthog) => {
+					if (process.env.NODE_ENV === "development") {
+						posthog.debug();
+						posthog.opt_out_capturing();
+					}
+				},
 			}}
 		>
 			<LazyMotion features={loadFeatures} strict key="framer">

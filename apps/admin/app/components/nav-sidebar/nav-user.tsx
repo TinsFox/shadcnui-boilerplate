@@ -27,11 +27,19 @@ import { Link } from "react-router";
 
 import { useSession } from "@/hooks/query/use-user";
 import { signOut } from "@/lib/auth-client";
+import posthog from "posthog-js";
 
 export function NavUser() {
 	const { isMobile } = useSidebar();
 	const { t } = useTranslation("navigation");
 	const { data: user } = useSession();
+	if (user.data?.user && import.meta.env.PROD) {
+		posthog.identify(user.data.user.id, {
+			name: user.data.user.name,
+			email: user.data.user.email,
+			avatar: user.data.user.image,
+		});
+	}
 
 	return (
 		<SidebarMenu>
