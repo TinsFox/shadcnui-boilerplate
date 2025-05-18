@@ -7,18 +7,20 @@ import common from "../../locales/en/common.json";
 import errors from "../../locales/en/errors.json";
 import forms from "../../locales/en/forms.json";
 import navigation from "../../locales/en/navigation.json";
+import seo from "../../locales/en/seo.json";
 import settings from "../../locales/en/settings.json";
 import signIn from "../../locales/en/sign-in.json";
 import signUp from "../../locales/en/sign-up.json";
+
 import authZh from "../../locales/zh-CN/auth.json";
 import commonZh from "../../locales/zh-CN/common.json";
 import errorsZh from "../../locales/zh-CN/errors.json";
 import formsZh from "../../locales/zh-CN/forms.json";
 import navigationZh from "../../locales/zh-CN/navigation.json";
+import seoZh from "../../locales/zh-CN/seo.json";
 import settingsZh from "../../locales/zh-CN/settings.json";
 import signInZh from "../../locales/zh-CN/sign-in.json";
 import signUpZh from "../../locales/zh-CN/sign-up.json";
-
 const enResources = {
 	common,
 	auth,
@@ -28,6 +30,7 @@ const enResources = {
 	errors,
 	signUp,
 	signIn,
+	seo,
 };
 
 const zhResources = {
@@ -39,6 +42,7 @@ const zhResources = {
 	errors: errorsZh,
 	signIn: signInZh,
 	signUp: signUpZh,
+	seo: seoZh,
 };
 
 const resources = {

@@ -16,6 +16,7 @@ import {
 } from "react-router";
 
 import { RootProviders } from "@/providers/root-providers";
+import { useTranslation } from "react-i18next";
 import { Fallback } from "./components/fallback";
 import { env } from "./env";
 
@@ -24,11 +25,23 @@ export function meta() {
 }
 
 export function Layout({ children }: { children: React.ReactNode }) {
+	const { i18n, t } = useTranslation("seo");
+
 	return (
-		<html lang="en">
+		<html lang={i18n.language}>
 			<head>
 				<meta charSet="utf-8" />
+				<link rel="icon" type="image/svg+xml" href="/vite-boilerplate.svg" />
 				<meta name="viewport" content="width=device-width, initial-scale=1" />
+				<meta name="description" content={t("seo.description")} />
+				<meta name="keywords" content={t("seo.keywords")} />
+				<meta property="og:title" content={env.VITE_APP_NAME} />
+				<meta property="og:description" content={t("seo.description")} />
+				<meta property="og:type" content="website" />
+				<meta name="twitter:card" content="summary_large_image" />
+				<meta name="twitter:title" content={env.VITE_APP_NAME} />
+				<meta name="twitter:description" content={t("seo.description")} />
+
 				<Meta />
 				<Links />
 			</head>

@@ -14,6 +14,7 @@ declare module "i18next" {
 			errors: typeof resources.en.errors;
 			signUp: typeof resources.en.signUp;
 			signIn: typeof resources.en.signIn;
+			seo: typeof resources.en.seo;
 		};
 	}
 }
