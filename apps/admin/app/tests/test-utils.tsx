@@ -8,7 +8,9 @@ import { BrowserRouter } from "react-router";
 
 import type { Theme } from "@/components/theme/theme-provider";
 import { ThemeProvider } from "@/components/theme/theme-provider";
+import { env } from "@/env";
 import { i18n } from "@/i18n";
+import { PostHogProvider } from "posthog-js/react";
 
 type RenderHookOptions = {
 	initialProps?: {
@@ -22,14 +24,26 @@ export const renderHook = <Result,>(
 	options: RenderHookOptions = {},
 ) => {
 	return rtlRenderHook(hook, {
-		wrapper: ({ children }) =>
-			options.wrapper ? (
+		wrapper: ({ children }) => {
+			const content = options.wrapper ? (
 				<options.wrapper>{children}</options.wrapper>
 			) : (
 				<ThemeProvider defaultTheme={options.initialProps?.defaultTheme}>
 					{children}
 				</ThemeProvider>
-			),
+			);
+			return (
+				<PostHogProvider
+					apiKey={env.VITE_PUBLIC_POSTHOG_KEY}
+					options={{
+						api_host: env.VITE_PUBLIC_POSTHOG_HOST,
+						debug: import.meta.env.DEV,
+					}}
+				>
+					{content}
+				</PostHogProvider>
+			);
+		},
 	});
 };
 
@@ -47,7 +61,15 @@ function render(ui: React.ReactElement, { route = "/" } = {}) {
 	return rtlRender(
 		<QueryClientProvider client={queryClient}>
 			<I18nextProvider i18n={i18n}>
-				<BrowserRouter>{ui}</BrowserRouter>
+				<PostHogProvider
+					apiKey={env.VITE_PUBLIC_POSTHOG_KEY}
+					options={{
+						api_host: env.VITE_PUBLIC_POSTHOG_HOST,
+						debug: import.meta.env.DEV,
+					}}
+				>
+					<BrowserRouter>{ui}</BrowserRouter>
+				</PostHogProvider>
 			</I18nextProvider>
 		</QueryClientProvider>,
 	);

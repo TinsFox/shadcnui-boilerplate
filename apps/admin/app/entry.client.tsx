@@ -1,12 +1,15 @@
 import { StrictMode, startTransition } from "react";
 import { hydrateRoot } from "react-dom/client";
 import { HydratedRouter } from "react-router/dom";
+import { RootProviders } from "./providers/root-providers";
 
 startTransition(() => {
 	hydrateRoot(
 		document,
 		<StrictMode>
-			<HydratedRouter />
+			<RootProviders>
+				<HydratedRouter />
+			</RootProviders>
 		</StrictMode>,
 	);
 });
