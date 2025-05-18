@@ -14,6 +14,7 @@ import { ThemesStyle } from "@/components/theme/themes-styles";
 import { env } from "@/env";
 import { i18n } from "@/i18n";
 import { queryClient } from "@/lib/query-client";
+import { TailwindIndicator } from "~/components/tailwind-indicator";
 
 const loadFeatures = () =>
 	import("../framer-lazy-feature").then((res) => res.default);
@@ -49,6 +50,7 @@ export const RootProviders: FC<PropsWithChildren> = ({ children }) => (
 									<HotkeysProvider initiallyActiveScopes={["home"]}>
 										{children}
 									</HotkeysProvider>
+									<TailwindIndicator />
 									<ToasterPrimitive />
 								</TooltipProvider>
 								<ThemesStyle />
