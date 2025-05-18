@@ -1,15 +1,12 @@
 import { db } from "@/db";
-import {
-	BaseDetailSchema,
-	BaseErrorSchema,
-	BasePaginateQuerySchema,
-	BasePaginationSchema,
-} from "@/schema/base";
-import { OpenAPIHono, createRoute, z } from "@hono/zod-openapi";
+import { BasePaginateQuerySchema, BasePaginationSchema } from "@/schema/base";
 import { users } from "auth-schema";
 import { eq } from "drizzle-orm";
 import { count } from "drizzle-orm";
-
+import { Hono } from "hono";
+import { describeRoute } from "hono-openapi";
+import { resolver, validator as zValidator } from "hono-openapi/zod";
+import { z } from "zod";
 import {
 	ParamsSchema,
 	SearchQuerySchema,
@@ -17,339 +14,307 @@ import {
 	UserResponseSchema,
 } from "./schema";
 
-const userRouter = new OpenAPIHono<HonoEnvType>();
+const userRouter = new Hono();
 
-const getUsersRoute = createRoute({
-	method: "get",
-	path: "",
-	tags: ["Users"],
-	summary: "Get users list",
-	description: "Retrieve a paginated list of users with optional search query",
-	request: {
-		query: BasePaginateQuerySchema.merge(SearchQuerySchema.partial()),
-	},
-	responses: {
-		200: {
-			content: {
-				"application/json": {
-					schema: BasePaginationSchema(UserResponseSchema),
+// Get users list with pagination
+userRouter.get(
+	"/",
+	describeRoute({
+		tags: ["Users"],
+		summary: "Get users list",
+		description:
+			"Retrieve a paginated list of users with optional search query",
+		responses: {
+			200: {
+				description: "Successfully retrieved users list",
+				content: {
+					"application/json": {
+						schema: resolver(BasePaginationSchema(UserResponseSchema)),
+					},
 				},
 			},
-			description: "Successfully retrieved users list",
 		},
-	},
-});
+	}),
+	zValidator(
+		"query",
+		BasePaginateQuerySchema.merge(SearchQuerySchema.partial()),
+	),
+	async (c) => {
+		const { page, pageSize } = c.req.valid("query");
 
-// 修改获取用户信息的路由配置
-const getUserInfoRoute = createRoute({
-	method: "get",
-	path: "/info",
-	tags: ["Users"],
-	summary: "Get user info",
-	description: "Retrieve the current user's information",
-	security: [{ Bearer: [] }],
-	responses: {
-		200: {
-			content: {
-				"application/json": {
-					schema: BaseDetailSchema(UserResponseSchema),
-				},
-			},
-			description: "Successfully retrieved user info",
-		},
-		404: {
-			content: {
-				"application/json": {
-					schema: BaseErrorSchema,
-				},
-			},
-			description: "User not found",
-		},
-	},
-});
+		const allUsers = await db
+			.select()
+			.from(users)
+			.orderBy(users.createdAt)
+			.offset(page * pageSize)
+			.limit(pageSize);
 
-// 修改获取指定用户的路由配置
-const getUserByIdRoute = createRoute({
-	method: "get",
-	path: "/{id}",
-	tags: ["Users"],
-	summary: "Get user by id",
-	description: "Retrieve a user by their ID",
-	request: {
-		params: ParamsSchema,
-	},
-	responses: {
-		200: {
-			content: {
-				"application/json": {
-					schema: BaseDetailSchema(UserResponseSchema),
-				},
-			},
-			description: "Successfully retrieved user",
-		},
-		400: {
-			content: {
-				"application/json": {
-					schema: BaseErrorSchema,
-				},
-			},
-			description: "Bad request",
-		},
-		404: {
-			content: {
-				"application/json": {
-					schema: BaseErrorSchema,
-				},
-			},
-			description: "User not found",
-		},
-	},
-});
+		const totalResult = await db.select({ count: count() }).from(users);
+		const total = Number(totalResult[0].count);
 
-userRouter.openapi(getUsersRoute, async (c) => {
-	const { page, pageSize } = c.req.valid("query");
-
-	const allUsers = await db
-		.select()
-		.from(users)
-		.offset(page * pageSize)
-		.limit(pageSize);
-
-	const totalResult = await db.select({ count: count() }).from(users);
-	const total = Number(totalResult[0].count);
-
-	return c.json({
-		code: 200,
-		list: allUsers,
-		msg: "Get user list success",
-		total,
-		page: Number(page),
-		pageSize: Number(pageSize),
-		totalPages: Math.ceil(total / pageSize),
-	});
-});
-
-userRouter.openapi(getUserInfoRoute, async (c) => {
-	const payload = c.get("jwtPayload");
-
-	const [user] = await db
-		.select({
-			id: users.id,
-			email: users.email,
-			password: users.password,
-			name: users.name,
-			username: users.username,
-			avatar: users.avatar,
-			birthdate: users.birthdate,
-			registeredAt: users.registeredAt,
-			createdAt: users.createdAt,
-			updatedAt: users.updatedAt,
-			status: users.status,
-			role: users.role,
-			bio: users.bio,
-			amount: users.amount,
-		})
-		.from(users)
-		.where(eq(users.id, payload.sub));
-
-	if (!user) {
-		return c.json(
-			{
-				code: 404,
-				msg: "User not found",
-				data: null,
-			},
-			404,
-		);
-	}
-
-	return c.json(
-		{
+		return c.json({
 			code: 200,
-			msg: "Get user info success",
-			data: {
+			msg: "Successfully retrieved users list",
+			list: allUsers.map((user) => ({
 				...user,
-				birthdate: user.birthdate?.toString() ?? null,
-				registeredAt: user.registeredAt.toISOString(),
 				createdAt: user.createdAt.toISOString(),
 				updatedAt: user.updatedAt.toISOString(),
-				amount: user.amount?.toString() ?? "0",
+			})),
+			total,
+			page: Number(page),
+			pageSize: Number(pageSize),
+			totalPages: Math.ceil(total / pageSize),
+		});
+	},
+);
+
+// Get current user info
+userRouter.get(
+	"/info",
+	describeRoute({
+		tags: ["Users"],
+		summary: "Get user info",
+		description: "Retrieve the current user's information",
+		security: [{ Bearer: [] }],
+		responses: {
+			200: {
+				content: {
+					"application/json": {
+						schema: resolver(UserResponseSchema),
+					},
+				},
+				description: "Successfully retrieved user info",
+			},
+			404: {
+				content: {
+					"application/json": {
+						schema: resolver(
+							z.object({
+								code: z.number(),
+								msg: z.string(),
+							}),
+						),
+					},
+				},
+				description: "User not found",
 			},
 		},
-		200,
-	);
-});
+	}),
+	async (c) => {
+		const payload = c.get("jwtPayload");
+		const user = await db.query.users.findFirst({
+			where: eq(users.id, payload.sub),
+		});
 
-userRouter.openapi(getUserByIdRoute, async (c) => {
-	const { id } = c.req.valid("param");
+		if (!user) {
+			return c.json(
+				{
+					code: 404,
+					msg: "User not found",
+				},
+				404,
+			);
+		}
 
-	const [user] = await db
-		.select({
-			id: users.id,
-			email: users.email,
-			password: users.password,
-			name: users.name,
-			username: users.username,
-			avatar: users.avatar,
-			birthdate: users.birthdate,
-			registeredAt: users.registeredAt,
-			bio: users.bio,
-			role: users.role,
-			amount: users.amount,
-			status: users.status,
-			createdAt: users.createdAt,
-			updatedAt: users.updatedAt,
-		})
-		.from(users)
-		.where(eq(users.id, id));
-
-	if (!user) {
-		return c.json(
-			{
-				code: 404,
-				msg: "User not found",
-				data: null,
-			},
-			404,
-		);
-	}
-
-	return c.json(
-		{
+		return c.json({
 			code: 200,
-			msg: "Get user success",
+			msg: "Successfully retrieved user info",
 			data: {
 				...user,
-				birthdate: user.birthdate?.toString() ?? null,
-				registeredAt: user.registeredAt.toISOString(),
 				createdAt: user.createdAt.toISOString(),
 				updatedAt: user.updatedAt.toISOString(),
-				amount: user.amount?.toString() ?? "0",
 			},
-		},
-		200,
-	);
-});
-
-const updateUserRoute = createRoute({
-	method: "put",
-	path: "/{id}",
-	tags: ["Users"],
-	summary: "Update user",
-	description: "Update a user's information",
-	request: {
-		params: ParamsSchema,
-		body: {
-			content: {
-				"application/json": {
-					schema: UpdateUserSchema,
-				},
-			},
-		},
+		});
 	},
-	responses: {
-		200: {
-			content: {
-				"application/json": {
-					schema: z.object({
-						code: z.number(),
-						msg: z.string(),
-					}),
+);
+
+// Get user by ID
+userRouter.get(
+	"/:id",
+	describeRoute({
+		tags: ["Users"],
+		summary: "Get user by id",
+		description: "Retrieve a user by their ID",
+		responses: {
+			200: {
+				content: {
+					"application/json": {
+						schema: resolver(UserResponseSchema),
+					},
 				},
+				description: "Successfully retrieved user",
 			},
-			description: "User updated successfully",
-		},
-		400: {
-			content: {
-				"application/json": {
-					schema: z.object({
-						code: z.number(),
-						msg: z.string(),
-					}),
+			404: {
+				content: {
+					"application/json": {
+						schema: resolver(
+							z.object({
+								code: z.number(),
+								msg: z.string(),
+							}),
+						),
+					},
 				},
+				description: "User not found",
 			},
-			description: "Invalid request",
 		},
+	}),
+	zValidator("param", ParamsSchema),
+	async (c) => {
+		const { id } = c.req.valid("param");
+		const user = await db.query.users.findFirst({
+			where: eq(users.id, id),
+		});
+
+		if (!user) {
+			return c.json(
+				{
+					code: 404,
+					msg: "User not found",
+				},
+				404,
+			);
+		}
+
+		return c.json({
+			code: 200,
+			msg: "Successfully retrieved user",
+			data: {
+				...user,
+				createdAt: user.createdAt.toISOString(),
+				updatedAt: user.updatedAt.toISOString(),
+			},
+		});
 	},
-});
+);
 
-userRouter.openapi(updateUserRoute, async (c) => {
-	const { id } = c.req.valid("param");
-	const updateData = c.req.valid("json");
-
-	await db
-		.update(users)
-		.set({
-			...updateData,
-			updatedAt: new Date(),
-		})
-		.where(eq(users.id, id));
-
-	return c.json({
-		code: 200,
-		msg: "Update user success",
-	});
-});
-
-// 添加删除用户的路由配置
-const deleteUserRoute = createRoute({
-	method: "delete",
-	path: "/{id}",
-	tags: ["Users"],
-	summary: "Delete user",
-	description: "Delete a user by their ID",
-	request: {
-		params: ParamsSchema,
-	},
-	responses: {
-		200: {
-			content: {
-				"application/json": {
-					schema: z.object({
-						code: z.number(),
-						msg: z.string(),
-					}),
+// Update user
+userRouter.put(
+	"/:id",
+	describeRoute({
+		tags: ["Users"],
+		summary: "Update user",
+		description: "Update a user's information",
+		responses: {
+			200: {
+				content: {
+					"application/json": {
+						schema: resolver(UserResponseSchema),
+					},
 				},
+				description: "User updated successfully",
 			},
-			description: "User deleted successfully",
-		},
-		404: {
-			content: {
-				"application/json": {
-					schema: z.object({
-						code: z.number(),
-						msg: z.string(),
-					}),
+			404: {
+				content: {
+					"application/json": {
+						schema: resolver(
+							z.object({
+								code: z.number(),
+								msg: z.string(),
+							}),
+						),
+					},
 				},
+				description: "User not found",
 			},
-			description: "User not found",
 		},
-	},
-});
+	}),
+	zValidator("param", ParamsSchema),
+	zValidator("json", UpdateUserSchema),
+	async (c) => {
+		const { id } = c.req.valid("param");
+		const updateData = c.req.valid("json");
 
-// 实现删除用户路由
-userRouter.openapi(deleteUserRoute, async (c) => {
-	const { id } = c.req.valid("param");
+		const [updated] = await db
+			.update(users)
+			.set({
+				...updateData,
+				updatedAt: new Date(),
+			})
+			.where(eq(users.id, id))
+			.returning();
 
-	const [existingUser] = await db.select().from(users).where(eq(users.id, id));
+		if (!updated) {
+			return c.json(
+				{
+					code: 404,
+					msg: "User not found",
+				},
+				404,
+			);
+		}
 
-	if (!existingUser) {
-		return c.json(
-			{
-				code: 404,
-				msg: "User not found",
-				data: null,
+		return c.json({
+			code: 200,
+			msg: "User updated successfully",
+			data: {
+				...updated,
+				createdAt: updated.createdAt.toISOString(),
+				updatedAt: updated.updatedAt.toISOString(),
 			},
-			404,
-		);
-	}
+		});
+	},
+);
 
-	await db.delete(users).where(eq(users.id, id));
+// Delete user
+userRouter.delete(
+	"/:id",
+	describeRoute({
+		tags: ["Users"],
+		summary: "Delete user",
+		description: "Delete a user by their ID",
+		responses: {
+			200: {
+				content: {
+					"application/json": {
+						schema: resolver(
+							z.object({
+								code: z.number(),
+								msg: z.string(),
+							}),
+						),
+					},
+				},
+				description: "User deleted successfully",
+			},
+			404: {
+				content: {
+					"application/json": {
+						schema: resolver(
+							z.object({
+								code: z.number(),
+								msg: z.string(),
+							}),
+						),
+					},
+				},
+				description: "User not found",
+			},
+		},
+	}),
+	zValidator("param", ParamsSchema),
+	async (c) => {
+		const { id } = c.req.valid("param");
+		const [deleted] = await db
+			.delete(users)
+			.where(eq(users.id, id))
+			.returning();
 
-	return c.json({
-		code: 200,
-		msg: "Delete user success",
-	});
-});
+		if (!deleted) {
+			return c.json(
+				{
+					code: 404,
+					msg: "User not found",
+				},
+				404,
+			);
+		}
+
+		return c.json({
+			code: 200,
+			msg: "User deleted successfully",
+		});
+	},
+);
 
 export { userRouter };

@@ -1,239 +1,209 @@
-import { OpenAPIHono, createRoute } from "@hono/zod-openapi";
-import { count, eq } from "drizzle-orm";
-import { ParamsSchema, createTaskSchema } from "./schema";
-
 import { db } from "@/db";
-import { selectTaskSchema, tasks } from "@/db/schema/tasks.schema";
+import { tasks } from "@/db/schema/tasks.schema";
+import { paginateWithLimitOffset } from "@/lib/drizzle-pagination";
 import {
-	BaseDetailSchema,
-	BaseErrorSchema,
-	BasePaginateQuerySchema,
-	BasePaginationSchema,
-	BaseSuccessSchema,
-} from "@/schema/base";
+	paginationQuerySchema,
+	paginationResponseSchema,
+} from "@/schema/pagination";
+import { z } from "@hono/zod-openapi";
+import { eq } from "drizzle-orm";
+import { Hono } from "hono";
+import { describeRoute } from "hono-openapi";
+import { resolver, validator as zValidator } from "hono-openapi/zod";
+import { createTaskSchema } from "./schema";
 
-const taskRouter = new OpenAPIHono<HonoEnvType>();
+const taskRouter = new Hono();
 
-// 获取任务列表路由
-const listTasksRoute = createRoute({
-	method: "get",
-	path: "",
-	tags: ["Tasks"],
-	summary: "Get task list",
-	description:
-		"Retrieve a paginated list of tasks with optional status and priority filters",
-	request: {
-		query: BasePaginateQuerySchema.merge(selectTaskSchema.partial()),
+// Get tasks list
+taskRouter.get(
+	"/",
+	describeRoute({
+		tags: ["tasks"],
+		summary: "Get all tasks with pagination",
+		responses: {
+			200: {
+				description: "List of tasks with pagination info",
+				content: {
+					"application/json": {
+						schema: resolver(
+							paginationResponseSchema(z.object(createTaskSchema.shape)),
+						),
+					},
+				},
+			},
+		},
+	}),
+	zValidator("query", paginationQuerySchema),
+	async (c) => {
+		const { limit, page, pageSize } = c.req.valid("query");
+
+		const result = await paginateWithLimitOffset(db.select().from(tasks), {
+			limit,
+			offset: (page - 1) * pageSize,
+			orderBy: [[tasks.createdAt, "desc"]],
+		});
+
+		return c.json({
+			records: result.data,
+			nextOffset: result.hasNextPage ? result.nextCursor?.[0] : undefined,
+			hasNextPage: result.hasNextPage,
+			total: result.total,
+			page: page,
+			pageSize: pageSize,
+		});
 	},
-	responses: {
-		200: {
-			content: {
-				"application/json": {
-					schema: BasePaginationSchema(createTaskSchema),
+);
+
+// Create task
+taskRouter.post(
+	"/",
+	describeRoute({
+		tags: ["tasks"],
+		summary: "Create a new task",
+		responses: {
+			201: {
+				description: "Task created successfully",
+				content: {
+					"application/json": {
+						schema: resolver(z.object(createTaskSchema.shape)),
+					},
 				},
 			},
-			description: "Successfully retrieved tasks",
 		},
+	}),
+	zValidator("json", createTaskSchema),
+	async (c) => {
+		const task = c.req.valid("json");
+		const [newTask] = await db.insert(tasks).values(task).returning();
+
+		return c.json(newTask, 201);
 	},
-});
+);
 
-// 创建任务路由
-const createTaskRoute = createRoute({
-	method: "post",
-	path: "",
-	tags: ["Tasks"],
-	summary: "Create new task",
-	description: "Create a new task with the provided information",
-	request: {
-		body: {
-			content: {
-				"application/json": {
-					schema: createTaskSchema,
+// Get single task
+taskRouter.get(
+	"/:id",
+	describeRoute({
+		tags: ["tasks"],
+		summary: "Get a task by ID",
+		responses: {
+			200: {
+				description: "Task details",
+				content: {
+					"application/json": {
+						schema: resolver(z.object(createTaskSchema.shape)),
+					},
+				},
+			},
+			404: {
+				description: "Task not found",
+				content: {
+					"application/json": {
+						schema: resolver(z.object({ message: z.string() })),
+					},
 				},
 			},
 		},
+	}),
+	zValidator("param", z.object({ id: z.string().uuid() })),
+	async (c) => {
+		const { id } = c.req.valid("param");
+		const task = await db.query.tasks.findFirst({
+			where: eq(tasks.id, id),
+		});
+
+		if (!task) {
+			return c.json({ message: "Task not found" }, 404);
+		}
+		return c.json(task);
 	},
-	responses: {
-		200: {
-			content: {
-				"application/json": {
-					schema: BaseDetailSchema(selectTaskSchema),
+);
+
+// Update task
+taskRouter.put(
+	"/:id",
+	describeRoute({
+		tags: ["tasks"],
+		summary: "Update a task by ID",
+		responses: {
+			200: {
+				description: "Task updated successfully",
+				content: {
+					"application/json": {
+						schema: resolver(z.object(createTaskSchema.shape)),
+					},
 				},
 			},
-			description: "Task created successfully",
-		},
-		400: {
-			content: {
-				"application/json": {
-					schema: BaseErrorSchema,
+			404: {
+				description: "Task not found",
+				content: {
+					"application/json": {
+						schema: resolver(z.object({ message: z.string() })),
+					},
 				},
 			},
-			description: "Invalid input",
 		},
+	}),
+	zValidator("param", z.object({ id: z.string().uuid() })),
+	zValidator("json", createTaskSchema.partial()),
+	async (c) => {
+		const { id } = c.req.valid("param");
+		const task = c.req.valid("json");
+
+		const [updated] = await db
+			.update(tasks)
+			.set({
+				...task,
+				updatedAt: new Date(),
+			})
+			.where(eq(tasks.id, id))
+			.returning();
+
+		if (!updated) {
+			return c.json({ message: "Task not found" }, 404);
+		}
+		return c.json(updated);
 	},
-});
+);
 
-// 更新任务路由
-const updateTaskRoute = createRoute({
-	method: "put",
-	path: "/{id}",
-	tags: ["Tasks"],
-	summary: "Update task",
-	description: "Update an existing task by ID",
-	request: {
-		params: ParamsSchema,
-		body: {
-			content: {
-				"application/json": {
-					schema: createTaskSchema.partial(),
+// Delete task
+taskRouter.delete(
+	"/:id",
+	describeRoute({
+		tags: ["tasks"],
+		summary: "Delete a task by ID",
+		responses: {
+			200: {
+				description: "Task deleted successfully",
+				content: {
+					"application/json": {
+						schema: resolver(z.object({ message: z.string() })),
+					},
+				},
+			},
+			404: {
+				description: "Task not found",
+				content: {
+					"application/json": {
+						schema: resolver(z.object({ message: z.string() })),
+					},
 				},
 			},
 		},
+	}),
+	zValidator("param", z.object({ id: z.string().uuid() })),
+	async (c) => {
+		const { id } = c.req.valid("param");
+		const [deleted] = await db
+			.delete(tasks)
+			.where(eq(tasks.id, id))
+			.returning();
+
+		if (!deleted) {
+			return c.json({ message: "Task not found" }, 404);
+		}
+		return c.json({ message: "Task deleted" });
 	},
-	responses: {
-		200: {
-			content: {
-				"application/json": {
-					schema: BaseSuccessSchema,
-				},
-			},
-			description: "Task updated successfully",
-		},
-		404: {
-			content: {
-				"application/json": {
-					schema: BaseErrorSchema,
-				},
-			},
-			description: "Task not found",
-		},
-	},
-});
-
-// 删除任务路由
-const deleteTaskRoute = createRoute({
-	method: "delete",
-	path: "/{id}",
-	tags: ["Tasks"],
-	summary: "Delete task",
-	description: "Delete an existing task by ID",
-	request: {
-		params: ParamsSchema,
-	},
-	responses: {
-		200: {
-			content: {
-				"application/json": {
-					schema: BaseSuccessSchema,
-				},
-			},
-			description: "Task deleted successfully",
-		},
-		404: {
-			content: {
-				"application/json": {
-					schema: BaseErrorSchema,
-				},
-			},
-			description: "Task not found",
-		},
-	},
-});
-
-// 实现获取任务列表
-taskRouter.openapi(listTasksRoute, async (c) => {
-	const { page, pageSize } = c.req.valid("query");
-
-	const data = await db
-		.select()
-		.from(tasks)
-		.offset(page * pageSize);
-	const totalResult = await db.select({ count: count() }).from(tasks);
-
-	return c.json({
-		code: 200,
-		msg: "Get task list success",
-		list: data,
-		total: Number(totalResult[0].count),
-		page,
-		pageSize,
-		totalPages: Math.ceil(Number(totalResult[0].count) / pageSize),
-	});
-});
-
-// 实现创建任务
-taskRouter.openapi(createTaskRoute, async (c) => {
-	const data = c.req.valid("json");
-
-	const [task] = await db
-		.insert(tasks)
-		.values({
-			...data,
-		})
-		.returning();
-
-	return c.json(
-		{
-			code: 200,
-			msg: "Create task success",
-			data: task,
-		},
-		200,
-	);
-});
-
-taskRouter.openapi(updateTaskRoute, async (c) => {
-	const { id } = c.req.valid("param");
-	const updateData = c.req.valid("json");
-
-	const [existingTask] = await db.select().from(tasks).where(eq(tasks.id, id));
-
-	if (!existingTask) {
-		return c.json(
-			{
-				code: 404,
-				msg: "Task not found",
-			},
-			404,
-		);
-	}
-
-	await db
-		.update(tasks)
-		.set({
-			...updateData,
-			updatedAt: new Date(),
-		})
-		.where(eq(tasks.id, id));
-
-	return c.json({
-		code: 200,
-		msg: "Update task success",
-	});
-});
-
-// 实现删除任务
-taskRouter.openapi(deleteTaskRoute, async (c) => {
-	const { id } = c.req.valid("param");
-
-	const [existingTask] = await db.select().from(tasks).where(eq(tasks.id, id));
-
-	if (!existingTask) {
-		return c.json(
-			{
-				code: 404,
-				msg: "Task not found",
-			},
-			404,
-		);
-	}
-
-	await db.delete(tasks).where(eq(tasks.id, id));
-
-	return c.json({
-		code: 200,
-		msg: "Delete task success",
-	});
-});
+);
 
 export { taskRouter };

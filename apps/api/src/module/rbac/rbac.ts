@@ -7,165 +7,114 @@ import {
 	selectRoleSchema,
 } from "@/db/schema/rbac.schema";
 import { permissions } from "@/db/schema/rbac.schema";
-import { BaseDetailSchema, BaseErrorSchema } from "@/schema/base";
-import { OpenAPIHono, createRoute, z } from "@hono/zod-openapi";
+import { Hono } from "hono";
+import { describeRoute } from "hono-openapi";
+import { resolver, validator as zValidator } from "hono-openapi/zod";
+import { z } from "zod";
 
-const rbacRouter = new OpenAPIHono();
+const rbacRouter = new Hono();
 
-// 获取所有角色
-const getRolesRoute = createRoute({
-	method: "get",
-	path: "/roles",
-	tags: ["RBAC"],
-	summary: "获取角色列表",
-	security: [{ bearer: [] }],
-	responses: {
-		200: {
-			content: {
-				"application/json": {
-					schema: BaseDetailSchema(z.array(selectRoleSchema)),
+// Get all roles
+rbacRouter.get(
+	"/roles",
+	describeRoute({
+		tags: ["RBAC"],
+		summary: "Get all roles",
+		security: [{ bearer: [] }],
+		responses: {
+			200: {
+				description: "Successfully retrieved roles list",
+				content: {
+					"application/json": {
+						schema: resolver(z.array(selectRoleSchema)),
+					},
 				},
 			},
-			description: "成功获取角色列表",
 		},
+	}),
+	async (c) => {
+		const allRoles = await db.query.roles.findMany();
+		return c.json(allRoles);
 	},
-});
+);
 
-rbacRouter.openapi(getRolesRoute, async (c) => {
-	const allRoles = await db.query.roles.findMany();
-	return c.json({
-		code: 200,
-		msg: "Success",
-		data: allRoles,
-	});
-});
-
-// 创建新角色
-const createRoleRoute = createRoute({
-	method: "post",
-	path: "/roles",
-	tags: ["RBAC"],
-	summary: "创建新角色",
-	security: [{ bearer: [] }],
-	request: {
-		body: {
-			content: {
-				"application/json": {
-					schema: insertRoleSchema,
+// Create new role
+rbacRouter.post(
+	"/roles",
+	describeRoute({
+		tags: ["RBAC"],
+		summary: "Create a new role",
+		security: [{ bearer: [] }],
+		responses: {
+			201: {
+				description: "Role created successfully",
+				content: {
+					"application/json": {
+						schema: resolver(selectRoleSchema),
+					},
 				},
 			},
 		},
+	}),
+	zValidator("json", insertRoleSchema),
+	async (c) => {
+		const role = c.req.valid("json");
+		const [newRole] = await db.insert(roles).values(role).returning();
+		return c.json(newRole, 201);
 	},
-	responses: {
-		200: {
-			content: {
-				"application/json": {
-					schema: BaseDetailSchema(selectRoleSchema),
+);
+
+// Get all permissions
+rbacRouter.get(
+	"/permissions",
+	describeRoute({
+		tags: ["RBAC"],
+		summary: "Get all permissions",
+		security: [{ bearer: [] }],
+		responses: {
+			200: {
+				description: "Successfully retrieved permissions list",
+				content: {
+					"application/json": {
+						schema: resolver(z.array(selectPermissionSchema)),
+					},
 				},
 			},
-			description: "成功创建角色",
 		},
-		400: {
-			content: {
-				"application/json": {
-					schema: BaseErrorSchema,
-				},
-			},
-			description: "请求参数错误",
-		},
+	}),
+	async (c) => {
+		const allPermissions = await db.query.permissions.findMany();
+		return c.json(allPermissions);
 	},
-});
+);
 
-rbacRouter.openapi(createRoleRoute, async (c) => {
-	const data = c.req.valid("json");
-	const newRole = await db.insert(roles).values(data).returning();
-
-	return c.json(
-		{
-			code: 200,
-			msg: "Role created successfully",
-			data: newRole[0],
-		},
-		200,
-	);
-});
-
-// 获取所有权限
-const getPermissionsRoute = createRoute({
-	method: "get",
-	path: "/permissions",
-	tags: ["RBAC"],
-	summary: "获取权限列表",
-	security: [{ bearer: [] }],
-	responses: {
-		200: {
-			content: {
-				"application/json": {
-					schema: BaseDetailSchema(z.array(selectPermissionSchema)),
+// Create new permission
+rbacRouter.post(
+	"/permissions",
+	describeRoute({
+		tags: ["RBAC"],
+		summary: "Create a new permission",
+		security: [{ bearer: [] }],
+		responses: {
+			201: {
+				description: "Permission created successfully",
+				content: {
+					"application/json": {
+						schema: resolver(selectPermissionSchema),
+					},
 				},
 			},
-			description: "成功获取权限列表",
 		},
+	}),
+	zValidator("json", insertPermissionSchema),
+	async (c) => {
+		const permission = c.req.valid("json");
+		const [newPermission] = await db
+			.insert(permissions)
+			.values(permission)
+			.returning();
+		return c.json(newPermission, 201);
 	},
-});
-
-rbacRouter.openapi(getPermissionsRoute, async (c) => {
-	const allPermissions = await db.query.permissions.findMany();
-	return c.json({
-		code: 200,
-		msg: "Success",
-		data: allPermissions,
-	});
-});
-
-// 创建新权限
-const createPermissionRoute = createRoute({
-	method: "post",
-	path: "/permissions",
-	tags: ["RBAC"],
-	summary: "创建新权限",
-	security: [{ bearer: [] }],
-	request: {
-		body: {
-			content: {
-				"application/json": {
-					schema: insertPermissionSchema,
-				},
-			},
-		},
-	},
-	responses: {
-		200: {
-			content: {
-				"application/json": {
-					schema: BaseDetailSchema(selectPermissionSchema),
-				},
-			},
-			description: "成功创建权限",
-		},
-		400: {
-			content: {
-				"application/json": {
-					schema: BaseErrorSchema,
-				},
-			},
-			description: "请求参数错误",
-		},
-	},
-});
-
-rbacRouter.openapi(createPermissionRoute, async (c) => {
-	const data = c.req.valid("json");
-	const newPermission = await db.insert(permissions).values(data).returning();
-
-	return c.json(
-		{
-			code: 200,
-			msg: "Permission created successfully",
-			data: newPermission[0],
-		},
-		200,
-	);
-});
+);
 
 export { rbacRouter };

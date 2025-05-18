@@ -1,4 +1,3 @@
-import { openAPISpecs } from "hono-openapi";
 import { cors } from "hono/cors";
 import { csrf } from "hono/csrf";
 import { albumRouter } from "./module/albums/albums";
@@ -7,16 +6,17 @@ import { rbacRouter } from "./module/rbac/rbac";
 import { logger } from "hono/logger";
 import { requestId } from "hono/request-id";
 
-import { apiReference } from "@scalar/hono-api-reference";
 import { Hono } from "hono";
-
+import { showRoutes } from "hono/dev";
 import { auth } from "./lib/auth";
 import { formatTable } from "./lib/log";
+import { openAPIMiddleware, scalarDocsMiddleware } from "./module/openapi";
 
 import { env } from "cloudflare:workers";
 import { adminMiddleware } from "./middleware/auth-middleware";
 import { taskRouter } from "./module/tasks/tasks";
-const app = new Hono<HonoEnvType>().basePath("/api");
+
+const app = new Hono();
 
 app.use("*", logger());
 app.use("*", csrf());
@@ -24,72 +24,47 @@ app.use("*", cors());
 app.use("*", requestId());
 app.use("*", adminMiddleware());
 
-app.on(["POST", "GET"], "/auth/*", (c) => {
-	return auth.handler(c.req.raw);
-});
-
-app.get("/", (c) => {
-	return c.text(`Your request id is ${c.get("requestId")}`);
-});
-
-app.route("/albums", albumRouter);
-
-app.route("/tasks", taskRouter);
-
-// 添加 RBAC 相关路由
-app.route("/rbac", rbacRouter);
-
-app.get(
-	"/openapi",
-	openAPISpecs(app, {
-		documentation: {
-			info: {
-				title: "Hono",
-				version: "1.0.0",
-				description: "API documentation for Hono",
-			},
-			servers: [
-				{
-					url: `http://localhost:${env.API_PORT}`,
-					description: "Local server",
-				},
-			],
-		},
-	}),
-);
-
-app.get(
-	"/scalar-docs",
-	apiReference({
-		theme: "saturn",
-		title: "Hono API Reference",
-		url: `http://localhost:${env.API_PORT}/api/openapi`,
-		authentication: {
-			type: "bearer",
-			name: "Authorization",
-			in: "header",
-		},
-	}),
-);
-app.notFound((c) => c.json({ message: "Not Found", ok: false }, 404));
-
 app.get("/better-auth/reference", async (c) => {
 	const openAPISchema = await auth.api.generateOpenAPISchema();
 	return c.json(openAPISchema);
 });
+
+// API routes with /api prefix
+const apiApp = new Hono().basePath("/api");
+
+apiApp.get("/docs", scalarDocsMiddleware());
+apiApp.get("/docs/openapi", openAPIMiddleware(app));
+
+apiApp
+	.route("/albums", albumRouter)
+	.route("/tasks", taskRouter)
+	.route("/rbac", rbacRouter);
+
+apiApp.on(["POST", "GET"], "/auth/*", (c) => {
+	return auth.handler(c.req.raw);
+});
+
+// Mount API routes
+app.route("/", apiApp);
+
+app.notFound((c) => c.json({ message: "Not Found", ok: false }, 404));
+showRoutes(app, {
+	colorize: true,
+	// verbose: true,
+});
 const serverInfo = [
 	{ Description: "Server", URL: `http://localhost:${env.API_PORT}` },
 	{
-		Description: "Server API",
+		Description: "API Endpoint",
 		URL: `http://localhost:${env.API_PORT}/api`,
 	},
 	{
 		Description: "OpenAPI",
-		URL: `http://localhost:${env.API_PORT}/api/openapi`,
+		URL: `http://localhost:${env.API_PORT}/api/docs/openapi`,
 	},
 	{
 		Description: "Scalar Docs",
-		URL: `http://localhost:${env.API_PORT}/api/scalar-docs`,
+		URL: `http://localhost:${env.API_PORT}/api/docs`,
 	},
 	{
 		Description: "Better Auth Reference",

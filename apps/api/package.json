@@ -17,6 +17,7 @@
 		"@faker-js/faker": "^9.6.0",
 		"@hono/swagger-ui": "^0.4.1",
 		"@hono/zod-openapi": "^0.17.1",
+		"zod-openapi": "^4.2.3",
 		"@neondatabase/serverless": "^0.10.4",
 		"@react-email/components": "^0.0.34",
 		"@scalar/hono-api-reference": "^0.7.2",
