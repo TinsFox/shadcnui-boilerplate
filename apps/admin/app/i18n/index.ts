@@ -70,6 +70,9 @@ export const ns = [
 	"forms",
 	"settings",
 	"navigation",
+	"sign-in",
+	"sign-up",
+	"seo",
 ] as const;
 
 i18n
