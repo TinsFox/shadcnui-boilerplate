@@ -18,10 +18,10 @@ export const LanguageSwitch = () => {
 
 	return (
 		<Select value={i18n.language} onValueChange={changeLanguage}>
-			<SelectTrigger className="w-[120px] sm:w-[150px] md:w-[180px]">
+			<SelectTrigger className="w-32">
 				<SelectValue placeholder={t("select_language")} className="truncate" />
 			</SelectTrigger>
-			<SelectContent className="w-[120px] sm:w-[150px] md:w-[180px]">
+			<SelectContent className="w-32">
 				{languages.map((language) => (
 					<SelectItem
 						key={language.value}
